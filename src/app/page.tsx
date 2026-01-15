@@ -19,7 +19,7 @@ export default function Home() {
       <main className="max-w-7xl mx-auto">
         {/* Header */}
         {/* Hero Section - Redesigned (Light Theme) */}
-        <section className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-white text-slate-900 rounded-3xl mb-16 shadow-2xl mx-4 mt-4 border border-gray-100">
+        <section className="relative min-h-[70vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-white text-slate-900 rounded-2xl md:rounded-3xl mb-12 md:mb-16 shadow-2xl mx-2 md:mx-4 mt-2 md:mt-4 border border-gray-100">
           {/* Background Image with Overlay */}
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-blue-50 z-10" />
@@ -32,20 +32,20 @@ export default function Home() {
           </div>
 
           {/* Content */}
-          <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
+          <div className="relative z-20 text-center px-4 max-w-4xl mx-auto py-12 md:py-0">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 md:mb-6 leading-tight text-slate-900">
                 {language === 'AZ' ? 'Keyfiyyətli İnşaat' : language === 'RU' ? 'Качественное Строительство' : 'Quality Construction'}
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 mt-2">
                   {language === 'AZ' ? 'Gələcəyi Yaradın' : language === 'RU' ? 'Создай Будущее' : 'Build The Future'}
                 </span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-slate-600 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+              <p className="text-lg md:text-2xl text-slate-600 mb-8 md:mb-10 max-w-2xl mx-auto font-light leading-relaxed">
                 {language === 'AZ'
                   ? 'AlçipanBaku - 20 illik təcrübə ilə məkanınızı sənət əsərinə çeviririk.'
                   : language === 'RU'
@@ -56,13 +56,13 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link
                   href="/#products"
-                  className="px-8 py-4 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-700 transition-all transform hover:scale-105 shadow-xl shadow-blue-200"
+                  className="w-full sm:w-auto px-8 py-4 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-700 transition-all transform hover:scale-105 shadow-xl shadow-blue-200"
                 >
                   {language === 'AZ' ? 'Məhsullara Baxın' : language === 'RU' ? 'Смотреть Продукты' : 'View Products'}
                 </Link>
                 <Link
                   href="/#contact"
-                  className="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-full font-bold text-lg hover:bg-gray-50 transition-all shadow-sm"
+                  className="w-full sm:w-auto px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-full font-bold text-lg hover:bg-gray-50 transition-all shadow-sm"
                 >
                   {language === 'AZ' ? 'Əlaqə Saxlayın' : language === 'RU' ? 'Связаться' : 'Contact Us'}
                 </Link>
@@ -74,7 +74,7 @@ export default function Home() {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 items-center flex flex-col gap-2 opacity-50"
+            className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 items-center flex flex-col gap-2 opacity-50"
           >
             <span className="text-xs uppercase tracking-widest text-slate-400">Scroll</span>
             <div className="w-6 h-10 border-2 border-slate-300 rounded-full flex justify-center pt-2">
