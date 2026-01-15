@@ -7,14 +7,14 @@ export const initialProducts: Product[] = [
     {
         id: '1',
         type: 'product',
-        name: { AZ: 'Gipskarton Lövhə (Adi)', RU: 'Гипсокартон (Обычный)', EN: 'Gypsum Board (Regular)' },
-        price: 8.50,
+        name: { AZ: 'Gipskarton Lövhə', RU: 'Гипсокартон', EN: 'Gypsum Board' },
+        price: 0,
         currency: 'AZN',
         image: 'https://placehold.co/600x400/e2e8f0/1e293b?text=Gipskarton',
         description: {
-            AZ: 'Divar və tavan üçün yüksək keyfiyyətli standart gipskarton.',
-            RU: 'Высококачественный стандартный гипсокартон для стен и потолков.',
-            EN: 'High quality standard gypsum board for walls and ceilings.'
+            AZ: 'Divar və tavan üçün gipskarton lövhələr.',
+            RU: 'Гипсокартонные листы для стен и потолков.',
+            EN: 'Gypsum boards / drywall sheets for walls and ceilings.'
         },
         isActive: true,
         isPriceVisible: true
@@ -22,14 +22,104 @@ export const initialProducts: Product[] = [
     {
         id: '2',
         type: 'product',
-        name: { AZ: 'Profil (CD-60)', RU: 'Профиль (CD-60)', EN: 'Profile (CD-60)' },
-        price: 3.20,
+        name: { AZ: 'Metal Profillər', RU: 'Металлические Профили', EN: 'Metal Profiles' },
+        price: 0,
         currency: 'AZN',
-        image: 'https://placehold.co/600x400/e2e8f0/1e293b?text=Profil+CD-60',
+        image: 'https://placehold.co/600x400/e2e8f0/1e293b?text=Profillar',
         description: {
-            AZ: 'Tavan və divar karkasları üçün metal profil.',
-            RU: 'Металлический профиль для каркасов потолков и стен.',
-            EN: 'Metal profile for ceiling and wall frameworks.'
+            AZ: 'Alçipan sistemləri üçün dayaq və istiqamətverici profillər.',
+            RU: 'Стойки и направляющие профили для гипсокартонных систем.',
+            EN: 'Metal profiles (studs and tracks for drywall systems).'
+        },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: '3',
+        type: 'product',
+        name: { AZ: 'Gips Tozları', RU: 'Гипсовый Порошок', EN: 'Gypsum Powder' },
+        price: 0,
+        currency: 'AZN',
+        image: 'https://placehold.co/600x400/e2e8f0/1e293b?text=Gips+Tozu',
+        description: {
+            AZ: 'Yüksək keyfiyyətli suvaq və gips tozları.',
+            RU: 'Высококачественная штукатурка и гипсовый порошок.',
+            EN: 'Bags of plaster / gypsum powder.'
+        },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: '4',
+        type: 'product',
+        name: { AZ: 'Dərz Dolğusu', RU: 'Шпаклевка', EN: 'Joint Compound' },
+        price: 0,
+        currency: 'AZN',
+        image: 'https://placehold.co/600x400/e2e8f0/1e293b?text=Derz+Dolgusu',
+        description: {
+            AZ: 'Təmir və tamamlama işləri üçün dərz dolğusu.',
+            RU: 'Шпаклевка для ремонтных и отделочных работ.',
+            EN: 'Joint compound / finishing plaster.'
+        },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: '5',
+        type: 'product',
+        name: { AZ: 'İzolyasiya Materialları', RU: 'Изоляция', EN: 'Insulation' },
+        price: 0,
+        currency: 'AZN',
+        image: 'https://placehold.co/600x400/e2e8f0/1e293b?text=Izolyasiya',
+        description: {
+            AZ: 'İstilik və səs izolyasiyası üçün rulon və panellər.',
+            RU: 'Рулоны и панели для тепло- и звукоизоляции.',
+            EN: 'Insulation rolls or panels.'
+        },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: '6',
+        type: 'product',
+        name: { AZ: 'Tavan Panelləri', RU: 'Потолочные Панели', EN: 'Ceiling Panels' },
+        price: 0,
+        currency: 'AZN',
+        image: 'https://placehold.co/600x400/e2e8f0/1e293b?text=Tavan+Panelleri',
+        description: {
+            AZ: 'Asma tavan sistemləri üçün panellər.',
+            RU: 'Панели для систем подвесных потолков.',
+            EN: 'Ceiling boards / ceiling system panels.'
+        },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: '7',
+        type: 'product',
+        name: { AZ: 'Aksesuarlar', RU: 'Аксессуары', EN: 'Accessories' },
+        price: 0,
+        currency: 'AZN',
+        image: 'https://placehold.co/600x400/e2e8f0/1e293b?text=Aksesuarlar',
+        description: {
+            AZ: 'Künclük, şrup və birləşdirici detallar.',
+            RU: 'Уголки, саморезы и соединительные детали.',
+            EN: 'Construction accessories (corner beads, trims, connectors).'
+        },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: '8',
+        type: 'product',
+        name: { AZ: 'Tikinti Panelləri', RU: 'Строительные Панели', EN: 'Building Panels' },
+        price: 0,
+        currency: 'AZN',
+        image: 'https://placehold.co/600x400/e2e8f0/1e293b?text=Paneller',
+        description: {
+            AZ: 'Paletlərdə yığılmış tikinti panelləri.',
+            RU: 'Строительные панели, сложенные на поддонах.',
+            EN: 'Stacked building panels on pallets.'
         },
         isActive: true,
         isPriceVisible: true
