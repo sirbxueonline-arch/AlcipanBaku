@@ -135,7 +135,8 @@ export function Header() {
                         animate="open"
                         exit="closed"
                         variants={menuVariants}
-                        className="fixed inset-0 bg-white z-40 md:hidden pt-28 px-8 flex flex-col"
+                        className="fixed inset-0 z-[100] md:hidden pt-28 px-8 flex flex-col"
+                        style={{ backgroundColor: '#ffffff' }}
                     >
                         {/* Decorative background element */}
                         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -z-10 transform translate-x-1/2 -translate-y-1/2" />
