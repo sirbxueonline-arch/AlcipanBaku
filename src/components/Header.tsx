@@ -127,63 +127,91 @@ export function Header() {
                 </div>
             </div>
 
-            {/* Mobile Menu Overlay */}
+            {/* Mobile Menu Overlay - Rendered via Portal */}
             <AnimatePresence>
                 {mobileMenuOpen && (
-                    <motion.div
-                        initial="closed"
-                        animate="open"
-                        exit="closed"
-                        variants={menuVariants}
-                        className="fixed inset-0 z-[100] md:hidden pt-28 px-8 flex flex-col"
-                        style={{ backgroundColor: '#ffffff' }}
-                    >
-                        {/* Decorative background element */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -z-10 transform translate-x-1/2 -translate-y-1/2" />
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-red-500/5 rounded-full blur-3xl -z-10 transform -translate-x-1/2 translate-y-1/2" />
+                    <MenuPortal>
+                        <motion.div
+                            initial="closed"
+                            animate="open"
+                            exit="closed"
+                            variants={menuVariants}
+                            className="fixed inset-0 z-[9999] md:hidden pt-28 px-8 flex flex-col bg-white"
+                            style={{ backgroundColor: '#ffffff' }} // Force solid white
+                        >
+                            {/* Close Button specific for Portal */}
+                            <button
+                                className="absolute top-6 right-4 p-2 rounded-full hover:bg-gray-100 text-gray-600 hover:text-blue-600 transition-colors"
+                                onClick={() => setMobileMenuOpen(false)}
+                                aria-label="Close menu"
+                            >
+                                <X size={28} />
+                            </button>
 
-                        <nav className="flex flex-col space-y-8">
-                            {navLinks.map((link) => (
-                                <motion.div key={link.href} variants={itemVariants}>
-                                    <Link
-                                        href={link.href}
-                                        className={`block text-4xl font-bold tracking-tight transition-colors ${pathname === link.href ? 'text-blue-600' : 'text-gray-900 hover:text-gray-600'}`}
-                                    >
-                                        {link.label[language]}
-                                    </Link>
-                                </motion.div>
-                            ))}
+                            {/* Decorative background element */}
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -z-10 transform translate-x-1/2 -translate-y-1/2" />
+                            <div className="absolute bottom-0 left-0 w-64 h-64 bg-red-500/5 rounded-full blur-3xl -z-10 transform -translate-x-1/2 translate-y-1/2" />
 
-                            <motion.div variants={itemVariants} className="pt-12 border-t border-gray-100 mt-4 space-y-6">
-                                <div>
-                                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
-                                        {language === 'AZ' ? 'Əlaqə' : language === 'RU' ? 'Контакты' : 'Contact'}
-                                    </p>
-                                    <a href="tel:+994506368731" className="flex items-center gap-4 text-xl font-medium text-gray-900 mb-4 hover:text-blue-600 transition-colors">
-                                        <span className="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-lg">📞</span>
-                                        +994 50 636 87 31
-                                    </a>
-                                    <a href="mailto:info@alcipan.az" className="flex items-center gap-4 text-xl font-medium text-gray-900 hover:text-blue-600 transition-colors">
-                                        <span className="w-10 h-10 bg-orange-50 text-orange-600 rounded-full flex items-center justify-center text-lg">✉️</span>
-                                        info@alcipan.az
-                                    </a>
-                                </div>
+                            <nav className="flex flex-col space-y-8">
+                                {navLinks.map((link) => (
+                                    <motion.div key={link.href} variants={itemVariants}>
+                                        <Link
+                                            href={link.href}
+                                            className={`block text-4xl font-bold tracking-tight transition-colors ${pathname === link.href ? 'text-blue-600' : 'text-gray-900 hover:text-gray-600'}`}
+                                            onClick={() => setMobileMenuOpen(false)}
+                                        >
+                                            {link.label[language]}
+                                        </Link>
+                                    </motion.div>
+                                ))}
 
-                                <div>
-                                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
-                                        Social
-                                    </p>
-                                    <div className="flex gap-4">
-                                        <a href="https://instagram.com/alcipanbaku" target="_blank" className="w-12 h-12 bg-gradient-to-tr from-purple-500 to-orange-500 text-white rounded-2xl flex items-center justify-center shadow-lg transform active:scale-95 transition-all">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                <motion.div variants={itemVariants} className="pt-12 border-t border-gray-100 mt-4 space-y-6">
+                                    <div>
+                                        <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
+                                            {language === 'AZ' ? 'Əlaqə' : language === 'RU' ? 'Контакты' : 'Contact'}
+                                        </p>
+                                        <a href="tel:+994506368731" className="flex items-center gap-4 text-xl font-medium text-gray-900 mb-4 hover:text-blue-600 transition-colors">
+                                            <span className="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-lg">📞</span>
+                                            +994 50 636 87 31
+                                        </a>
+                                        <a href="mailto:info@alcipan.az" className="flex items-center gap-4 text-xl font-medium text-gray-900 hover:text-blue-600 transition-colors">
+                                            <span className="w-10 h-10 bg-orange-50 text-orange-600 rounded-full flex items-center justify-center text-lg">✉️</span>
+                                            info@alcipan.az
                                         </a>
                                     </div>
-                                </div>
-                            </motion.div>
-                        </nav>
-                    </motion.div>
+
+                                    <div>
+                                        <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
+                                            Social
+                                        </p>
+                                        <div className="flex gap-4">
+                                            <a href="https://instagram.com/alcipanbaku" target="_blank" className="w-12 h-12 bg-gradient-to-tr from-purple-500 to-orange-500 text-white rounded-2xl flex items-center justify-center shadow-lg transform active:scale-95 transition-all">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </nav>
+                        </motion.div>
+                    </MenuPortal>
                 )}
             </AnimatePresence>
         </header>
     );
+}
+
+// Simple Portal Component
+function MenuPortal({ children }: { children: React.ReactNode }) {
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+        return () => setMounted(false);
+    }, []);
+
+    if (!mounted) return null;
+
+    return typeof document !== 'undefined'
+        ? require('react-dom').createPortal(children, document.body)
+        : null;
 }
