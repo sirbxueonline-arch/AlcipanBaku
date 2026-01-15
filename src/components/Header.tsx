@@ -7,7 +7,7 @@ import { useAdmin } from '@/context/AdminContext';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 
 export function Header() {
     const { language } = useAdmin();
@@ -46,7 +46,7 @@ export function Header() {
         { href: '/services', label: { AZ: 'Xidmətlər', RU: 'Услуги', EN: 'Services' } },
     ];
 
-    const menuVariants = {
+    const menuVariants: Variants = {
         closed: {
             opacity: 0,
             x: "100%",
@@ -69,7 +69,7 @@ export function Header() {
         }
     };
 
-    const itemVariants = {
+    const itemVariants: Variants = {
         closed: { opacity: 0, x: 20 },
         open: { opacity: 1, x: 0 }
     };
@@ -135,7 +135,7 @@ export function Header() {
                         animate="open"
                         exit="closed"
                         variants={menuVariants}
-                        className="fixed inset-0 bg-white/98 backdrop-blur-xl z-40 md:hidden pt-28 px-8 flex flex-col"
+                        className="fixed inset-0 bg-white z-40 md:hidden pt-28 px-8 flex flex-col"
                     >
                         {/* Decorative background element */}
                         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -z-10 transform translate-x-1/2 -translate-y-1/2" />
