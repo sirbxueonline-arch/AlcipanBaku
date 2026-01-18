@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import { AdminProvider } from '@/context/AdminContext';
 import ClientLayout from './ClientLayout';
@@ -51,6 +52,7 @@ export default function RootLayout({
             <WhatsAppWidget />
           </ClientLayout>
         </AdminProvider>
+        <Analytics />
       </body>
     </html>
   );
