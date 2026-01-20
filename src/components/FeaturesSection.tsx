@@ -62,23 +62,23 @@ const FeaturesSection = () => {
     ];
 
     return (
-        <div className="py-20 bg-gray-50 border-y border-gray-100">
+        <div className="py-20 bg-[var(--bg)] border-y border-white/5">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--foreground)] mb-4">
                         {language === 'AZ' ? 'Niyə Bizi Seçməlisiniz?' : language === 'RU' ? 'Почему Выбирают Нас?' : 'Why Choose Us?'}
                     </h2>
-                    <div className="w-24 h-1 bg-orange-500 mx-auto rounded-full"></div>
+                    <div className="w-24 h-1 bg-[var(--primary)] mx-auto rounded-full"></div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {features.map((feature) => (
-                        <div key={feature.id} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 flex flex-col items-center text-center">
-                            <div className="mb-6 p-4 bg-orange-50 rounded-full">
+                        <div key={feature.id} className="bg-[var(--card)] p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-white/10 flex flex-col items-center text-center">
+                            <div className="mb-6 p-4 bg-blue-500/10 rounded-full">
                                 {feature.icon}
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title[language]}</h3>
-                            <p className="text-gray-500 leading-relaxed">
+                            <h3 className="text-xl font-bold text-[var(--foreground)] mb-3">{feature.title[language]}</h3>
+                            <p className="text-[var(--muted)] leading-relaxed">
                                 {feature.desc[language]}
                             </p>
                         </div>

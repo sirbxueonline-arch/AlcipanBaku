@@ -15,9 +15,9 @@ export function ServiceCard({ service }: ServiceCardProps) {
     if (!service.isActive) return null;
 
     return (
-        <div className="group relative flex flex-col bg-white border border-gray-100 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-gray-300 h-full cursor-pointer">
+        <div className="group relative flex flex-col bg-[var(--card)] border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-blue-500/30 h-full cursor-pointer">
             {/* Image Container - Aspect Ratio 16:9 */}
-            <div className="relative w-full aspect-[16/9] bg-gray-100 overflow-hidden">
+            <div className="relative w-full aspect-[16/9] bg-[var(--card)] overflow-hidden">
                 <Image
                     src={service.image}
                     alt={service.name[language]}
@@ -30,18 +30,18 @@ export function ServiceCard({ service }: ServiceCardProps) {
             {/* Content */}
             <div className="flex flex-col flex-grow p-5">
                 {/* Title */}
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-[var(--foreground)] mb-2">
                     {service.name[language]}
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm text-gray-600 mb-6 line-clamp-3 leading-relaxed">
+                <p className="text-sm text-[var(--muted)] mb-6 line-clamp-3 leading-relaxed">
                     {service.description[language]}
                 </p>
 
                 {/* Action Button - Pushed to bottom */}
                 <div className="mt-auto">
-                    <button className="w-full py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors shadow-sm z-10 relative">
+                    <button className="w-full py-3 bg-[var(--primary)] text-white font-semibold rounded-md hover:opacity-90 transition-colors shadow-sm z-10 relative">
                         {language === 'AZ' ? 'Xidmət Sifarişi' : language === 'RU' ? 'Заказать услугу' : 'Request Service'}
                     </button>
                 </div>

@@ -1,8 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* User provided "Premium Paket" palette */
+  --bg: #020617;
+  --card: #0f172a;
+  --primary: #2563eb;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+
+  /* Mapping to project variables */
+  --background: var(--bg);
+  --foreground: var(--text);
 }
 
 @theme inline {
@@ -14,8 +22,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--bg);
+    --foreground: var(--text);
   }
 }
 

@@ -42,6 +42,12 @@ export function AdminProvider({ children }: { children: ReactNode }) {
 
     // Load from localStorage on mount
     useEffect(() => {
+        // DATA VERSIONING to force update when we change initial structures
+        const DATA_VERSION = 'v1.5_remove_video'; 
+        const storedVersion = localStorage.getItem('alcipan_data_version');
+
+        const isVersionMatch = storedVersion === DATA_VERSION;
+
         const storedProducts = localStorage.getItem('alcipan_products');
         const storedServices = localStorage.getItem('alcipan_services');
         const storedWork = localStorage.getItem('alcipan_work');
@@ -52,13 +58,13 @@ export function AdminProvider({ children }: { children: ReactNode }) {
             setIsAuthenticated(true);
         }
 
-        if (storedProducts) {
+        // Only load from storage if version matches
+        if (isVersionMatch && storedProducts) {
             try {
                 const parsed = JSON.parse(storedProducts);
                 if (Array.isArray(parsed) && parsed.length > 0) {
                     setProducts(parsed);
                 } else {
-                    // Fallback to initial if stored is empty array (fix for empty load)
                     setProducts(initialProducts);
                 }
             } catch (e) {
@@ -66,10 +72,11 @@ export function AdminProvider({ children }: { children: ReactNode }) {
                 setProducts(initialProducts);
             }
         } else {
+            // If version mismatch or no data, force initial data
             setProducts(initialProducts);
         }
 
-        if (storedServices) {
+        if (isVersionMatch && storedServices) {
             try {
                 const parsed = JSON.parse(storedServices);
                 if (Array.isArray(parsed) && parsed.length > 0) {
@@ -85,7 +92,7 @@ export function AdminProvider({ children }: { children: ReactNode }) {
             setServices(initialServices);
         }
 
-        if (storedWork) {
+        if (isVersionMatch && storedWork) {
             try {
                 const parsed = JSON.parse(storedWork);
                 if (Array.isArray(parsed) && parsed.length > 0) {
@@ -100,6 +107,16 @@ export function AdminProvider({ children }: { children: ReactNode }) {
         } else {
             setWorkItems(initialWorkItems);
         }
+
+        // Update version in storage
+        if (!isVersionMatch) {
+            localStorage.setItem('alcipan_data_version', DATA_VERSION);
+            // We also need to save the new initial data immediately to storage so subsequent reloads work
+            localStorage.setItem('alcipan_products', JSON.stringify(initialProducts));
+            localStorage.setItem('alcipan_services', JSON.stringify(initialServices));
+            localStorage.setItem('alcipan_work', JSON.stringify(initialWorkItems));
+        }
+
         setIsLoaded(true);
     }, []);
 

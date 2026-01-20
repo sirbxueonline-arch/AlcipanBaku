@@ -5,131 +5,172 @@ import { useAdmin } from '@/context/AdminContext';
 import { ProductCard } from '@/components/ProductCard';
 import { ServiceCard } from '@/components/ServiceCard';
 import { WorkGallery } from '@/components/WorkGallery';
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import FeaturesSection from '@/components/FeaturesSection';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 
 export default function Home() {
   const { products, services, language } = useAdmin();
+  const [showAllProducts, setShowAllProducts] = React.useState(false);
+
+  const sendWhatsApp = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const name = (form.elements.namedItem('name') as HTMLInputElement).value;
+    const phone = (form.elements.namedItem('phone') as HTMLInputElement).value;
+    const msg = (form.elements.namedItem('msg') as HTMLTextAreaElement).value;
+    
+    // Replace with actual phone number if provided, currently using placeholder
+    const phoneNumber = '994500000000'; 
+    const text = `Ad: ${name}%0ATelefon: ${phone}%0AMəlumat: ${msg}`;
+    window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
-      {/* Main Content Area */}
-      <main className="max-w-7xl mx-auto">
-        {/* Header */}
-        {/* Hero Section - Redesigned (Light Theme) */}
-        <section className="relative min-h-[70vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-white text-slate-900 rounded-2xl md:rounded-3xl mb-12 md:mb-16 shadow-2xl mx-2 md:mx-4 mt-2 md:mt-4 border border-gray-100">
-          {/* Background Image with Overlay */}
-          <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-blue-50 z-10" />
-            {/* Abstract Pattern */}
-            <div className="absolute inset-0 opacity-[0.03] z-10"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230f172a' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-              }}
-            />
-          </div>
-
-          {/* Content */}
-          <div className="relative z-20 text-center px-4 max-w-4xl mx-auto py-12 md:py-0">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 md:mb-6 leading-tight text-slate-900">
-                {language === 'AZ' ? 'Keyfiyyətli İnşaat' : language === 'RU' ? 'Качественное Строительство' : 'Quality Construction'}
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 mt-2">
-                  {language === 'AZ' ? 'Gələcəyi Yaradın' : language === 'RU' ? 'Создай Будущее' : 'Build The Future'}
-                </span>
-              </h1>
-
-              <p className="text-lg md:text-2xl text-slate-600 mb-8 md:mb-10 max-w-2xl mx-auto font-light leading-relaxed">
-                {language === 'AZ'
-                  ? 'AlçipanBaku - 20 illik təcrübə ilə məkanınızı sənət əsərinə çeviririk.'
-                  : language === 'RU'
-                    ? 'AlcipanBaku - С 20-летним опытом превращаем ваше пространство в произведение искусства.'
-                    : 'AlcipanBaku - Turning your space into a masterpiece with 20 years of experience.'}
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Link
-                  href="/#products"
-                  className="w-full sm:w-auto px-8 py-4 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-700 transition-all transform hover:scale-105 shadow-xl shadow-blue-200"
-                >
-                  {language === 'AZ' ? 'Məhsullara Baxın' : language === 'RU' ? 'Смотреть Продукты' : 'View Products'}
-                </Link>
-                <Link
-                  href="/#contact"
-                  className="w-full sm:w-auto px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-full font-bold text-lg hover:bg-gray-50 transition-all shadow-sm"
-                >
-                  {language === 'AZ' ? 'Əlaqə Saxlayın' : language === 'RU' ? 'Связаться' : 'Contact Us'}
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Scroll Indicator */}
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-            className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 items-center flex flex-col gap-2 opacity-50"
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] font-sans">
+      
+      {/* HERO SECTION */}
+      <section className="text-center py-20 px-4 min-h-[60vh] flex flex-col justify-center items-center">
+        <div className="max-w-4xl mx-auto">
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 text-white"
           >
-            <span className="text-xs uppercase tracking-widest text-slate-400">Scroll</span>
-            <div className="w-6 h-10 border-2 border-slate-300 rounded-full flex justify-center pt-2">
-              <div className="w-1 h-3 bg-slate-400 rounded-full" />
-            </div>
-          </motion.div>
-        </section>
+            {language === 'AZ' ? 'Premium' : language === 'RU' ? 'Премиум' : 'Premium'} <span className="text-[var(--primary)]">{language === 'AZ' ? 'Paket' : language === 'RU' ? 'Пакет' : 'Package'}</span> {language === 'AZ' ? 'Alçıpan Həlləri' : language === 'RU' ? 'Решения из Гипсокартона' : 'Drywall Solutions'}
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-lg md:text-2xl text-[var(--muted)] max-w-2xl mx-auto mb-10 leading-relaxed"
+          >
+             {language === 'AZ' 
+               ? 'Paket alçıpan xidmətləri: usta + material bir yerdə. 2006-cı ildən bəri Bakıda etibarlı xidmət.'
+               : language === 'RU'
+               ? 'Пакетные услуги по гипсокартону: мастер + материал в одном месте. Надежный сервис в Баку с 2006 года.'
+               : 'Package drywall services: master + material in one place. Reliable service in Baku since 2006.'}
+          </motion.p>
+          <motion.a 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4 }}
+            href="#contact" 
+            className="inline-block px-8 py-4 bg-[var(--primary)] text-white text-lg font-semibold rounded-lg hover:opacity-90 transition-all"
+          >
+            {language === 'AZ' ? 'Pulsuz ölçü üçün yaz' : language === 'RU' ? 'Записаться на замер' : 'Request Free Measurement'}
+          </motion.a>
+        </div>
+      </section>
 
-        {/* Features Section */}
-        <FeaturesSection />
-
-        {/* Products Section */}
-        <section className="mb-16">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 border-l-4 border-blue-600 pl-4">
-              {language === 'AZ' ? 'Məhsullar' : language === 'RU' ? 'Продукты' : 'Products'}
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {products.map(product => (
+      {/* PRODUCTS / PACKAGES */}
+      <section className="container mx-auto px-4 py-16" id="products">
+        <h2 className="text-center text-3xl font-bold mb-12 text-white">
+          {language === 'AZ' ? 'Paket Xidmətlərimiz' : language === 'RU' ? 'Наши Пакетные Услуги' : 'Our Package Services'}
+        </h2>
+        
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {products.slice(0, showAllProducts ? undefined : 3).map(product => (
               <ProductCard key={product.id} product={product} />
             ))}
-          </div>
+        </div>
 
-          {products.filter(p => p.isActive).length === 0 && (
-            <div className="text-center py-16 bg-white rounded-xl border-2 border-dashed border-gray-200">
-              <p className="text-gray-400 text-lg">No active products to display.</p>
+        {/* Load More Button */}
+        {products.length > 3 && (
+            <div className="text-center">
+                <button 
+                    onClick={() => setShowAllProducts(!showAllProducts)}
+                    className="inline-flex items-center gap-2 px-8 py-3 bg-[var(--card)] border border-white/10 rounded-full text-white font-semibold hover:bg-[var(--primary)] hover:border-[var(--primary)] transition-all duration-300"
+                >
+                    {showAllProducts 
+                        ? (language === 'AZ' ? 'Daha az göstər' : language === 'RU' ? 'Показать меньше' : 'Show Less')
+                        : (language === 'AZ' ? 'Daha çox göstər' : language === 'RU' ? 'Показать больше' : 'Load More')
+                    }
+                    <svg className={`w-4 h-4 transition-transform duration-300 ${showAllProducts ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
             </div>
-          )}
-        </section>
+        )}
 
-        {/* Services Section */}
-        <section className="mb-12">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 border-l-4 border-orange-500 pl-4">
-              {language === 'AZ' ? 'Xidmətlər' : language === 'RU' ? 'Услуги' : 'Services'}
-            </h2>
-          </div>
+        {products.filter(p => p.isActive).length === 0 && (
+            <div className="text-center py-16 bg-[var(--card)] rounded-xl border border-dashed border-white/10">
+              <p className="text-[var(--muted)] text-lg">No active packages to display.</p>
+            </div>
+        )}
+      </section>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+       {/* SERVICES */}
+       <section className="container mx-auto px-4 py-16 bg-[var(--bg)]" id="services">
+        <h2 className="text-center text-3xl font-bold mb-12 text-white">
+          {language === 'AZ' ? 'Xidmətlər' : language === 'RU' ? 'Услуги' : 'Services'}
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map(service => (
               <ServiceCard key={service.id} service={service} />
             ))}
-          </div>
-          {services.filter(s => s.isActive).length === 0 && (
-            <div className="text-center py-16 bg-white rounded-xl border-2 border-dashed border-gray-200">
-              <p className="text-gray-400 text-lg">No active services to display.</p>
+        </div>
+         {services.filter(s => s.isActive).length === 0 && (
+            <div className="text-center py-16 bg-[var(--card)] rounded-xl border border-dashed border-white/10">
+              <p className="text-[var(--muted)] text-lg">No active services to display.</p>
             </div>
           )}
-        </section>
+      </section>
 
-        {/* Our Work Section */}
-        <WorkGallery />
-      </main>
+
+      {/* WHY US / STATS */}
+      <section className="container mx-auto px-4 py-16 cursor-default">
+        <div className="bg-gradient-to-br from-[#020617] via-[#020617] to-[#0f172a] border border-white/10 rounded-2xl p-10 md:p-16 text-center">
+            <h2 className="text-3xl font-bold mb-4 text-white">
+              {language === 'AZ' ? 'Niyə AlcipanBaku?' : language === 'RU' ? 'Почему AlcipanBaku?' : 'Why AlcipanBaku?'}
+            </h2>
+             <p className="text-[var(--muted)] max-w-2xl mx-auto mb-12 text-lg">
+                {language === 'AZ' ? 'Paket sistem ilə işin bütün mərhələsi bir yerdə: ölçü → material → montaj → təhvil.' : 
+                 language === 'RU' ? 'Весь процесс работы по пакетной системе в одном месте: замер → материал → монтаж → сдача.' :
+                 'All stages of work with the package system in one place: measurement → material → installation → delivery.'}
+            </p>
+            
+            <FeaturesSection />
+        </div>
+      </section>
+
+      {/* WORK GALLERY */}
+      <WorkGallery />
+
+      {/* CONTACT FORM */}
+      <section className="container mx-auto px-4 py-20 text-center" id="contact">
+        <h2 className="text-3xl font-bold mb-4 text-white">
+          {language === 'AZ' ? 'Ölçü üçün müraciət' : language === 'RU' ? 'Заявка на замер' : 'Request Measurement'}
+        </h2>
+        <p className="text-[var(--muted)] max-w-xl mx-auto mb-10">
+          {language === 'AZ' ? 'Qiymət obyektə baxıldıqdan sonra dəqiqləşdirilir.' : language === 'RU' ? 'Цена уточняется после осмотра объекта.' : 'Price is finalized after site inspection.'}
+        </p>
+
+        <form onSubmit={sendWhatsApp} className="max-w-xl mx-auto space-y-4">
+          <input 
+            name="name" 
+            placeholder={language === 'AZ' ? 'Adınız' : language === 'RU' ? 'Ваше Имя' : 'Your Name'} 
+            required 
+            className="w-full p-4 bg-[var(--card)] border border-white/10 rounded-lg text-white focus:outline-none focus:border-[var(--primary)] transition-colors"
+          />
+          <input 
+            name="phone" 
+            placeholder={language === 'AZ' ? 'Telefon' : language === 'RU' ? 'Телефон' : 'Phone'} 
+            required 
+            className="w-full p-4 bg-[var(--card)] border border-white/10 rounded-lg text-white focus:outline-none focus:border-[var(--primary)] transition-colors"
+          />
+          <textarea 
+            name="msg" 
+            placeholder={language === 'AZ' ? 'Qısa məlumat (mənzil / obyekt)' : language === 'RU' ? 'Краткая информация (квартира / объект)' : 'Short info (apartment / object)'} 
+            rows={4}
+            className="w-full p-4 bg-[var(--card)] border border-white/10 rounded-lg text-white focus:outline-none focus:border-[var(--primary)] transition-colors resize-none mb-4"
+          />
+          <button className="w-full py-4 bg-[var(--primary)] text-white font-bold rounded-lg hover:opacity-90 transition-all text-lg">
+             {language === 'AZ' ? 'Göndər' : language === 'RU' ? 'Отправить' : 'Send'}
+          </button>
+        </form>
+      </section>
+      
     </div>
   );
 }
