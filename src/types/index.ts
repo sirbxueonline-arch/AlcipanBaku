@@ -32,6 +32,7 @@ export interface WorkItem {
   type: 'work';
   imageUrl: string; // Thumbnail or main image
   videoUrl?: string; // Optional video link (YouTube, etc.)
+  tikTokUrl?: string; // Optional TikTok video link
   title: LocalizedString;
   description: LocalizedString;
   isActive: boolean;

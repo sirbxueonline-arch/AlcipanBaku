@@ -188,18 +188,6 @@ export const initialServices: Service[] = [
         },
         image: '/brain/service_suspended_ceiling_master_1768927020516.png',
         isActive: true
-    },
-    {
-        id: '2',
-        type: 'service',
-        name: { AZ: 'Alçipan Divar', RU: 'Гипсокартонные стены', EN: 'Plasterboard Walls' },
-        description: {
-            AZ: 'Otaqların bölünməsi və yeni divarların qurulması.',
-            RU: 'Разделение комнат и возведение новых стен.',
-            EN: 'Partitioning rooms and constructing new walls.'
-        },
-        image: '/brain/service_drywall_partition_1768927039333.png',
-        isActive: true
     }
 ];
 
@@ -216,22 +204,70 @@ export const initialWorkItems: WorkItem[] = [
             RU: 'Офисный проект Baku White City. Полные гипсокартонные и покрасочные работы.',
             EN: 'Baku White City office project. Full plasterboard and painting works.'
         },
-        imageUrl: '/brain/work_office_renovation_1768927355854.png',
-        // PASTE YOUR YOUTUBE LINK HERE
+        imageUrl: '/brain/tiktok_placeholder_bg.png',
+        videoUrl: '', // YouTube or other
+        tikTokUrl: 'https://www.tiktok.com/@alcipanbaku/video/7450750858331000072?lang=en', // https://www.tiktok.com/@username/video/id
+        isActive: true
+    },
+
+    {
+        id: '3',
+        type: 'work',
+        title: { AZ: 'Alçipan İşləri', RU: 'Гипсокартонные Работы', EN: 'Drywall Works' },
+        description: { AZ: 'TikTok Video', RU: 'TikTok Видео', EN: 'TikTok Video' },
+        imageUrl: '/brain/tiktok_placeholder_bg.png',
         videoUrl: '',
+        tikTokUrl: 'https://www.tiktok.com/@alcipanbaku/video/7285807537440492801',
         isActive: true
     },
     {
-        id: '2',
+        id: '4',
         type: 'work',
-        title: { AZ: 'Villa Tavan Dizaynı', RU: 'Дизайн потолка виллы', EN: 'Villa Ceiling Design' },
-        description: {
-            AZ: 'Gizli işıqlandırma ilə xüsusi dizayn.',
-            RU: 'Особый дизайн со скрытым освещением.',
-            EN: 'Special design with hidden lighting.'
-        },
-        imageUrl: '/brain/work_villa_ceiling_1768927377672.png',
-        videoUrl: '', // Leave empty if no video
+        title: { AZ: 'Alçipan İşləri', RU: 'Гипсокартонные Работы', EN: 'Drywall Works' },
+        description: { AZ: 'TikTok Video', RU: 'TikTok Видео', EN: 'TikTok Video' },
+        imageUrl: '/brain/tiktok_placeholder_bg.png',
+        videoUrl: '',
+        tikTokUrl: 'https://www.tiktok.com/@alcipanbaku/video/7194775292777467138',
+        isActive: true
+    },
+    {
+        id: '5',
+        type: 'work',
+        title: { AZ: 'Alçipan İşləri', RU: 'Гипсокартонные Работы', EN: 'Drywall Works' },
+        description: { AZ: 'TikTok Video', RU: 'TikTok Видео', EN: 'TikTok Video' },
+        imageUrl: '/brain/tiktok_placeholder_bg.png',
+        videoUrl: '',
+        tikTokUrl: 'https://www.tiktok.com/@alcipanbaku/photo/7159261067879697665',
+        isActive: true
+    },
+    {
+        id: '6',
+        type: 'work',
+        title: { AZ: 'Alçipan İşləri', RU: 'Гипсокартонные Работы', EN: 'Drywall Works' },
+        description: { AZ: 'TikTok Video', RU: 'TikTok Видео', EN: 'TikTok Video' },
+        imageUrl: '/brain/tiktok_placeholder_bg.png',
+        videoUrl: '',
+        tikTokUrl: 'https://www.tiktok.com/@alcipanbaku/video/7099480720871148802',
+        isActive: true
+    },
+    {
+        id: '7',
+        type: 'work',
+        title: { AZ: 'Alçipan İşləri', RU: 'Гипсокартонные Работы', EN: 'Drywall Works' },
+        description: { AZ: 'TikTok Video', RU: 'TikTok Видео', EN: 'TikTok Video' },
+        imageUrl: '/brain/tiktok_placeholder_bg.png',
+        videoUrl: '',
+        tikTokUrl: 'https://www.tiktok.com/@alcipanbaku/video/7455942085934419218',
+        isActive: true
+    },
+    {
+        id: '8',
+        type: 'work',
+        title: { AZ: 'Alçipan İşləri', RU: 'Гипсокартонные Работы', EN: 'Drywall Works' },
+        description: { AZ: 'TikTok Video', RU: 'TikTok Видео', EN: 'TikTok Video' },
+        imageUrl: '/brain/tiktok_placeholder_bg.png',
+        videoUrl: '',
+        tikTokUrl: 'https://www.tiktok.com/@alcipanbaku/video/7391387880217660679',
         isActive: true
     }
 ];
