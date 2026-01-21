@@ -13,7 +13,7 @@ export const initialPackages: Product[] = [
         name: { AZ: 'Paket 1 — Basic Premium', RU: 'Пакет 1 — Basic Premium', EN: 'Package 1 — Basic Premium' },
         price: 40,
         currency: 'AZN / m²',
-        image: '/brain/package_1.png',
+        image: '/brain/package_ai_1.png',
         description: {
             AZ: '✔ Standart alçıpan\n✔ Metal profil sistemi\n✔ Peşəkar montaj\n✔ Səliqəli təhvil\n\n👉 Mənzillər üçün uyğundur',
             RU: '✔ Стандартный гипсокартон\n✔ Система металлических профилей\n✔ Профессиональный монтаж\n✔ Аккуратная сдача\n\n👉 Подходит для квартир',
@@ -28,7 +28,7 @@ export const initialPackages: Product[] = [
         name: { AZ: 'Paket 2 — Comfort Premium', RU: 'Пакет 2 — Comfort Premium', EN: 'Package 2 — Comfort Premium' },
         price: 55,
         currency: 'AZN / m²',
-        image: '/brain/package_2.png',
+        image: '/brain/package_ai_2.png',
         description: {
             AZ: '✔ Dizaynlı tavan\n✔ Gizli LED üçün yer\n✔ Keyfiyyətli material\n✔ Usta + material\n\n👉 Ən çox seçilən paket',
             RU: '✔ Дизайнерский потолок\n✔ Место для скрытого LED\n✔ Качественный материал\n✔ Мастер + материал\n\n👉 Самый популярный пакет',
@@ -43,7 +43,7 @@ export const initialPackages: Product[] = [
         name: { AZ: 'Paket 3 — Premium Plus', RU: 'Пакет 3 — Premium Plus', EN: 'Package 3 — Premium Plus' },
         price: 50,
         currency: 'AZN / m²',
-        image: '/brain/package_3.png',
+        image: '/brain/package_ai_3.png',
         description: {
             AZ: '✔ Profil + alçıpan\n✔ İzolyasiya imkanı\n✔ Dəqiq ölçü və montaj\n\n👉 Ofis və yaşayış sahələri üçün',
             RU: '✔ Профиль + гипсокартон\n✔ Возможность изоляции\n✔ Точные замеры и монтаж\n\n👉 Для офисов и жилых помещений',
@@ -58,7 +58,7 @@ export const initialPackages: Product[] = [
         name: { AZ: 'Paket 4 — Exclusive Obyekt', RU: 'Пакет 4 — Exclusive Obyekt', EN: 'Package 4 — Exclusive Obyekt' },
         price: 80,
         currency: 'AZN / m²',
-        image: '/brain/package_4.png',
+        image: '/brain/package_ai_4.png',
         description: {
             AZ: '✔ Ölçü və planlama\n✔ Material + usta\n✔ Vaxtında və məsuliyyətli təhvil\n\n👉 Statuslu obyektlər üçün (Klinika / Restoran / Ofis)',
             RU: '✔ Замер и планирование\n✔ Материал + мастер\n✔ Своевременная и ответственная сдача\n\n👉 Для статусных объектов (Клиника / Ресторан / Офис)',

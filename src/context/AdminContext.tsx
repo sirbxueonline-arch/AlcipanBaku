@@ -59,7 +59,7 @@ export function AdminProvider({ children }: { children: ReactNode }) {
     // Load from localStorage on mount
     useEffect(() => {
         // DATA VERSIONING to force update when we change initial structures
-        const DATA_VERSION = 'v2.1_pkg4_price_update'; 
+        const DATA_VERSION = 'v2.2_ai_images_update'; 
         const storedVersion = localStorage.getItem('alcipan_data_version');
         const isVersionMatch = storedVersion === DATA_VERSION;
 
