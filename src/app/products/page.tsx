@@ -8,7 +8,8 @@ import { ArrowRight, Star } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ProductsPage() {
-    const { products, language } = useAdmin();
+    const { packages, products, language } = useAdmin();
+    const activePackages = packages.filter(p => p.isActive);
     const activeProducts = products.filter(p => p.isActive);
 
     const containerVariants: Variants = {
@@ -63,6 +64,36 @@ export default function ProductsPage() {
 
             {/* Products Grid */}
             <div className="container mx-auto px-4 py-16 max-w-7xl">
+                
+                {/* PACKAGES SECTION */}
+                <h2 className="text-3xl font-bold text-slate-900 mb-8 border-l-4 border-[var(--primary)] pl-4">
+                    {language === 'AZ' ? 'Paket Həllər' : language === 'RU' ? 'Пакетные Решения' : 'Package Solutions'}
+                </h2>
+                
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16"
+                >
+                    {activePackages.map(pkg => (
+                        <motion.div key={pkg.id} variants={itemVariants} className="h-full">
+                            <ProductCard product={pkg} />
+                        </motion.div>
+                    ))}
+                </motion.div>
+
+                {activePackages.length === 0 && (
+                    <div className="text-center py-10 bg-white rounded-lg border border-dashed border-gray-200 mb-16">
+                         <p className="text-gray-500">No active packages.</p>
+                    </div>
+                )}
+
+                {/* MATERIALS SECTION */}
+                <h2 className="text-3xl font-bold text-slate-900 mb-8 border-l-4 border-[var(--primary)] pl-4">
+                     {language === 'AZ' ? 'Tikinti Materialları' : language === 'RU' ? 'Строительные Материалы' : 'Building Materials'}
+                </h2>
+
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
@@ -85,6 +116,24 @@ export default function ProductsPage() {
                         </p>
                     </div>
                 )}
+                {/* Pricing Note */}
+                <div className="mt-16 bg-yellow-500/5 border border-yellow-500/20 rounded-lg p-6 max-w-3xl mx-auto">
+                    <div className="flex items-start gap-4">
+                        <div className="text-yellow-600 mt-1 flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/></svg>
+                        </div>
+                        <div>
+                            <h4 className="text-lg font-bold text-yellow-700 dark:text-yellow-500 mb-2">
+                                {language === 'AZ' ? 'Vacib Qeyd' : language === 'RU' ? 'Важное Примечание' : 'Important Note'}
+                            </h4>
+                            <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
+                                {language === 'AZ' ? 'Qiymətlər obyektin ölçüsünə, dizayna və material seçiminə görə dəyişə bilər. Dəqiq qiymət üçün obyektə baxış keçirilir.' : 
+                                language === 'RU' ? 'Цены могут меняться в зависимости от размера объекта, дизайна и выбора материала. Точная цена определяется после осмотра объекта.' : 
+                                'Prices may vary depending on object size, design, and material choice. Exact price is determined after on-site inspection.'}
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             {/* CTA Section */}

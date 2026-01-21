@@ -1,8 +1,8 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { Product, Service, WorkItem, Language } from '@/types';
-import { initialProducts, initialServices, initialWorkItems } from '@/data/initialData';
+import { Product, Service, WorkItem, Language, Package } from '@/types';
+import { initialProducts, initialServices, initialWorkItems, initialPackages } from '@/data/initialData';
 
 interface AdminContextType {
     isAuthenticated: boolean;
@@ -10,18 +10,33 @@ interface AdminContextType {
     logout: () => void;
     language: Language;
     setLanguage: (lang: Language) => void;
+    
+    // Data arrays
+    packages: Package[];
     products: Product[];
     services: Service[];
     workItems: WorkItem[];
+
+    // Update methods
+    updatePackage: (id: string, updates: Partial<Package>) => void;
     updateProduct: (id: string, updates: Partial<Product>) => void;
     updateService: (id: string, updates: Partial<Service>) => void;
     updateWorkItem: (id: string, updates: Partial<WorkItem>) => void;
+
+    // Add methods
+    addPackage: () => void;
     addProduct: () => void;
     addService: () => void;
     addWorkItem: () => void;
+
+    // Delete methods
+    deletePackage: (id: string) => void;
     deleteProduct: (id: string) => void;
     deleteService: (id: string) => void;
     deleteWorkItem: (id: string) => void;
+
+    // Toggle methods
+    togglePackageStatus: (id: string) => void;
     toggleProductStatus: (id: string) => void;
     toggleServiceStatus: (id: string) => void;
     toggleWorkStatus: (id: string) => void;
@@ -29,61 +44,70 @@ interface AdminContextType {
 
 const AdminContext = createContext<AdminContextType | undefined>(undefined);
 
-// Initial data loaded from @/data/initialData
-
 export function AdminProvider({ children }: { children: ReactNode }) {
     const [language, setLanguage] = useState<Language>('AZ');
+    
+    // Initialize State
+    const [packages, setPackages] = useState<Package[]>(initialPackages);
     const [products, setProducts] = useState<Product[]>(initialProducts);
     const [services, setServices] = useState<Service[]>(initialServices);
     const [workItems, setWorkItems] = useState<WorkItem[]>(initialWorkItems);
+    
     const [isLoaded, setIsLoaded] = useState(false);
-
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     // Load from localStorage on mount
     useEffect(() => {
         // DATA VERSIONING to force update when we change initial structures
-        const DATA_VERSION = 'v1.9_villa_gone'; 
+        const DATA_VERSION = 'v2.1_pkg4_price_update'; 
         const storedVersion = localStorage.getItem('alcipan_data_version');
-
         const isVersionMatch = storedVersion === DATA_VERSION;
 
+        const storedPackages = localStorage.getItem('alcipan_packages');
         const storedProducts = localStorage.getItem('alcipan_products');
         const storedServices = localStorage.getItem('alcipan_services');
         const storedWork = localStorage.getItem('alcipan_work');
 
-        // Check for session in localStorage (simple persistence)
+        // Check session
         const session = localStorage.getItem('alcipan_admin_session');
         if (session === 'true') {
             setIsAuthenticated(true);
         }
 
-        // Only load from storage if version matches
+        // LOAD PACKAGES
+        if (isVersionMatch && storedPackages) {
+            try {
+                const parsed = JSON.parse(storedPackages);
+                if (Array.isArray(parsed) && parsed.length > 0) setPackages(parsed);
+                else setPackages(initialPackages);
+            } catch (e) {
+                console.error("Failed to parse stored packages", e);
+                setPackages(initialPackages);
+            }
+        } else {
+            setPackages(initialPackages);
+        }
+
+        // LOAD PRODUCTS
         if (isVersionMatch && storedProducts) {
             try {
                 const parsed = JSON.parse(storedProducts);
-                if (Array.isArray(parsed) && parsed.length > 0) {
-                    setProducts(parsed);
-                } else {
-                    setProducts(initialProducts);
-                }
+                if (Array.isArray(parsed) && parsed.length > 0) setProducts(parsed);
+                else setProducts(initialProducts);
             } catch (e) {
                 console.error("Failed to parse stored products", e);
                 setProducts(initialProducts);
             }
         } else {
-            // If version mismatch or no data, force initial data
             setProducts(initialProducts);
         }
 
+        // LOAD SERVICES
         if (isVersionMatch && storedServices) {
             try {
                 const parsed = JSON.parse(storedServices);
-                if (Array.isArray(parsed) && parsed.length > 0) {
-                    setServices(parsed);
-                } else {
-                    setServices(initialServices);
-                }
+                if (Array.isArray(parsed) && parsed.length > 0) setServices(parsed);
+                else setServices(initialServices);
             } catch (e) {
                 console.error("Failed to parse stored services", e);
                 setServices(initialServices);
@@ -92,14 +116,12 @@ export function AdminProvider({ children }: { children: ReactNode }) {
             setServices(initialServices);
         }
 
+        // LOAD WORK ITEMS
         if (isVersionMatch && storedWork) {
             try {
                 const parsed = JSON.parse(storedWork);
-                if (Array.isArray(parsed) && parsed.length > 0) {
-                    setWorkItems(parsed);
-                } else {
-                    setWorkItems(initialWorkItems);
-                }
+                if (Array.isArray(parsed) && parsed.length > 0) setWorkItems(parsed);
+                else setWorkItems(initialWorkItems);
             } catch (e) {
                 console.error("Failed to parse stored work", e);
                 setWorkItems(initialWorkItems);
@@ -108,10 +130,10 @@ export function AdminProvider({ children }: { children: ReactNode }) {
             setWorkItems(initialWorkItems);
         }
 
-        // Update version in storage
+        // Update version in storage if needed
         if (!isVersionMatch) {
             localStorage.setItem('alcipan_data_version', DATA_VERSION);
-            // We also need to save the new initial data immediately to storage so subsequent reloads work
+            localStorage.setItem('alcipan_packages', JSON.stringify(initialPackages));
             localStorage.setItem('alcipan_products', JSON.stringify(initialProducts));
             localStorage.setItem('alcipan_services', JSON.stringify(initialServices));
             localStorage.setItem('alcipan_work', JSON.stringify(initialWorkItems));
@@ -120,28 +142,13 @@ export function AdminProvider({ children }: { children: ReactNode }) {
         setIsLoaded(true);
     }, []);
 
-    // Save to localStorage whenever data changes
-    useEffect(() => {
-        if (isLoaded) {
-            localStorage.setItem('alcipan_products', JSON.stringify(products));
-        }
-    }, [products, isLoaded]);
-
-    useEffect(() => {
-        if (isLoaded) {
-            localStorage.setItem('alcipan_services', JSON.stringify(services));
-        }
-    }, [services, isLoaded]);
-
-    useEffect(() => {
-        if (isLoaded) {
-            localStorage.setItem('alcipan_work', JSON.stringify(workItems));
-        }
-    }, [workItems, isLoaded]);
+    // Effect to save changes
+    useEffect(() => { if (isLoaded) localStorage.setItem('alcipan_packages', JSON.stringify(packages)); }, [packages, isLoaded]);
+    useEffect(() => { if (isLoaded) localStorage.setItem('alcipan_products', JSON.stringify(products)); }, [products, isLoaded]);
+    useEffect(() => { if (isLoaded) localStorage.setItem('alcipan_services', JSON.stringify(services)); }, [services, isLoaded]);
+    useEffect(() => { if (isLoaded) localStorage.setItem('alcipan_work', JSON.stringify(workItems)); }, [workItems, isLoaded]);
 
     const login = (email: string, pass: string) => {
-        // Simple hardcoded check for client-side demo
-        // In a real app, this should call an API
         if (email === 'kaan.guluzada@gmail.com' && pass === 'K20120509') {
             setIsAuthenticated(true);
             localStorage.setItem('alcipan_admin_session', 'true');
@@ -155,16 +162,34 @@ export function AdminProvider({ children }: { children: ReactNode }) {
         localStorage.removeItem('alcipan_admin_session');
     };
 
+    // UPDATE METHODS
+    const updatePackage = (id: string, updates: Partial<Package>) => {
+        setPackages(prev => prev.map(p => p.id === id ? { ...p, ...updates } : p));
+    };
     const updateProduct = (id: string, updates: Partial<Product>) => {
         setProducts(prev => prev.map(p => p.id === id ? { ...p, ...updates } : p));
     };
-
     const updateService = (id: string, updates: Partial<Service>) => {
         setServices(prev => prev.map(s => s.id === id ? { ...s, ...updates } : s));
     };
-
     const updateWorkItem = (id: string, updates: Partial<WorkItem>) => {
         setWorkItems(prev => prev.map(w => w.id === id ? { ...w, ...updates } : w));
+    };
+
+    // ADD METHODS
+    const addPackage = () => {
+        const newPackage: Package = {
+            id: `pkg${Date.now()}`,
+            type: 'product',
+            image: 'https://placehold.co/400x300?text=New+Package',
+            name: { AZ: 'Yeni Paket', RU: 'Новый Пакет', EN: 'New Package' },
+            description: { AZ: 'Paket detalları...', RU: 'Детали пакета...', EN: 'Package details...' },
+            price: 0,
+            currency: 'AZN / m²',
+            isActive: false,
+            isPriceVisible: true
+        };
+        setPackages(prev => [...prev, newPackage]);
     };
 
     const addProduct = () => {
@@ -206,32 +231,38 @@ export function AdminProvider({ children }: { children: ReactNode }) {
         setWorkItems(prev => [...prev, newWork]);
     };
 
+    // DELETE METHODS
+    const deletePackage = (id: string) => {
+        if (confirm('Are you sure you want to delete this package?')) {
+            setPackages(prev => prev.filter(p => p.id !== id));
+        }
+    };
     const deleteProduct = (id: string) => {
         if (confirm('Are you sure you want to delete this product?')) {
             setProducts(prev => prev.filter(p => p.id !== id));
         }
     };
-
     const deleteService = (id: string) => {
         if (confirm('Are you sure you want to delete this service?')) {
             setServices(prev => prev.filter(s => s.id !== id));
         }
     };
-
     const deleteWorkItem = (id: string) => {
         if (confirm('Are you sure you want to delete this project?')) {
             setWorkItems(prev => prev.filter(w => w.id !== id));
         }
     };
 
+    // TOGGLE METHODS
+    const togglePackageStatus = (id: string) => {
+        setPackages(prev => prev.map(p => p.id === id ? { ...p, isActive: !p.isActive } : p));
+    };
     const toggleProductStatus = (id: string) => {
         setProducts(prev => prev.map(p => p.id === id ? { ...p, isActive: !p.isActive } : p));
     };
-
     const toggleServiceStatus = (id: string) => {
         setServices(prev => prev.map(s => s.id === id ? { ...s, isActive: !s.isActive } : s));
     };
-
     const toggleWorkStatus = (id: string) => {
         setWorkItems(prev => prev.map(w => w.id === id ? { ...w, isActive: !w.isActive } : w));
     };
@@ -243,21 +274,16 @@ export function AdminProvider({ children }: { children: ReactNode }) {
             logout,
             language,
             setLanguage,
-            products,
-            services,
-            workItems,
-            updateProduct,
-            updateService,
-            updateWorkItem,
-            addProduct,
-            addService,
-            addWorkItem,
-            deleteProduct,
-            deleteService,
-            deleteWorkItem,
-            toggleProductStatus,
-            toggleServiceStatus,
-            toggleWorkStatus
+            // Data
+            packages, products, services, workItems,
+            // Update
+            updatePackage, updateProduct, updateService, updateWorkItem,
+            // Add
+            addPackage, addProduct, addService, addWorkItem,
+            // Delete
+            deletePackage, deleteProduct, deleteService, deleteWorkItem,
+            // Toggle
+            togglePackageStatus, toggleProductStatus, toggleServiceStatus, toggleWorkStatus
         }}>
             {children}
         </AdminContext.Provider>

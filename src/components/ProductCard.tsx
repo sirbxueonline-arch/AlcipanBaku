@@ -30,12 +30,12 @@ export function ProductCard({ product }: ProductCardProps) {
             {/* Content */}
             <div className="flex flex-col flex-grow p-4">
                 {/* Title */}
-                <h3 className="text-lg font-bold text-[var(--foreground)] mb-1 line-clamp-2 h-[3.5rem]">
+                <h3 className="text-lg font-bold text-[var(--foreground)] mb-1">
                     {product.name[language]}
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm text-[var(--muted)] mb-4 line-clamp-2">
+                <p className="text-sm text-[var(--muted)] mb-4 whitespace-pre-line leading-relaxed">
                     {product.description[language]}
                 </p>
 

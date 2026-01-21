@@ -38,4 +38,6 @@ export interface WorkItem {
   isActive: boolean;
 }
 
-export type Item = Product | Service | WorkItem;
+export type Package = Product;
+
+export type Item = Product | Service | WorkItem | Package;

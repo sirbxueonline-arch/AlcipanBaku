@@ -9,7 +9,7 @@ import FeaturesSection from '@/components/FeaturesSection';
 import { motion } from 'framer-motion';
 
 export default function Home() {
-  const { products, services, language } = useAdmin();
+  const { packages, products, services, language } = useAdmin();
   const [showAllProducts, setShowAllProducts] = React.useState(false);
 
   const sendWhatsApp = (e: React.FormEvent<HTMLFormElement>) => {
@@ -68,7 +68,26 @@ export default function Home() {
           {language === 'AZ' ? 'Paket Xidmətlərimiz' : language === 'RU' ? 'Наши Пакетные Услуги' : 'Our Package Services'}
         </h2>
         
-        {/* Product Grid */}
+        
+        {/* Packages Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {packages.filter(p => p.isActive).map(pkg => (
+              <ProductCard key={pkg.id} product={pkg} />
+            ))}
+        </div>
+
+        {packages.filter(p => p.isActive).length === 0 && (
+            <div className="text-center py-16 bg-[var(--card)] rounded-xl border border-dashed border-white/10">
+              <p className="text-[var(--muted)] text-lg">No active packages to display.</p>
+            </div>
+        )}
+
+        {/* MATERIALS SECTION */}
+        <h2 className="text-center text-3xl font-bold mb-12 text-white mt-16 pt-16 border-t border-white/10">
+          {language === 'AZ' ? 'Tikinti Materialları' : language === 'RU' ? 'Строительные Материалы' : 'Construction Materials'}
+        </h2>
+
+        {/* Materials Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {products.slice(0, showAllProducts ? undefined : 3).map(product => (
               <ProductCard key={product.id} product={product} />
@@ -95,9 +114,27 @@ export default function Home() {
 
         {products.filter(p => p.isActive).length === 0 && (
             <div className="text-center py-16 bg-[var(--card)] rounded-xl border border-dashed border-white/10">
-              <p className="text-[var(--muted)] text-lg">No active packages to display.</p>
+              <p className="text-[var(--muted)] text-lg">No active materials to display.</p>
             </div>
         )}
+        {/* Pricing Note */}
+        <div className="mt-12 bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-6 max-w-4xl mx-auto">
+          <div className="flex items-start gap-4">
+            <div className="text-yellow-500 mt-1 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/></svg>
+            </div>
+            <div>
+              <h4 className="text-lg font-bold text-yellow-500 mb-2">
+                {language === 'AZ' ? 'Vacib Qeyd' : language === 'RU' ? 'Важное Примечание' : 'Important Note'}
+              </h4>
+              <p className="text-[var(--muted)] text-base leading-relaxed">
+                {language === 'AZ' ? 'Qiymətlər obyektin ölçüsünə, dizayna və material seçiminə görə dəyişə bilər. Dəqiq qiymət üçün obyektə baxış keçirilir.' : 
+                 language === 'RU' ? 'Цены могут меняться в зависимости от размера объекта, дизайна и выбора материала. Точная цена определяется после осмотра объекта.' : 
+                 'Prices may vary depending on object size, design, and material choice. Exact price is determined after on-site inspection.'}
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
        {/* SERVICES */}
