@@ -59,7 +59,7 @@ export function AdminProvider({ children }: { children: ReactNode }) {
     // Load from localStorage on mount
     useEffect(() => {
         // DATA VERSIONING to force update when we change initial structures
-        const DATA_VERSION = 'v2.9_video_vertical'; 
+        const DATA_VERSION = 'v3.0_size_packages'; 
         const storedVersion = localStorage.getItem('alcipan_data_version');
         const isVersionMatch = storedVersion === DATA_VERSION;
 
@@ -185,7 +185,7 @@ export function AdminProvider({ children }: { children: ReactNode }) {
             name: { AZ: 'Yeni Paket', RU: 'Новый Пакет', EN: 'New Package' },
             description: { AZ: 'Paket detalları...', RU: 'Детали пакета...', EN: 'Package details...' },
             price: 0,
-            currency: 'AZN / m²',
+            currency: 'AZN',
             isActive: false,
             isPriceVisible: true
         };

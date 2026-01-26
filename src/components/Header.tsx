@@ -180,9 +180,9 @@ export function Header() {
                                             <span className="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-lg">📞</span>
                                             +994 50 636 87 31
                                         </a>
-                                        <a href="mailto:info@alcipan.az" className="flex items-center gap-4 text-xl font-medium text-gray-900 hover:text-blue-600 transition-colors">
+                                        <a href="mailto:alcipanbaki@gmail.com" className="flex items-center gap-4 text-xl font-medium text-gray-900 hover:text-blue-600 transition-colors">
                                             <span className="w-10 h-10 bg-orange-50 text-orange-600 rounded-full flex items-center justify-center text-lg">✉️</span>
-                                            info@alcipan.az
+                                            alcipanbaki@gmail.com
                                         </a>
                                     </div>
 

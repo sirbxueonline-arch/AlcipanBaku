@@ -87,7 +87,7 @@ export function Footer() {
                             </li>
                             <li className="flex items-center gap-2">
                                 <span className="w-4 h-4 rounded-full bg-orange-500/20 text-orange-500 flex items-center justify-center text-[10px]">✉️</span>
-                                info@alcipan.az
+                                alcipanbaki@gmail.com
                             </li>
                         </ul>
                     </div>

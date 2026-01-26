@@ -52,8 +52,8 @@ export default function ContactPage() {
                         <p className="text-gray-500 mb-4">
                             {language === 'AZ' ? '24 saat ərzində cavablandırılır' : language === 'RU' ? 'Отвечаем в течение 24 часов' : 'Responded within 24 hours'}
                         </p>
-                        <a href="mailto:info@alcipan.az" className="text-xl font-bold text-orange-600 hover:text-orange-700">
-                            info@alcipan.az
+                        <a href="mailto:alcipanbaki@gmail.com" className="text-xl font-bold text-orange-600 hover:text-orange-700">
+                            alcipanbaki@gmail.com
                         </a>
                     </div>
 

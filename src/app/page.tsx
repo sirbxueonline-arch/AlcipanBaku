@@ -29,7 +29,7 @@ export default function Home() {
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] font-sans">
       
       {/* HERO SECTION */}
-      <section className="text-center py-20 px-4 min-h-[60vh] flex flex-col justify-center items-center">
+      <section className="text-center py-12 md:py-20 px-4 min-h-[60vh] flex flex-col justify-center items-center">
         <div className="max-w-4xl mx-auto">
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
@@ -63,7 +63,7 @@ export default function Home() {
       </section>
 
       {/* PRODUCTS / PACKAGES */}
-      <section className="container mx-auto px-4 py-16" id="products">
+      <section className="container mx-auto px-4 py-12 md:py-16" id="products">
         <h2 className="text-center text-3xl font-bold mb-12 text-white">
           {language === 'AZ' ? 'Paket Xidmətlərimiz' : language === 'RU' ? 'Наши Пакетные Услуги' : 'Our Package Services'}
         </h2>
@@ -138,7 +138,7 @@ export default function Home() {
       </section>
 
        {/* SERVICES */}
-       <section className="container mx-auto px-4 py-16 bg-[var(--bg)]" id="services">
+       <section className="container mx-auto px-4 py-12 md:py-16 bg-[var(--bg)]" id="services">
         <h2 className="text-center text-3xl font-bold mb-12 text-white">
           {language === 'AZ' ? 'Xidmətlər' : language === 'RU' ? 'Услуги' : 'Services'}
         </h2>
@@ -157,7 +157,7 @@ export default function Home() {
 
       {/* WHY US / STATS */}
       <section className="container mx-auto px-4 py-16 cursor-default">
-        <div className="bg-gradient-to-br from-[#020617] via-[#020617] to-[#0f172a] border border-white/10 rounded-2xl p-10 md:p-16 text-center">
+        <div className="bg-gradient-to-br from-[#020617] via-[#020617] to-[#0f172a] border border-white/10 rounded-2xl p-6 md:p-16 text-center">
             <h2 className="text-3xl font-bold mb-4 text-white">
               {language === 'AZ' ? 'Niyə AlcipanBaku?' : language === 'RU' ? 'Почему AlcipanBaku?' : 'Why AlcipanBaku?'}
             </h2>
@@ -175,7 +175,7 @@ export default function Home() {
       <WorkGallery />
 
       {/* CONTACT FORM */}
-      <section className="container mx-auto px-4 py-20 text-center" id="contact">
+      <section className="container mx-auto px-4 py-12 md:py-20 text-center" id="contact">
         <h2 className="text-3xl font-bold mb-4 text-white">
           {language === 'AZ' ? 'Ölçü üçün müraciət' : language === 'RU' ? 'Заявка на замер' : 'Request Measurement'}
         </h2>
