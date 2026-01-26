@@ -41,9 +41,19 @@ export async function POST(request: Request) {
 
     // 4. Generate Signature
     // signature = base64_encode( sha1( private_key + data + private_key, 1) )
-    // Note: sha1(..., 1) in PHP returns binary. In Node.js, digest('base64') on the hash object handles binary->base64.
     const signString = PRIVATE_KEY + data + PRIVATE_KEY;
     const signature = crypto.createHash('sha1').update(signString).digest('base64');
+
+    // DEBUG LOGGING
+    console.log('--- EPOINT DEBUG ---');
+    console.log('Public Key:', PUBLIC_KEY);
+    console.log('Private Key Length:', PRIVATE_KEY.length);
+    console.log('Private Key Start:', PRIVATE_KEY.substring(0, 5) + '...');
+    console.log('Private Key End:', '...' + PRIVATE_KEY.substring(PRIVATE_KEY.length - 5));
+    console.log('Data:', data);
+    console.log('Signature:', signature);
+    console.log('JSON Payload:', jsonString);
+    console.log('--------------------');
 
     // 5. Send Request
     const result = await fetch('https://epoint.az/api/1/request', {
