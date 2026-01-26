@@ -7,8 +7,8 @@ export async function POST(request: Request) {
     const { amount, language, items } = body;
 
     // 1. Configuration
-    const PUBLIC_KEY = process.env.EPOINT_PUBLIC_KEY;
-    const PRIVATE_KEY = process.env.EPOINT_PRIVATE_KEY;
+    const PUBLIC_KEY = process.env.EPOINT_PUBLIC_KEY?.trim();
+    const PRIVATE_KEY = process.env.EPOINT_PRIVATE_KEY?.trim();
     const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://alcipanbaku.com';
 
     if (!PUBLIC_KEY || !PRIVATE_KEY) {

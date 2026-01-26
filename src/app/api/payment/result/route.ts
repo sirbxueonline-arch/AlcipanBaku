@@ -12,7 +12,7 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: 'Invalid callback data' }, { status: 400 });
         }
 
-        const PRIVATE_KEY = process.env.EPOINT_PRIVATE_KEY;
+        const PRIVATE_KEY = process.env.EPOINT_PRIVATE_KEY?.trim();
         if (!PRIVATE_KEY) {
             console.error('Missing Private Key for detailed verification');
             return NextResponse.json({ status: 'error' }, { status: 500 });

@@ -11,8 +11,8 @@ export async function POST(request: Request) {
         // Actually the docs example shows:
         // data = { "public_key": "...", "transaction": "...", ... }
 
-        const PUBLIC_KEY = process.env.EPOINT_PUBLIC_KEY;
-        const PRIVATE_KEY = process.env.EPOINT_PRIVATE_KEY;
+        const PUBLIC_KEY = process.env.EPOINT_PUBLIC_KEY?.trim();
+        const PRIVATE_KEY = process.env.EPOINT_PRIVATE_KEY?.trim();
 
         if (!PUBLIC_KEY || !PRIVATE_KEY) {
             return NextResponse.json({ error: 'Configuration missing' }, { status: 500 });
