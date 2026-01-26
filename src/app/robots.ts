@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/ap/', // Disallow admin path crawling
         },
-        sitemap: 'https://alcipan-baku.vercel.app/sitemap.xml',
+        sitemap: 'https://alcipanbaku.com/sitemap.xml',
     };
 }

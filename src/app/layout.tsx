@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Alçipan Baku | Peşəkar Tikinti və Təmir',
     description: 'Baku\'da premium səviyyəli alçipan və asma tavan xidmətləri. Pulsuz konsultasiya üçün bizimlə əlaqə saxlayın.',
-    url: 'https://alcipan-baku.vercel.app',
+    url: 'https://alcipanbaku.com',
     siteName: 'Alçipan Baku',
     locale: 'az_AZ',
     type: 'website',
