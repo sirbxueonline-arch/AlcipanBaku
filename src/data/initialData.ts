@@ -218,78 +218,163 @@ export const initialServices: Service[] = [
 // ==========================================
 export const initialWorkItems: WorkItem[] = [
     {
-        id: '1',
+        id: 'img1',
         type: 'work',
-        title: { AZ: 'Müasir Ofis Təmiri', RU: 'Ремонт современного офиса', EN: 'Modern Office Renovation' },
-        description: {
-            AZ: 'Bakı Ağ Şəhər ofis layihəsi. Tam alçipan və boya işləri.',
-            RU: 'Офисный проект Baku White City. Полные гипсокартонные и покрасочные работы.',
-            EN: 'Baku White City office project. Full plasterboard and painting works.'
-        },
-        imageUrl: '/brain/tiktok_placeholder_bg.png',
-        videoUrl: '', // YouTube or other
-        tikTokUrl: 'https://www.tiktok.com/@alcipanbaku/video/7450750858331000072?lang=en', // https://www.tiktok.com/@username/video/id
-        isActive: true
-    },
-
-    {
-        id: '3',
-        type: 'work',
-        title: { AZ: 'Alçipan İşləri', RU: 'Гипсокартонные Работы', EN: 'Drywall Works' },
-        description: { AZ: 'TikTok Video', RU: 'TikTok Видео', EN: 'TikTok Video' },
-        imageUrl: '/brain/tiktok_placeholder_bg.png',
+        title: { AZ: 'Layihə Şəkli 1', RU: 'Фото проекта 1', EN: 'Project Photo 1' },
+        description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
+        imageUrl: '/picture1.jpeg',
         videoUrl: '',
-        tikTokUrl: 'https://www.tiktok.com/@alcipanbaku/video/7285807537440492801',
+        tikTokUrl: '',
         isActive: true
     },
     {
-        id: '4',
+        id: 'img2',
         type: 'work',
-        title: { AZ: 'Alçipan İşləri', RU: 'Гипсокартонные Работы', EN: 'Drywall Works' },
-        description: { AZ: 'TikTok Video', RU: 'TikTok Видео', EN: 'TikTok Video' },
-        imageUrl: '/brain/tiktok_placeholder_bg.png',
+        title: { AZ: 'Layihə Şəkli 2', RU: 'Фото проекта 2', EN: 'Project Photo 2' },
+        description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
+        imageUrl: '/picture2.jpeg',
         videoUrl: '',
-        tikTokUrl: 'https://www.tiktok.com/@alcipanbaku/video/7194775292777467138',
+        tikTokUrl: '',
         isActive: true
     },
     {
-        id: '5',
+        id: 'img3',
         type: 'work',
-        title: { AZ: 'Alçipan İşləri', RU: 'Гипсокартонные Работы', EN: 'Drywall Works' },
-        description: { AZ: 'TikTok Video', RU: 'TikTok Видео', EN: 'TikTok Video' },
-        imageUrl: '/brain/tiktok_placeholder_bg.png',
+        title: { AZ: 'Layihə Şəkli 3', RU: 'Фото проекта 3', EN: 'Project Photo 3' },
+        description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
+        imageUrl: '/picture3.jpeg',
         videoUrl: '',
-        tikTokUrl: 'https://www.tiktok.com/@alcipanbaku/photo/7159261067879697665',
+        tikTokUrl: '',
         isActive: true
     },
     {
-        id: '6',
+        id: 'img4',
         type: 'work',
-        title: { AZ: 'Alçipan İşləri', RU: 'Гипсокартонные Работы', EN: 'Drywall Works' },
-        description: { AZ: 'TikTok Video', RU: 'TikTok Видео', EN: 'TikTok Video' },
-        imageUrl: '/brain/tiktok_placeholder_bg.png',
+        title: { AZ: 'Layihə Şəkli 4', RU: 'Фото проекта 4', EN: 'Project Photo 4' },
+        description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
+        imageUrl: '/picture4.jpeg',
         videoUrl: '',
-        tikTokUrl: 'https://www.tiktok.com/@alcipanbaku/video/7099480720871148802',
+        tikTokUrl: '',
         isActive: true
     },
     {
-        id: '7',
+        id: 'img5',
         type: 'work',
-        title: { AZ: 'Alçipan İşləri', RU: 'Гипсокартонные Работы', EN: 'Drywall Works' },
-        description: { AZ: 'TikTok Video', RU: 'TikTok Видео', EN: 'TikTok Video' },
-        imageUrl: '/brain/tiktok_placeholder_bg.png',
+        title: { AZ: 'Layihə Şəkli 5', RU: 'Фото проекта 5', EN: 'Project Photo 5' },
+        description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
+        imageUrl: '/picture5.jpeg',
         videoUrl: '',
-        tikTokUrl: 'https://www.tiktok.com/@alcipanbaku/video/7455942085934419218',
+        tikTokUrl: '',
         isActive: true
     },
     {
-        id: '8',
+        id: 'img6',
         type: 'work',
-        title: { AZ: 'Alçipan İşləri', RU: 'Гипсокартонные Работы', EN: 'Drywall Works' },
-        description: { AZ: 'TikTok Video', RU: 'TikTok Видео', EN: 'TikTok Video' },
-        imageUrl: '/brain/tiktok_placeholder_bg.png',
+        title: { AZ: 'Layihə Şəkli 6', RU: 'Фото проекта 6', EN: 'Project Photo 6' },
+        description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
+        imageUrl: '/picture6.jpeg',
         videoUrl: '',
-        tikTokUrl: 'https://www.tiktok.com/@alcipanbaku/video/7391387880217660679',
+        tikTokUrl: '',
+        isActive: true
+    },
+    {
+        id: 'img7',
+        type: 'work',
+        title: { AZ: 'Layihə Şəkli 7', RU: 'Фото проекта 7', EN: 'Project Photo 7' },
+        description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
+        imageUrl: '/picture7.jpeg',
+        videoUrl: '',
+        tikTokUrl: '',
+        isActive: true
+    },
+    {
+        id: 'img8',
+        type: 'work',
+        title: { AZ: 'Layihə Şəkli 8', RU: 'Фото проекта 8', EN: 'Project Photo 8' },
+        description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
+        imageUrl: '/picture8.jpeg',
+        videoUrl: '',
+        tikTokUrl: '',
+        isActive: true
+    },
+    {
+        id: 'img9',
+        type: 'work',
+        title: { AZ: 'Layihə Şəkli 9', RU: 'Фото проекта 9', EN: 'Project Photo 9' },
+        description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
+        imageUrl: '/picture9.jpeg',
+        videoUrl: '',
+        tikTokUrl: '',
+        isActive: true
+    },
+    {
+        id: 'img10',
+        type: 'work',
+        title: { AZ: 'Layihə Şəkli 10', RU: 'Фото проекта 10', EN: 'Project Photo 10' },
+        description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
+        imageUrl: '/picture10.jpeg',
+        videoUrl: '',
+        tikTokUrl: '',
+        isActive: true
+    },
+    {
+        id: '20',
+        type: 'work',
+        title: { AZ: 'Video İcmal 1', RU: 'Видео Обзор 1', EN: 'Video Review 1' },
+        description: { AZ: 'İş prosesindən video icmal.', RU: 'Видеообзор рабочего процесса.', EN: 'Video review of the work process.' },
+        imageUrl: '/brain/poster_final.png',
+        videoUrl: '/video1.mp4',
+        tikTokUrl: '',
+        isActive: true
+    },
+    {
+        id: '21',
+        type: 'work',
+        title: { AZ: 'Video İcmal 2', RU: 'Видео Обзор 2', EN: 'Video Review 2' },
+        description: { AZ: 'İş prosesindən video icmal.', RU: 'Видеообзор рабочего процесса.', EN: 'Video review of the work process.' },
+        imageUrl: '/brain/poster_final.png',
+        videoUrl: '/video2.mp4',
+        tikTokUrl: '',
+        isActive: true
+    },
+    {
+        id: '22',
+        type: 'work',
+        title: { AZ: 'Video İcmal 3', RU: 'Видео Обзор 3', EN: 'Video Review 3' },
+        description: { AZ: 'İş prosesindən video icmal.', RU: 'Видеообзор рабочего процесса.', EN: 'Video review of the work process.' },
+        imageUrl: '/brain/poster_final.png',
+        videoUrl: '/video3.mp4',
+        tikTokUrl: '',
+        isActive: true
+    },
+    {
+        id: '23',
+        type: 'work',
+        title: { AZ: 'Video İcmal 4', RU: 'Видео Обзор 4', EN: 'Video Review 4' },
+        description: { AZ: 'İş prosesindən video icmal.', RU: 'Видеообзор рабочего процесса.', EN: 'Video review of the work process.' },
+        imageUrl: '/brain/poster_final.png',
+        videoUrl: '/video4.mp4',
+        tikTokUrl: '',
+        isActive: true
+    },
+    {
+        id: '24',
+        type: 'work',
+        title: { AZ: 'Video İcmal 5', RU: 'Видео Обзор 5', EN: 'Video Review 5' },
+        description: { AZ: 'İş prosesindən video icmal.', RU: 'Видеообзор рабочего процесса.', EN: 'Video review of the work process.' },
+        imageUrl: '/brain/poster_final.png',
+        videoUrl: '/video5.mp4',
+        tikTokUrl: '',
+        isActive: true
+    },
+    {
+        id: '25',
+        type: 'work',
+        title: { AZ: 'Video İcmal 6', RU: 'Видео Обзор 6', EN: 'Video Review 6' },
+        description: { AZ: 'İş prosesindən video icmal.', RU: 'Видеообзор рабочего процесса.', EN: 'Video review of the work process.' },
+        imageUrl: '/brain/poster_final.png',
+        videoUrl: '/video6.mp4',
+        tikTokUrl: '',
         isActive: true
     }
 ];
