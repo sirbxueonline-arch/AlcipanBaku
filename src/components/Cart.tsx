@@ -177,6 +177,17 @@ export function Cart() {
                                 >
                                     {language === 'AZ' ? 'Sifarişi Rəsmiləşdir' : language === 'RU' ? 'Оформить заказ' : 'Checkout'}
                                 </button>
+
+                                <div className="flex items-center justify-center gap-2 mt-4 text-xs text-slate-400">
+                                    <div className="flex items-center gap-1 bg-white border border-gray-100 rounded px-2 py-1 shadow-sm">
+                                        <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                        <span>Secured by <strong>EPoint</strong></span>
+                                    </div>
+                                    <div className="flex gap-2 opacity-70 grayscale">
+                                        <Image src="https://placehold.co/30x20/white/000?text=V" alt="Visa" width={30} height={20} className="rounded-sm" />
+                                        <Image src="https://placehold.co/30x20/white/000?text=M" alt="Mastercard" width={30} height={20} className="rounded-sm" />
+                                    </div>
+                                </div>
                             </div>
                         )}
                     </motion.div>

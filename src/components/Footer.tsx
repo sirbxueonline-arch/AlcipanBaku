@@ -94,9 +94,16 @@ export function Footer() {
                 </div>
 
                 <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-xs text-gray-500">
-                        © {new Date().getFullYear()} Alcipan Baku. All rights reserved.
-                    </p>
+                    <div className="flex flex-col gap-2">
+                        <p className="text-xs text-gray-500">
+                            © {new Date().getFullYear()} Alcipan Baku. All rights reserved.
+                        </p>
+                        <div className="flex items-center gap-2 text-[10px] text-gray-600">
+                            <span>Payments secured by</span>
+                            <span className="font-bold text-gray-400">EPoint</span>
+                        </div>
+                    </div>
+
                     <div className="flex gap-4">
                         {/* YouTube */}
                         <a href="https://www.youtube.com/@alcipanbaku" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform shadow-lg" aria-label="YouTube">
