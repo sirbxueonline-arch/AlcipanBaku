@@ -45,6 +45,8 @@ export function Header() {
         { href: '/', label: { AZ: 'Ana Səhifə', RU: 'Главная', EN: 'Home' } },
         { href: '/products', label: { AZ: 'Məhsullar', RU: 'Продукты', EN: 'Products' } },
         { href: '/services', label: { AZ: 'Xidmətlər', RU: 'Услуги', EN: 'Services' } },
+        { href: '/about', label: { AZ: 'Haqqımızda', RU: 'О Нас', EN: 'About' } },
+        { href: '/contact', label: { AZ: 'Əlaqə', RU: 'Контакты', EN: 'Contact' } },
     ];
 
     const menuVariants: Variants = {

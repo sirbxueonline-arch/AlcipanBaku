@@ -53,11 +53,17 @@ export function Footer() {
                             {language === 'AZ' ? 'Naviqasiya' : language === 'RU' ? 'Навигация' : 'Navigation'}
                         </h3>
                         <ul className="space-y-3">
-                            <li><Link href="/#products" className="text-gray-400 hover:text-white transition-colors text-sm">
+                            <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors text-sm">
+                                {language === 'AZ' ? 'Haqqımızda' : language === 'RU' ? 'О Нас' : 'About Us'}
+                            </Link></li>
+                            <li><Link href="/products" className="text-gray-400 hover:text-white transition-colors text-sm">
                                 {language === 'AZ' ? 'Məhsullar' : language === 'RU' ? 'Продукты' : 'Products'}
                             </Link></li>
-                            <li><Link href="/#services" className="text-gray-400 hover:text-white transition-colors text-sm">
+                            <li><Link href="/services" className="text-gray-400 hover:text-white transition-colors text-sm">
                                 {language === 'AZ' ? 'Xidmətlər' : language === 'RU' ? 'Услуги' : 'Services'}
+                            </Link></li>
+                            <li><Link href="/privacy" className="text-gray-400 hover:text-white transition-colors text-sm">
+                                {language === 'AZ' ? 'Məxfilik Siyasəti' : language === 'RU' ? 'Политика Конфиденциальности' : 'Privacy Policy'}
                             </Link></li>
                         </ul>
                     </div>
@@ -68,7 +74,10 @@ export function Footer() {
                             {language === 'AZ' ? 'Əlaqə' : language === 'RU' ? 'Контакты' : 'Contact'}
                         </h3>
                         <ul className="space-y-3 text-sm text-gray-400">
-                            <li className="flex items-center gap-2">
+                            <li><Link href="/contact" className="hover:text-white transition-colors">
+                                {language === 'AZ' ? 'Bizimlə Əlaqə' : language === 'RU' ? 'Связаться с нами' : 'Contact Us'}
+                            </Link></li>
+                            <li className="flex items-center gap-2 pt-2">
                                 <span className="w-4 h-4 rounded-full bg-green-500/20 text-green-500 flex items-center justify-center text-[10px]">📞</span>
                                 +994 50 636 87 31
                             </li>
@@ -93,7 +102,7 @@ export function Footer() {
                         <a href="https://www.youtube.com/@alcipanbaku" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform shadow-lg" aria-label="YouTube">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
                         </a>
-                        
+
                         {/* Facebook */}
                         <a href="https://facebook.com/profile.php?id=100083844002234&ref=_ig_profile_ac" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform shadow-lg" aria-label="Facebook">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
