@@ -1,9 +1,8 @@
-'use client';
-
 import React from 'react';
 import { useAdmin } from '@/context/AdminContext';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { Cart } from '@/components/Cart';
 import WhatsAppWidget from '@/components/WhatsAppWidget';
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
@@ -12,6 +11,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     return (
         <>
             <Header />
+            <Cart />
             {children}
             <WhatsAppWidget />
             <Footer />

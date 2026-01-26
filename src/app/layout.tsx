@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import { AdminProvider } from '@/context/AdminContext';
+import { CartProvider } from '@/context/CartContext';
 import ClientLayout from './ClientLayout';
 import WhatsAppWidget from '@/components/WhatsAppWidget';
 
@@ -47,10 +48,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <AdminProvider>
-          <ClientLayout>
-            {children}
-            <WhatsAppWidget />
-          </ClientLayout>
+          <CartProvider>
+            <ClientLayout>
+              {children}
+              <WhatsAppWidget />
+            </ClientLayout>
+          </CartProvider>
         </AdminProvider>
         <Analytics />
       </body>

@@ -3,7 +3,9 @@
 import React from 'react';
 import { Product } from '@/types';
 import { useAdmin } from '@/context/AdminContext';
+import { useCart } from '@/context/CartContext';
 import Image from 'next/image';
+import { ShoppingCart } from 'lucide-react';
 
 interface ProductCardProps {
     product: Product;
@@ -11,8 +13,15 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
     const { language } = useAdmin();
+    const { addToCart } = useCart();
 
     if (!product.isActive) return null;
+
+    const handleAddToCart = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        addToCart(product);
+    };
 
     return (
         <div className="group relative flex flex-col bg-[var(--card)] border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-blue-500/30 h-full cursor-pointer">
@@ -53,8 +62,12 @@ export function ProductCard({ product }: ProductCardProps) {
                         )}
                     </div>
 
-                    <button className="px-4 py-2 bg-[var(--primary)] text-white text-sm font-medium rounded-md hover:opacity-90 transition-colors z-10 relative">
-                        {language === 'AZ' ? 'Ətraflı' : language === 'RU' ? 'Подробнее' : 'View Details'}
+                    <button
+                        onClick={handleAddToCart}
+                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors z-10 relative shadow-md shadow-blue-100"
+                    >
+                        <ShoppingCart size={16} />
+                        {language === 'AZ' ? 'Səbətə at' : language === 'RU' ? 'В корзину' : 'Add to Cart'}
                     </button>
                 </div>
             </div>

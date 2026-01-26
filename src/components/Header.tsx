@@ -8,6 +8,7 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
+import { CartButton } from './CartButton';
 
 export function Header() {
     const { language } = useAdmin();
@@ -113,6 +114,9 @@ export function Header() {
 
                     {/* Actions & Mobile Menu Button */}
                     <div className="flex items-center gap-4 relative z-50">
+                        {/* Cart Button */}
+                        <CartButton />
+
                         <LanguageSwitcher />
 
                         {/* Mobile Menu Toggle */}
