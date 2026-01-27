@@ -13,7 +13,7 @@ export const initialPackages: Product[] = [
         name: { AZ: '20 m² Paket', RU: 'Пакет 20 м²', EN: '20 m² Package' },
         price: 200,
         currency: 'AZN',
-        image: '/brain/package_ai_1.png',
+        image: '/picture1.jpeg',
         description: {
             AZ: '✔ 20 m² üçün tam təmir paketi\n✔ Material + Usta\n✔ Sərfəli qiymət\n\n👉 Kiçik otaqlar üçün idealdır',
             RU: '✔ Полный пакет ремонта для 20 м²\n✔ Материал + Мастер\n✔ Выгодная цена\n\n👉 Идеально для небольших комнат',
@@ -28,7 +28,7 @@ export const initialPackages: Product[] = [
         name: { AZ: '40 m² Paket', RU: 'Пакет 40 м²', EN: '40 m² Package' },
         price: 400,
         currency: 'AZN',
-        image: '/brain/package_ai_2.png',
+        image: '/picture2.jpeg',
         description: {
             AZ: '✔ 40 m² üçün tam təmir paketi\n✔ Material + Usta\n✔ Standart mənzillər üçün\n\n👉 Ən çox seçilən ölçü',
             RU: '✔ Полный пакет ремонта для 40 м²\n✔ Материал + Мастер\n✔ Для стандартных квартир\n\n👉 Самый популярный размер',
@@ -43,7 +43,7 @@ export const initialPackages: Product[] = [
         name: { AZ: '60 m² Paket', RU: 'Пакет 60 м²', EN: '60 m² Package' },
         price: 600,
         currency: 'AZN',
-        image: '/brain/package_ai_3.png',
+        image: '/picture3.jpeg',
         description: {
             AZ: '✔ 60 m² üçün tam təmir paketi\n✔ Material + Usta\n✔ Geniş mənzillər üçün\n\n👉 Böyük sahələr üçün sərfəli',
             RU: '✔ Полный пакет ремонта для 60 м²\n✔ Материал + Мастер\n✔ Для просторных квартир\n\n👉 Выгодно для больших площадей',

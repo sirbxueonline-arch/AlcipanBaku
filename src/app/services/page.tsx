@@ -3,12 +3,13 @@
 import React from 'react';
 import { useAdmin } from '@/context/AdminContext';
 import { ServiceCard } from '@/components/ServiceCard';
+import { ProductCard } from '@/components/ProductCard';
 import { motion, Variants } from 'framer-motion';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ServicesPage() {
-    const { services, language } = useAdmin();
+    const { services, packages, language } = useAdmin();
     const activeServices = services.filter(s => s.isActive);
 
     const containerVariants: Variants = {
@@ -135,6 +136,28 @@ export default function ServicesPage() {
                         </p>
                     </div>
                 )}
+            </div>
+
+            {/* Packages Section */}
+            <div className="container mx-auto px-4 pb-20 max-w-7xl">
+                 <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+                    <div>
+                        <h2 className="text-3xl font-bold text-slate-900 mb-2">
+                            {language === 'AZ' ? 'Paket Xidmətlərimiz' : language === 'RU' ? 'Наши Пакетные Услуги' : 'Our Package Services'}
+                        </h2>
+                        <div className="h-1 w-20 bg-blue-600 rounded-full"></div>
+                    </div>
+                </div>
+                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {packages.filter(p => p.isActive).map(pkg => (
+                        <ProductCard key={pkg.id} product={pkg} />
+                    ))}
+                </div>
+                 {packages.filter(p => p.isActive).length === 0 && (
+                    <div className="text-center py-16 bg-[var(--card)] rounded-xl border border-dashed border-slate-300">
+                         <p className="text-gray-500 text-lg">No active packages to display.</p>
+                    </div>
+                 )}
             </div>
 
             {/* Contact Strip */}

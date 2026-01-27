@@ -39,6 +39,11 @@ export const metadata: Metadata = {
     type: 'website',
   },
   category: 'construction',
+  icons: {
+    icon: '/brand-logo.jpg',
+    shortcut: '/brand-logo.jpg',
+    apple: '/brand-logo.jpg',
+  },
 };
 
 export default function RootLayout({
