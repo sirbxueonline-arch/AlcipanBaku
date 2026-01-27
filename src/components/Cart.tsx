@@ -135,7 +135,7 @@ export function Cart() {
                                                     >
                                                         <Minus size={14} />
                                                     </button>
-                                                    <span className="text-sm font-medium w-4 text-center">{item.quantity}</span>
+                                                    <span className="text-sm font-bold w-4 text-center text-gray-900">{item.quantity}</span>
                                                     <button
                                                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
                                                         className="w-6 h-6 flex items-center justify-center bg-white rounded shadow-sm text-gray-600 hover:text-blue-600"

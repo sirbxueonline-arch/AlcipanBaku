@@ -10,7 +10,7 @@ const WhatsAppWidget = () => {
             href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-6 right-6 z-50 group"
+            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 group"
             aria-label="Contact via WhatsApp"
         >
             <div className="relative">
@@ -18,7 +18,7 @@ const WhatsAppWidget = () => {
                 <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping"></span>
 
                 {/* Main Button */}
-                <div className="relative bg-[#25D366] p-4 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 hover:scale-105 flex items-center justify-center">
+                <div className="relative bg-[#25D366] p-3 sm:p-4 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 hover:scale-105 flex items-center justify-center">
                     {/* Simple SVG Icon for WhatsApp to avoid external dependency issues */}
                     <svg
                         viewBox="0 0 24 24"

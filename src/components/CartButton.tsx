@@ -24,7 +24,7 @@ export function CartButton() {
     return (
         <button
             onClick={toggleCart}
-            className="p-2 rounded-full hover:bg-gray-100 text-gray-600 hover:text-blue-600 transition-all relative"
+            className="p-1 sm:p-2 rounded-full hover:bg-gray-100 text-gray-600 hover:text-blue-600 transition-all relative"
             aria-label="Open cart"
         >
             <ShoppingBag size={24} />

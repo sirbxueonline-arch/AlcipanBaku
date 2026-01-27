@@ -115,7 +115,7 @@ export function Header() {
                     </nav>
 
                     {/* Actions & Mobile Menu Button */}
-                    <div className="flex items-center gap-4 relative z-50">
+                    <div className="flex items-center gap-1 sm:gap-4 relative z-50">
                         {/* Cart Button */}
                         <CartButton />
 
@@ -123,7 +123,7 @@ export function Header() {
 
                         {/* Mobile Menu Toggle */}
                         <button
-                            className="md:hidden p-2 rounded-full hover:bg-gray-100 text-gray-600 hover:text-blue-600 transition-all active:scale-95"
+                            className="md:hidden p-1 sm:p-2 rounded-full hover:bg-gray-100 text-gray-600 hover:text-blue-600 transition-all active:scale-95"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             aria-label="Toggle menu"
                         >
