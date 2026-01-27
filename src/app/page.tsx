@@ -6,6 +6,7 @@ import { ProductCard } from '@/components/ProductCard';
 import { ServiceCard } from '@/components/ServiceCard';
 import { WorkGallery } from '@/components/WorkGallery';
 import FeaturesSection from '@/components/FeaturesSection';
+import { FAQSection } from '@/components/FAQSection';
 import { motion } from 'framer-motion';
 
 export default function Home() {
@@ -36,19 +37,21 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 text-white"
           >
-            {language === 'AZ' ? 'Premium' : language === 'RU' ? 'Премиум' : 'Premium'} <span className="text-[var(--primary)]">{language === 'AZ' ? 'Paket' : language === 'RU' ? 'Пакет' : 'Package'}</span> {language === 'AZ' ? 'Alçıpan Həlləri' : language === 'RU' ? 'Решения из Гипсокартона' : 'Drywall Solutions'}
+            {language === 'AZ' ? 'Bakı alçipan ustası – dekorativ tavan və divar işləri' : 
+             language === 'RU' ? 'Мастер по гипсокартону в Баку – декоративные потолки и стены' : 
+             'Baku Drywall Master – Decorative Ceiling and Wall Works'}
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg md:text-2xl text-[var(--muted)] max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="text-lg md:text-2xl text-[var(--muted)] max-w-3xl mx-auto mb-10 leading-relaxed"
           >
              {language === 'AZ' 
-               ? 'Paket alçıpan xidmətləri: usta + material bir yerdə. 2006-cı ildən bəri Bakıda etibarlı xidmət.'
+               ? 'Alcipanbaku – 20 illik təcrübə ilə Bakı şəhərində alçipan montajı və dekorativ tavan işləri üzrə professional xidmət göstərir. Biz alçipan tavan, dekorativ tavan dizaynı, divar arakesməsi və panel işlərini yüksək keyfiyyətlə həyata keçiririk. İşlərimizdə Knauf, Gilan və digər keyfiyyətli materiallardan istifadə edirik. Hər layihəyə fərdi yanaşma və müştəri məmnuniyyəti bizim üçün önəmlidir.'
                : language === 'RU'
-               ? 'Пакетные услуги по гипсокартону: мастер + материал в одном месте. Надежный сервис в Баку с 2006 года.'
-               : 'Package drywall services: master + material in one place. Reliable service in Baku since 2006.'}
+               ? 'Alcipanbaku – профессиональные услуги по монтажу гипсокартона и декоративных потолков в Баку с 20-летним опытом. Мы качественно выполняем работы по гипсокартонным потолкам, дизайну декоративных потолков, перегородкам и панелям. Используем качественные материалы Knauf, Gilan и другие. Индивидуальный подход к каждому проекту и удовлетворенность клиентов важны для нас.'
+               : 'Alcipanbaku provides professional drywall installation and decorative ceiling services in Baku with 20 years of experience. We perform drywall ceiling, decorative ceiling design, wall partition, and panel works with high quality. We use quality materials like Knauf, Gilan, etc. Individual approach to every project and customer satisfaction are important to us.'}
           </motion.p>
           <motion.a 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -154,6 +157,8 @@ export default function Home() {
           )}
       </section>
 
+      {/* FAQ SECTION */}
+      <FAQSection />
 
       {/* WHY US / STATS */}
       <section className="container mx-auto px-4 py-16 cursor-default">

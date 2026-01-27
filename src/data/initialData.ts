@@ -205,7 +205,7 @@ export const initialWorkItems: WorkItem[] = [
     {
         id: 'img1',
         type: 'work',
-        title: { AZ: 'Layihə Şəkli 1', RU: 'Фото проекта 1', EN: 'Project Photo 1' },
+        title: { AZ: 'Alcipanbaku dekorativ tavan layihəsi Bakı', RU: 'Декоративный потолок Alcipanbaku Баку', EN: 'Alcipanbaku decorative ceiling project Baku' },
         description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
         imageUrl: '/picture1.jpeg',
         videoUrl: '',
@@ -215,7 +215,7 @@ export const initialWorkItems: WorkItem[] = [
     {
         id: 'img2',
         type: 'work',
-        title: { AZ: 'Layihə Şəkli 2', RU: 'Фото проекта 2', EN: 'Project Photo 2' },
+        title: { AZ: 'Alcipanbaku alçipan tavan montajı', RU: 'Монтаж гипсокартонного потолка Alcipanbaku', EN: 'Alcipanbaku drywall ceiling installation' },
         description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
         imageUrl: '/picture2.jpeg',
         videoUrl: '',
@@ -225,7 +225,7 @@ export const initialWorkItems: WorkItem[] = [
     {
         id: 'img3',
         type: 'work',
-        title: { AZ: 'Layihə Şəkli 3', RU: 'Фото проекта 3', EN: 'Project Photo 3' },
+        title: { AZ: 'Alcipanbaku divar arakesməsi', RU: 'Перегородка из гипсокартона Alcipanbaku', EN: 'Alcipanbaku wall partition' },
         description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
         imageUrl: '/picture3.jpeg',
         videoUrl: '',
@@ -235,7 +235,7 @@ export const initialWorkItems: WorkItem[] = [
     {
         id: 'img4',
         type: 'work',
-        title: { AZ: 'Layihə Şəkli 4', RU: 'Фото проекта 4', EN: 'Project Photo 4' },
+        title: { AZ: 'Alcipanbaku knauf alçipan işləri', RU: 'Работы Knauf Alcipanbaku', EN: 'Alcipanbaku Knauf drywall works' },
         description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
         imageUrl: '/picture4.jpeg',
         videoUrl: '',
@@ -245,7 +245,7 @@ export const initialWorkItems: WorkItem[] = [
     {
         id: 'img5',
         type: 'work',
-        title: { AZ: 'Layihə Şəkli 5', RU: 'Фото проекта 5', EN: 'Project Photo 5' },
+        title: { AZ: 'Alcipanbaku restoran tavan dizaynı', RU: 'Дизайн потолка ресторана Alcipanbaku', EN: 'Alcipanbaku restaurant ceiling design' },
         description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
         imageUrl: '/picture5.jpeg',
         videoUrl: '',
@@ -255,7 +255,7 @@ export const initialWorkItems: WorkItem[] = [
     {
         id: 'img6',
         type: 'work',
-        title: { AZ: 'Layihə Şəkli 6', RU: 'Фото проекта 6', EN: 'Project Photo 6' },
+        title: { AZ: 'Alcipanbaku ofis alçipan layihəsi', RU: 'Офисный проект Alcipanbaku', EN: 'Alcipanbaku office drywall project' },
         description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
         imageUrl: '/picture6.jpeg',
         videoUrl: '',
@@ -265,7 +265,7 @@ export const initialWorkItems: WorkItem[] = [
     {
         id: 'img7',
         type: 'work',
-        title: { AZ: 'Layihə Şəkli 7', RU: 'Фото проекта 7', EN: 'Project Photo 7' },
+        title: { AZ: 'Alcipanbaku mənzil tavan təmiri', RU: 'Ремонт потолка квартиры Alcipanbaku', EN: 'Alcipanbaku apartment ceiling renovation' },
         description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
         imageUrl: '/picture7.jpeg',
         videoUrl: '',
@@ -275,7 +275,7 @@ export const initialWorkItems: WorkItem[] = [
     {
         id: 'img8',
         type: 'work',
-        title: { AZ: 'Layihə Şəkli 8', RU: 'Фото проекта 8', EN: 'Project Photo 8' },
+        title: { AZ: 'Alcipanbaku gizli işıqlandırma', RU: 'Скрытое освещение Alcipanbaku', EN: 'Alcipanbaku hidden lighting' },
         description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
         imageUrl: '/picture8.jpeg',
         videoUrl: '',
@@ -285,7 +285,7 @@ export const initialWorkItems: WorkItem[] = [
     {
         id: 'img9',
         type: 'work',
-        title: { AZ: 'Layihə Şəkli 9', RU: 'Фото проекта 9', EN: 'Project Photo 9' },
+        title: { AZ: 'Alcipanbaku tv stend dizaynı', RU: 'Дизайн ТВ стенда Alcipanbaku', EN: 'Alcipanbaku TV stand design' },
         description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
         imageUrl: '/picture9.jpeg',
         videoUrl: '',
@@ -295,7 +295,7 @@ export const initialWorkItems: WorkItem[] = [
     {
         id: 'img10',
         type: 'work',
-        title: { AZ: 'Layihə Şəkli 10', RU: 'Фото проекта 10', EN: 'Project Photo 10' },
+        title: { AZ: 'Alcipanbaku müasir tavanlar', RU: 'Современные потолки Alcipanbaku', EN: 'Alcipanbaku modern ceilings' },
         description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
         imageUrl: '/picture10.jpeg',
         videoUrl: '',

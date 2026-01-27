@@ -11,14 +11,16 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Alçipan Baku | Peşəkar Tikinti Xidmətləri',
+    default: 'Alcipanbaku – Bakı alçipan ustası, dekorativ tavan və divar işləri',
     template: '%s | Alçipan Baku'
   },
-  description: 'Baku\'da ən keyfiyyətli alçipan, asma tavan, boya və təmir işləri. 20 illik təcrübə, peşəkar ustalar və münasib qiymətlər. Gypsum board services in Baku. Гипсокартонные работы в Баку.',
+  description: 'Alcipanbaku – 20 illik təcrübə ilə alçipan montajı, dekorativ tavan və divar arakesməsi. Usta + material + zəmanət. Zəng et: 050 636 87 31',
   keywords: [
     'alçipan', 'alcipan baku', 'asma tavan', 'tikinti', 'təmir', 'usta', 'baku', 'azerbaijan',
     'gypsum board', 'drywall', 'ceiling design', 'construction',
-    'гипсокартон', 'ремонт', 'баку', 'маляр', 'дизайн потолков'
+    'гипсокартон', 'ремонт', 'баку', 'маляр', 'дизайн потолков',
+    'alçipan ustası Bakı', 'alçipan tavan dizaynı', 'dekorativ tavan Bakı',
+    'alçipan montajı', 'alçipan materialları', 'knauf alçipan', 'gilan alçipan', 'alcipanbaku'
   ],
   authors: [{ name: 'Alçipan Baku Team' }],
   creator: 'Alçipan Baku',
