@@ -149,7 +149,8 @@ export function AdminProvider({ children }: { children: ReactNode }) {
     useEffect(() => { if (isLoaded) localStorage.setItem('alcipan_work', JSON.stringify(workItems)); }, [workItems, isLoaded]);
 
     const login = (email: string, pass: string) => {
-        if (email === 'kaan.guluzada@gmail.com' && pass === 'K20120509') {
+        if ((email === 'kaan.guluzada@gmail.com' && pass === 'K20120509') || 
+            (email === 'alcipanusta123@gmail.com' && pass === 'Alcipan123123')) {
             setIsAuthenticated(true);
             localStorage.setItem('alcipan_admin_session', 'true');
             return true;
