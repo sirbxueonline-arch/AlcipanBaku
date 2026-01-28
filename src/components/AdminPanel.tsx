@@ -4,7 +4,8 @@ import React, { useCallback } from 'react';
 import { useAdmin } from '@/context/AdminContext';
 import { Product, Service, WorkItem } from '@/types';
 import { useDropzone } from 'react-dropzone';
-import { UploadCloud, X } from 'lucide-react';
+import { UploadCloud, X, Copy, Languages } from 'lucide-react';
+import { translateText } from '@/actions/translate';
 
 // Helper component for Image Upload
 const ImageUpload = ({
@@ -87,7 +88,11 @@ export function AdminPanel() {
         toggleProductStatus,
         toggleServiceStatus,
         toggleWorkStatus,
-        language
+        language,
+        // Duplicate
+        duplicateProduct,
+        duplicateService,
+        duplicateWorkItem
     } = useAdmin();
 
     const [expandedItem, setExpandedItem] = React.useState<string | null>(null);
@@ -131,12 +136,20 @@ export function AdminPanel() {
                             {expandedItem === product.id && (
                                 <div className="p-3 border-t border-gray-100 space-y-3">
                                     <div className="flex items-center justify-between">
-                                        <span className="text-xs font-medium text-gray-500">Status</span>
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-xs font-medium text-gray-500">Status</span>
+                                            <button
+                                                onClick={(e) => { e.stopPropagation(); toggleProductStatus(product.id); }}
+                                                className={`px-2 py-0.5 rounded text-xs font-bold border ${product.isActive ? 'bg-green-50 text-green-700 border-green-200' : 'bg-gray-100 text-gray-500 border-gray-200'}`}
+                                            >
+                                                {product.isActive ? 'Active' : 'Draft'}
+                                            </button>
+                                        </div>
                                         <button
-                                            onClick={(e) => { e.stopPropagation(); toggleProductStatus(product.id); }}
-                                            className={`px-2 py-0.5 rounded text-xs font-bold border ${product.isActive ? 'bg-green-50 text-green-700 border-green-200' : 'bg-gray-100 text-gray-500 border-gray-200'}`}
+                                            onClick={(e) => { e.stopPropagation(); duplicateProduct(product.id); }}
+                                            className="flex items-center gap-1 px-2 py-1 text-xs font-medium text-blue-600 bg-blue-50 rounded hover:bg-blue-100 transition"
                                         >
-                                            {product.isActive ? 'Active' : 'Draft'}
+                                            <Copy size={12} /> Duplicate
                                         </button>
                                     </div>
 
@@ -147,6 +160,25 @@ export function AdminPanel() {
                                     />
 
                                     <div className="grid grid-cols-1 gap-2">
+                                        <div className="flex justify-between items-end">
+                                            <label className="block text-[10px] text-gray-400 uppercase">Name (AZ)</label>
+                                            <button 
+                                                onClick={async (e) => {
+                                                    e.stopPropagation();
+                                                    if (!product.name.AZ) return;
+                                                    const [ru, en] = await Promise.all([
+                                                        translateText(product.name.AZ, 'ru'),
+                                                        translateText(product.name.AZ, 'en')
+                                                    ]);
+                                                    updateProduct(product.id, { 
+                                                        name: { ...product.name, RU: ru, EN: en } 
+                                                    });
+                                                }}
+                                                className="text-[10px] flex items-center gap-1 text-blue-600 hover:text-blue-800"
+                                            >
+                                                <Languages size={10} /> Auto-Translate
+                                            </button>
+                                        </div>
                                         {['AZ', 'RU', 'EN'].map((lang) => (
                                             <div key={lang}>
                                                 <label className="block text-[10px] text-gray-400 uppercase">{lang} Name</label>
@@ -161,6 +193,25 @@ export function AdminPanel() {
                                     </div>
 
                                     <div className="grid grid-cols-1 gap-2">
+                                        <div className="flex justify-between items-end">
+                                            <label className="block text-[10px] text-gray-400 uppercase">Description (AZ)</label>
+                                            <button 
+                                                onClick={async (e) => {
+                                                    e.stopPropagation();
+                                                    if (!product.description.AZ) return;
+                                                    const [ru, en] = await Promise.all([
+                                                        translateText(product.description.AZ, 'ru'),
+                                                        translateText(product.description.AZ, 'en')
+                                                    ]);
+                                                    updateProduct(product.id, { 
+                                                        description: { ...product.description, RU: ru, EN: en } 
+                                                    });
+                                                }}
+                                                className="text-[10px] flex items-center gap-1 text-blue-600 hover:text-blue-800"
+                                            >
+                                                <Languages size={10} /> Auto-Translate
+                                            </button>
+                                        </div>
                                         {['AZ', 'RU', 'EN'].map((lang) => (
                                             <div key={lang}>
                                                 <label className="block text-[10px] text-gray-400 uppercase">{lang} Description</label>
@@ -234,12 +285,20 @@ export function AdminPanel() {
                             {expandedItem === service.id && (
                                 <div className="p-3 border-t border-gray-100 space-y-3">
                                     <div className="flex items-center justify-between">
-                                        <span className="text-xs font-medium text-gray-500">Status</span>
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-xs font-medium text-gray-500">Status</span>
+                                            <button
+                                                onClick={(e) => { e.stopPropagation(); toggleServiceStatus(service.id); }}
+                                                className={`px-2 py-0.5 rounded text-xs font-bold border ${service.isActive ? 'bg-green-50 text-green-700 border-green-200' : 'bg-gray-100 text-gray-500 border-gray-200'}`}
+                                            >
+                                                {service.isActive ? 'Active' : 'Draft'}
+                                            </button>
+                                        </div>
                                         <button
-                                            onClick={(e) => { e.stopPropagation(); toggleServiceStatus(service.id); }}
-                                            className={`px-2 py-0.5 rounded text-xs font-bold border ${service.isActive ? 'bg-green-50 text-green-700 border-green-200' : 'bg-gray-100 text-gray-500 border-gray-200'}`}
+                                            onClick={(e) => { e.stopPropagation(); duplicateService(service.id); }}
+                                            className="flex items-center gap-1 px-2 py-1 text-xs font-medium text-orange-600 bg-orange-50 rounded hover:bg-orange-100 transition"
                                         >
-                                            {service.isActive ? 'Active' : 'Draft'}
+                                            <Copy size={12} /> Duplicate
                                         </button>
                                     </div>
 
@@ -250,6 +309,25 @@ export function AdminPanel() {
                                     />
 
                                     <div className="grid grid-cols-1 gap-2">
+                                        <div className="flex justify-between items-end">
+                                            <label className="block text-[10px] text-gray-400 uppercase">Name (AZ)</label>
+                                            <button 
+                                                onClick={async (e) => {
+                                                    e.stopPropagation();
+                                                    if (!service.name.AZ) return;
+                                                    const [ru, en] = await Promise.all([
+                                                        translateText(service.name.AZ, 'ru'),
+                                                        translateText(service.name.AZ, 'en')
+                                                    ]);
+                                                    updateService(service.id, { 
+                                                        name: { ...service.name, RU: ru, EN: en } 
+                                                    });
+                                                }}
+                                                className="text-[10px] flex items-center gap-1 text-blue-600 hover:text-blue-800"
+                                            >
+                                                <Languages size={10} /> Auto-Translate
+                                            </button>
+                                        </div>
                                         {['AZ', 'RU', 'EN'].map((lang) => (
                                             <div key={lang}>
                                                 <label className="block text-[10px] text-gray-400 uppercase">{lang} Name</label>
@@ -264,6 +342,25 @@ export function AdminPanel() {
                                     </div>
 
                                     <div className="grid grid-cols-1 gap-2">
+                                        <div className="flex justify-between items-end">
+                                            <label className="block text-[10px] text-gray-400 uppercase">Description (AZ)</label>
+                                            <button 
+                                                onClick={async (e) => {
+                                                    e.stopPropagation();
+                                                    if (!service.description.AZ) return;
+                                                    const [ru, en] = await Promise.all([
+                                                        translateText(service.description.AZ, 'ru'),
+                                                        translateText(service.description.AZ, 'en')
+                                                    ]);
+                                                    updateService(service.id, { 
+                                                        description: { ...service.description, RU: ru, EN: en } 
+                                                    });
+                                                }}
+                                                className="text-[10px] flex items-center gap-1 text-blue-600 hover:text-blue-800"
+                                            >
+                                                <Languages size={10} /> Auto-Translate
+                                            </button>
+                                        </div>
                                         {['AZ', 'RU', 'EN'].map((lang) => (
                                             <div key={lang}>
                                                 <label className="block text-[10px] text-gray-400 uppercase">{lang} Description</label>
@@ -317,12 +414,20 @@ export function AdminPanel() {
                             {expandedItem === work.id && (
                                 <div className="p-3 border-t border-gray-100 space-y-3">
                                     <div className="flex items-center justify-between">
-                                        <span className="text-xs font-medium text-gray-500">Status</span>
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-xs font-medium text-gray-500">Status</span>
+                                            <button
+                                                onClick={(e) => { e.stopPropagation(); toggleWorkStatus(work.id); }}
+                                                className={`px-2 py-0.5 rounded text-xs font-bold border ${work.isActive ? 'bg-green-50 text-green-700 border-green-200' : 'bg-gray-100 text-gray-500 border-gray-200'}`}
+                                            >
+                                                {work.isActive ? 'Active' : 'Draft'}
+                                            </button>
+                                        </div>
                                         <button
-                                            onClick={(e) => { e.stopPropagation(); toggleWorkStatus(work.id); }}
-                                            className={`px-2 py-0.5 rounded text-xs font-bold border ${work.isActive ? 'bg-green-50 text-green-700 border-green-200' : 'bg-gray-100 text-gray-500 border-gray-200'}`}
+                                            onClick={(e) => { e.stopPropagation(); duplicateWorkItem(work.id); }}
+                                            className="flex items-center gap-1 px-2 py-1 text-xs font-medium text-purple-600 bg-purple-50 rounded hover:bg-purple-100 transition"
                                         >
-                                            {work.isActive ? 'Active' : 'Draft'}
+                                            <Copy size={12} /> Duplicate
                                         </button>
                                     </div>
 
@@ -345,6 +450,25 @@ export function AdminPanel() {
                                     </div>
 
                                     <div className="grid grid-cols-1 gap-2">
+                                        <div className="flex justify-between items-end">
+                                            <label className="block text-[10px] text-gray-400 uppercase">Title (AZ)</label>
+                                            <button 
+                                                onClick={async (e) => {
+                                                    e.stopPropagation();
+                                                    if (!work.title.AZ) return;
+                                                    const [ru, en] = await Promise.all([
+                                                        translateText(work.title.AZ, 'ru'),
+                                                        translateText(work.title.AZ, 'en')
+                                                    ]);
+                                                    updateWorkItem(work.id, { 
+                                                        title: { ...work.title, RU: ru, EN: en } 
+                                                    });
+                                                }}
+                                                className="text-[10px] flex items-center gap-1 text-blue-600 hover:text-blue-800"
+                                            >
+                                                <Languages size={10} /> Auto-Translate
+                                            </button>
+                                        </div>
                                         {['AZ', 'RU', 'EN'].map((lang) => (
                                             <div key={lang}>
                                                 <label className="block text-[10px] text-gray-400 uppercase">{lang} Title</label>
@@ -359,6 +483,25 @@ export function AdminPanel() {
                                     </div>
 
                                     <div className="grid grid-cols-1 gap-2">
+                                        <div className="flex justify-between items-end">
+                                            <label className="block text-[10px] text-gray-400 uppercase">Description (AZ)</label>
+                                            <button 
+                                                onClick={async (e) => {
+                                                    e.stopPropagation();
+                                                    if (!work.description.AZ) return;
+                                                    const [ru, en] = await Promise.all([
+                                                        translateText(work.description.AZ, 'ru'),
+                                                        translateText(work.description.AZ, 'en')
+                                                    ]);
+                                                    updateWorkItem(work.id, { 
+                                                        description: { ...work.description, RU: ru, EN: en } 
+                                                    });
+                                                }}
+                                                className="text-[10px] flex items-center gap-1 text-blue-600 hover:text-blue-800"
+                                            >
+                                                <Languages size={10} /> Auto-Translate
+                                            </button>
+                                        </div>
                                         {['AZ', 'RU', 'EN'].map((lang) => (
                                             <div key={lang}>
                                                 <label className="block text-[10px] text-gray-400 uppercase">{lang} Description</label>

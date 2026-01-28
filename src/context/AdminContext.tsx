@@ -40,6 +40,12 @@ interface AdminContextType {
     toggleProductStatus: (id: string) => void;
     toggleServiceStatus: (id: string) => void;
     toggleWorkStatus: (id: string) => void;
+
+    // Duplicate methods
+    duplicatePackage: (id: string) => void;
+    duplicateProduct: (id: string) => void;
+    duplicateService: (id: string) => void;
+    duplicateWorkItem: (id: string) => void;
 }
 
 const AdminContext = createContext<AdminContextType | undefined>(undefined);
@@ -268,6 +274,71 @@ export function AdminProvider({ children }: { children: ReactNode }) {
         setWorkItems(prev => prev.map(w => w.id === id ? { ...w, isActive: !w.isActive } : w));
     };
 
+    // DUPLICATE METHODS
+    const duplicatePackage = (id: string) => {
+        const itemToClone = packages.find(p => p.id === id);
+        if (itemToClone) {
+            const newItem: Package = {
+                ...itemToClone,
+                id: `pkg${Date.now()}`,
+                name: {
+                    AZ: `${itemToClone.name.AZ} (Copy)`,
+                    RU: `${itemToClone.name.RU} (Copy)`,
+                    EN: `${itemToClone.name.EN} (Copy)`
+                }
+            };
+            setPackages(prev => [...prev, newItem]);
+        }
+    };
+
+    const duplicateProduct = (id: string) => {
+        const itemToClone = products.find(p => p.id === id);
+        if (itemToClone) {
+            const newItem: Product = {
+                ...itemToClone,
+                id: `p${Date.now()}`,
+                name: {
+                    AZ: `${itemToClone.name.AZ} (Copy)`,
+                    RU: `${itemToClone.name.RU} (Copy)`,
+                    EN: `${itemToClone.name.EN} (Copy)`
+                }
+            };
+            setProducts(prev => [...prev, newItem]);
+        }
+    };
+
+    const duplicateService = (id: string) => {
+        const itemToClone = services.find(s => s.id === id);
+        if (itemToClone) {
+            const newItem: Service = {
+                ...itemToClone,
+                id: `s${Date.now()}`,
+                name: {
+                    AZ: `${itemToClone.name.AZ} (Copy)`,
+                    RU: `${itemToClone.name.RU} (Copy)`,
+                    EN: `${itemToClone.name.EN} (Copy)`
+                }
+            };
+            setServices(prev => [...prev, newItem]);
+        }
+    };
+
+    const duplicateWorkItem = (id: string) => {
+        const itemToClone = workItems.find(w => w.id === id);
+        if (itemToClone) {
+            const newItem: WorkItem = {
+                ...itemToClone,
+                id: `w${Date.now()}`,
+                title: {
+                    AZ: `${itemToClone.title.AZ} (Copy)`,
+                    RU: `${itemToClone.title.RU} (Copy)`,
+                    EN: `${itemToClone.title.EN} (Copy)`
+                }
+            };
+            setWorkItems(prev => [...prev, newItem]);
+        }
+    };
+
     return (
         <AdminContext.Provider value={{
             isAuthenticated,
@@ -284,7 +355,9 @@ export function AdminProvider({ children }: { children: ReactNode }) {
             // Delete
             deletePackage, deleteProduct, deleteService, deleteWorkItem,
             // Toggle
-            togglePackageStatus, toggleProductStatus, toggleServiceStatus, toggleWorkStatus
+            togglePackageStatus, toggleProductStatus, toggleServiceStatus, toggleWorkStatus,
+            // Duplicate
+            duplicatePackage, duplicateProduct, duplicateService, duplicateWorkItem
         }}>
             {children}
         </AdminContext.Provider>
