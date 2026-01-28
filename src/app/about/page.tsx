@@ -37,12 +37,12 @@ export default function AboutPage() {
 
             {/* Main Content */}
             <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div className="max-w-4xl mx-auto">
                     <div>
-                        <h2 className="text-3xl font-bold text-slate-900 mb-6">
+                        <h2 className="text-3xl font-bold text-slate-900 mb-6 text-center">
                             {language === 'AZ' ? 'Biz Kimik?' : language === 'RU' ? 'Кто Мы?' : 'Who We Are?'}
                         </h2>
-                        <div className="space-y-4 text-slate-600 leading-relaxed text-lg">
+                        <div className="space-y-4 text-slate-600 leading-relaxed text-lg text-center">
                             <p>
                                 {language === 'AZ'
                                     ? 'AlcipanBaku, Azərbaycanda tikinti və təmir sahəsində ixtisaslaşmış qabaqcıl şirkətlərdən biridir. Bizim əsas missiyamız müştərilərimizə yüksək keyfiyyətli alçipan, asma tavan və boya işlərini təqdim etməkdir.'
@@ -59,41 +59,32 @@ export default function AboutPage() {
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-6 mt-10">
-                            <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+                            <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center text-center">
                                 <Users className="w-8 h-8 text-blue-600 mb-3" />
                                 <h3 className="font-bold text-slate-900">
                                     {language === 'AZ' ? 'Peşəkar Komanda' : language === 'RU' ? 'Профессиональная Команда' : 'Professional Team'}
                                 </h3>
                             </div>
-                            <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                            <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center text-center">
                                 <Clock className="w-8 h-8 text-orange-600 mb-3" />
                                 <h3 className="font-bold text-slate-900">
                                     {language === 'AZ' ? 'Vaxtında Təhvil' : language === 'RU' ? 'Сдача в Срок' : 'On-Time Delivery'}
                                 </h3>
                             </div>
-                            <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                            <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center text-center">
                                 <Award className="w-8 h-8 text-purple-600 mb-3" />
                                 <h3 className="font-bold text-slate-900">
                                     {language === 'AZ' ? 'Zəmanətli İş' : language === 'RU' ? 'Гарантированная Работа' : 'Guaranteed Work'}
                                 </h3>
                             </div>
-                            <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                            <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center text-center">
                                 <BadgeCheck className="w-8 h-8 text-green-600 mb-3" />
                                 <h3 className="font-bold text-slate-900">
                                     {language === 'AZ' ? 'Rəsmi Partnyor' : language === 'RU' ? 'Официальный Партнер' : 'Official Partner'}
                                 </h3>
                             </div>
                         </div>
-                    </div>
-
-                    <div className="relative h-[600px] w-full bg-slate-100 rounded-3xl overflow-hidden shadow-2xl">
-                        <Image
-                            src="https://placehold.co/800x1200/e2e8f0/1e293b?text=Professional+Team"
-                            alt="Our Team"
-                            fill
-                            className="object-cover"
-                        />
                     </div>
                 </div>
             </section>

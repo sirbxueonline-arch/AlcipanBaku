@@ -3,6 +3,7 @@
 import React from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useAdmin } from '@/context/AdminContext';
+import { useCart } from '@/context/CartContext';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -10,6 +11,7 @@ export default function ProductDetailPage() {
     const { id } = useParams();
     const router = useRouter();
     const { products, language } = useAdmin();
+    const { addToCart } = useCart();
 
     const product = products.find(p => p.id === id);
 
@@ -87,7 +89,10 @@ export default function ProductDetailPage() {
                             </div>
 
                             <div className="flex flex-col sm:flex-row gap-4">
-                                <button className="flex-1 px-8 py-4 bg-gray-900 text-white font-bold rounded-lg hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:scale-95">
+                                <button 
+                                    onClick={() => addToCart(product)}
+                                    className="flex-1 px-8 py-4 bg-gray-900 text-white font-bold rounded-lg hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:scale-95"
+                                >
                                     {language === 'AZ' ? 'İndi Sifariş Edin' : language === 'RU' ? 'Заказать сейчас' : 'Order Now'}
                                 </button>
                                 <a

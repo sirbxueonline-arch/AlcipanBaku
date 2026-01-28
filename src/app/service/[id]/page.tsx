@@ -92,22 +92,31 @@ export default function ServiceDetailPage() {
                                 {language === 'AZ' ? 'Müraciət Forması' : 'Inquiry Form'}
                             </h3>
 
-                            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                            <form className="space-y-4" onSubmit={(e) => {
+                                e.preventDefault();
+                                const form = e.currentTarget;
+                                const name = (form.elements[0] as HTMLInputElement).value;
+                                const phone = (form.elements[1] as HTMLInputElement).value;
+                                const msg = (form.elements[2] as HTMLTextAreaElement).value;
+                                
+                                const text = `Salam, ${service.name[language]} xidməti ilə maraqlanıram.%0A%0A👤 *Ad:* ${name}%0A📞 *Telefon:* ${phone}%0A📝 *Mesaj:* ${msg}`;
+                                window.open(`https://wa.me/994506368731?text=${text}`, '_blank');
+                            }}>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                                    <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition" />
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">{language === 'AZ' ? 'Adınız' : language === 'RU' ? 'Ваше Имя' : 'Name'}</label>
+                                    <input required type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition" />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                                    <input type="tel" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition" />
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">{language === 'AZ' ? 'Telefon' : language === 'RU' ? 'Телефон' : 'Phone'}</label>
+                                    <input required type="tel" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition" />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                                    <textarea rows={4} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition" defaultValue={`I am interested in ${service.name[language]}...`}></textarea>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">{language === 'AZ' ? 'Mesajınız' : language === 'RU' ? 'Сообщение' : 'Message'}</label>
+                                    <textarea required rows={4} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition" defaultValue={language === 'AZ' ? `${service.name[language]} haqqında məlumat almaq istəyirəm...` : `I am interested in ${service.name[language]}...`}></textarea>
                                 </div>
 
-                                <button className="w-full py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition shadow-md">
-                                    {language === 'AZ' ? 'Göndər' : 'Submit Inquiry'}
+                                <button type="submit" className="w-full py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition shadow-md">
+                                    {language === 'AZ' ? 'Göndər' : language === 'RU' ? 'Отправить' : 'Submit Inquiry'}
                                 </button>
                             </form>
                         </div>

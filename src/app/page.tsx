@@ -20,9 +20,12 @@ export default function Home() {
     const phone = (form.elements.namedItem('phone') as HTMLInputElement).value;
     const msg = (form.elements.namedItem('msg') as HTMLTextAreaElement).value;
     
-    // Replace with actual phone number if provided, currently using placeholder
-    const phoneNumber = '994500000000'; 
-    const text = `Ad: ${name}%0ATelefon: ${phone}%0AMəlumat: ${msg}`;
+    // Updated phone number
+    const phoneNumber = '994506368731'; 
+
+    // Formatted message
+    const text = `Salam, ölçü üçün müraciət edirəm!%0A%0A👤 *Ad:* ${name}%0A📞 *Telefon:* ${phone}%0A📝 *Məlumat:* ${msg}`;
+    
     window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
   };
 

@@ -67,7 +67,7 @@ export default function ContactPage() {
                         <p className="text-gray-500 mb-4">
                             {language === 'AZ' ? 'Ofis və Anbarımız' : language === 'RU' ? 'Наш Офис и Склад' : 'Our Office and Warehouse'}
                         </p>
-                        <a href="#" className="text-lg font-bold text-green-600 hover:text-green-700">
+                        <a href="https://maps.google.com/?q=Baku,Azerbaijan" target="_blank" rel="noopener noreferrer" className="text-lg font-bold text-green-600 hover:text-green-700">
                             Baku, Azerbaijan
                         </a>
                     </div>
