@@ -58,6 +58,15 @@ export default function AboutPage() {
                                         : 'We have been operating in this field for over 20 years with our professional team. During these years, we have successfully completed hundreds of projects and earned the trust of our customers.'}
                             </p>
                         </div>
+                        <div className="space-y-4 text-slate-600 leading-relaxed text-lg text-center font-medium mt-4">
+                            <p>
+                             {language === 'AZ' 
+                               ? 'Alcipanbaku – 20 illik təcrübə ilə Bakı şəhərində alçipan montajı və dekorativ tavan işləri üzrə professional xidmət göstərir. Biz alçipan tavan, dekorativ tavan dizaynı, divar arakesməsi və panel işlərini yüksək keyfiyyətlə həyata keçiririk. İşlərimizdə Knauf, Gilan və digər keyfiyyətli materiallardan istifadə edirik. Hər layihəyə fərdi yanaşma və müştəri məmnuniyyəti bizim üçün önəmlidir.'
+                               : language === 'RU'
+                               ? 'Alcipanbaku – профессиональные услуги по монтажу гипсокартона и декоративных потолков в Баку с 20-летним опытом. Мы качественно выполняем работы по гипсокартонным потолкам, дизайну декоративных потолков, перегородкам и панелям. Используем качественные материалы Knauf, Gilan и другие. Индивидуальный подход к каждому проекту и удовлетворенность клиентов важны для нас.'
+                               : 'Alcipanbaku provides professional drywall installation and decorative ceiling services in Baku with 20 years of experience. We perform drywall ceiling, decorative ceiling design, wall partition, and panel works with high quality. We use quality materials like Knauf, Gilan, etc. Individual approach to every project and customer satisfaction are important to us.'}
+                            </p>
+                        </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
                             <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center text-center">

@@ -187,13 +187,73 @@ export const initialServices: Service[] = [
     {
         id: '1',
         type: 'service',
-        name: { AZ: 'Asma Tavan Ustası', RU: 'Мастер навесных потолков', EN: 'Suspended Ceiling Master' },
+        name: { AZ: 'Asma Tavanlar', RU: 'Подвесные Потолки', EN: 'Suspended Ceilings' },
         description: {
-            AZ: 'İstənilən dizaynda asma tavanların yığılması.',
-            RU: 'Монтаж навесных потолков любого дизайна.',
-            EN: 'Installation of suspended ceilings of any design.'
+            AZ: 'Sadə və fiqurlu asma tavanların peşəkar montajı.',
+            RU: 'Профессиональный монтаж простых и фигурных подвесных потолков.',
+            EN: 'Professional installation of simple and figured suspended ceilings.'
         },
-        image: '/brain/service_suspended_ceiling_master_1768927020516.png',
+        image: '/picture2.jpeg',
+        isActive: true
+    },
+    {
+        id: '2',
+        type: 'service',
+        name: { AZ: 'Dekorativ Dizayn', RU: 'Декоративный Дизайн', EN: 'Decorative Design' },
+        description: {
+            AZ: 'İnteryerə özəl dekorativ tavan və divar həlləri.',
+            RU: 'Декоративные решения для потолков и стен под интерьер.',
+            EN: 'Custom decorative ceiling and wall solutions for interiors.'
+        },
+        image: '/picture1.jpeg',
+        isActive: true
+    },
+    {
+        id: '3',
+        type: 'service',
+        name: { AZ: 'Divar Arakəsmələri', RU: 'Стеновые Перегородки', EN: 'Wall Partitions' },
+        description: {
+            AZ: 'Məkanın bölünməsi üçün gipskarton arakəsmələr.',
+            RU: 'Гипсокартонные перегородки для зонирования пространства.',
+            EN: 'Drywall partitions for space zoning.'
+        },
+        image: '/picture3.jpeg',
+        isActive: true
+    },
+    {
+        id: '4',
+        type: 'service',
+        name: { AZ: 'Gizli İşıqlandırma', RU: 'Скрытое Освещение', EN: 'Hidden Lighting' },
+        description: {
+            AZ: 'Tavan və divarlarda gizli LED işıqlandırma sistemləri.',
+            RU: 'Системы скрытого светодиодного освещения на потолках и стенах.',
+            EN: 'Hidden LED lighting systems on ceilings and walls.'
+        },
+        image: '/picture8.jpeg',
+        isActive: true
+    },
+    {
+        id: '5',
+        type: 'service',
+        name: { AZ: 'TV Stend və Fiqurlar', RU: 'ТВ Стенды и Фигуры', EN: 'TV Stands & Figures' },
+        description: {
+            AZ: 'Gipskartondan yığılan TV stendlər və dekorativ fiqurlar.',
+            RU: 'ТВ-стенды и декоративные фигуры из гипсокартона.',
+            EN: 'Gypsum TV stands and decorative figures.'
+        },
+        image: '/picture9.jpeg',
+        isActive: true
+    },
+    {
+        id: '6',
+        type: 'service',
+        name: { AZ: 'Ofis və Obyekt Təmiri', RU: 'Ремонт Офисов и Объектов', EN: 'Office & Object Renovation' },
+        description: {
+            AZ: 'Ofis və kommersiya obyektlərində alçipan işləri.',
+            RU: 'Гипсокартонные работы в офисах и коммерческих объектах.',
+            EN: 'Drywall works in offices and commercial objects.'
+        },
+        image: '/picture6.jpeg',
         isActive: true
     }
 ];

@@ -44,18 +44,7 @@ export default function Home() {
              language === 'RU' ? 'Мастер по гипсокартону в Баку – декоративные потолки и стены' : 
              'Baku Drywall Master – Decorative Ceiling and Wall Works'}
           </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-lg md:text-2xl text-[var(--muted)] max-w-3xl mx-auto mb-10 leading-relaxed"
-          >
-             {language === 'AZ' 
-               ? 'Alcipanbaku – 20 illik təcrübə ilə Bakı şəhərində alçipan montajı və dekorativ tavan işləri üzrə professional xidmət göstərir. Biz alçipan tavan, dekorativ tavan dizaynı, divar arakesməsi və panel işlərini yüksək keyfiyyətlə həyata keçiririk. İşlərimizdə Knauf, Gilan və digər keyfiyyətli materiallardan istifadə edirik. Hər layihəyə fərdi yanaşma və müştəri məmnuniyyəti bizim üçün önəmlidir.'
-               : language === 'RU'
-               ? 'Alcipanbaku – профессиональные услуги по монтажу гипсокартона и декоративных потолков в Баку с 20-летним опытом. Мы качественно выполняем работы по гипсокартонным потолкам, дизайну декоративных потолков, перегородкам и панелям. Используем качественные материалы Knauf, Gilan и другие. Индивидуальный подход к каждому проекту и удовлетворенность клиентов важны для нас.'
-               : 'Alcipanbaku provides professional drywall installation and decorative ceiling services in Baku with 20 years of experience. We perform drywall ceiling, decorative ceiling design, wall partition, and panel works with high quality. We use quality materials like Knauf, Gilan, etc. Individual approach to every project and customer satisfaction are important to us.'}
-          </motion.p>
+
           <motion.a 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}

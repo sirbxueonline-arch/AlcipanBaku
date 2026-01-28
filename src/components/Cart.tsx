@@ -178,14 +178,17 @@ export function Cart() {
                                     {language === 'AZ' ? 'Sifarişi Rəsmiləşdir' : language === 'RU' ? 'Оформить заказ' : 'Checkout'}
                                 </button>
 
-                                <div className="flex items-center justify-center gap-2 mt-4 text-xs text-slate-400">
-                                    <div className="flex items-center gap-1 bg-white border border-gray-100 rounded px-2 py-1 shadow-sm">
-                                        <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                                        <span>Secured by <strong>EPoint</strong></span>
-                                    </div>
-                                    <div className="flex gap-2 opacity-70 grayscale">
-                                        <Image src="https://placehold.co/30x20/white/000?text=V" alt="Visa" width={30} height={20} className="rounded-sm" />
-                                        <Image src="https://placehold.co/30x20/white/000?text=M" alt="Mastercard" width={30} height={20} className="rounded-sm" />
+                                <div className="flex items-center justify-center mt-4">
+                                    <div className="flex items-center gap-3 bg-white border border-gray-100 rounded-lg px-3 py-2 shadow-sm text-xs text-slate-500">
+                                        <div className="flex items-center gap-1.5">
+                                            <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                                            <span>Secured by <strong>EPoint</strong></span>
+                                        </div>
+                                        <div className="w-px h-3 bg-gray-200"></div>
+                                        <div className="flex gap-2 opacity-80 grayscale hover:grayscale-0 transition-all">
+                                            <Image src="/visa.png" alt="Visa" width={28} height={18} className="object-contain" />
+                                            <Image src="/mastercard.png" alt="Mastercard" width={28} height={18} className="object-contain" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
