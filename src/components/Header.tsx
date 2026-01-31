@@ -78,12 +78,24 @@ export function Header() {
     };
 
     return (
-        <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled || mobileMenuOpen ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-white py-5 border-b border-gray-100'}`}>
+        <header className={`sticky top-0 z-50 transition-all duration-300 bg-[#0a192f] border-b border-white/10 shadow-lg`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center h-16 sm:h-20">
+                    
+                    {/* Mobile: Left Hamburger */}
+                    <div className="md:hidden flex items-center">
+                        <button
+                            className="text-white p-1"
+                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                            aria-label="Toggle menu"
+                        >
+                            {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+                        </button>
+                    </div>
+
                     {/* Logo */}
-                    <Link href="/" className="group flex items-center gap-3 relative z-50">
-                        <div className="relative w-10 h-10 sm:w-12 sm:h-12 overflow-hidden rounded-full shadow-md group-hover:scale-105 transition-transform duration-300">
+                    <Link href="/" className="flex items-center gap-2 relative z-50">
+                        <div className="relative w-8 h-8 sm:w-10 sm:h-10 overflow-hidden rounded-full shadow-md">
                             <Image
                                 src="/brand-logo.jpg"
                                 alt="Alcipan Baku Logo"
@@ -91,44 +103,38 @@ export function Header() {
                                 className="object-cover"
                             />
                         </div>
-                        <div className="flex flex-col">
-                            <h1 className="text-lg sm:text-xl font-bold text-gray-900 tracking-tight leading-none group-hover:text-blue-900 transition-colors">
-                                ALCİPAN<span className="text-red-600">BAKU</span>
-                            </h1>
-                            <span className="text-[8px] sm:text-[10px] text-gray-500 font-bold tracking-widest uppercase">
-                                {language === 'AZ' ? 'PREMİUM USTA SEÇİMİ' : language === 'RU' ? 'ПРЕМИУМ ВЫБОР' : 'PREMIUM CHOICE'}
-                            </span>
-                        </div>
+                         <h1 className="text-lg sm:text-xl font-bold text-white tracking-tight leading-none">
+                            //ALÇİPAN <span className="text-white/70 font-light">BAKU</span>
+                        </h1>
                     </Link>
 
-                    {/* Navigation - Desktop */}
+                    {/* Desktop Navigation */}
                     <nav className="hidden md:flex items-center space-x-8">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className={`text-sm font-medium transition-colors hover:text-blue-600 ${pathname === link.href ? 'text-blue-600' : 'text-gray-600'}`}
+                                className={`text-sm font-medium transition-colors hover:text-[var(--gold)] ${pathname === link.href ? 'text-[var(--gold)]' : 'text-white/80'}`}
                             >
                                 {link.label[language]}
                             </Link>
                         ))}
                     </nav>
 
-                    {/* Actions & Mobile Menu Button */}
-                    <div className="flex items-center gap-1 sm:gap-4 relative z-50">
-                        {/* Cart Button */}
-                        <CartButton />
+                    {/* Right Side: Phone (Mobile) / Actions (Desktop) */}
+                    <div className="flex items-center gap-4">
+                        {/* Mobile Phone Number */}
+                        <a href="tel:+994506368731" className="md:hidden text-white/90 text-xs sm:text-sm font-medium whitespace-nowrap">
+                            +994 50 636 87 31
+                        </a>
 
-                        <LanguageSwitcher />
-
-                        {/* Mobile Menu Toggle */}
-                        <button
-                            className="md:hidden p-1 sm:p-2 rounded-full hover:bg-gray-100 text-gray-600 hover:text-blue-600 transition-all active:scale-95"
-                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                            aria-label="Toggle menu"
-                        >
-                            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-                        </button>
+                        {/* Desktop Actions */}
+                        <div className="hidden md:flex items-center gap-4">
+                             <a href="tel:+994506368731" className="text-white font-bold">
+                                +994 50 636 87 31
+                            </a>
+                            <LanguageSwitcher />
+                        </div>
                     </div>
                 </div>
             </div>
