@@ -8,6 +8,7 @@ import { WorkGallery } from '@/components/WorkGallery';
 import FeaturesSection from '@/components/FeaturesSection';
 import { FAQSection } from '@/components/FAQSection';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Home() {
   const { packages, products, services, language } = useAdmin();
@@ -32,11 +33,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] font-sans">
       
-import Image from 'next/image';
-
-// ... (rest of imports)
-
-// ...
 
       {/* HERO SECTION */}
       <section className="relative py-20 md:py-32 px-4 min-h-[85vh] flex flex-col justify-center overflow-hidden">
