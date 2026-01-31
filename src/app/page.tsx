@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useAdmin } from '@/context/AdminContext';
-import { ProductCard } from '@/components/ProductCard';
+
 import { ServiceCard } from '@/components/ServiceCard';
 import { WorkGallery } from '@/components/WorkGallery';
 import FeaturesSection from '@/components/FeaturesSection';
@@ -11,8 +11,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 export default function Home() {
-  const { packages, products, services, language } = useAdmin();
-  const [showAllProducts, setShowAllProducts] = React.useState(false);
+  const { packages, services, language } = useAdmin();
 
   const sendWhatsApp = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -167,8 +166,6 @@ export default function Home() {
 
         {/* View All Button if needed, or remove if strictly 3 */}
       </section>
-
-
 
        {/* SERVICES SECTION */}
        <section className="bg-white py-16" id="services">
