@@ -240,3 +240,44 @@ export default function Home() {
 
       {/* FAQ SECTION */}
       <FAQSection />
+
+      {/* WORK GALLERY */}
+      <WorkGallery />
+
+      {/* CONTACT FORM */}
+      <section className="container mx-auto px-4 py-12 md:py-20 text-center" id="contact">
+        <h2 className="text-3xl font-bold mb-4 text-white">
+          {language === 'AZ' ? 'Ölçü üçün müraciət' : language === 'RU' ? 'Заявка на замер' : 'Request Measurement'}
+        </h2>
+        <p className="text-[var(--muted)] max-w-xl mx-auto mb-10">
+          {language === 'AZ' ? 'Qiymət obyektə baxıldıqdan sonra dəqiqləşdirilir.' : language === 'RU' ? 'Цена уточняется после осмотра объекта.' : 'Price is finalized after site inspection.'}
+        </p>
+
+        <form onSubmit={sendWhatsApp} className="max-w-xl mx-auto space-y-4">
+          <input 
+            name="name" 
+            placeholder={language === 'AZ' ? 'Adınız' : language === 'RU' ? 'Ваше Имя' : 'Your Name'} 
+            required 
+            className="w-full p-4 bg-[var(--card)] border border-white/10 rounded-lg text-white focus:outline-none focus:border-[var(--primary)] transition-colors"
+          />
+          <input 
+            name="phone" 
+            placeholder={language === 'AZ' ? 'Telefon' : language === 'RU' ? 'Телефон' : 'Phone'} 
+            required 
+            className="w-full p-4 bg-[var(--card)] border border-white/10 rounded-lg text-white focus:outline-none focus:border-[var(--primary)] transition-colors"
+          />
+          <textarea 
+            name="msg" 
+            placeholder={language === 'AZ' ? 'Qısa məlumat (mənzil / obyekt)' : language === 'RU' ? 'Краткая информация (квартира / объект)' : 'Short info (apartment / object)'} 
+            rows={4}
+            className="w-full p-4 bg-[var(--card)] border border-white/10 rounded-lg text-white focus:outline-none focus:border-[var(--primary)] transition-colors resize-none mb-4"
+          />
+          <button className="w-full py-4 bg-[var(--primary)] text-white font-bold rounded-lg hover:opacity-90 transition-all text-lg">
+             {language === 'AZ' ? 'Göndər' : language === 'RU' ? 'Отправить' : 'Send'}
+          </button>
+        </form>
+      </section>
+      
+    </div>
+  );
+}
