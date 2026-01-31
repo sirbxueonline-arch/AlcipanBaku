@@ -11,76 +11,76 @@ export const initialPackages: Product[] = [
         id: 'pkg20',
         type: 'product',
         name: { AZ: '20 m² Paket', RU: 'Пакет 20 м²', EN: '20 m² Package' },
-        price: 0,
+        price: 460,
         currency: 'AZN',
         image: '/picture1.jpeg',
         description: {
-            AZ: '✔ 20 m² tam təmir\n✔ Usta + Material\n✔ Sərfəli həll\n\n👉 Kiçik otaqlar üçün',
-            RU: '✔ Ремонт 20 м²\n✔ Мастер + Материал\n✔ Выгодное решение\n\n👉 Для небольших комнат',
-            EN: '✔ 20 m² renovation\n✔ Master + Material\n✔ Affordable solution\n\n👉 For small rooms'
+            AZ: 'Keyfiyyətli Material\nPeşəkar Montaj\nPulsuz Ölçü\nZəmanətli İş',
+            RU: 'Качественный Материал\nПрофессиональный Монтаж\nБесплатный Замер\nГарантия Работы',
+            EN: 'Quality Material\nProfessional Installation\nFree Measurement\nGuaranteed Work'
         },
         isActive: true,
-        isPriceVisible: false
+        isPriceVisible: true
     },
     {
         id: 'pkg50',
         type: 'product',
         name: { AZ: '50 m² Paket', RU: 'Пакет 50 м²', EN: '50 m² Package' },
-        price: 0,
+        price: 1100,
         currency: 'AZN',
         image: '/picture2.jpeg',
         description: {
-            AZ: '✔ 50 m² tam təmir\n✔ Usta + Material\n✔ Standart mənzillər\n\n👉 İdeal seçim',
-            RU: '✔ Ремонт 50 м²\n✔ Мастер + Материал\n✔ Стандартные квартиры\n\n👉 Идеальный выбор',
-            EN: '✔ 50 m² renovation\n✔ Master + Material\n✔ Standard apartments\n\n👉 Ideal choice'
+            AZ: 'Keyfiyyətli Material\nPeşəkar Montaj\nPulsuz Ölçü\nZəmanətli İş',
+            RU: 'Качественный Материал\nПрофессиональный Монтаж\nБесплатный Замер\nГарантия Работы',
+            EN: 'Quality Material\nProfessional Installation\nFree Measurement\nGuaranteed Work'
         },
         isActive: true,
-        isPriceVisible: false
+        isPriceVisible: true
     },
     {
         id: 'pkg100',
         type: 'product',
         name: { AZ: '100 m² Paket', RU: 'Пакет 100 м²', EN: '100 m² Package' },
-        price: 0,
+        price: 2100,
         currency: 'AZN',
-        image: '/picture3.jpeg',
+        image: '/picture4.jpeg',
         description: {
-            AZ: '✔ 100 m² tam təmir\n✔ Usta + Material\n✔ Geniş mənzillər\n\n👉 Tam təmir üçün',
-            RU: '✔ Ремонт 100 м²\n✔ Мастер + Материал\n✔ Просторные квартиры\n\n👉 Для полного ремонта',
-            EN: '✔ 100 m² renovation\n✔ Master + Material\n✔ Spacious apartments\n\n👉 For full renovation'
+            AZ: 'Keyfiyyətli Material\nPeşəkar Montaj\nPulsuz Ölçü\nZəmanətli İş',
+            RU: 'Качественный Материал\nПрофессиональный Монтаж\nБесплатный Замер\nГарантия Работы',
+            EN: 'Quality Material\nProfessional Installation\nFree Measurement\nGuaranteed Work'
         },
         isActive: true,
-        isPriceVisible: false
+        isPriceVisible: true
     },
     {
         id: 'pkg150',
         type: 'product',
         name: { AZ: '150 m² Paket', RU: 'Пакет 150 м²', EN: '150 m² Package' },
-        price: 0,
+        price: 3150,
         currency: 'AZN',
-        image: '/picture4.jpeg',
+        image: '/picture6.jpeg',
         description: {
-            AZ: '✔ 150 m² tam təmir\n✔ Usta + Material\n✔ Obyekt və ofislər\n\n👉 Premium həllər',
-            RU: '✔ Ремонт 150 м²\n✔ Мастер + Материал\n✔ Объекты и офисы\n\n👉 Премиум решения',
-            EN: '✔ 150 m² renovation\n✔ Master + Material\n✔ Objects and offices\n\n👉 Premium solutions'
+            AZ: 'Keyfiyyətli Material\nPeşəkar Montaj\nPulsuz Ölçü\nZəmanətli İş',
+            RU: 'Качественный Материал\nПрофессиональный Монтаж\nБесплатный Замер\nГарантия Работы',
+            EN: 'Quality Material\nProfessional Installation\nFree Measurement\nGuaranteed Work'
         },
         isActive: true,
-        isPriceVisible: false
+        isPriceVisible: true
     },
     {
         id: 'pkg200',
         type: 'product',
         name: { AZ: '200 m² Paket', RU: 'Пакет 200 м²', EN: '200 m² Package' },
-        price: 0,
+        price: 4200,
         currency: 'AZN',
-        image: '/picture5.jpeg',
+        image: '/picture10.jpeg',
         description: {
-            AZ: '✔ 200 m² tam təmir\n✔ Usta + Material\n✔ Villalar və böyük sahələr\n\n👉 Maksimum sərfəli',
-            RU: '✔ Ремонт 200 м²\n✔ Мастер + Материал\n✔ Виллы и большие площади\n\n👉 Максимально выгодно',
-            EN: '✔ 200 m² renovation\n✔ Master + Material\n✔ Villas and large areas\n\n👉 Maximum value'
+            AZ: 'Keyfiyyətli Material\nPeşəkar Montaj\nPulsuz Ölçü\nZəmanətli İş',
+            RU: 'Качественный Материал\nПрофессиональный Монтаж\nБесплатный Замер\nГарантия Работы',
+            EN: 'Quality Material\nProfessional Installation\nFree Measurement\nGuaranteed Work'
         },
         isActive: true,
-        isPriceVisible: false
+        isPriceVisible: true
     }
 ];
 
