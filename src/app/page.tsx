@@ -168,37 +168,7 @@ export default function Home() {
         {/* View All Button if needed, or remove if strictly 3 */}
       </section>
 
-      {/* MATERIALS SECTION */}
-      <section className="container mx-auto px-4 py-16 bg-[#0a192f]">
-        <h2 className="text-center text-3xl font-bold mb-12 text-white">
-          {language === 'AZ' ? 'Tikinti Materialları' : language === 'RU' ? 'Строительные Материалы' : 'Construction Materials'}
-        </h2>
 
-        {/* Materials Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {products.slice(0, showAllProducts ? undefined : 3).map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-        </div>
-
-        {/* Load More Button */}
-        {products.length > 3 && (
-            <div className="text-center">
-                <button 
-                    onClick={() => setShowAllProducts(!showAllProducts)}
-                    className="inline-flex items-center gap-2 px-8 py-3 bg-white/5 border border-white/10 rounded-full text-white font-semibold hover:bg-[var(--gold)] hover:text-black transition-all duration-300"
-                >
-                    {showAllProducts 
-                        ? (language === 'AZ' ? 'Daha az göstər' : language === 'RU' ? 'Показать меньше' : 'Show Less')
-                        : (language === 'AZ' ? 'Daha çox göstər' : language === 'RU' ? 'Показать больше' : 'Load More')
-                    }
-                    <svg className={`w-4 h-4 transition-transform duration-300 ${showAllProducts ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                </button>
-            </div>
-        )}
-      </section>
 
        {/* SERVICES SECTION */}
        <section className="bg-white py-16" id="services">
