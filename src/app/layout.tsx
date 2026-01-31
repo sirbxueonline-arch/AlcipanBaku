@@ -63,6 +63,46 @@ export default function RootLayout({
           </CartProvider>
         </AdminProvider>
         <Analytics />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'LocalBusiness',
+              name: 'Alçipan Baku',
+              image: 'https://alcipanbaku.com/brand-logo.jpg',
+              '@id': 'https://alcipanbaku.com',
+              url: 'https://alcipanbaku.com',
+              telephone: '+994506368731',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: 'Baku, Azerbaijan',
+                addressLocality: 'Baku',
+                addressCountry: 'AZ'
+              },
+              geo: {
+                '@type': 'GeoCoordinates',
+                latitude: 40.4093,
+                longitude: 49.8671
+              },
+              openingHoursSpecification: {
+                '@type': 'OpeningHoursSpecification',
+                dayOfWeek: [
+                  'Monday',
+                  'Tuesday',
+                  'Wednesday',
+                  'Thursday',
+                  'Friday',
+                  'Saturday',
+                  'Sunday'
+                ],
+                opens: '09:00',
+                closes: '20:00'
+              },
+              priceRange: '$$'
+            })
+          }}
+        />
       </body>
     </html>
   );

@@ -8,49 +8,79 @@ import { Product, Service, WorkItem } from '@/types';
 // ==========================================
 export const initialPackages: Product[] = [
     {
-        id: '1',
+        id: 'pkg20',
         type: 'product',
         name: { AZ: '20 m² Paket', RU: 'Пакет 20 м²', EN: '20 m² Package' },
-        price: 200,
+        price: 0,
         currency: 'AZN',
         image: '/picture1.jpeg',
         description: {
-            AZ: '✔ 20 m² üçün tam təmir paketi\n✔ Material + Usta\n✔ Sərfəli qiymət\n\n👉 Kiçik otaqlar üçün idealdır',
-            RU: '✔ Полный пакет ремонта для 20 м²\n✔ Материал + Мастер\n✔ Выгодная цена\n\n👉 Идеально для небольших комнат',
-            EN: '✔ Full renovation package for 20 m²\n✔ Material + Master\n✔ Affordable price\n\n👉 Ideal for small rooms'
+            AZ: '✔ 20 m² tam təmir\n✔ Usta + Material\n✔ Sərfəli həll\n\n👉 Kiçik otaqlar üçün',
+            RU: '✔ Ремонт 20 м²\n✔ Мастер + Материал\n✔ Выгодное решение\n\n👉 Для небольших комнат',
+            EN: '✔ 20 m² renovation\n✔ Master + Material\n✔ Affordable solution\n\n👉 For small rooms'
         },
         isActive: true,
-        isPriceVisible: true
+        isPriceVisible: false
     },
     {
-        id: '2',
+        id: 'pkg50',
         type: 'product',
-        name: { AZ: '40 m² Paket', RU: 'Пакет 40 м²', EN: '40 m² Package' },
-        price: 400,
+        name: { AZ: '50 m² Paket', RU: 'Пакет 50 м²', EN: '50 m² Package' },
+        price: 0,
         currency: 'AZN',
         image: '/picture2.jpeg',
         description: {
-            AZ: '✔ 40 m² üçün tam təmir paketi\n✔ Material + Usta\n✔ Standart mənzillər üçün\n\n👉 Ən çox seçilən ölçü',
-            RU: '✔ Полный пакет ремонта для 40 м²\n✔ Материал + Мастер\n✔ Для стандартных квартир\n\n👉 Самый популярный размер',
-            EN: '✔ Full renovation package for 40 m²\n✔ Material + Master\n✔ For standard apartments\n\n👉 Most popular size'
+            AZ: '✔ 50 m² tam təmir\n✔ Usta + Material\n✔ Standart mənzillər\n\n👉 İdeal seçim',
+            RU: '✔ Ремонт 50 м²\n✔ Мастер + Материал\n✔ Стандартные квартиры\n\n👉 Идеальный выбор',
+            EN: '✔ 50 m² renovation\n✔ Master + Material\n✔ Standard apartments\n\n👉 Ideal choice'
         },
         isActive: true,
-        isPriceVisible: true
+        isPriceVisible: false
     },
     {
-        id: '3',
+        id: 'pkg100',
         type: 'product',
-        name: { AZ: '60 m² Paket', RU: 'Пакет 60 м²', EN: '60 m² Package' },
-        price: 600,
+        name: { AZ: '100 m² Paket', RU: 'Пакет 100 м²', EN: '100 m² Package' },
+        price: 0,
         currency: 'AZN',
         image: '/picture3.jpeg',
         description: {
-            AZ: '✔ 60 m² üçün tam təmir paketi\n✔ Material + Usta\n✔ Geniş mənzillər üçün\n\n👉 Böyük sahələr üçün sərfəli',
-            RU: '✔ Полный пакет ремонта для 60 м²\n✔ Материал + Мастер\n✔ Для просторных квартир\n\n👉 Выгодно для больших площадей',
-            EN: '✔ Full renovation package for 60 m²\n✔ Material + Master\n✔ For spacious apartments\n\n👉 Profitable for large areas'
+            AZ: '✔ 100 m² tam təmir\n✔ Usta + Material\n✔ Geniş mənzillər\n\n👉 Tam təmir üçün',
+            RU: '✔ Ремонт 100 м²\n✔ Мастер + Материал\n✔ Просторные квартиры\n\n👉 Для полного ремонта',
+            EN: '✔ 100 m² renovation\n✔ Master + Material\n✔ Spacious apartments\n\n👉 For full renovation'
         },
         isActive: true,
-        isPriceVisible: true
+        isPriceVisible: false
+    },
+    {
+        id: 'pkg150',
+        type: 'product',
+        name: { AZ: '150 m² Paket', RU: 'Пакет 150 м²', EN: '150 m² Package' },
+        price: 0,
+        currency: 'AZN',
+        image: '/picture4.jpeg',
+        description: {
+            AZ: '✔ 150 m² tam təmir\n✔ Usta + Material\n✔ Obyekt və ofislər\n\n👉 Premium həllər',
+            RU: '✔ Ремонт 150 м²\n✔ Мастер + Материал\n✔ Объекты и офисы\n\n👉 Премиум решения',
+            EN: '✔ 150 m² renovation\n✔ Master + Material\n✔ Objects and offices\n\n👉 Premium solutions'
+        },
+        isActive: true,
+        isPriceVisible: false
+    },
+    {
+        id: 'pkg200',
+        type: 'product',
+        name: { AZ: '200 m² Paket', RU: 'Пакет 200 м²', EN: '200 m² Package' },
+        price: 0,
+        currency: 'AZN',
+        image: '/picture5.jpeg',
+        description: {
+            AZ: '✔ 200 m² tam təmir\n✔ Usta + Material\n✔ Villalar və böyük sahələr\n\n👉 Maksimum sərfəli',
+            RU: '✔ Ремонт 200 м²\n✔ Мастер + Материал\n✔ Виллы и большие площади\n\n👉 Максимально выгодно',
+            EN: '✔ 200 m² renovation\n✔ Master + Material\n✔ Villas and large areas\n\n👉 Maximum value'
+        },
+        isActive: true,
+        isPriceVisible: false
     }
 ];
 
@@ -185,75 +215,63 @@ export const initialProducts: Product[] = [
 // ==========================================
 export const initialServices: Service[] = [
     {
-        id: '1',
+        id: 'sade-tavan',
         type: 'service',
-        name: { AZ: 'Asma Tavanlar', RU: 'Подвесные Потолки', EN: 'Suspended Ceilings' },
+        name: { AZ: 'Sadə Tavan', RU: 'Простой Потолок', EN: 'Simple Ceiling' },
         description: {
-            AZ: 'Sadə və fiqurlu asma tavanların peşəkar montajı.',
-            RU: 'Профессиональный монтаж простых и фигурных подвесных потолков.',
-            EN: 'Professional installation of simple and figured suspended ceilings.'
+            AZ: '💰 10 AZN / m²\nSadə düz gipskarton tavan.\nKlassik və minimalist dizayn.',
+            RU: '💰 10 AZN / м²\nПростой ровный гипсокартонный потолок.\nКлассический и минималистичный дизайн.',
+            EN: '💰 10 AZN / m²\nSimple flat drywall ceiling.\nClassic and minimalist design.'
+        },
+        image: '/picture1.jpeg', // Ensure this image exists
+        isActive: true
+    },
+    {
+        id: 'fiqurlu-tavan',
+        type: 'service',
+        name: { AZ: 'Fiqurlu Tavan', RU: 'Фигурный Потолок', EN: 'Figured Ceiling' },
+        description: {
+            AZ: '💰 20 AZN / m²\nŞəxsi dizayn əsasında fiqurlu tavanlar.\nPremium və özəl görünüş.',
+            RU: '💰 20 AZN / м²\nФигурные потолки по индивидуальному дизайну.\nПремиальный вид.',
+            EN: '💰 20 AZN / m²\nFigured ceilings based on custom design.\nPremium and unique look.'
         },
         image: '/picture2.jpeg',
         isActive: true
     },
     {
-        id: '2',
+        id: 'arakesme',
         type: 'service',
-        name: { AZ: 'Dekorativ Dizayn', RU: 'Декоративный Дизайн', EN: 'Decorative Design' },
+        name: { AZ: 'Arakəsmə', RU: 'Перегородка', EN: 'Partition' },
         description: {
-            AZ: 'İnteryerə özəl dekorativ tavan və divar həlləri.',
-            RU: 'Декоративные решения для потолков и стен под интерьер.',
-            EN: 'Custom decorative ceiling and wall solutions for interiors.'
-        },
-        image: '/picture1.jpeg',
-        isActive: true
-    },
-    {
-        id: '3',
-        type: 'service',
-        name: { AZ: 'Divar Arakəsmələri', RU: 'Стеновые Перегородки', EN: 'Wall Partitions' },
-        description: {
-            AZ: 'Məkanın bölünməsi üçün gipskarton arakəsmələr.',
-            RU: 'Гипсокартонные перегородки для зонирования пространства.',
-            EN: 'Drywall partitions for space zoning.'
+            AZ: 'Otaqları bölmək üçün keyfiyyətli arakəsmələr.\nSəs izolyasiyası və möhkəmlik.',
+            RU: 'Качественные перегородки для зонирования.\nЗвукоизоляция и прочность.',
+            EN: 'Quality partitions for room dividing.\nSound insulation and durability.'
         },
         image: '/picture3.jpeg',
         isActive: true
     },
     {
-        id: '4',
+        id: 'gizli-isiq',
         type: 'service',
-        name: { AZ: 'Gizli İşıqlandırma', RU: 'Скрытое Освещение', EN: 'Hidden Lighting' },
+        name: { AZ: 'Gizli İşıq', RU: 'Скрытый Свет', EN: 'Hidden Lighting' },
         description: {
-            AZ: 'Tavan və divarlarda gizli LED işıqlandırma sistemləri.',
-            RU: 'Системы скрытого светодиодного освещения на потолках и стенах.',
-            EN: 'Hidden LED lighting systems on ceilings and walls.'
+            AZ: 'Müasir LED işıqlandırma sistemləri.\nİnteryerə xüsusi aura qatır.',
+            RU: 'Современные системы LED освещения.\nСоздает особую ауру в интерьере.',
+            EN: 'Modern LED lighting systems.\nAdds a special aura to the interior.'
         },
         image: '/picture8.jpeg',
         isActive: true
     },
     {
-        id: '5',
+        id: 'tv-stand',
         type: 'service',
-        name: { AZ: 'TV Stend və Fiqurlar', RU: 'ТВ Стенды и Фигуры', EN: 'TV Stands & Figures' },
+        name: { AZ: 'TV Dizayn', RU: 'ТВ Дизайн', EN: 'TV Design' },
         description: {
-            AZ: 'Gipskartondan yığılan TV stendlər və dekorativ fiqurlar.',
-            RU: 'ТВ-стенды и декоративные фигуры из гипсокартона.',
-            EN: 'Gypsum TV stands and decorative figures.'
+            AZ: 'Televizor üçün xüsusi yığılmış stendlər.\nFunksional və estetik görünüş.',
+            RU: 'Специальные стенды для телевизоров.\nФункциональный и эстетичный вид.',
+            EN: 'Custom built stands for TVs.\nFunctional and aesthetic look.'
         },
         image: '/picture9.jpeg',
-        isActive: true
-    },
-    {
-        id: '6',
-        type: 'service',
-        name: { AZ: 'Ofis və Obyekt Təmiri', RU: 'Ремонт Офисов и Объектов', EN: 'Office & Object Renovation' },
-        description: {
-            AZ: 'Ofis və kommersiya obyektlərində alçipan işləri.',
-            RU: 'Гипсокартонные работы в офисах и коммерческих объектах.',
-            EN: 'Drywall works in offices and commercial objects.'
-        },
-        image: '/picture6.jpeg',
         isActive: true
     }
 ];

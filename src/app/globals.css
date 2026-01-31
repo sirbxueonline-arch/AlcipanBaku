@@ -2,9 +2,10 @@
 
 :root {
   /* User provided "Premium Paket" palette */
-  --bg: #020617;
-  --card: #0f172a;
+  --bg: #0a192f;
+  --card: #112240;
   --primary: #2563eb;
+  --gold: #fbbf24;
   --text: #e5e7eb;
   --muted: #94a3b8;
 
