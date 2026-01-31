@@ -114,11 +114,12 @@ export default function Home() {
           </div>
 
         {/* Custom Package Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 max-w-7xl mx-auto">
+        {/* Custom Package Cards Grid */ }
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8 mb-12 max-w-7xl mx-auto">
             {packages.filter(p => p.isActive).slice(0, 3).map(pkg => (
-              <div key={pkg.id} className="bg-white rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-gray-100 flex flex-col">
-                  {/* Image Top */}
-                  <div className="relative h-48 w-full">
+              <div key={pkg.id} className="bg-white rounded-xl md:rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-gray-100 flex flex-col">
+                  {/* Image Top - Smaller on mobile */}
+                  <div className="relative h-28 md:h-48 w-full">
                       <Image 
                         src={pkg.image} 
                         alt={pkg.name[language]} 
@@ -127,35 +128,40 @@ export default function Home() {
                       />
                   </div>
                   
-                  {/* Blue Strip Title */}
-                  <div className="bg-[#0a192f] py-4 text-center">
-                      <h3 className="text-white text-xl font-bold">
+                  {/* Blue Strip Title - Compact on mobile */}
+                  <div className="bg-[#0a192f] py-2 md:py-4 text-center">
+                      <h3 className="text-white text-sm md:text-xl font-bold px-1 truncate">
                           {pkg.name[language]}
                       </h3>
                   </div>
 
-                  {/* Content */}
-                  <div className="p-8 flex flex-col items-center flex-grow">
+                  {/* Content - Compact padding on mobile */}
+                  <div className="p-3 md:p-8 flex flex-col items-center flex-grow">
                       {/* Price */}
-                      <div className="text-center mb-6 border-b border-gray-200 w-full pb-6">
-                          <span className="text-4xl font-extrabold text-[#0a192f]">
-                              {pkg.price.toLocaleString()} {pkg.currency}
-                          </span>
+                      <div className="text-center mb-3 md:mb-6 border-b border-gray-200 w-full pb-3 md:pb-6">
+                            <div className="flex items-baseline justify-center gap-1">
+                                <span className="text-xl md:text-4xl font-extrabold text-[#0a192f]">
+                                    {pkg.price.toLocaleString()}
+                                </span>
+                                <span className="text-sm md:text-xl font-bold text-[#0a192f]">
+                                    {pkg.currency}
+                                </span>
+                            </div>
                       </div>
 
-                      {/* Features List */}
-                      <ul className="space-y-3 w-full mb-8 text-left pl-4">
+                      {/* Features List - Smaller text on mobile */}
+                      <ul className="space-y-1.5 md:space-y-3 w-full mb-4 md:mb-8 text-left pl-0 md:pl-4">
                           {pkg.description[language].split('\n').map((line, idx) => (
-                              <li key={idx} className="flex items-center gap-3 text-gray-700 font-medium">
-                                  <svg className="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
-                                  {line}
+                              <li key={idx} className="flex items-start gap-2 text-gray-700 font-medium text-[10px] md:text-base leading-tight">
+                                  <svg className="w-3.5 h-3.5 md:w-5 md:h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
+                                  <span>{line}</span>
                               </li>
                           ))}
                       </ul>
 
-                      {/* Button */}
+                      {/* Button - Compact on mobile */}
                       <div className="mt-auto w-full">
-                          <button onClick={() => window.location.href='#contact'} className="w-full py-4 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] text-[#0a192f] font-bold rounded-xl shadow-md hover:shadow-lg transition-all uppercase tracking-wider">
+                          <button onClick={() => window.location.href='#contact'} className="w-full py-2.5 md:py-4 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] text-[#0a192f] font-bold rounded-lg md:rounded-xl shadow-md hover:shadow-lg transition-all text-xs md:text-lg uppercase tracking-wider">
                               {language === 'AZ' ? 'SİFARİŞ ET' : language === 'RU' ? 'ЗАКАЗАТЬ' : 'ORDER NOW'}
                           </button>
                       </div>
