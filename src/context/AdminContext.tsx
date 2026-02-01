@@ -65,7 +65,7 @@ export function AdminProvider({ children }: { children: ReactNode }) {
     // Load from localStorage on mount
     useEffect(() => {
         // DATA VERSIONING to force update when we change initial structures
-        const DATA_VERSION = 'v5.0_services_cart';
+        const DATA_VERSION = 'v6.0_flexible_packages';
         const storedVersion = localStorage.getItem('alcipan_data_version');
         const isVersionMatch = storedVersion === DATA_VERSION;
 
@@ -187,14 +187,15 @@ export function AdminProvider({ children }: { children: ReactNode }) {
     const addPackage = () => {
         const newPackage: Package = {
             id: `pkg${Date.now()}`,
-            type: 'product',
+            type: 'package',
             image: 'https://placehold.co/400x300?text=New+Package',
             name: { AZ: 'Yeni Paket', RU: 'Новый Пакет', EN: 'New Package' },
             description: { AZ: 'Paket detalları...', RU: 'Детали пакета...', EN: 'Package details...' },
             price: 0,
             currency: 'AZN',
             isActive: false,
-            isPriceVisible: true
+            isPriceVisible: true,
+            step: 20
         };
         setPackages(prev => [...prev, newPackage]);
     };

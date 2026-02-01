@@ -1,16 +1,16 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Product, Service } from '@/types';
+import { Product, Service, Package } from '@/types';
 
-export type CartItem = (Product | Service) & {
+export type CartItem = (Product | Service | Package) & {
     quantity: number;
 };
 
 interface CartContextType {
     cartItems: CartItem[];
     isCartOpen: boolean;
-    addToCart: (item: Product | Service) => void;
+    addToCart: (item: Product | Service | Package) => void;
     removeFromCart: (productId: string) => void;
     updateQuantity: (productId: string, quantity: number) => void;
     toggleCart: () => void;
@@ -45,17 +45,18 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         }
     }, [cartItems, mounted]);
 
-    const addToCart = (product: Product | Service) => {
+    const addToCart = (product: Product | Service | Package) => {
+        const step = product.type === 'package' ? (product.step || 20) : 1;
         setCartItems(prev => {
             const existing = prev.find(item => item.id === product.id);
             if (existing) {
                 return prev.map(item =>
                     item.id === product.id
-                        ? { ...item, quantity: item.quantity + 1 }
+                        ? { ...item, quantity: item.quantity + step }
                         : item
                 );
             }
-            return [...prev, { ...product, quantity: 1 }];
+            return [...prev, { ...product, quantity: step }];
         });
         setIsCartOpen(true);
     };

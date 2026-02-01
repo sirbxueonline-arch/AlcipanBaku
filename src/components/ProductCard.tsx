@@ -1,14 +1,14 @@
 'use client';
 
 import React from 'react';
-import { Product } from '@/types';
+import { Product, Package } from '@/types';
 import { useAdmin } from '@/context/AdminContext';
 import { useCart } from '@/context/CartContext';
 import Image from 'next/image';
 import { ShoppingCart } from 'lucide-react';
 
 interface ProductCardProps {
-    product: Product;
+    product: Product | Package;
 }
 
 export function ProductCard({ product }: ProductCardProps) {

@@ -1,17 +1,18 @@
-import { Product, Service, WorkItem } from '@/types';
+import { Product, Service, WorkItem, Package } from '@/types';
 
 // ==========================================
 // YOUR PRODUCTS
 // ==========================================
+
 // ==========================================
 // YOUR PACKAGES (Bundles)
 // ==========================================
-export const initialPackages: Product[] = [
+export const initialPackages: Package[] = [
     {
         id: 'pkg20',
-        type: 'product',
+        type: 'package',
         name: { AZ: '20 m² Paket', RU: 'Пакет 20 м²', EN: '20 m² Package' },
-        price: 460,
+        price: 23, // 460 / 20
         currency: 'AZN',
         image: '/picture1.jpeg',
         description: {
@@ -20,13 +21,14 @@ export const initialPackages: Product[] = [
             EN: 'Quality Material\nProfessional Installation\nFree Measurement\nGuaranteed Work'
         },
         isActive: true,
-        isPriceVisible: true
+        isPriceVisible: true,
+        step: 20
     },
     {
         id: 'pkg50',
-        type: 'product',
+        type: 'package',
         name: { AZ: '50 m² Paket', RU: 'Пакет 50 м²', EN: '50 m² Package' },
-        price: 1100,
+        price: 22, // 1100 / 50
         currency: 'AZN',
         image: '/picture2.jpeg',
         description: {
@@ -35,13 +37,14 @@ export const initialPackages: Product[] = [
             EN: 'Quality Material\nProfessional Installation\nFree Measurement\nGuaranteed Work'
         },
         isActive: true,
-        isPriceVisible: true
+        isPriceVisible: true,
+        step: 50
     },
     {
         id: 'pkg100',
-        type: 'product',
+        type: 'package',
         name: { AZ: '100 m² Paket', RU: 'Пакет 100 м²', EN: '100 m² Package' },
-        price: 2100,
+        price: 21, // 2100 / 100
         currency: 'AZN',
         image: '/picture4.jpeg',
         description: {
@@ -50,13 +53,14 @@ export const initialPackages: Product[] = [
             EN: 'Quality Material\nProfessional Installation\nFree Measurement\nGuaranteed Work'
         },
         isActive: true,
-        isPriceVisible: true
+        isPriceVisible: true,
+        step: 100
     },
     {
         id: 'pkg150',
-        type: 'product',
+        type: 'package',
         name: { AZ: '150 m² Paket', RU: 'Пакет 150 м²', EN: '150 m² Package' },
-        price: 3150,
+        price: 21, // 3150 / 150
         currency: 'AZN',
         image: '/picture6.jpeg',
         description: {
@@ -65,13 +69,14 @@ export const initialPackages: Product[] = [
             EN: 'Quality Material\nProfessional Installation\nFree Measurement\nGuaranteed Work'
         },
         isActive: true,
-        isPriceVisible: true
+        isPriceVisible: true,
+        step: 150
     },
     {
         id: 'pkg200',
-        type: 'product',
+        type: 'package',
         name: { AZ: '200 m² Paket', RU: 'Пакет 200 м²', EN: '200 m² Package' },
-        price: 4200,
+        price: 21, // 4200 / 200
         currency: 'AZN',
         image: '/picture10.jpeg',
         description: {
@@ -80,7 +85,8 @@ export const initialPackages: Product[] = [
             EN: 'Quality Material\nProfessional Installation\nFree Measurement\nGuaranteed Work'
         },
         isActive: true,
-        isPriceVisible: true
+        isPriceVisible: true,
+        step: 200
     }
 ];
 
@@ -88,126 +94,6 @@ export const initialPackages: Product[] = [
 // YOUR PRODUCTS (Materials)
 // ==========================================
 export const initialProducts: Product[] = [
-    {
-        id: '4',
-        type: 'product',
-        name: { AZ: 'Gipskarton Lövhə', RU: 'Гипсокартон', EN: 'Gypsum Board' },
-        price: 0,
-        currency: 'AZN',
-        image: '/brain/prod_gypsum_board_1768927187453.png',
-        description: {
-            AZ: 'Divar və tavan üçün gipskarton lövhələr.',
-            RU: 'Гипсокартонные листы для стен и потолков.',
-            EN: 'Gypsum boards / drywall sheets for walls and ceilings.'
-        },
-        isActive: true,
-        isPriceVisible: false
-    },
-    {
-        id: '5',
-        type: 'product',
-        name: { AZ: 'Metal Profillər', RU: 'Металлические Профили', EN: 'Metal Profiles' },
-        price: 0,
-        currency: 'AZN',
-        image: '/brain/prod_metal_profiles_1768927202928.png',
-        description: {
-            AZ: 'Alçipan sistemləri üçün dayaq və istiqamətverici profillər.',
-            RU: 'Стойки и направляющие профили для гипсокартонных систем.',
-            EN: 'Metal profiles (studs and tracks for drywall systems).'
-        },
-        isActive: true,
-        isPriceVisible: false
-    },
-    {
-        id: '6',
-        type: 'product',
-        name: { AZ: 'Gips Tozları', RU: 'Гипсовый Порошок', EN: 'Gypsum Powder' },
-        price: 0,
-        currency: 'AZN',
-        image: '/brain/prod_gypsum_powder_1768927224616.png',
-        description: {
-            AZ: 'Yüksək keyfiyyətli suvaq və gips tozları.',
-            RU: 'Высококачественная штукатурка и гипсовый порошок.',
-            EN: 'Bags of plaster / gypsum powder.'
-        },
-        isActive: true,
-        isPriceVisible: false
-    },
-    {
-        id: '7',
-        type: 'product',
-        name: { AZ: 'Dərz Dolğusu', RU: 'Шпаклевка', EN: 'Joint Compound' },
-        price: 0,
-        currency: 'AZN',
-        image: '/brain/prod_joint_compound_1768927241575.png',
-        description: {
-            AZ: 'Təmir və tamamlama işləri üçün dərz dolğusu.',
-            RU: 'Шпаклевка для ремонтных и отделочных работ.',
-            EN: 'Joint compound / finishing plaster.'
-        },
-        isActive: true,
-        isPriceVisible: false
-    },
-    {
-        id: '8',
-        type: 'product',
-        name: { AZ: 'İzolyasiya Materialları', RU: 'Изоляция', EN: 'Insulation' },
-        price: 0,
-        currency: 'AZN',
-        image: '/brain/prod_insulation_1768927256372.png',
-        description: {
-            AZ: 'İstilik və səs izolyasiyası üçün rulon və panellər.',
-            RU: 'Рулоны и панели для тепло- и звукоизоляции.',
-            EN: 'Insulation rolls or panels.'
-        },
-        isActive: true,
-        isPriceVisible: false
-    },
-    {
-        id: '9',
-        type: 'product',
-        name: { AZ: 'Tavan Panelləri', RU: 'Потолочные Панели', EN: 'Ceiling Panels' },
-        price: 0,
-        currency: 'AZN',
-        image: '/brain/prod_ceiling_panels_1768927272094.png',
-        description: {
-            AZ: 'Asma tavan sistemləri üçün panellər.',
-            RU: 'Панели для систем подвесных потолков.',
-            EN: 'Ceiling boards / ceiling system panels.'
-        },
-        isActive: true,
-        isPriceVisible: false
-    },
-    {
-        id: '10',
-        type: 'product',
-        name: { AZ: 'Aksesuarlar', RU: 'Аксессуары', EN: 'Accessories' },
-        price: 0,
-        currency: 'AZN',
-        image: '/brain/prod_accessories_1768927295546.png',
-        description: {
-            AZ: 'Künclük, şrup və birləşdirici detallar.',
-            RU: 'Уголки, саморезы и соединительные детали.',
-            EN: 'Construction accessories (corner beads, trims, connectors).'
-        },
-        isActive: true,
-        isPriceVisible: false
-    },
-    {
-        id: '11',
-        type: 'product',
-        name: { AZ: 'Tikinti Panelləri', RU: 'Строительные Панели', EN: 'Building Panels' },
-        price: 0,
-        currency: 'AZN',
-        image: '/brain/prod_building_panels_1768927313893.png',
-        description: {
-            AZ: 'Paletlərdə yığılmış tikinti panelləri.',
-            RU: 'Строительные панели, сложенные на поддонах.',
-            EN: 'Stacked building panels on pallets.'
-        },
-        isActive: true,
-        isPriceVisible: false
-    },
     {
         id: '12',
         type: 'product',

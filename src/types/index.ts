@@ -41,6 +41,9 @@ export interface WorkItem {
   isActive: boolean;
 }
 
-export type Package = Product;
+export interface Package extends Omit<Product, 'type'> {
+  type: 'package';
+  step?: number;
+}
 
 export type Item = Product | Service | WorkItem | Package;

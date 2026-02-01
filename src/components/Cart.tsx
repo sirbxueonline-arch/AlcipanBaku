@@ -130,14 +130,22 @@ export function Cart() {
                                                 {/* Quantity Controls */}
                                                 <div className="flex items-center gap-3 bg-gray-50 rounded-lg p-1">
                                                     <button
-                                                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                                                        onClick={() => {
+                                                            const step = item.type === 'package' ? (item.step || 20) : 1;
+                                                            updateQuantity(item.id, item.quantity - step);
+                                                        }}
                                                         className="w-6 h-6 flex items-center justify-center bg-white rounded shadow-sm text-gray-600 hover:text-blue-600 disabled:opacity-50"
                                                     >
                                                         <Minus size={14} />
                                                     </button>
-                                                    <span className="text-sm font-bold w-4 text-center text-gray-900">{item.quantity}</span>
+                                                    <span className="text-sm font-bold min-w-[3rem] text-center text-gray-900">
+                                                        {item.quantity}{item.type === 'package' ? ' m²' : ''}
+                                                    </span>
                                                     <button
-                                                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                                        onClick={() => {
+                                                            const step = item.type === 'package' ? (item.step || 20) : 1;
+                                                            updateQuantity(item.id, item.quantity + step);
+                                                        }}
                                                         className="w-6 h-6 flex items-center justify-center bg-white rounded shadow-sm text-gray-600 hover:text-blue-600"
                                                     >
                                                         <Plus size={14} />

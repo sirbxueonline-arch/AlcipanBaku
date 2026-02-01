@@ -58,7 +58,7 @@ export default function RootLayout({
           <CartProvider>
             <ClientLayout>
               {children}
-              <WhatsAppWidget />
+
             </ClientLayout>
           </CartProvider>
         </AdminProvider>
