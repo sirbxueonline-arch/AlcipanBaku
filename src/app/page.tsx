@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useAdmin } from '@/context/AdminContext';
+import { useCart } from '@/context/CartContext';
 
 import { ServiceCard } from '@/components/ServiceCard';
 import { WorkGallery } from '@/components/WorkGallery';
@@ -12,6 +13,7 @@ import Image from 'next/image';
 
 export default function Home() {
   const { packages, services, language } = useAdmin();
+  const { addToCart } = useCart();
 
   const sendWhatsApp = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -161,7 +163,7 @@ export default function Home() {
 
                       {/* Button - Compact on mobile */}
                       <div className="mt-auto w-full">
-                          <button onClick={() => window.location.href='#contact'} className="w-full py-2.5 md:py-4 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] text-[#0a192f] font-bold rounded-lg md:rounded-xl shadow-md hover:shadow-lg transition-all text-xs md:text-lg uppercase tracking-wider">
+                          <button onClick={() => addToCart(pkg)} className="w-full py-2.5 md:py-4 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] text-[#0a192f] font-bold rounded-lg md:rounded-xl shadow-md hover:shadow-lg transition-all text-xs md:text-lg uppercase tracking-wider">
                               {language === 'AZ' ? 'SİFARİŞ ET' : language === 'RU' ? 'ЗАКАЗАТЬ' : 'ORDER NOW'}
                           </button>
                       </div>

@@ -89,34 +89,7 @@ export default function ProductsPage() {
                     </div>
                 )}
 
-                {/* MATERIALS SECTION */}
-                <h2 className="text-3xl font-bold text-slate-900 mb-8 border-l-4 border-[var(--primary)] pl-4">
-                     {language === 'AZ' ? 'Tikinti Materialları' : language === 'RU' ? 'Строительные Материалы' : 'Building Materials'}
-                </h2>
-
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
-                >
-                    {activeProducts.map(product => (
-                        <motion.div key={product.id} variants={itemVariants} className="h-full">
-                            <ProductCard product={product} />
-                        </motion.div>
-                    ))}
-                </motion.div>
-
-                {activeProducts.length === 0 && (
-                    <div className="text-center py-20">
-                        <p className="text-gray-500 text-lg">
-                            {language === 'AZ' ? 'Hal-hazırda məhsul tapılmadı.' :
-                                language === 'RU' ? 'Продукты не найдены.' :
-                                    'No products found at the moment.'}
-                        </p>
-                    </div>
-                )}
-                {/* Pricing Note */}
+{/* Pricing Note */}
                 <div className="mt-16 bg-yellow-500/5 border border-yellow-500/20 rounded-lg p-6 max-w-3xl mx-auto">
                     <div className="flex items-start gap-4">
                         <div className="text-yellow-600 mt-1 flex-shrink-0">
