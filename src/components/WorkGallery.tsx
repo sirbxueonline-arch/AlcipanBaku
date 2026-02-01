@@ -8,7 +8,7 @@ import { TikTokEmbed } from 'react-social-media-embed';
 export function WorkGallery() {
     const { workItems, language } = useAdmin();
     const activeWorks = workItems.filter(w => w.isActive);
-    const [playingVideo, setPlayingVideo] = useState<string | null>(null);
+    const [viewingItem, setViewingItem] = useState<{ url: string, type: 'video' | 'tiktok' | 'image' } | null>(null);
 
     // Separate items
     // Videos are items with a videoUrl OR tikTokUrl
@@ -22,8 +22,12 @@ export function WorkGallery() {
     if (!hasPhotos && !hasVideos) return null;
 
     const handleVideoClick = (item: any) => {
-        if (item.videoUrl) setPlayingVideo(item.videoUrl);
-        else if (item.tikTokUrl) setPlayingVideo(item.tikTokUrl);
+        if (item.videoUrl) setViewingItem({ url: item.videoUrl, type: 'video' });
+        else if (item.tikTokUrl) setViewingItem({ url: item.tikTokUrl, type: 'tiktok' });
+    };
+
+    const handlePhotoClick = (item: any) => {
+        if (item.imageUrl) setViewingItem({ url: item.imageUrl, type: 'image' });
     };
 
     return (
@@ -38,9 +42,9 @@ export function WorkGallery() {
                     <h3 className="text-xl font-semibold mb-6 text-white/80 px-4 border-l-4 border-teal-500">
                         {language === 'AZ' ? 'Fotoqalereya' : language === 'RU' ? 'Фотогалерея' : 'Photo Gallery'}
                     </h3>
-                    <WorkCarousel 
-                        items={photos} 
-                        onItemClick={(item) => {/* Photos might just be viewable or open a lightbox later */}}
+                    <WorkCarousel
+                        items={photos}
+                        onItemClick={handlePhotoClick}
                         language={language}
                     />
                 </div>
@@ -52,8 +56,8 @@ export function WorkGallery() {
                     <h3 className="text-xl font-semibold mb-6 text-white/80 px-4 border-l-4 border-teal-500">
                         {language === 'AZ' ? 'Video İcmallar' : language === 'RU' ? 'Видео Обзоры' : 'Video Reviews'}
                     </h3>
-                    <WorkCarousel 
-                        items={videos} 
+                    <WorkCarousel
+                        items={videos}
                         onItemClick={handleVideoClick}
                         isVideo={true}
                         language={language}
@@ -61,19 +65,19 @@ export function WorkGallery() {
                 </div>
             )}
 
-            {/* VIDEO MODAL OVERLAY */}
-            {playingVideo && (
-                <div 
-                    className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-300"
-                    onClick={() => setPlayingVideo(null)} // Close on backdrop click
+            {/* MODAL OVERLAY */}
+            {viewingItem && (
+                <div
+                    className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-300"
+                    onClick={() => setViewingItem(null)} // Close on backdrop click
                 >
-                    <div 
-                        className="relative w-full max-w-4xl max-h-[90vh] rounded-xl shadow-2xl flex items-center justify-center"
+                    <div
+                        className="relative w-full max-w-5xl max-h-[90vh] flex items-center justify-center"
                         onClick={(e) => e.stopPropagation()} // Prevent close on content click
                     >
                         {/* Close Button */}
-                        <button 
-                            onClick={() => setPlayingVideo(null)}
+                        <button
+                            onClick={() => setViewingItem(null)}
                             className="absolute -top-12 right-0 z-50 p-2 text-white hover:text-gray-300 transition"
                         >
                             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -81,19 +85,28 @@ export function WorkGallery() {
                             </svg>
                         </button>
 
-                        <div className="overflow-hidden rounded-xl w-full flex justify-center">
-                            {playingVideo.includes('tiktok.com') ? (
+                        <div className="overflow-hidden rounded-xl w-full flex justify-center items-center">
+                            {viewingItem.type === 'tiktok' ? (
                                 <div className="bg-black rounded-xl overflow-hidden">
-                                     <TikTokEmbed url={playingVideo} width={325} />
+                                    <TikTokEmbed url={viewingItem.url} width={325} />
                                 </div>
-                            ) : (
-                                <video 
-                                    src={playingVideo} 
-                                    controls 
-                                    autoPlay 
-                                    playsInline 
-                                    className="max-h-[85vh] max-w-full object-contain rounded-xl"
+                            ) : viewingItem.type === 'video' ? (
+                                <video
+                                    src={viewingItem.url}
+                                    controls
+                                    autoPlay
+                                    playsInline
+                                    className="max-h-[85vh] max-w-full object-contain rounded-xl shadow-2xl"
                                 />
+                            ) : (
+                                // Image
+                                <div className="relative w-auto h-auto max-h-[85vh] max-w-full">
+                                    <img
+                                        src={viewingItem.url}
+                                        alt="Full view"
+                                        className="max-h-[85vh] max-w-full object-contain rounded-sm shadow-2xl"
+                                    />
+                                </div>
                             )}
                         </div>
                     </div>
@@ -121,14 +134,14 @@ function WorkCarousel({ items, onItemClick, isVideo = false, language }: { items
     return (
         <div className="relative group/carousel">
             {/* Navigation Buttons */}
-            <button 
+            <button
                 onClick={() => scroll('left')}
                 className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-black/50 text-white p-3 rounded-full opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:bg-black/80 hidden sm:block backdrop-blur-sm -ml-4"
                 aria-label="Scroll Left"
             >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
             </button>
-            <button 
+            <button
                 onClick={() => scroll('right')}
                 className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-black/50 text-white p-3 rounded-full opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:bg-black/80 hidden sm:block backdrop-blur-sm -mr-4"
                 aria-label="Scroll Right"
@@ -137,13 +150,13 @@ function WorkCarousel({ items, onItemClick, isVideo = false, language }: { items
             </button>
 
             {/* Carousel Container */}
-            <div 
+            <div
                 ref={scrollContainerRef}
                 className="flex gap-4 overflow-x-auto pb-4 pt-4 px-4 snap-x snap-mandatory scrollbar-hide -mx-4 sm:mx-0"
             >
                 {items.map((work) => (
-                    <div 
-                        key={work.id} 
+                    <div
+                        key={work.id}
                         className={`flex-none snap-center ${isVideo ? 'w-[160px] sm:w-[200px]' : 'w-[280px] sm:w-[350px]'} group relative flex flex-col rounded-xl overflow-hidden transform transition-all duration-300 hover:scale-105 cursor-pointer shadow-lg shadow-black/40`}
                         onClick={() => onItemClick(work)}
                     >
