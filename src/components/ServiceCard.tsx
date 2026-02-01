@@ -23,51 +23,47 @@ export function ServiceCard({ service }: ServiceCardProps) {
     };
 
     return (
-        <div className="group relative flex flex-col bg-[var(--card)] border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-blue-500/30 h-full cursor-pointer">
-            {/* Image Container - Aspect Ratio 16:9 */}
-            <div className="relative w-full aspect-[16/9] bg-[var(--card)] overflow-hidden">
+        <div className="group relative flex flex-col bg-white rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full">
+            {/* Image Container */}
+            <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden">
                 <Image
                     src={service.image}
                     alt={service.name[language]}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+
+                {/* Title Overlay on Mobile/Desktop for punchiness */}
+                <div className="absolute bottom-0 left-0 p-4 w-full">
+                    <h3 className="text-white text-lg md:text-xl font-bold leading-tight drop-shadow-md">
+                        {service.name[language]}
+                    </h3>
+                </div>
             </div>
 
             {/* Content */}
-            <div className="flex flex-col flex-grow p-5">
-                {/* Title */}
-                <h3 className="text-xl font-bold text-[var(--foreground)] mb-2">
-                    {service.name[language]}
-                </h3>
-
+            <div className="flex flex-col flex-grow p-4 md:p-5">
                 {/* Description */}
-                <p className="text-sm text-[var(--muted)] mb-6 line-clamp-3 leading-relaxed whitespace-pre-line">
+                {/* <p className="text-sm text-gray-600 mb-4 line-clamp-2 leading-relaxed">
                     {service.description[language]}
-                </p>
+                </p> */}
 
-                {/* Price and Action - Pushed to bottom */}
-                <div className="mt-auto flex items-center justify-between">
-                    <div>
-                        {service.isPriceVisible ? (
-                            <span className="text-lg font-bold text-[var(--primary)]">
-                                {service.price} {service.currency}
-                                <span className="text-sm text-gray-500 font-normal"> / m²</span>
-                            </span>
-                        ) : (
-                            <span className="text-sm text-[var(--muted)] italic">
-                                {language === 'AZ' ? 'Qiymət razılaşma yolu ilə' : language === 'RU' ? 'Цена договорная' : 'Price on request'}
-                            </span>
-                        )}
+                {/* Price and Action */}
+                <div className="mt-auto pt-2">
+                    <div className="flex items-center justify-between gap-3">
+                        {/* Price Tag if needed or simple button */}
+                        {/* Keeping it simple as per screenshot 'əlaqə saxla' style often implies just action, but we allow simple add to cart */}
+
+                        <button
+                            onClick={handleAddToCart}
+                            className="w-full py-3 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-sm md:text-base font-bold rounded-lg shadow-md hover:shadow-lg transition-all uppercase tracking-wide z-10 relative"
+                        >
+                            {language === 'AZ' ? 'əlaqə saxla' : language === 'RU' ? 'Связаться' : 'Contact'}
+                        </button>
                     </div>
-
-                    <button
-                        onClick={handleAddToCart}
-                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors shadow-sm z-10 relative"
-                    >
-                        {language === 'AZ' ? 'Səbətə at' : language === 'RU' ? 'В корзину' : 'Add to Cart'}
-                    </button>
                 </div>
             </div>
 
