@@ -12,7 +12,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 export default function Home() {
-  const { packages, services, language } = useAdmin();
+  const { packages, products, services, language } = useAdmin();
   const { addToCart } = useCart();
 
   const sendWhatsApp = (e: React.FormEvent<HTMLFormElement>) => {
@@ -162,6 +162,60 @@ export default function Home() {
                   <div className="mt-auto w-full">
                     <button onClick={() => addToCart(pkg)} className="w-full py-2.5 md:py-4 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] font-extrabold rounded-lg md:rounded-xl shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all text-xs md:text-lg uppercase tracking-wider border-b-2 md:border-b-4 border-[#d97706]/20">
                       {language === 'AZ' ? 'SİFARİŞ ET' : language === 'RU' ? 'ЗАКАЗАТЬ' : 'ORDER NOW'}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PRODUCTS (MATERIALS) SECTION */}
+      <section className="bg-[#f8fafc] py-12 md:py-20" id="materials">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="text-2xl md:text-4xl font-extrabold mb-3 text-[#0a192f]">
+              {language === 'AZ' ? 'Tikinti Materialları' : language === 'RU' ? 'Строительные Материалы' : 'Construction Materials'}
+            </h2>
+            <div className="h-1 w-20 bg-[#fbbf24] mx-auto rounded-full mb-3"></div>
+            <p className="text-gray-500 font-medium text-xs md:text-base uppercase tracking-wider">
+              {language === 'AZ' ? 'Keyfiyyətli Alçipan və Aksesuarlar' : language === 'RU' ? 'Качественный Алчипан и Аксессуары' : 'Quality Drywall and Accessories'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 max-w-7xl mx-auto">
+            {products.filter(p => p.isActive).map(product => (
+              <div key={product.id} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col">
+                {/* Header */}
+                <div className="bg-[#0a192f] py-2 px-3 text-center">
+                  <h3 className="text-white text-xs md:text-sm font-bold tracking-wide truncate">
+                    {product.name[language]}
+                  </h3>
+                </div>
+
+                {/* Image */}
+                <div className="relative h-32 md:h-48 w-full bg-gray-100">
+                  <Image
+                    src={product.image || 'https://placehold.co/400x300?text=No+Image'}
+                    alt={product.name[language]}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="p-3 md:p-4 flex flex-col flex-grow">
+                  <p className="text-gray-600 text-[10px] md:text-xs mb-3 line-clamp-2 min-h-[2.5em]">
+                    {product.description[language]}
+                  </p>
+
+                  <div className="mt-auto">
+                    <button
+                      onClick={() => addToCart(product)}
+                      className="w-full py-2 bg-gray-50 hover:bg-[#fbbf24] text-[#0a192f] text-[10px] md:text-xs font-bold rounded border border-gray-200 hover:border-[#fbbf24] transition-colors uppercase tracking-wider"
+                    >
+                      {language === 'AZ' ? 'SİFARİŞ ET' : language === 'RU' ? 'ЗАКАЗАТЬ' : 'ORDER'}
                     </button>
                   </div>
                 </div>
