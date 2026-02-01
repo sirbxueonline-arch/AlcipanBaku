@@ -388,7 +388,7 @@ export const initialServices: Service[] = [
             RU: '💰 10 AZN / м²\nПростой ровный гипсокартонный потолок.\nКлассический и минималистичный дизайн.',
             EN: '💰 10 AZN / m²\nSimple flat drywall ceiling.\nClassic and minimalist design.'
         },
-        image: '/picture1.jpeg', // Ensure this image exists
+        image: '/service_simple_ceiling_new.png',
         isActive: true,
         price: 10,
         currency: 'AZN',
