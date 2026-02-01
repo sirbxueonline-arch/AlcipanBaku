@@ -29,8 +29,16 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
     useEffect(() => {
         setMounted(true);
+        const CART_VERSION = 'v1_flexible_packages';
+        const savedVersion = localStorage.getItem('cart_version');
         const savedCart = localStorage.getItem('cart');
-        if (savedCart) {
+
+        if (savedVersion !== CART_VERSION) {
+            // Clear old cart to prevent conflicts with new package logic
+            setCartItems([]);
+            localStorage.setItem('cart_version', CART_VERSION);
+            localStorage.removeItem('cart');
+        } else if (savedCart) {
             try {
                 setCartItems(JSON.parse(savedCart));
             } catch (e) {

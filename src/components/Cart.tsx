@@ -122,7 +122,7 @@ export function Cart() {
                                             <div>
                                                 <h3 className="font-medium text-slate-900 line-clamp-1">{item.name[language]}</h3>
                                                 <p className="text-sm text-blue-600 font-semibold mt-1">
-                                                    {item.price} {item.currency}
+                                                    {(item.price * item.quantity).toFixed(2)} {item.currency}
                                                 </p>
                                             </div>
 
