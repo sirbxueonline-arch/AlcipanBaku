@@ -117,41 +117,41 @@ export default function Home() {
           </div>
 
           {/* Custom Package Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-3 md:gap-8 max-w-5xl mx-auto">
             {packages.filter(p => p.isActive).slice(0, 2).map(pkg => (
               <div key={pkg.id} className="bg-white rounded-xl md:rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.08)] hover:shadow-[0_15px_50px_rgba(0,0,0,0.12)] transition-all duration-300 border border-gray-100 flex flex-col group transform hover:-translate-y-1">
 
                 {/* Dark Blue Header */}
-                <div className="bg-[#0a192f] py-4 md:py-6 px-4 text-center relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-white/5 rounded-bl-full -mr-4 -mt-4"></div>
-                  <div className="absolute bottom-0 left-0 w-12 h-12 bg-white/5 rounded-tr-full -ml-4 -mb-4"></div>
-                  <h3 className="text-white text-lg md:text-2xl font-bold tracking-wide relative z-10">
+                <div className="bg-[#0a192f] py-3 md:py-6 px-2 md:px-4 text-center relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-8 h-8 md:w-16 md:h-16 bg-white/5 rounded-bl-full -mr-2 -mt-2 md:-mr-4 md:-mt-4"></div>
+                  <div className="absolute bottom-0 left-0 w-6 h-6 md:w-12 md:h-12 bg-white/5 rounded-tr-full -ml-2 -mb-2 md:-ml-4 md:-mb-4"></div>
+                  <h3 className="text-white text-sm md:text-2xl font-bold tracking-wide relative z-10 truncate">
                     {pkg.name[language]}
                   </h3>
                 </div>
 
-                <div className="p-6 md:p-8 flex flex-col items-center flex-grow bg-gradient-to-b from-white to-gray-50">
+                <div className="p-3 md:p-8 flex flex-col items-center flex-grow bg-gradient-to-b from-white to-gray-50">
                   {/* Price */}
-                  <div className="text-center mb-6 md:mb-8">
-                    <div className="flex items-baseline justify-center gap-1 text-[#0a192f]">
-                      <span className="text-4xl md:text-5xl font-extrabold tracking-tight">
+                  <div className="text-center mb-4 md:mb-8">
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-1 text-[#0a192f]">
+                      <span className="text-2xl md:text-5xl font-extrabold tracking-tight">
                         {pkg.price.toLocaleString()}
                       </span>
-                      <span className="text-xl md:text-2xl font-bold text-gray-400">
+                      <span className="text-sm md:text-2xl font-bold text-gray-400">
                         {pkg.currency}
                       </span>
                     </div>
-                    <div className="mt-1 text-green-600 font-semibold text-xs uppercase tracking-wider bg-green-50 px-3 py-1 rounded-full inline-block">
+                    <div className="mt-1 text-green-600 font-semibold text-[10px] md:text-xs uppercase tracking-wider bg-green-50 px-2 py-0.5 md:px-3 md:py-1 rounded-full inline-block">
                       {language === 'AZ' ? 'Əla Qiymət' : 'Best Value'}
                     </div>
                   </div>
 
                   {/* Features List */}
-                  <ul className="space-y-3 w-full mb-8 text-left pl-2 md:pl-6 bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                  <ul className="space-y-1.5 md:space-y-3 w-full mb-4 md:mb-8 text-left pl-0 md:pl-6 bg-transparent md:bg-white p-0 md:p-4 rounded-xl border-none md:border md:border-gray-100 shadow-none md:shadow-sm">
                     {pkg.description[language].split('\n').map((line, idx) => (
-                      <li key={idx} className="flex items-start gap-3.5 text-gray-700 font-medium text-sm md:text-base leading-relaxed">
-                        <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 flex items-center justify-center mt-0.5">
-                          <svg className="w-3.5 h-3.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
+                      <li key={idx} className="flex items-start gap-1.5 md:gap-3.5 text-gray-700 font-medium text-[11px] md:text-base leading-tight md:leading-relaxed">
+                        <div className="flex-shrink-0 w-3.5 h-3.5 md:w-5 md:h-5 rounded-full bg-green-100 flex items-center justify-center mt-0.5">
+                          <svg className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
                         </div>
                         <span className="flex-1">{line}</span>
                       </li>
@@ -160,7 +160,7 @@ export default function Home() {
 
                   {/* Button */}
                   <div className="mt-auto w-full">
-                    <button onClick={() => addToCart(pkg)} className="w-full py-3 md:py-4 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] font-extrabold rounded-lg md:rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all text-sm md:text-lg uppercase tracking-wider border-b-4 border-[#d97706]/20">
+                    <button onClick={() => addToCart(pkg)} className="w-full py-2.5 md:py-4 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] font-extrabold rounded-lg md:rounded-xl shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all text-xs md:text-lg uppercase tracking-wider border-b-2 md:border-b-4 border-[#d97706]/20">
                       {language === 'AZ' ? 'SİFARİŞ ET' : language === 'RU' ? 'ЗАКАЗАТЬ' : 'ORDER NOW'}
                     </button>
                   </div>
