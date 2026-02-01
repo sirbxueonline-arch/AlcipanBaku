@@ -207,6 +207,171 @@ export const initialProducts: Product[] = [
         },
         isActive: true,
         isPriceVisible: false
+    },
+    {
+        id: '12',
+        type: 'product',
+        name: { AZ: 'Gilan Standart Alçipan', RU: 'Gilan Стандартный Гипсокартон', EN: 'Gilan Standard Gypsum Board' },
+        price: 0,
+        currency: 'AZN',
+        image: '/material_gypsum_standard.jpg',
+        description: {
+            AZ: 'Yüksək keyfiyyətli standart gipskarton lövhələr (Gilan).',
+            RU: 'Высококачественные стандартные гипсокартонные листы (Gilan).',
+            EN: 'High quality standard gypsum boards (Gilan).'
+        },
+        isActive: true,
+        isPriceVisible: false
+    },
+    {
+        id: '13',
+        type: 'product',
+        name: { AZ: 'Gilan Nəmədavamlı Alçipan', RU: 'Gilan Влагостойкий Гипсокартон', EN: 'Gilan Moisture Resistant Gypsum' },
+        price: 0,
+        currency: 'AZN',
+        image: '/material_gypsum_moisture.jpg',
+        description: {
+            AZ: 'Nəmə davamlı yaşıl gipskarton lövhələr (Gilan & Knauf).',
+            RU: 'Влагостойкие зеленые гипсокартонные листы (Gilan & Knauf).',
+            EN: 'Moisture resistant green gypsum boards (Gilan & Knauf).'
+        },
+        isActive: true,
+        isPriceVisible: false
+    },
+    {
+        id: '14',
+        type: 'product',
+        name: { AZ: 'Divar Profilləri', RU: 'Стеновые Профили', EN: 'Wall Profiles' },
+        price: 0,
+        currency: 'AZN',
+        image: '/material_profile_wall.jpg',
+        description: {
+            AZ: 'Divar üçün keyfiyyətli metal profillər (CW/UW).',
+            RU: 'Качественные металлические профили для стен (CW/UW).',
+            EN: 'Quality metal profiles for walls (CW/UW).'
+        },
+        isActive: true,
+        isPriceVisible: false
+    },
+    {
+        id: '15',
+        type: 'product',
+        name: { AZ: 'Tavan Profilləri', RU: 'Потолочные Профили', EN: 'Ceiling Profiles' },
+        price: 0,
+        currency: 'AZN',
+        image: '/material_profile_ceiling.jpg',
+        description: {
+            AZ: 'Tavan üçün möhkəm metal profillər (CD/UD).',
+            RU: 'Прочные металлические профили для потолка (CD/UD).',
+            EN: 'Strong metal profiles for ceilings (CD/UD).'
+        },
+        isActive: true,
+        isPriceVisible: false
+    },
+    {
+        id: '16',
+        type: 'product',
+        name: { AZ: 'Knauf İzolyasiya', RU: 'Изоляция Knauf', EN: 'Knauf Insulation' },
+        price: 0,
+        currency: 'AZN',
+        image: '/material_insulation_knauf.jpg',
+        description: {
+            AZ: 'Yüksək keyfiyyətli Knauf istilik və səs izolyasiyası.',
+            RU: 'Высококачественная тепло- и звукоизоляция Knauf.',
+            EN: 'High quality Knauf thermal and sound insulation.'
+        },
+        isActive: true,
+        isPriceVisible: false
+    },
+    {
+        id: '17',
+        type: 'product',
+        name: { AZ: 'Sunta Vidası (Meridiyaen)', RU: 'Шуруп Meridiyaen', EN: 'Meridiyaen Screws' },
+        price: 0,
+        currency: 'AZN',
+        image: '/accessory_screws_sunta.png',
+        description: {
+            AZ: 'Keyfiyyətli sunta vidası (3.5x25mm / 3.5x35mm).',
+            RU: 'Качественные шурупы (3.5x25мм / 3.5x35мм).',
+            EN: 'Quality drywall screws (Meridiyaen).'
+        },
+        isActive: true,
+        isPriceVisible: false
+    },
+    {
+        id: '18',
+        type: 'product',
+        name: { AZ: 'T-Profil Birləşdirici', RU: 'Т-Соединитель', EN: 'T-Profile Connector' },
+        price: 0,
+        currency: 'AZN',
+        image: '/accessory_bracket_t.png',
+        description: {
+            AZ: 'Profilləri birləşdirmək üçün T-formalı detal.',
+            RU: 'Т-образная деталь для соединения профилей.',
+            EN: 'T-shaped connector for profiles.'
+        },
+        isActive: true,
+        isPriceVisible: false
+    },
+    {
+        id: '19',
+        type: 'product',
+        name: { AZ: 'U-Birləşdirici (Düz Askı)', RU: 'Прямой Подвес', EN: 'Direct Suspension' },
+        price: 0,
+        currency: 'AZN',
+        image: '/accessory_bracket_direct.jpg',
+        description: {
+            AZ: 'Tavan üçün düz askı (U-birləşdirici).',
+            RU: 'Прямой подвес для потолка (U-крепление).',
+            EN: 'Direct suspension bracket for ceilings.'
+        },
+        isActive: true,
+        isPriceVisible: false
+    },
+    {
+        id: '20',
+        type: 'product',
+        name: { AZ: 'Knauf Vidası (TN)', RU: 'Шуруп Knauf (TN)', EN: 'Knauf Screw (TN)' },
+        price: 0,
+        currency: 'AZN',
+        image: '/accessory_screws_knauf.jpg',
+        description: {
+            AZ: 'Orijinal Knauf gipskarton vidaları.',
+            RU: 'Оригинальные шурупы Knauf для гипсокартона.',
+            EN: 'Original Knauf drywall screws.'
+        },
+        isActive: true,
+        isPriceVisible: false
+    },
+    {
+        id: '21',
+        type: 'product',
+        name: { AZ: 'Anker Paz (Tavan)', RU: 'Анкер-клин', EN: 'Ceiling Anchor Wedge' },
+        price: 0,
+        currency: 'AZN',
+        image: '/accessory_anchor_wedge.png',
+        description: {
+            AZ: 'Tavan montajı üçün metal anker paz.',
+            RU: 'Металлический анкер-клин для потолочного монтажа.',
+            EN: 'Metal wedge anchor for ceiling installation.'
+        },
+        isActive: true,
+        isPriceVisible: false
+    },
+    {
+        id: '22',
+        type: 'product',
+        name: { AZ: 'Knauf İzolyasiya (Rulon)', RU: 'Рулонная Изоляция Knauf', EN: 'Knauf Insulation Roll' },
+        price: 0,
+        currency: 'AZN',
+        image: '/material_insulation_roll_knauf.jpg',
+        description: {
+            AZ: 'Rulon formasında Knauf istilik izolyasiyası.',
+            RU: 'Теплоизоляция Knauf в рулонах.',
+            EN: 'Knauf thermal insulation roll.'
+        },
+        isActive: true,
+        isPriceVisible: false
     }
 ];
 
