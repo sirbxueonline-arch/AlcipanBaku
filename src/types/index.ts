@@ -25,6 +25,9 @@ export interface Service {
   name: LocalizedString;
   description: LocalizedString;
   isActive: boolean;
+  price: number;
+  currency: string;
+  isPriceVisible?: boolean;
 }
 
 export interface WorkItem {

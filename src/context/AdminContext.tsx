@@ -10,7 +10,7 @@ interface AdminContextType {
     logout: () => void;
     language: Language;
     setLanguage: (lang: Language) => void;
-    
+
     // Data arrays
     packages: Package[];
     products: Product[];
@@ -52,20 +52,20 @@ const AdminContext = createContext<AdminContextType | undefined>(undefined);
 
 export function AdminProvider({ children }: { children: ReactNode }) {
     const [language, setLanguage] = useState<Language>('AZ');
-    
+
     // Initialize State
     const [packages, setPackages] = useState<Package[]>(initialPackages);
     const [products, setProducts] = useState<Product[]>(initialProducts);
     const [services, setServices] = useState<Service[]>(initialServices);
     const [workItems, setWorkItems] = useState<WorkItem[]>(initialWorkItems);
-    
+
     const [isLoaded, setIsLoaded] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     // Load from localStorage on mount
     useEffect(() => {
         // DATA VERSIONING to force update when we change initial structures
-        const DATA_VERSION = 'v4.0_services_update'; 
+        const DATA_VERSION = 'v5.0_services_cart';
         const storedVersion = localStorage.getItem('alcipan_data_version');
         const isVersionMatch = storedVersion === DATA_VERSION;
 
@@ -155,7 +155,7 @@ export function AdminProvider({ children }: { children: ReactNode }) {
     useEffect(() => { if (isLoaded) localStorage.setItem('alcipan_work', JSON.stringify(workItems)); }, [workItems, isLoaded]);
 
     const login = (email: string, pass: string) => {
-        if ((email === 'kaan.guluzada@gmail.com' && pass === 'K20120509') || 
+        if ((email === 'kaan.guluzada@gmail.com' && pass === 'K20120509') ||
             (email === 'alcipanusta123@gmail.com' && pass === 'Alcipan123123')) {
             setIsAuthenticated(true);
             localStorage.setItem('alcipan_admin_session', 'true');
@@ -221,7 +221,10 @@ export function AdminProvider({ children }: { children: ReactNode }) {
             image: 'https://placehold.co/600x337?text=New+Service',
             name: { AZ: 'Yeni Xidmət', RU: 'Новая услуга', EN: 'New Service' },
             description: { AZ: 'Xidmət haqqında məlumat...', RU: 'Информация об услуге...', EN: 'Service information...' },
-            isActive: false
+            isActive: false,
+            price: 0,
+            currency: 'AZN',
+            isPriceVisible: true
         };
         setServices(prev => [...prev, newService]);
     };

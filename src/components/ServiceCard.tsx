@@ -3,6 +3,7 @@
 import React from 'react';
 import { Service } from '@/types';
 import { useAdmin } from '@/context/AdminContext';
+import { useCart } from '@/context/CartContext';
 import Image from 'next/image';
 
 interface ServiceCardProps {
@@ -11,8 +12,15 @@ interface ServiceCardProps {
 
 export function ServiceCard({ service }: ServiceCardProps) {
     const { language } = useAdmin();
+    const { addToCart } = useCart();
 
     if (!service.isActive) return null;
+
+    const handleAddToCart = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        addToCart(service);
+    };
 
     return (
         <div className="group relative flex flex-col bg-[var(--card)] border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-blue-500/30 h-full cursor-pointer">
@@ -35,14 +43,30 @@ export function ServiceCard({ service }: ServiceCardProps) {
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm text-[var(--muted)] mb-6 line-clamp-3 leading-relaxed">
+                <p className="text-sm text-[var(--muted)] mb-6 line-clamp-3 leading-relaxed whitespace-pre-line">
                     {service.description[language]}
                 </p>
 
-                {/* Action Button - Pushed to bottom */}
-                <div className="mt-auto">
-                    <button className="w-full py-3 bg-[var(--primary)] text-white font-semibold rounded-md hover:opacity-90 transition-colors shadow-sm z-10 relative">
-                        {language === 'AZ' ? 'Xidmət Sifarişi' : language === 'RU' ? 'Заказать услугу' : 'Request Service'}
+                {/* Price and Action - Pushed to bottom */}
+                <div className="mt-auto flex items-center justify-between">
+                    <div>
+                        {service.isPriceVisible ? (
+                            <span className="text-lg font-bold text-[var(--primary)]">
+                                {service.price} {service.currency}
+                                <span className="text-sm text-gray-500 font-normal"> / m²</span>
+                            </span>
+                        ) : (
+                            <span className="text-sm text-[var(--muted)] italic">
+                                {language === 'AZ' ? 'Qiymət razılaşma yolu ilə' : language === 'RU' ? 'Цена договорная' : 'Price on request'}
+                            </span>
+                        )}
+                    </div>
+
+                    <button
+                        onClick={handleAddToCart}
+                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors shadow-sm z-10 relative"
+                    >
+                        {language === 'AZ' ? 'Səbətə at' : language === 'RU' ? 'В корзину' : 'Add to Cart'}
                     </button>
                 </div>
             </div>

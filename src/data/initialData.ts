@@ -224,7 +224,10 @@ export const initialServices: Service[] = [
             EN: '💰 10 AZN / m²\nSimple flat drywall ceiling.\nClassic and minimalist design.'
         },
         image: '/picture1.jpeg', // Ensure this image exists
-        isActive: true
+        isActive: true,
+        price: 10,
+        currency: 'AZN',
+        isPriceVisible: true
     },
     {
         id: 'fiqurlu-tavan',
@@ -236,44 +239,56 @@ export const initialServices: Service[] = [
             EN: '💰 20 AZN / m²\nFigured ceilings based on custom design.\nPremium and unique look.'
         },
         image: '/picture2.jpeg',
-        isActive: true
+        isActive: true,
+        price: 20,
+        currency: 'AZN',
+        isPriceVisible: true
     },
     {
         id: 'arakesme',
         type: 'service',
         name: { AZ: 'Arakəsmə', RU: 'Перегородка', EN: 'Partition' },
         description: {
-            AZ: 'Otaqları bölmək üçün keyfiyyətli arakəsmələr.\nSəs izolyasiyası və möhkəmlik.',
-            RU: 'Качественные перегородки для зонирования.\nЗвукоизоляция и прочность.',
-            EN: 'Quality partitions for room dividing.\nSound insulation and durability.'
+            AZ: '💰 15 AZN / m²\nOtaqları bölmək üçün keyfiyyətli arakəsmələr.\nSəs izolyasiyası və möhkəmlik.',
+            RU: '💰 15 AZN / м²\nКачественные перегородки для зонирования.\nЗвукоизоляция и прочность.',
+            EN: '💰 15 AZN / m²\nQuality partitions for room dividing.\nSound insulation and durability.'
         },
         image: '/picture3.jpeg',
-        isActive: true
+        isActive: true,
+        price: 15,
+        currency: 'AZN',
+        isPriceVisible: true
     },
     {
         id: 'gizli-isiq',
         type: 'service',
         name: { AZ: 'Gizli İşıq', RU: 'Скрытый Свет', EN: 'Hidden Lighting' },
         description: {
-            AZ: 'Müasir LED işıqlandırma sistemləri.\nİnteryerə xüsusi aura qatır.',
-            RU: 'Современные системы LED освещения.\nСоздает особую ауру в интерьере.',
-            EN: 'Modern LED lighting systems.\nAdds a special aura to the interior.'
+            AZ: '💰 12 AZN / m²\nMüasir LED işıqlandırma sistemləri.\nİnteryerə xüsusi aura qatır.',
+            RU: '💰 12 AZN / м²\nСовременные системы LED освещения.\nСоздает особую ауру в интерьере.',
+            EN: '💰 12 AZN / m²\nModern LED lighting systems.\nAdds a special aura to the interior.'
         },
         image: '/picture8.jpeg',
-        isActive: true
+        isActive: true,
+        price: 12,
+        currency: 'AZN',
+        isPriceVisible: true
     },
     {
         id: 'tv-stand',
         type: 'service',
         name: { AZ: 'TV Dizayn', RU: 'ТВ Дизайн', EN: 'TV Design' },
         description: {
-            AZ: 'Televizor üçün xüsusi yığılmış stendlər.\nFunksional və estetik görünüş.',
-            RU: 'Специальные стенды для телевизоров.\nФункциональный и эстетичный вид.',
-            EN: 'Custom built stands for TVs.\nFunctional and aesthetic look.'
+            AZ: '💰 250 AZN\nTelevizor üçün xüsusi yığılmış stendlər.\nFunksional və estetik görünüş.',
+            RU: '💰 250 AZN\nСпециальные стенды для телевизоров.\nФункциональный и эстетичный вид.',
+            EN: '💰 250 AZN\nCustom built stands for TVs.\nFunctional and aesthetic look.'
         },
         image: '/picture9.jpeg',
-        isActive: true
-    }
+        isActive: true,
+        price: 250,
+        currency: 'AZN',
+        isPriceVisible: true
+    },
 ];
 
 // ==========================================

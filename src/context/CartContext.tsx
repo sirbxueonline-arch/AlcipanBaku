@@ -1,16 +1,16 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Product } from '@/types';
+import { Product, Service } from '@/types';
 
-export interface CartItem extends Product {
+export type CartItem = (Product | Service) & {
     quantity: number;
-}
+};
 
 interface CartContextType {
     cartItems: CartItem[];
     isCartOpen: boolean;
-    addToCart: (product: Product) => void;
+    addToCart: (item: Product | Service) => void;
     removeFromCart: (productId: string) => void;
     updateQuantity: (productId: string, quantity: number) => void;
     toggleCart: () => void;
@@ -45,7 +45,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         }
     }, [cartItems, mounted]);
 
-    const addToCart = (product: Product) => {
+    const addToCart = (product: Product | Service) => {
         setCartItems(prev => {
             const existing = prev.find(item => item.id === product.id);
             if (existing) {
