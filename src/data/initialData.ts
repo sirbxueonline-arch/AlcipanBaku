@@ -268,7 +268,7 @@ export const initialServices: Service[] = [
             RU: '💰 12 AZN / м²\nСовременные системы LED освещения.\nСоздает особую ауру в интерьере.',
             EN: '💰 12 AZN / m²\nModern LED lighting systems.\nAdds a special aura to the interior.'
         },
-        image: '/picture8.jpeg',
+        image: '/picture9.jpeg',
         isActive: true,
         price: 12,
         currency: 'AZN',
@@ -283,7 +283,7 @@ export const initialServices: Service[] = [
             RU: '💰 250 AZN\nСпециальные стенды для телевизоров.\nФункциональный и эстетичный вид.',
             EN: '💰 250 AZN\nCustom built stands for TVs.\nFunctional and aesthetic look.'
         },
-        image: '/picture9.jpeg',
+        image: '/picture8.jpeg',
         isActive: true,
         price: 250,
         currency: 'AZN',
