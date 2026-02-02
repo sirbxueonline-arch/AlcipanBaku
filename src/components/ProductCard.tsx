@@ -53,7 +53,7 @@ export function ProductCard({ product }: ProductCardProps) {
                     <div>
                         {product.isPriceVisible ? (
                             <span className="text-xl font-bold text-[var(--primary)]">
-                                {product.price.toFixed(2)} {product.currency}
+                                {(product.type === 'package' ? product.price * (product.step || 20) : product.price).toFixed(2)} {product.currency}
                             </span>
                         ) : (
                             <span className="text-sm text-[var(--muted)] italic">
