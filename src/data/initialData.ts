@@ -112,8 +112,8 @@ export const initialProducts: Product[] = [
     {
         id: '13',
         type: 'product',
-        name: { AZ: 'Gilan Nəmədavamlı Alçipan', RU: 'Gilan Влагостойкий Гипсокартон', EN: 'Gilan Moisture Resistant Gypsum' },
-        price: 0,
+        name: { AZ: 'Gilan Nəmədavamlı Alçipan (12.5mm)', RU: 'Gilan Влагостойкий Гипсокартон (12.5мм)', EN: 'Gilan Moisture Resistant Gypsum (12.5mm)' },
+        price: 12,
         currency: 'AZN',
         image: '/material_gypsum_moisture.jpg',
         description: {
@@ -122,7 +122,22 @@ export const initialProducts: Product[] = [
             EN: 'Moisture resistant green gypsum boards (Gilan & Knauf).'
         },
         isActive: true,
-        isPriceVisible: false
+        isPriceVisible: true
+    },
+    {
+        id: '23',
+        type: 'product',
+        name: { AZ: 'Gilan Nəmədavamlı Alçipan (9.5mm)', RU: 'Gilan Влагостойкий Гипсокартон (9.5мм)', EN: 'Gilan Moisture Resistant Gypsum (9.5mm)' },
+        price: 11,
+        currency: 'AZN',
+        image: '/material_gypsum_moisture.jpg',
+        description: {
+            AZ: 'Nəmə davamlı yaşıl gipskarton lövhələr (Gilan & Knauf).',
+            RU: 'Влагостойкие зеленые гипсокартонные листы (Gilan & Knauf).',
+            EN: 'Moisture resistant green gypsum boards (Gilan & Knauf).'
+        },
+        isActive: true,
+        isPriceVisible: true
     },
     {
         id: '14',
@@ -142,17 +157,32 @@ export const initialProducts: Product[] = [
     {
         id: '15',
         type: 'product',
-        name: { AZ: 'Tavan Profilləri', RU: 'Потолочные Профили', EN: 'Ceiling Profiles' },
-        price: 0,
+        name: { AZ: 'Tavan Profili CD (Gilan Knauf 4m 0.50)', RU: 'Потолочный Профиль CD', EN: 'Ceiling Profile CD' },
+        price: 1.40,
         currency: 'AZN',
         image: '/material_profile_ceiling.jpg',
         description: {
-            AZ: 'Tavan üçün möhkəm metal profillər (CD/UD).',
-            RU: 'Прочные металлические профили для потолка (CD/UD).',
-            EN: 'Strong metal profiles for ceilings (CD/UD).'
+            AZ: 'Tavan üçün möhkəm metal profillər (CD).',
+            RU: 'Прочные металлические профили для потолка (CD).',
+            EN: 'Strong metal profiles for ceilings (CD).'
         },
         isActive: true,
-        isPriceVisible: false
+        isPriceVisible: true
+    },
+    {
+        id: '24',
+        type: 'product',
+        name: { AZ: 'Tavan Profili UD (Gilan Knauf 3m 50)', RU: 'Потолочный Профиль UD', EN: 'Ceiling Profile UD' },
+        price: 1.20,
+        currency: 'AZN',
+        image: '/material_profile_ceiling.jpg',
+        description: {
+            AZ: 'Tavan üçün möhkəm metal profillər (UD).',
+            RU: 'Прочные металлические профили для потолка (UD).',
+            EN: 'Strong metal profiles for ceilings (UD).'
+        },
+        isActive: true,
+        isPriceVisible: true
     },
     {
         id: '16',
@@ -172,17 +202,17 @@ export const initialProducts: Product[] = [
     {
         id: '17',
         type: 'product',
-        name: { AZ: 'Sunta Vidası (Meridiyaen)', RU: 'Шуруп Meridiyaen', EN: 'Meridiyaen Screws' },
-        price: 0,
+        name: { AZ: 'Sunta Vidası (Meridiyaen 5x50)', RU: 'Шуруп Meridiyaen (5x50)', EN: 'Meridiyaen Screws (5x50)' },
+        price: 5,
         currency: 'AZN',
         image: '/accessory_screws_sunta.png',
         description: {
-            AZ: 'Keyfiyyətli sunta vidası (3.5x25mm / 3.5x35mm).',
-            RU: 'Качественные шурупы (3.5x25мм / 3.5x35мм).',
-            EN: 'Quality drywall screws (Meridiyaen).'
+            AZ: 'Keyfiyyətli sunta vidası (5x50).',
+            RU: 'Качественные шурупы (5x50).',
+            EN: 'Quality drywall screws (Meridiyaen 5x50).'
         },
         isActive: true,
-        isPriceVisible: false
+        isPriceVisible: true
     },
     {
         id: '18',
@@ -202,38 +232,38 @@ export const initialProducts: Product[] = [
     {
         id: '19',
         type: 'product',
-        name: { AZ: 'U-Birləşdirici (Düz Askı)', RU: 'Прямой Подвес', EN: 'Direct Suspension' },
-        price: 0,
+        name: { AZ: 'U-Birləşdirici (Eqreb)', RU: 'Прямой Подвес', EN: 'Direct Suspension' },
+        price: 0.25,
         currency: 'AZN',
         image: '/accessory_bracket_direct.jpg',
         description: {
-            AZ: 'Tavan üçün düz askı (U-birləşdirici).',
+            AZ: 'Tavan üçün düz askı (U-birləşdirici/Eqreb).',
             RU: 'Прямой подвес для потолка (U-крепление).',
             EN: 'Direct suspension bracket for ceilings.'
         },
         isActive: true,
-        isPriceVisible: false
+        isPriceVisible: true
     },
     {
         id: '20',
         type: 'product',
-        name: { AZ: 'Knauf Vidası (TN)', RU: 'Шуруп Knauf (TN)', EN: 'Knauf Screw (TN)' },
-        price: 0,
+        name: { AZ: 'Knauf Vidası (3.5x11 / 25)', RU: 'Шуруп Knauf (3.5x11 / 25)', EN: 'Knauf Screw (3.5x11 / 25)' },
+        price: 16,
         currency: 'AZN',
         image: '/accessory_screws_knauf.jpg',
         description: {
-            AZ: 'Orijinal Knauf gipskarton vidaları.',
-            RU: 'Оригинальные шурупы Knauf для гипсокартона.',
-            EN: 'Original Knauf drywall screws.'
+            AZ: 'Orijinal Knauf gipskarton vidaları (1000 ədəd).',
+            RU: 'Оригинальные шурупы Knauf для гипсокартона (1000 шт).',
+            EN: 'Original Knauf drywall screws (1000 pcs).'
         },
         isActive: true,
-        isPriceVisible: false
+        isPriceVisible: true
     },
     {
         id: '21',
         type: 'product',
-        name: { AZ: 'Anker Paz (Tavan)', RU: 'Анкер-клин', EN: 'Ceiling Anchor Wedge' },
-        price: 0,
+        name: { AZ: 'Anker Paz (Celik Dupel)', RU: 'Анкер-клин', EN: 'Ceiling Anchor Wedge' },
+        price: 0.15,
         currency: 'AZN',
         image: '/accessory_anchor_wedge.png',
         description: {
@@ -242,7 +272,22 @@ export const initialProducts: Product[] = [
             EN: 'Metal wedge anchor for ceiling installation.'
         },
         isActive: true,
-        isPriceVisible: false
+        isPriceVisible: true
+    },
+    {
+        id: '25',
+        type: 'product',
+        name: { AZ: 'Probka Qırmızı (7 packa)', RU: 'Дюбель Красный', EN: 'Red Wall Plug' },
+        price: 1.20,
+        currency: 'AZN',
+        image: '/accessory_anchor_wedge.png',
+        description: {
+            AZ: 'Qırmızı probka.',
+            RU: 'Красный дюбель.',
+            EN: 'Red wall plug.'
+        },
+        isActive: true,
+        isPriceVisible: true
     },
     {
         id: '22',
