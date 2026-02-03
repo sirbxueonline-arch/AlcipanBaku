@@ -135,7 +135,7 @@ export default function Home() {
                   <div className="text-center mb-4 md:mb-8">
                     <div className="flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-1 text-[#0a192f]">
                       <span className="text-2xl md:text-5xl font-extrabold tracking-tight">
-                        {pkg.price.toLocaleString()}
+                        {(pkg.price * (pkg.step || 20)).toLocaleString()}
                       </span>
                       <span className="text-sm md:text-2xl font-bold text-gray-400">
                         {pkg.currency}
