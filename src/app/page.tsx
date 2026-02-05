@@ -240,6 +240,17 @@ export default function Home() {
                 </div>
                 <div className="p-3 md:p-4 flex flex-col flex-grow">
                   <div className="mt-auto">
+                    <div className="mb-3">
+                      {product.isPriceVisible ? (
+                        <span className="text-lg font-bold text-[#0a192f]">
+                          {product.price.toFixed(2)} {product.currency}
+                        </span>
+                      ) : (
+                        <span className="text-[10px] md:text-xs text-gray-400 italic">
+                          {language === 'AZ' ? 'Qiymət razılaşma yolu ilə' : language === 'RU' ? 'Цена договорная' : 'Price on request'}
+                        </span>
+                      )}
+                    </div>
                     <button
                       onClick={() => addToCart(product)}
                       className="w-full py-2 bg-gray-50 hover:bg-[#fbbf24] text-[#0a192f] text-[10px] md:text-xs font-bold rounded border border-gray-200 hover:border-[#fbbf24] transition-colors uppercase tracking-wider"
