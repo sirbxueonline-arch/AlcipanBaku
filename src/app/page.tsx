@@ -36,7 +36,7 @@ export default function Home() {
 
 
       {/* HERO SECTION */}
-      <section className="relative py-12 md:py-24 px-4 min-h-[45vh] md:min-h-[85vh] flex flex-col justify-center overflow-hidden">
+      <section className="relative py-0 md:py-24 min-h-[50vh] md:min-h-[85vh] flex flex-col justify-end md:justify-center overflow-hidden">
         {/* Background Image Effect */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -46,32 +46,35 @@ export default function Home() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/50 z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#0a192f] z-10"></div>
         </div>
 
-        <div className="relative z-20 container mx-auto px-4 flex flex-col items-center text-center max-w-7xl pt-8 md:pt-0">
+        <div className="relative z-20 container mx-auto px-4 flex flex-col items-center text-center max-w-7xl pb-12 md:pb-0">
           <div className="mb-2 md:mb-6">
-            <span className="text-white/90 font-semibold tracking-[0.2em] uppercase text-[10px] md:text-sm border-b-2 border-[#fbbf24] pb-1 md:pb-2">
+            {/* <span className="text-white/90 font-semibold tracking-[0.2em] uppercase text-[10px] md:text-sm border-b-2 border-[#fbbf24] pb-1 md:pb-2">
                 // ALÇİPAN BAKU
-            </span>
+            </span> */}
           </div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-3xl sm:text-5xl md:text-7xl font-extrabold mb-2 md:mb-6 text-white leading-[1.1] tracking-tight max-w-4xl drop-shadow-lg"
+            className="text-3xl sm:text-5xl md:text-7xl font-extrabold mb-1 mobile-heading text-white leading-tight tracking-tight max-w-4xl drop-shadow-md"
           >
-            {language === 'AZ' ? 'Premium Alçipan Xidmətləri' :
-              language === 'RU' ? 'Премиум Услуги Алчипан' :
-                'Premium Drywall Services'}
+            {language === 'AZ' ? 'Premium Alçipan' :
+              language === 'RU' ? 'Премиум Алчипан' :
+                'Premium Drywall'} <br/>
+             <span className="text-[#fbbf24]">{language === 'AZ' ? 'Xidmətləri' :
+              language === 'RU' ? 'Услуги' :
+                'Services'}</span>
           </motion.h1>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.8 }}
-            className="text-sm md:text-3xl font-medium text-[#fbbf24] mb-4 md:mb-10 tracking-wide"
+            className="text-xs md:text-3xl font-medium text-white/80 mb-6 md:mb-10 tracking-wide"
           >
             {language === 'AZ' ? 'Material + Usta + Zəmanət' : 'Material + Master + Warranty'}
           </motion.h2>
@@ -80,7 +83,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-[11px] md:text-xl text-white/90 mb-6 md:mb-12 font-medium max-w-xs md:max-w-2xl mx-auto leading-relaxed"
+            className="text-[10px] md:text-xl text-white/70 mb-8 md:mb-12 font-medium max-w-xs md:max-w-2xl mx-auto"
           >
             {language === 'AZ' ? 'Pulsuz Ölçü • Dizayn • Sürətli Montaj' :
               language === 'RU' ? 'Бесплатный замер • Дизайн • Быстрый монтаж' :
@@ -91,10 +94,11 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
+            className="w-full md:w-auto px-12 md:px-0"
           >
             <a
               href="#contact"
-              className="inline-flex items-center justify-center px-6 md:px-12 py-3 md:py-4 bg-gradient-to-r from-[#fbbf24] to-[#d97706] text-[#0a192f] text-xs md:text-base font-extrabold rounded-lg shadow-[0_0_20px_rgba(251,191,36,0.5)] hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] hover:scale-105 active:scale-95 transition-all uppercase tracking-widest"
+              className="flex items-center justify-center w-full md:w-auto px-6 md:px-12 py-3.5 md:py-4 bg-gradient-to-r from-[#fbbf24] to-[#ca8a04] text-[#0a192f] text-xs md:text-base font-bold rounded-md shadow-[0_4px_14px_rgba(251,191,36,0.4)] hover:shadow-[0_6px_20px_rgba(251,191,36,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all uppercase tracking-widest"
             >
               {language === 'AZ' ? 'PULSUZ QİYMƏT AL' : language === 'RU' ? 'ПОЛУЧИТЬ ЦЕНУ' : 'GET FREE QUOTE'}
             </a>
@@ -103,55 +107,57 @@ export default function Home() {
       </section>
 
       {/* PRODUCTS / PACKAGES */}
-      <section className="relative container mx-auto px-4 py-8 md:py-20 -mt-8 md:-mt-20 z-30" id="products">
-        <div className="bg-white rounded-2xl md:rounded-[2.5rem] shadow-2xl p-6 md:p-12 mb-16 relative overflow-hidden">
-
-          <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-4xl font-extrabold mb-3 text-[#0a192f]">
-              {language === 'AZ' ? 'Paket Təkliflərimiz' : language === 'RU' ? 'Наши Пакетные Предложения' : 'Our Package Offers'}
-            </h2>
-            <div className="h-1 w-20 bg-[#fbbf24] mx-auto rounded-full mb-3"></div>
-            <p className="text-gray-500 font-medium text-xs md:text-base uppercase tracking-wider">
-              {language === 'AZ' ? 'Tam Xidmət | Material | Montaj Daxil' : 'Full Service | Material | Installation Included'}
-            </p>
-          </div>
+      <section className="relative container mx-auto px-4 py-8 md:py-20 z-30 bg-white md:bg-transparent rounded-t-[30px] -mt-6 md:mt-0" id="products">
+        {/* <div className="bg-white rounded-2xl md:rounded-[2.5rem] shadow-2xl p-6 md:p-12 mb-16 relative overflow-hidden"> */}
+        
+        <div className="mb-8 md:mb-16 pt-6 md:pt-0">
+            <div className="text-center mb-6">
+                <h2 className="text-xl md:text-4xl font-bold text-[#0a192f] inline-block relative px-4">
+                  {language === 'AZ' ? 'Paket Təkliflərimiz' : language === 'RU' ? 'Наши Пакетные Предложения' : 'Our Package Offers'}
+                  <div className="absolute left-0 right-0 bottom-[-8px] h-[1px] bg-gray-200 w-full hidden md:block"></div>
+                </h2>
+                 <p className="text-gray-500 font-medium text-[10px] md:text-base mt-2">
+                    {language === 'AZ' ? 'Tam Xidmət | Material | Montaj Daxil' : 'Full Service | Material | Installation Included'}
+                </p>
+                 <div className="h-[1px] w-full bg-gray-200 mt-4 md:hidden"></div>
+                 {/* Decorative lines like in design */}
+                 <div className="flex justify-center items-center gap-2 mt-[-1px] md:hidden">
+                    <div className="w-16 h-[2px] bg-[#fbbf24]"></div>
+                 </div>
+            </div>
 
           {/* Custom Package Cards Grid */}
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8 max-w-7xl mx-auto">
             {packages.filter(p => p.isActive).slice(0, 3).map(pkg => (
-              <div key={pkg.id} className="bg-white rounded-xl md:rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.08)] hover:shadow-[0_15px_50px_rgba(0,0,0,0.12)] transition-all duration-300 border border-gray-100 flex flex-col group transform hover:-translate-y-1">
+              <div key={pkg.id} className="bg-white rounded-xl md:rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.1)] transition-all duration-300 border border-gray-100 flex flex-col relative group">
+                
+                {/* Visual Separator/Header - Dark Blue Rounded Top */}
+                 <div className="bg-[#0a192f] py-2 md:py-4 px-2 text-center mx-1 mt-1 rounded-t-lg">
+                    <h3 className="text-white text-[13px] md:text-2xl font-bold tracking-wide">
+                        {pkg.name[language]}
+                    </h3>
+                 </div>
 
-                {/* Dark Blue Header */}
-                <div className="bg-[#0a192f] py-3 md:py-6 px-2 md:px-4 text-center relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-8 h-8 md:w-16 md:h-16 bg-white/5 rounded-bl-full -mr-2 -mt-2 md:-mr-4 md:-mt-4"></div>
-                  <div className="absolute bottom-0 left-0 w-6 h-6 md:w-12 md:h-12 bg-white/5 rounded-tr-full -ml-2 -mb-2 md:-ml-4 md:-mb-4"></div>
-                  <h3 className="text-white text-sm md:text-2xl font-bold tracking-wide relative z-10 truncate">
-                    {pkg.name[language]}
-                  </h3>
-                </div>
-
-                <div className="p-3 md:p-8 flex flex-col items-center flex-grow bg-gradient-to-b from-white to-gray-50">
+                <div className="px-2 pt-3 pb-4 md:p-8 flex flex-col items-center flex-grow bg-white">
                   {/* Price */}
-                  <div className="text-center mb-4 md:mb-8">
-                    <div className="flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-1 text-[#0a192f]">
-                      <span className="text-2xl md:text-5xl font-extrabold tracking-tight">
+                  <div className="text-center mb-3 md:mb-8 w-full border-b border-gray-100 pb-3 md:pb-6">
+                    <div className="flex flex-row items-baseline justify-center gap-1 text-[#0a192f]">
+                      <span className="text-xl md:text-5xl font-extrabold tracking-tight">
                         {(pkg.price * (pkg.step || 20)).toLocaleString()}
                       </span>
-                      <span className="text-sm md:text-2xl font-bold text-gray-400">
+                      <span className="text-xs md:text-2xl font-bold text-[#0a192f]">
                         {pkg.currency}
                       </span>
-                    </div>
-                    <div className="mt-1 text-green-600 font-semibold text-[10px] md:text-xs uppercase tracking-wider bg-green-50 px-2 py-0.5 md:px-3 md:py-1 rounded-full inline-block">
-                      {language === 'AZ' ? 'Əla Qiymət' : 'Best Value'}
                     </div>
                   </div>
 
                   {/* Features List */}
-                  <ul className="space-y-1.5 md:space-y-3 w-full mb-4 md:mb-8 text-left pl-0 md:pl-6 bg-transparent md:bg-white p-0 md:p-4 rounded-xl border-none md:border md:border-gray-100 shadow-none md:shadow-sm">
+                  <ul className="space-y-1.5 md:space-y-3 w-full mb-4 md:mb-8 text-left pl-1 md:pl-6 bg-transparent">
                     {pkg.description[language].split('\n').map((line, idx) => (
-                      <li key={idx} className="flex items-start gap-1.5 md:gap-3.5 text-gray-700 font-medium text-[11px] md:text-base leading-tight md:leading-relaxed">
-                        <div className="flex-shrink-0 w-3.5 h-3.5 md:w-5 md:h-5 rounded-full bg-green-100 flex items-center justify-center mt-0.5">
-                          <svg className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
+                      <li key={idx} className="flex items-start gap-1.5 md:gap-3.5 text-gray-600 font-medium text-[9px] md:text-base leading-tight md:leading-relaxed">
+                        <div className="flex-shrink-0 w-3 h-3 md:w-5 md:h-5 mt-0.5">
+                           {/* Simple Check Icon */}
+                           <svg viewBox="0 0 24 24" fill="none" className="w-full h-full text-green-600" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <span className="flex-1">{line}</span>
                       </li>
@@ -160,7 +166,7 @@ export default function Home() {
 
                   {/* Button */}
                   <div className="mt-auto w-full">
-                    <button onClick={() => addToCart(pkg)} className="w-full py-2.5 md:py-4 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] font-extrabold rounded-lg md:rounded-xl shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all text-xs md:text-lg uppercase tracking-wider border-b-2 md:border-b-4 border-[#d97706]/20">
+                    <button onClick={() => addToCart(pkg)} className="w-full py-2 md:py-4 bg-gradient-to-r from-[#fbbf24] to-[#d97706] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] font-bold rounded-md md:rounded-xl shadow-md transition-all text-[10px] md:text-lg uppercase tracking-wider">
                       {language === 'AZ' ? 'SİFARİŞ ET' : language === 'RU' ? 'ЗАКАЗАТЬ' : 'ORDER NOW'}
                     </button>
                   </div>
@@ -169,9 +175,44 @@ export default function Home() {
             ))}
           </div>
         </div>
+        {/* </div> */}
       </section>
 
       {/* PRODUCTS (MATERIALS) SECTION */}
+      {/* <section className="bg-[#f8fafc] py-12 md:py-20" id="materials">
+         Keeping this section commented out or removed if not in design, but keeping code for now to not break anything drastically if user needs it later. 
+         Based on design screenshot, we see 'Xidmətlərimiz' after packages. 
+         I will keep it but maybe minimize visual impact or hide if strictly matching only the screenshot.
+         The screenshot shows "Xidmətlərimiz" right after packages. Packages -> Services.
+         I'll put Products after Services or hide.
+      </section> */}
+
+      {/* SERVICES SECTION */}
+      <section className="bg-transparent py-4 md:py-20" id="services">
+        <div className="container mx-auto px-4 md:bg-[#f8fafc] md:rounded-3xl pt-2 pb-12">
+          
+           <div className="text-center mb-6 pt-4">
+                <h2 className="text-lg md:text-4xl font-bold text-[#0a192f] inline-block relative px-4">
+                  {language === 'AZ' ? 'Xidmətlərimiz' : language === 'RU' ? 'Услуги' : 'Services'}
+                  <div className="absolute left-0 right-0 bottom-[-8px] h-[1px] bg-gray-200 w-full hidden md:block"></div>
+                </h2>
+                 <div className="h-[1px] w-full bg-gray-200 mt-4 md:hidden"></div>
+                 {/* Decorative lines like in design */}
+                 <div className="flex justify-center items-center gap-2 mt-[-1px] md:hidden">
+                    <div className="w-16 h-[2px] bg-[#fbbf24]"></div>
+                 </div>
+            </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-2 gap-3 md:gap-8 max-w-4xl mx-auto">
+            {services.map(service => (
+              <ServiceCard key={service.id} service={service} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ADDITIONAL SECTIONS (Keeping them for completeness but they might be below the scroll) */}
+       {/* PRODUCTS (MATERIALS) SECTION - Moved below services as 'More' */}
       <section className="bg-[#f8fafc] py-12 md:py-20" id="materials">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10 md:mb-16">
@@ -179,22 +220,16 @@ export default function Home() {
               {language === 'AZ' ? 'Tikinti Materialları' : language === 'RU' ? 'Строительные Материалы' : 'Construction Materials'}
             </h2>
             <div className="h-1 w-20 bg-[#fbbf24] mx-auto rounded-full mb-3"></div>
-            <p className="text-gray-500 font-medium text-xs md:text-base uppercase tracking-wider">
-              {language === 'AZ' ? 'Keyfiyyətli Alçipan və Aksesuarlar' : language === 'RU' ? 'Качественный Алчипан и Аксессуары' : 'Quality Drywall and Accessories'}
-            </p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 max-w-7xl mx-auto">
             {products.filter(p => p.isActive).map(product => (
               <div key={product.id} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col">
-                {/* Header */}
                 <div className="bg-[#0a192f] py-2 px-3 text-center">
                   <h3 className="text-white text-xs md:text-sm font-bold tracking-wide truncate">
                     {product.name[language]}
                   </h3>
                 </div>
-
-                {/* Image */}
                 <div className="relative h-32 md:h-48 w-full bg-gray-100">
                   <Image
                     src={product.image || 'https://placehold.co/400x300?text=No+Image'}
@@ -203,13 +238,7 @@ export default function Home() {
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-
-                {/* Content */}
                 <div className="p-3 md:p-4 flex flex-col flex-grow">
-                  <p className="text-gray-600 text-[10px] md:text-xs mb-3 line-clamp-2 min-h-[2.5em]">
-                    {product.description[language]}
-                  </p>
-
                   <div className="mt-auto">
                     <button
                       onClick={() => addToCart(product)}
@@ -225,37 +254,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SERVICES SECTION */}
-      <section className="bg-white py-12 md:py-20" id="services">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-2xl md:text-4xl font-extrabold mb-3 md:mb-4 text-[#0a192f]">
-              {language === 'AZ' ? 'Xidmətlərimiz' : language === 'RU' ? 'Услуги' : 'Services'}
-            </h2>
-            <div className="h-1 w-24 bg-[#0a192f]/10 mx-auto rounded-full"></div>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto">
-            {services.map(service => (
-              <ServiceCard key={service.id} service={service} />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* WHY US / STATS */}
-      <section className="bg-[#f8fafc] py-16">
+      <section className="bg-white py-16">
         <div className="container mx-auto px-4 text-center mb-12">
           <h2 className="text-3xl font-bold mb-4 text-[#0a192f]">
             {language === 'AZ' ? 'Niyə AlcipanBaku?' : language === 'RU' ? 'Почему AlcipanBaku?' : 'Why AlcipanBaku?'}
           </h2>
           <div className="h-1 w-16 bg-[#fbbf24] mx-auto rounded-full mb-6"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
-            {language === 'AZ' ? 'Paket sistem ilə işin bütün mərhələsi bir yerdə: ölçü → material → montaj → təhvil.' :
-              language === 'RU' ? 'Весь процесс работы по пакетной системе в одном месте: замер → материал → монтаж → сдача.' :
-                'All stages of work with the package system in one place: measurement → material → installation → delivery.'}
-          </p>
-
+          
           <div className="mt-12 text-[#0a192f]">
             <FeaturesSection />
           </div>
@@ -263,7 +269,7 @@ export default function Home() {
       </section>
 
       {/* FAQ SECTION */}
-      <div className="bg-white">
+      <div className="bg-[#f8fafc]">
         <FAQSection />
       </div>
 
@@ -305,14 +311,16 @@ export default function Home() {
           </form>
         </div>
       </section>
-      {/* Sticky Mobile Whatsapp Button */}
+
+      {/* Sticky Mobile Whatsapp Button - PILL SHAPE */}
       <a
         href="https://wa.me/994506368731"
         target="_blank"
-        className="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center z-50 md:hidden shadow-[0_4px_15px_rgba(37,211,102,0.4)] hover:bg-[#1da851] transition-transform hover:scale-110 active:scale-95"
+        className="fixed bottom-6 right-1/2 translate-x-1/2 w-[90%] md:w-auto md:right-6 md:translate-x-0 md:bg-[#25D366] md:rounded-full bg-[#128c7e] text-white rounded-xl flex items-center justify-center gap-3 py-3.5 shadow-lg z-50 md:hidden hover:bg-[#075e54] transition-all active:scale-95"
         aria-label="WhatsApp"
       >
-        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" /></svg>
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" /></svg>
+        <span className="font-bold text-base">WhatsApp ilə Yaz</span>
       </a>
 
     </div>

@@ -93,17 +93,17 @@ export function Header() {
                         </button>
                     </div>
 
-                    {/* Logo */}
+                    {/* Logo - Centered on mobile or slightly left next to menu if easier, but design shows Title nicely placed */}
                     <Link href="/" className="flex items-center gap-2 relative z-50">
-                        <div className="relative w-8 h-8 sm:w-10 sm:h-10 overflow-hidden rounded-full shadow-md">
+                        {/* <div className="relative w-8 h-8 sm:w-10 sm:h-10 overflow-hidden rounded-full shadow-md">
                             <Image
                                 src="/brand-logo.jpg"
                                 alt="Alcipan Baku Logo"
                                 fill
                                 className="object-cover"
                             />
-                        </div>
-                         <h1 className="text-lg sm:text-xl font-bold text-white tracking-tight leading-none">
+                        </div> */}
+                         <h1 className="text-sm sm:text-xl font-bold text-white tracking-tight leading-none uppercase">
                             //ALÇİPAN <span className="text-white/70 font-light">BAKU</span>
                         </h1>
                     </Link>
@@ -124,7 +124,7 @@ export function Header() {
                     {/* Right Side: Phone (Mobile) / Actions (Desktop) */}
                     <div className="flex items-center gap-4">
                         {/* Mobile Phone Number */}
-                        <a href="tel:+994506368731" className="md:hidden text-white/90 text-xs sm:text-sm font-medium whitespace-nowrap">
+                        <a href="tel:+994506368731" className="md:hidden text-white/90 text-[11px] sm:text-sm font-medium whitespace-nowrap opacity-80">
                             +994 50 636 87 31
                         </a>
 
