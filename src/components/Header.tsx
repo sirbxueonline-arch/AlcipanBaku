@@ -78,7 +78,11 @@ export function Header() {
     };
 
     return (
-        <header className={`sticky top-0 z-50 transition-all duration-300 bg-[#0a192f] border-b border-white/10 shadow-lg`}>
+        <header 
+            className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+                scrolled ? 'bg-[#0a192f]/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent shadow-none py-4'
+            }`}
+        >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16 sm:h-20">
                     
@@ -89,22 +93,14 @@ export function Header() {
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             aria-label="Toggle menu"
                         >
-                            {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+                            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
                         </button>
                     </div>
 
-                    {/* Logo - Centered on mobile or slightly left next to menu if easier, but design shows Title nicely placed */}
+                    {/* Logo */}
                     <Link href="/" className="flex items-center gap-2 relative z-50">
-                        {/* <div className="relative w-8 h-8 sm:w-10 sm:h-10 overflow-hidden rounded-full shadow-md">
-                            <Image
-                                src="/brand-logo.jpg"
-                                alt="Alcipan Baku Logo"
-                                fill
-                                className="object-cover"
-                            />
-                        </div> */}
-                         <h1 className="text-sm sm:text-xl font-bold text-white tracking-tight leading-none uppercase">
-                            //ALÇİPAN <span className="text-white/70 font-light">BAKU</span>
+                         <h1 className="text-lg sm:text-2xl font-extrabold text-white tracking-tighter leading-none uppercase italic">
+                            //ALÇİPAN <span className="text-[#fbbf24] font-normal not-italic">BAKU</span>
                         </h1>
                     </Link>
 
@@ -114,7 +110,7 @@ export function Header() {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className={`text-sm font-medium transition-colors hover:text-[var(--gold)] ${pathname === link.href ? 'text-[var(--gold)]' : 'text-white/80'}`}
+                                className={`text-sm font-bold uppercase tracking-wider transition-colors hover:text-[#fbbf24] ${pathname === link.href ? 'text-[#fbbf24]' : 'text-white'}`}
                             >
                                 {link.label[language]}
                             </Link>
@@ -124,14 +120,15 @@ export function Header() {
                     {/* Right Side: Phone (Mobile) / Actions (Desktop) */}
                     <div className="flex items-center gap-4">
                         {/* Mobile Phone Number */}
-                        <a href="tel:+994506368731" className="md:hidden text-white/90 text-[11px] sm:text-sm font-medium whitespace-nowrap opacity-80">
-                            +994 50 636 87 31
+                        <a href="tel:+994506368731" className="md:hidden text-white font-bold text-xs sm:text-sm whitespace-nowrap bg-[#fbbf24] text-[#0a192f] px-3 py-1.5 rounded-full">
+                            Call Now
                         </a>
 
                         {/* Desktop Actions */}
-                        <div className="hidden md:flex items-center gap-4">
-                             <a href="tel:+994506368731" className="text-white font-bold">
-                                +994 50 636 87 31
+                        <div className="hidden md:flex items-center gap-6">
+                             <a href="tel:+994506368731" className="flex flex-col items-end text-right">
+                                <span className="text-[10px] text-white/60 uppercase tracking-widest">Əlaqə Nömrəsi</span>
+                                <span className="text-white font-bold text-lg leading-none hover:text-[#fbbf24] transition-colors">+994 50 636 87 31</span>
                             </a>
                             <LanguageSwitcher />
                         </div>

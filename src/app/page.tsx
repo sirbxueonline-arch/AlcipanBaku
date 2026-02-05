@@ -36,7 +36,7 @@ export default function Home() {
 
 
       {/* HERO SECTION */}
-      <section className="relative py-0 md:py-24 min-h-[50vh] md:min-h-[85vh] flex flex-col justify-end md:justify-center overflow-hidden">
+      <section className="relative py-0 md:py-24 min-h-[100vh] flex flex-col justify-center overflow-hidden">
         {/* Background Image Effect */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -156,8 +156,8 @@ export default function Home() {
                     {pkg.description[language].split('\n').map((line, idx) => (
                       <li key={idx} className="flex items-start gap-1.5 md:gap-3.5 text-gray-600 font-medium text-[9px] md:text-base leading-tight md:leading-relaxed">
                         <div className="flex-shrink-0 w-3 h-3 md:w-5 md:h-5 mt-0.5">
-                           {/* Simple Check Icon */}
-                           <svg viewBox="0 0 24 24" fill="none" className="w-full h-full text-green-600" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                           {/* Simple Check Icon - GOLD */}
+                           <svg viewBox="0 0 24 24" fill="none" className="w-full h-full text-[#fbbf24]" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <span className="flex-1">{line}</span>
                       </li>
@@ -166,7 +166,7 @@ export default function Home() {
 
                   {/* Button */}
                   <div className="mt-auto w-full">
-                    <button onClick={() => addToCart(pkg)} className="w-full py-2 md:py-4 bg-gradient-to-r from-[#fbbf24] to-[#d97706] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] font-bold rounded-md md:rounded-xl shadow-md transition-all text-[10px] md:text-lg uppercase tracking-wider">
+                    <button onClick={() => addToCart(pkg)} className="w-full py-2 md:py-4 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] font-bold rounded-md md:rounded-xl shadow-md transition-all text-[10px] md:text-lg uppercase tracking-wider">
                       {language === 'AZ' ? 'SİFARİŞ ET' : language === 'RU' ? 'ЗАКАЗАТЬ' : 'ORDER NOW'}
                     </button>
                   </div>
@@ -253,7 +253,7 @@ export default function Home() {
                     </div>
                     <button
                       onClick={() => addToCart(product)}
-                      className="w-full py-2 bg-gray-50 hover:bg-[#fbbf24] text-[#0a192f] text-[10px] md:text-xs font-bold rounded border border-gray-200 hover:border-[#fbbf24] transition-colors uppercase tracking-wider"
+                      className="w-full py-2 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-[10px] md:text-xs font-bold rounded border-none shadow-sm hover:shadow-md transition-all uppercase tracking-wider"
                     >
                       {language === 'AZ' ? 'SİFARİŞ ET' : language === 'RU' ? 'ЗАКАЗАТЬ' : 'ORDER'}
                     </button>
