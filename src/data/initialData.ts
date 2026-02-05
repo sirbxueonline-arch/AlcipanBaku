@@ -113,7 +113,7 @@ export const initialProducts: Product[] = [
         id: '13',
         type: 'product',
         name: { AZ: 'Gilan Nəmədavamlı Alçipan (12.5mm)', RU: 'Gilan Влагостойкий Гипсокартон (12.5мм)', EN: 'Gilan Moisture Resistant Gypsum (12.5mm)' },
-        price: 12,
+        price: 10.50,
         currency: 'AZN',
         image: '/material_gypsum_moisture.jpg',
         description: {
@@ -173,7 +173,7 @@ export const initialProducts: Product[] = [
         id: '24',
         type: 'product',
         name: { AZ: 'Tavan Profili UD (Gilan Knauf 3m 50)', RU: 'Потолочный Профиль UD', EN: 'Ceiling Profile UD' },
-        price: 1.20,
+        price: 0.90,
         currency: 'AZN',
         image: '/material_profile_ceiling.jpg',
         description: {
@@ -203,7 +203,7 @@ export const initialProducts: Product[] = [
         id: '17',
         type: 'product',
         name: { AZ: 'Sunta Vidası (Meridiyaen 5x50)', RU: 'Шуруп Meridiyaen (5x50)', EN: 'Meridiyaen Screws (5x50)' },
-        price: 5,
+        price: 2.00,
         currency: 'AZN',
         image: '/accessory_screws_sunta.png',
         description: {
@@ -233,7 +233,7 @@ export const initialProducts: Product[] = [
         id: '19',
         type: 'product',
         name: { AZ: 'U-Birləşdirici (Eqreb)', RU: 'Прямой Подвес', EN: 'Direct Suspension' },
-        price: 0.25,
+        price: 0.17,
         currency: 'AZN',
         image: '/accessory_bracket_direct.jpg',
         description: {
@@ -248,7 +248,7 @@ export const initialProducts: Product[] = [
         id: '20',
         type: 'product',
         name: { AZ: 'Knauf Vidası (3.5x11 / 25)', RU: 'Шуруп Knauf (3.5x11 / 25)', EN: 'Knauf Screw (3.5x11 / 25)' },
-        price: 16,
+        price: 12.00,
         currency: 'AZN',
         image: '/accessory_screws_knauf.jpg',
         description: {
@@ -263,7 +263,7 @@ export const initialProducts: Product[] = [
         id: '21',
         type: 'product',
         name: { AZ: 'Anker Paz (Celik Dupel)', RU: 'Анкер-клин', EN: 'Ceiling Anchor Wedge' },
-        price: 0.15,
+        price: 0.09,
         currency: 'AZN',
         image: '/accessory_anchor_wedge.png',
         description: {
@@ -278,7 +278,7 @@ export const initialProducts: Product[] = [
         id: '25',
         type: 'product',
         name: { AZ: 'Probka Qırmızı (7 packa)', RU: 'Дюбель Красный', EN: 'Red Wall Plug' },
-        price: 1.20,
+        price: 0.70,
         currency: 'AZN',
         image: '/accessory_anchor_wedge.png',
         description: {
