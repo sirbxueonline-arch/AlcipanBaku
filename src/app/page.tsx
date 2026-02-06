@@ -98,7 +98,7 @@ export default function Home() {
           >
             <a
               href="#contact"
-              className="flex items-center justify-center w-full md:w-auto px-6 md:px-12 py-3.5 md:py-4 bg-gradient-to-r from-[#fbbf24] to-[#ca8a04] text-[#0a192f] text-xs md:text-base font-bold rounded-md shadow-[0_4px_14px_rgba(251,191,36,0.4)] hover:shadow-[0_6px_20px_rgba(251,191,36,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all uppercase tracking-widest"
+              className="flex items-center justify-center w-full md:w-auto px-8 md:px-12 py-3 md:py-4 bg-[#fbbf24] hover:bg-[#d97706] text-[#0a192f] text-sm md:text-base font-bold rounded-lg shadow-lg hover:shadow-xl transition-all uppercase tracking-widest"
             >
               {language === 'AZ' ? 'PULSUZ QİYMƏT AL' : language === 'RU' ? 'ПОЛУЧИТЬ ЦЕНУ' : 'GET FREE QUOTE'}
             </a>

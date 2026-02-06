@@ -94,21 +94,7 @@ export const initialPackages: Package[] = [
 // YOUR PRODUCTS (Materials)
 // ==========================================
 export const initialProducts: Product[] = [
-    {
-        id: '12',
-        type: 'product',
-        name: { AZ: 'Gilan Standart Alçipan (12.5mm)', RU: 'Gilan Стандартный Гипсокартон', EN: 'Gilan Standard Gypsum Board' },
-        price: 10.50, // Providing a default price if not in list but needed, or hiding
-        currency: 'AZN',
-        image: '/material_gypsum_standard.jpg',
-        description: {
-            AZ: 'Yüksək keyfiyyətli standart gipskarton.',
-            RU: 'Высококачественные стандартные гипсокартонные листы.',
-            EN: 'High quality standard gypsum boards.'
-        },
-        isActive: true,
-        isPriceVisible: true
-    },
+
     {
         id: '13',
         type: 'product',
@@ -124,21 +110,7 @@ export const initialProducts: Product[] = [
         isActive: true,
         isPriceVisible: true
     },
-    {
-        id: '23',
-        type: 'product',
-        name: { AZ: 'Alçıpan yaşıl Gilan (9.5 mm)', RU: 'Гипсокартон Гилан Зеленый (9.5 мм)', EN: 'Gypsum Board Green Gilan (9.5 mm)' },
-        price: 11,
-        currency: 'AZN',
-        image: '/material_gypsum_moisture.jpg',
-        description: {
-            AZ: 'Nəmə davamlı yaşıl gipskarton (nazik).',
-            RU: 'Влагостойкие зеленые гипсокартонные листы (тонкие).',
-            EN: 'Moisture resistant green gypsum boards (thin).'
-        },
-        isActive: true,
-        isPriceVisible: true
-    },
+
     {
         id: '15',
         type: 'product',
@@ -199,21 +171,7 @@ export const initialProducts: Product[] = [
         isActive: true,
         isPriceVisible: true
     },
-    {
-        id: '20',
-        type: 'product',
-        name: { AZ: 'Şurub Semeçka Knauf 3.5x11 (1000 ədəd)', RU: 'Шуруп Knauf 3.5x11 (1000 шт)', EN: 'Screw Knauf 3.5x11 (1000 pcs)' },
-        price: 16,
-        currency: 'AZN',
-        image: '/accessory_screws_knauf.jpg',
-        description: {
-            AZ: 'Knauf "semeçka" vidaları (qutu - 1000 əd).',
-            RU: 'Шурупы Knauf "семечка" (коробка - 1000 шт).',
-            EN: 'Knauf "seed" screws (box - 1000 pcs).'
-        },
-        isActive: true,
-        isPriceVisible: true
-    },
+
     {
         id: '26', // New Item
         type: 'product',
@@ -229,21 +187,7 @@ export const initialProducts: Product[] = [
         isActive: true,
         isPriceVisible: true
     },
-    {
-        id: '25',
-        type: 'product',
-        name: { AZ: 'Probka Qırmızı (1 paçka)', RU: 'Дюбель Красный (1 пачка)', EN: 'Red Wall Plug (1 pack)' },
-        price: 1.20,
-        currency: 'AZN',
-        image: '/accessory_anchor_wedge.png',
-        description: {
-            AZ: 'Qırmızı probka, paçka ilə.',
-            RU: 'Красный дюбель, пачка.',
-            EN: 'Red wall plug, pack.'
-        },
-        isActive: true,
-        isPriceVisible: true
-    },
+
 
     {
         id: '17',
