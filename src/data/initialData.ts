@@ -112,7 +112,7 @@ export const initialProducts: Product[] = [
     {
         id: '13',
         type: 'product',
-        name: { AZ: 'Alçıpan yaşıl Gilan (12.5 mm)', RU: 'Гипсокартон Гилан Зеленый (12.5 мм)', EN: 'Gypsum Board Green Gilan (12.5 mm)' },
+        name: { AZ: 'Alcipan yasil gilan knauf, 12.5', RU: 'Гипсокартон Гилан Зеленый, 12.5', EN: 'Gypsum Board Green Gilan, 12.5' },
         price: 12,
         currency: 'AZN',
         image: '/material_gypsum_moisture.jpg',
@@ -142,7 +142,7 @@ export const initialProducts: Product[] = [
     {
         id: '15',
         type: 'product',
-        name: { AZ: 'Tavan C Gilan Knauf (4m 0.50)', RU: 'Потолочный Профиль C (4м 0.50)', EN: 'Ceiling Profile C (4m 0.50)' },
+        name: { AZ: 'Tavan profili C knauf ,1.90 manat', RU: 'Потолочный Профиль C Knauf, 1.90', EN: 'Ceiling Profile C Knauf, 1.90' },
         price: 1.90,
         currency: 'AZN',
         image: '/material_profile_ceiling.jpg',
@@ -157,7 +157,7 @@ export const initialProducts: Product[] = [
     {
         id: '24',
         type: 'product',
-        name: { AZ: 'Tavan U Gilan Knauf (3m 50)', RU: 'Потолочный Профиль U (3м 50)', EN: 'Ceiling Profile U (3m 50)' },
+        name: { AZ: 'Tavan u profilili gilan knauf , 1.20', RU: 'Потолочный Профиль U Gilan Knauf, 1.20', EN: 'Ceiling Profile U Gilan Knauf, 1.20' },
         price: 1.20,
         currency: 'AZN',
         image: '/material_profile_ceiling.jpg',
@@ -172,14 +172,14 @@ export const initialProducts: Product[] = [
     {
         id: '21',
         type: 'product',
-        name: { AZ: 'Çelik dübel', RU: 'Стальной Дюбель', EN: 'Steel Anchor' },
-        price: 0.15,
+        name: { AZ: 'Celik dupel 0.20 qepik 1 eded', RU: 'Стальной Дюбель 0.20', EN: 'Steel Anchor 0.20' },
+        price: 0.20,
         currency: 'AZN',
         image: '/accessory_anchor_wedge.png',
         description: {
-            AZ: 'Tavan montajı üçün metal anker paz.',
-            RU: 'Металлический анкер-клин для потолочного монтажа.',
-            EN: 'Metal wedge anchor for ceiling installation.'
+            AZ: 'Tavan montajı üçün metal anker paz (eded).',
+            RU: 'Металлический анкер-клин для потолочного монтажа (шт).',
+            EN: 'Metal wedge anchor for ceiling installation (pc).'
         },
         isActive: true,
         isPriceVisible: true
@@ -187,14 +187,14 @@ export const initialProducts: Product[] = [
     {
         id: '19',
         type: 'product', // Mapping "Qozb mıraq? (12)" -> Likely "Eqreb" (hanger) box or similar. User said 25 manat. I will assume it is a pack or specific heavy duty item.
-        name: { AZ: 'Eqreb Knauf 12 (Qutu/Paket)', RU: 'Подвес Knauf 12 (Упаковка)', EN: 'Hanger Knauf 12 (Pack)' }, 
-        price: 25, // As per user request. huge jump from 0.17 so must be pack.
+        name: { AZ: 'Eqreb knauf (12) 0.30 manat', RU: 'Подвес Knauf 12 (0.30)', EN: 'Hanger Knauf 12 (0.30)' }, 
+        price: 0.30, 
         currency: 'AZN',
         image: '/accessory_bracket_direct.jpg',
         description: {
-            AZ: 'Knauf Eqreb 12 asqı detalı (Böyük paket).',
-            RU: 'Подвес Knauf 12 (Большая упаковка).',
-            EN: 'Knauf Hanger 12 (Large Pack).'
+            AZ: 'Knauf Eqreb 12 asqı detalı (Eded).',
+            RU: 'Подвес Knauf 12 (Штука).',
+            EN: 'Knauf Hanger 12 (Piece).'
         },
         isActive: true,
         isPriceVisible: true
@@ -217,7 +217,7 @@ export const initialProducts: Product[] = [
     {
         id: '26', // New Item
         type: 'product',
-        name: { AZ: 'Şurub Knauf 25 Göy (1000 ədəd)', RU: 'Шуруп Knauf 25 Синий (1000 шт)', EN: 'Screw Knauf 25 Blue (1000 pcs)' },
+        name: { AZ: 'Srup knauf goy packa, 1000 ededli', RU: 'Шуруп Knauf Синий, 1000 шт', EN: 'Screw Knauf Blue, 1000 pcs' },
         price: 16,
         currency: 'AZN',
         image: '/accessory_screws_knauf.jpg', // Reusing screw image
@@ -244,62 +244,33 @@ export const initialProducts: Product[] = [
         isActive: true,
         isPriceVisible: true
     },
-    {
-        id: '20',
-        type: 'product',
-        name: { AZ: 'Şurub Semeçka Knauf 3.5x11 (1000 ədəd)', RU: 'Шуруп Knauf 3.5x11 (1000 шт)', EN: 'Screw Knauf 3.5x11 (1000 pcs)' },
-        price: 16,
-        currency: 'AZN',
-        image: '/accessory_screws_knauf.jpg',
-        description: {
-            AZ: 'Knauf "semeçka" vidaları (qutu - 1000 əd).',
-            RU: 'Шурупы Knauf "семечка" (коробка - 1000 шт).',
-            EN: 'Knauf "seed" screws (box - 1000 pcs).'
-        },
-        isActive: true,
-        isPriceVisible: true
-    },
-    {
-        id: '26', // New Item
-        type: 'product',
-        name: { AZ: 'Şurub Knauf 25 Göy (1000 ədəd)', RU: 'Шуруп Knauf 25 Синий (1000 шт)', EN: 'Screw Knauf 25 Blue (1000 pcs)' },
-        price: 16,
-        currency: 'AZN',
-        image: '/accessory_screws_knauf.jpg', // Reusing screw image
-        description: {
-            AZ: 'Knauf 25mm göy/boz vidaları (qutu - 1000 əd).',
-            RU: 'Шурупы Knauf 25мм синие (коробка - 1000 шт).',
-            EN: 'Knauf 25mm blue screws (box - 1000 pcs).'
-        },
-        isActive: true,
-        isPriceVisible: true
-    },
-    {
-        id: '25',
-        type: 'product',
-        name: { AZ: 'Probka Qırmızı (1 paçka)', RU: 'Дюбель Красный (1 пачка)', EN: 'Red Wall Plug (1 pack)' },
-        price: 1.20,
-        currency: 'AZN',
-        image: '/accessory_anchor_wedge.png',
-        description: {
-            AZ: 'Qırmızı probka, paçka ilə.',
-            RU: 'Красный дюбель, пачка.',
-            EN: 'Red wall plug, pack.'
-        },
-        isActive: true,
-        isPriceVisible: true
-    },
+
     {
         id: '17',
         type: 'product',
-        name: { AZ: 'Şurub Meridian 5x50', RU: 'Шуруп Meridian 5x50', EN: 'Screw Meridian 5x50' },
-        price: 5,
+        name: { AZ: 'Srup meridian 5x50 , 6 manat', RU: 'Шуруп Meridian 5x50, 6', EN: 'Screw Meridian 5x50, 6' },
+        price: 6,
         currency: 'AZN',
         image: '/accessory_screws_sunta.png',
         description: {
             AZ: 'Meridian sunta vidası (qutu).',
             RU: 'Шуруп Meridian (коробка).',
             EN: 'Meridian screw (box).'
+        },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: '27', // New Item - Klips
+        type: 'product',
+        name: { AZ: 'Klips knauf 1 eded 0.25 manat', RU: 'Клипс Knauf 1 шт 0.25', EN: 'Clips Knauf 1 pc 0.25' },
+        price: 0.25,
+        currency: 'AZN',
+        image: '/accessory_bracket_direct.jpg', // Placeholder
+        description: {
+            AZ: 'Knauf tavan klisləri (eded).',
+            RU: 'Клипсы для потолка Knauf (шт).',
+            EN: 'Knauf ceiling clips (pc).'
         },
         isActive: true,
         isPriceVisible: true
