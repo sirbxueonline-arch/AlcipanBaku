@@ -36,7 +36,7 @@ export default function Home() {
 
 
       {/* HERO SECTION */}
-      <section className="relative py-0 min-h-screen flex flex-col justify-center overflow-hidden">
+      <section className="relative py-0 min-h-[65vh] md:min-h-screen flex flex-col justify-center overflow-hidden">
         {/* Background Image Effect */}
         <div className="absolute inset-0 z-0">
           <Image
