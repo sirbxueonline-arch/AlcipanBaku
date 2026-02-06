@@ -36,7 +36,7 @@ export default function Home() {
 
 
       {/* HERO SECTION */}
-      <section className="relative py-0 md:py-24 min-h-[100vh] flex flex-col justify-center overflow-hidden">
+      <section className="relative py-0 min-h-screen flex flex-col justify-center overflow-hidden">
         {/* Background Image Effect */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -46,21 +46,16 @@ export default function Home() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#0a192f] z-10"></div>
+          <div className="absolute inset-0 bg-black/40 z-10"></div>
         </div>
 
-        <div className="relative z-20 container mx-auto px-4 flex flex-col items-center text-center max-w-7xl pb-12 md:pb-0">
-          <div className="mb-2 md:mb-6">
-            {/* <span className="text-white/90 font-semibold tracking-[0.2em] uppercase text-[10px] md:text-sm border-b-2 border-[#fbbf24] pb-1 md:pb-2">
-                // ALÇİPAN BAKU
-            </span> */}
-          </div>
-
+        <div className="relative z-20 container mx-auto px-4 flex flex-col items-center text-center max-w-7xl h-full justify-center pt-20 pb-20">
+          
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-3xl sm:text-5xl md:text-7xl font-extrabold mb-1 mobile-heading text-white leading-tight tracking-tight max-w-4xl drop-shadow-md"
+            className="text-4xl sm:text-6xl md:text-8xl font-extrabold mb-4 mobile-heading text-white leading-tight tracking-tight drop-shadow-lg"
           >
             {language === 'AZ' ? 'Premium Alçipan' :
               language === 'RU' ? 'Премиум Алчипан' :
@@ -74,7 +69,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.8 }}
-            className="text-xs md:text-3xl font-medium text-white/80 mb-6 md:mb-10 tracking-wide"
+            className="text-sm md:text-3xl font-medium text-white/90 mb-6 tracking-wide"
           >
             {language === 'AZ' ? 'Material + Usta + Zəmanət' : 'Material + Master + Warranty'}
           </motion.h2>
@@ -83,7 +78,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-[10px] md:text-xl text-white/70 mb-8 md:mb-12 font-medium max-w-xs md:max-w-2xl mx-auto"
+            className="text-xs md:text-xl text-white/80 mb-10 font-medium max-w-xs md:max-w-2xl mx-auto"
           >
             {language === 'AZ' ? 'Pulsuz Ölçü • Dizayn • Sürətli Montaj' :
               language === 'RU' ? 'Бесплатный замер • Дизайн • Быстрый монтаж' :
@@ -94,11 +89,11 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="w-full md:w-auto px-12 md:px-0"
+            className="w-full px-8 md:w-auto md:px-0"
           >
             <a
               href="#contact"
-              className="flex items-center justify-center w-full md:w-auto px-8 md:px-12 py-3 md:py-4 bg-[#fbbf24] hover:bg-[#d97706] text-[#0a192f] text-sm md:text-base font-bold rounded-lg shadow-lg hover:shadow-xl transition-all uppercase tracking-widest"
+              className="flex items-center justify-center w-full md:w-auto px-8 md:px-16 py-4 bg-[#fbbf24] hover:bg-[#d97706] text-[#0a192f] text-sm md:text-lg font-bold rounded-lg shadow-xl hover:shadow-2xl transition-all uppercase tracking-widest border border-yellow-500/20"
             >
               {language === 'AZ' ? 'PULSUZ QİYMƏT AL' : language === 'RU' ? 'ПОЛУЧИТЬ ЦЕНУ' : 'GET FREE QUOTE'}
             </a>

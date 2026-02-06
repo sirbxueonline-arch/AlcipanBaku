@@ -119,9 +119,9 @@ export function Header() {
 
                     {/* Right Side: Phone (Mobile) / Actions (Desktop) */}
                     <div className="flex items-center gap-4">
-                        {/* Mobile Phone Number */}
-                        <a href="tel:+994506368731" className="md:hidden text-white font-medium text-xs whitespace-nowrap opacity-90">
-                            +994 50 636 87 31
+                        {/* Mobile Phone Number - Button Style as per screenshot */}
+                        <a href="tel:+994506368731" className="md:hidden flex items-center justify-center bg-[#fbbf24] text-[#0a192f] font-bold text-xs px-4 py-2 rounded-full shadow-md whitespace-nowrap">
+                            Call Now
                         </a>
 
                         {/* Desktop Actions */}
