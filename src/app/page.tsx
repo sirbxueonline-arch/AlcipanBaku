@@ -103,7 +103,7 @@ export default function Home() {
 
       {/* PRODUCTS / PACKAGES */}
       <section className="relative container mx-auto px-4 -mt-8 z-30 mb-12" id="products">
-        <div className="bg-white/95 md:bg-transparent rounded-[30px] shadow-2xl md:shadow-none p-6 md:p-0">
+        <div className="bg-white rounded-[30px] shadow-2xl p-6 md:p-12">
         
         <div className="mb-8 md:mb-16 text-center">
             <h2 className="text-xl md:text-4xl font-bold text-[#0a192f] relative inline-block pb-4">
@@ -163,7 +163,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES SECTION */}
-      <section className="bg-transparent pb-20 md:py-20" id="services">
+      <section className="bg-white pb-20 md:py-20" id="services">
         <div className="container mx-auto px-4">
            <div className="text-center mb-8 md:mb-12">
                 <h2 className="text-xl md:text-4xl font-bold text-[#0a192f] relative inline-block pb-4">
