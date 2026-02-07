@@ -36,7 +36,7 @@ export default function Home() {
 
 
       {/* HERO SECTION */}
-      <section className="relative py-0 min-h-[65vh] md:min-h-screen flex flex-col justify-center overflow-hidden">
+      <section className="relative py-0 min-h-[60vh] md:min-h-screen flex flex-col justify-center overflow-hidden">
         {/* Background Image Effect */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -46,16 +46,16 @@ export default function Home() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/40 z-10"></div>
+          <div className="absolute inset-0 bg-black/60 z-10"></div>
         </div>
 
-        <div className="relative z-20 container mx-auto px-4 flex flex-col items-center text-center max-w-7xl h-full justify-center pt-20 pb-20">
+        <div className="relative z-20 container mx-auto px-4 flex flex-col items-center text-center max-w-7xl h-full justify-center pt-28 pb-12">
           
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl sm:text-6xl md:text-8xl font-extrabold mb-4 mobile-heading text-white leading-tight tracking-tight drop-shadow-lg"
+            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-3 mobile-heading text-white leading-[1.1] tracking-normal drop-shadow-xl"
           >
             {language === 'AZ' ? 'Premium Alçipan' :
               language === 'RU' ? 'Премиум Алчипан' :
@@ -69,7 +69,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.8 }}
-            className="text-sm md:text-3xl font-medium text-white/90 mb-6 tracking-wide"
+            className="text-base md:text-2xl font-normal text-white/90 mb-5 tracking-wide"
           >
             {language === 'AZ' ? 'Material + Usta + Zəmanət' : 'Material + Master + Warranty'}
           </motion.h2>
@@ -78,7 +78,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-xs md:text-xl text-white/80 mb-10 font-medium max-w-xs md:max-w-2xl mx-auto"
+            className="text-xs md:text-xl text-white/70 mb-8 font-light max-w-xs md:max-w-2xl mx-auto tracking-wide"
           >
             {language === 'AZ' ? 'Pulsuz Ölçü • Dizayn • Sürətli Montaj' :
               language === 'RU' ? 'Бесплатный замер • Дизайн • Быстрый монтаж' :
@@ -89,11 +89,11 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="w-full px-8 md:w-auto md:px-0"
+            className="w-full px-10 md:w-auto md:px-0"
           >
             <a
               href="#contact"
-              className="flex items-center justify-center w-full md:w-auto px-8 md:px-16 py-4 bg-[#fbbf24] hover:bg-[#d97706] text-[#0a192f] text-sm md:text-lg font-bold rounded-lg shadow-xl hover:shadow-2xl transition-all uppercase tracking-widest border border-yellow-500/20"
+              className="flex items-center justify-center w-full md:w-auto px-8 py-3.5 bg-gradient-to-r from-[#fbbf24] to-[#d97706] text-[#0a192f] text-sm md:text-lg font-bold rounded-lg shadow-[0_0_20px_rgba(251,191,36,0.3)] hover:shadow-[0_0_30px_rgba(251,191,36,0.5)] transition-all uppercase tracking-widest"
             >
               {language === 'AZ' ? 'PULSUZ QİYMƏT AL' : language === 'RU' ? 'ПОЛУЧИТЬ ЦЕНУ' : 'GET FREE QUOTE'}
             </a>
@@ -102,66 +102,56 @@ export default function Home() {
       </section>
 
       {/* PRODUCTS / PACKAGES */}
-      <section className="relative container mx-auto px-4 py-8 md:py-20 z-30 bg-white md:bg-transparent rounded-t-[30px] -mt-6 md:mt-0" id="products">
-        {/* <div className="bg-white rounded-2xl md:rounded-[2.5rem] shadow-2xl p-6 md:p-12 mb-16 relative overflow-hidden"> */}
+      <section className="relative container mx-auto px-4 -mt-8 z-30 mb-12" id="products">
+        <div className="bg-white/95 md:bg-transparent rounded-[30px] shadow-2xl md:shadow-none p-6 md:p-0">
         
-        <div className="mb-8 md:mb-16 pt-6 md:pt-0">
-            <div className="text-center mb-6">
-                <h2 className="text-xl md:text-4xl font-bold text-[#0a192f] inline-block relative px-4">
-                  {language === 'AZ' ? 'Paket Təkliflərimiz' : language === 'RU' ? 'Наши Пакетные Предложения' : 'Our Package Offers'}
-                  <div className="absolute left-0 right-0 bottom-[-8px] h-[1px] bg-gray-200 w-full hidden md:block"></div>
-                </h2>
-                 <p className="text-gray-500 font-medium text-[10px] md:text-base mt-2">
-                    {language === 'AZ' ? 'Tam Xidmət | Material | Montaj Daxil' : 'Full Service | Material | Installation Included'}
-                </p>
-                 <div className="h-[1px] w-full bg-gray-200 mt-4 md:hidden"></div>
-                 {/* Decorative lines like in design */}
-                 <div className="flex justify-center items-center gap-2 mt-[-1px] md:hidden">
-                    <div className="w-16 h-[2px] bg-[#fbbf24]"></div>
-                 </div>
-            </div>
+        <div className="mb-8 md:mb-16 text-center">
+            <h2 className="text-xl md:text-4xl font-bold text-[#0a192f] relative inline-block pb-4">
+               {language === 'AZ' ? 'Paket Təkliflərimiz' : language === 'RU' ? 'Наши Пакетные Предложения' : 'Our Package Offers'}
+               <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-16 md:w-24 h-[2px] bg-gray-200">
+                  <div className="w-8 md:w-12 h-full bg-[#fbbf24] mx-auto"></div>
+               </div>
+            </h2>
+             <p className="text-gray-500 font-medium text-[11px] md:text-base mt-2 tracking-wide">
+                {language === 'AZ' ? 'Tam Xidmət | Material | Montaj Daxil' : 'Full Service | Material | Installation Included'}
+            </p>
+        </div>
 
           {/* Custom Package Cards Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8 max-w-7xl mx-auto">
-            {packages.filter(p => p.isActive).slice(0, 3).map(pkg => (
-              <div key={pkg.id} className="bg-white rounded-xl md:rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.1)] transition-all duration-300 border border-gray-100 flex flex-col relative group">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8 max-w-5xl mx-auto">
+            {packages.filter(p => p.isActive).slice(0, 2).map(pkg => (
+              <div key={pkg.id} className="bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)] transition-all duration-300 border border-gray-100 flex flex-col items-center pt-2 pb-4 md:pb-8">
                 
-                {/* Visual Separator/Header - Dark Blue Rounded Top */}
-                 <div className="bg-[#0a192f] py-2 md:py-4 px-2 text-center mx-1 mt-1 rounded-t-lg">
+                {/* Visual Separator/Header - Dark Blue Rounded Tag */}
+                 <div className="bg-[#0a192f] w-[90%] py-2 md:py-3 rounded-lg md:rounded-xl text-center shadow-lg -mt-0 mb-4">
                     <h3 className="text-white text-[13px] md:text-2xl font-bold tracking-wide">
                         {pkg.name[language]}
                     </h3>
                  </div>
 
-                <div className="px-2 pt-3 pb-4 md:p-8 flex flex-col items-center flex-grow bg-white">
+                <div className="px-3 md:px-8 w-full flex flex-col items-center flex-grow">
                   {/* Price */}
-                  <div className="text-center mb-3 md:mb-8 w-full border-b border-gray-100 pb-3 md:pb-6">
-                    <div className="flex flex-row items-baseline justify-center gap-1 text-[#0a192f]">
-                      <span className="text-xl md:text-5xl font-extrabold tracking-tight">
-                        {(pkg.price * (pkg.step || 20)).toLocaleString()}
-                      </span>
-                      <span className="text-xs md:text-2xl font-bold text-[#0a192f]">
-                        {pkg.currency}
-                      </span>
-                    </div>
-                  </div>
+                   <div className="text-center mb-4 md:mb-8">
+                      <div className="flex flex-col items-center text-[#0a192f]">
+                        <span className="text-2xl md:text-5xl font-extrabold tracking-tight leading-none">
+                          {(pkg.price * (pkg.step || 20)).toLocaleString()} {pkg.currency}
+                        </span>
+                      </div>
+                   </div>
 
                   {/* Features List */}
-                  <ul className="space-y-1.5 md:space-y-3 w-full mb-4 md:mb-8 text-left pl-1 md:pl-6 bg-transparent">
+                  <ul className="space-y-2 md:space-y-4 w-full mb-6 md:mb-8 text-left max-w-[200px] md:max-w-xs mx-auto">
                     {pkg.description[language].split('\n').map((line, idx) => (
-                      <li key={idx} className="flex items-start gap-1.5 md:gap-3.5 text-gray-600 font-medium text-[9px] md:text-base leading-tight md:leading-relaxed">
-                        <div className="flex-shrink-0 w-3 h-3 md:w-5 md:h-5 mt-0.5">
-                           {/* Simple Check Icon - GOLD */}
-                           <svg viewBox="0 0 24 24" fill="none" className="w-full h-full text-[#fbbf24]" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        </div>
+                      <li key={idx} className="flex items-center gap-2 md:gap-3 text-gray-700 font-medium text-[10px] md:text-base">
+                        <div className="flex-shrink-0 text-[#fbbf24] text-xs md:text-lg">✔</div>
                         <span className="flex-1">{line}</span>
                       </li>
                     ))}
                   </ul>
 
                   {/* Button */}
-                  <div className="mt-auto w-full">
-                    <button onClick={() => addToCart(pkg)} className="w-full py-2 md:py-4 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] font-bold rounded-md md:rounded-xl shadow-md transition-all text-[10px] md:text-lg uppercase tracking-wider">
+                  <div className="mt-auto w-full max-w-[180px] md:max-w-xs">
+                    <button onClick={() => addToCart(pkg)} className="w-full py-2.5 md:py-4 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] font-bold rounded-lg md:rounded-xl shadow-md transition-all text-[11px] md:text-lg uppercase tracking-wider">
                       {language === 'AZ' ? 'SİFARİŞ ET' : language === 'RU' ? 'ЗАКАЗАТЬ' : 'ORDER NOW'}
                     </button>
                   </div>
@@ -170,90 +160,33 @@ export default function Home() {
             ))}
           </div>
         </div>
-        {/* </div> */}
       </section>
-
-      {/* PRODUCTS (MATERIALS) SECTION */}
-      {/* <section className="bg-[#f8fafc] py-12 md:py-20" id="materials">
-         Keeping this section commented out or removed if not in design, but keeping code for now to not break anything drastically if user needs it later. 
-         Based on design screenshot, we see 'Xidmətlərimiz' after packages. 
-         I will keep it but maybe minimize visual impact or hide if strictly matching only the screenshot.
-         The screenshot shows "Xidmətlərimiz" right after packages. Packages -> Services.
-         I'll put Products after Services or hide.
-      </section> */}
 
       {/* SERVICES SECTION */}
-      <section className="bg-transparent py-4 md:py-20" id="services">
-        <div className="container mx-auto px-4 md:bg-[#f8fafc] md:rounded-3xl pt-2 pb-12">
-          
-           <div className="text-center mb-6 pt-4">
-                <h2 className="text-lg md:text-4xl font-bold text-[#0a192f] inline-block relative px-4">
+      <section className="bg-transparent pb-20 md:py-20" id="services">
+        <div className="container mx-auto px-4">
+           <div className="text-center mb-8 md:mb-12">
+                <h2 className="text-xl md:text-4xl font-bold text-[#0a192f] relative inline-block pb-4">
                   {language === 'AZ' ? 'Xidmətlərimiz' : language === 'RU' ? 'Услуги' : 'Services'}
-                  <div className="absolute left-0 right-0 bottom-[-8px] h-[1px] bg-gray-200 w-full hidden md:block"></div>
+                   <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-16 md:w-24 h-[2px] bg-gray-200">
+                      <div className="w-8 md:w-12 h-full bg-[#fbbf24] mx-auto"></div>
+                   </div>
                 </h2>
-                 <div className="h-[1px] w-full bg-gray-200 mt-4 md:hidden"></div>
-                 {/* Decorative lines like in design */}
-                 <div className="flex justify-center items-center gap-2 mt-[-1px] md:hidden">
-                    <div className="w-16 h-[2px] bg-[#fbbf24]"></div>
-                 </div>
             </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-2 gap-3 md:gap-8 max-w-4xl mx-auto">
-            {services.map(service => (
-              <ServiceCard key={service.id} service={service} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ADDITIONAL SECTIONS (Keeping them for completeness but they might be below the scroll) */}
-       {/* PRODUCTS (MATERIALS) SECTION - Moved below services as 'More' */}
-      <section className="bg-[#f8fafc] py-12 md:py-20" id="materials">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-2xl md:text-4xl font-extrabold mb-3 text-[#0a192f]">
-              {language === 'AZ' ? 'Tikinti Materialları' : language === 'RU' ? 'Строительные Материалы' : 'Construction Materials'}
-            </h2>
-            <div className="h-1 w-20 bg-[#fbbf24] mx-auto rounded-full mb-3"></div>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 max-w-7xl mx-auto">
-            {products.filter(p => p.isActive).map(product => (
-              <div key={product.id} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col">
-                <div className="bg-[#0a192f] py-2 px-3 text-center">
-                  <h3 className="text-white text-xs md:text-sm font-bold tracking-wide truncate">
-                    {product.name[language]}
-                  </h3>
-                </div>
-                <div className="relative h-32 md:h-48 w-full bg-gray-100">
-                  <Image
-                    src={product.image || 'https://placehold.co/400x300?text=No+Image'}
-                    alt={product.name[language]}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-3 md:p-4 flex flex-col flex-grow">
-                  <div className="mt-auto">
-                    <div className="mb-3">
-                      {product.isPriceVisible ? (
-                        <span className="text-lg font-bold text-[#0a192f]">
-                          {product.price.toFixed(2)} {product.currency}
-                        </span>
-                      ) : (
-                        <span className="text-[10px] md:text-xs text-gray-400 italic">
-                          {language === 'AZ' ? 'Qiymət razılaşma yolu ilə' : language === 'RU' ? 'Цена договорная' : 'Price on request'}
-                        </span>
-                      )}
-                    </div>
-                    <button
-                      onClick={() => addToCart(product)}
-                      className="w-full py-2 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-[10px] md:text-xs font-bold rounded border-none shadow-sm hover:shadow-md transition-all uppercase tracking-wider"
-                    >
-                      {language === 'AZ' ? 'SİFARİŞ ET' : language === 'RU' ? 'ЗАКАЗАТЬ' : 'ORDER'}
-                    </button>
-                  </div>
-                </div>
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-3 md:gap-8 max-w-4xl mx-auto">
+            {services.slice(0, 2).map(service => (
+              <div key={service.id} className="relative group overflow-hidden rounded-xl md:rounded-3xl shadow-lg bg-white">
+                 <div className="aspect-[4/3] md:aspect-[16/9] relative">
+                    <Image src={service.image} alt={service.name[language]} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                 </div>
+                 <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6 text-center">
+                    <h3 className="text-white font-bold text-sm md:text-2xl mb-2 md:mb-4 drop-shadow-md">{service.name[language]}</h3>
+                    <a href="#contact" className="inline-block bg-[#fbbf24] hover:bg-[#d97706] text-[#0a192f] text-[10px] md:text-base font-bold py-1.5 px-4 md:py-3 md:px-8 rounded-full shadow-lg transition-all uppercase tracking-wide">
+                        {language === 'AZ' ? 'əlaqə saxla' : language === 'RU' ? 'связаться' : 'contact us'}
+                    </a>
+                 </div>
               </div>
             ))}
           </div>

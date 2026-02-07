@@ -12,7 +12,7 @@ export const initialPackages: Package[] = [
         id: 'pkg20',
         type: 'package',
         name: { AZ: '20 m² Paket', RU: 'Пакет 20 м²', EN: '20 m² Package' },
-        price: 23, // 460 / 20
+        price: 23, // 460 / 20 = 23
         currency: 'AZN',
         image: '/picture1.jpeg',
         description: {
@@ -28,7 +28,7 @@ export const initialPackages: Package[] = [
         id: 'pkg50',
         type: 'package',
         name: { AZ: '50 m² Paket', RU: 'Пакет 50 м²', EN: '50 m² Package' },
-        price: 22, // 1100 / 50
+        price: 22, // 1100 / 50 = 22
         currency: 'AZN',
         image: '/picture2.jpeg',
         description: {

@@ -87,20 +87,21 @@ export function Header() {
                 <div className="flex justify-between items-center h-16 sm:h-20">
                     
                     {/* Mobile: Left Hamburger */}
-                    <div className="md:hidden flex items-center">
+                    <div className="md:hidden flex items-center mr-2">
                         <button
                             className="text-white p-1"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             aria-label="Toggle menu"
                         >
-                            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                            <Menu size={24} />
                         </button>
                     </div>
 
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2 relative z-50">
-                         <h1 className="text-lg sm:text-2xl font-extrabold text-white tracking-tighter leading-none uppercase italic">
-                            //ALÇİPAN <span className="text-[#fbbf24] font-normal not-italic">BAKU</span>
+                    <Link href="/" className="flex items-center gap-1 relative z-50 mr-auto md:mr-0">
+                         <span className="text-white text-lg sm:text-2xl font-light opacity-70">//</span>
+                         <h1 className="text-lg sm:text-2xl font-bold text-white tracking-wide">
+                            ALÇİPAN <span className="font-normal text-white/90">BAKU</span>
                         </h1>
                     </Link>
 
@@ -110,7 +111,7 @@ export function Header() {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className={`text-sm font-bold uppercase tracking-wider transition-colors hover:text-[#fbbf24] ${pathname === link.href ? 'text-[#fbbf24]' : 'text-white'}`}
+                                className={`text-sm font-medium uppercase tracking-wider transition-colors hover:text-[#fbbf24] ${pathname === link.href ? 'text-[#fbbf24]' : 'text-white'}`}
                             >
                                 {link.label[language]}
                             </Link>
@@ -119,9 +120,9 @@ export function Header() {
 
                     {/* Right Side: Phone (Mobile) / Actions (Desktop) */}
                     <div className="flex items-center gap-4">
-                        {/* Mobile Phone Number - Button Style as per screenshot */}
-                        <a href="tel:+994506368731" className="md:hidden flex items-center justify-center bg-[#fbbf24] text-[#0a192f] font-bold text-xs px-4 py-2 rounded-full shadow-md whitespace-nowrap">
-                            Call Now
+                        {/* Mobile Phone Number - Text Style as per screenshot */}
+                        <a href="tel:+994506368731" className="md:hidden text-white/90 text-[10px] sm:text-xs font-medium whitespace-nowrap">
+                            +994 50 636 87 31
                         </a>
 
                         {/* Desktop Actions */}
