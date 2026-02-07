@@ -40,7 +40,7 @@ export default function Home() {
         {/* Background Image Effect */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/picture3.jpeg"
+            src="/new-hero.jpg"
             alt="Alcipan Baku Hero"
             fill
             className="object-cover"
