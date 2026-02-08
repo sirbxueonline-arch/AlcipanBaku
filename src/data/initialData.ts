@@ -117,7 +117,7 @@ export const initialProducts: Product[] = [
         name: { AZ: 'Tavan profili C knauf, 0.50mm', RU: 'Потолочный Профиль C Knauf, 0.50mm', EN: 'Ceiling Profile C Knauf, 0.50mm' },
         price: 1.90,
         currency: 'AZN',
-        image: '/tavan_profili_c_knauf.jpg',
+        image: '/material_profile_ceiling.jpg',
         description: {
             AZ: 'Tavan üçün möhkəm metal profillər (CD). Qalınlıq: 0.50mm',
             RU: 'Прочные металлические профили для потолка (CD). Толщина: 0.50мм',
