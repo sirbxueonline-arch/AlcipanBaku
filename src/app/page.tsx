@@ -207,7 +207,7 @@ export default function Home() {
             {products.filter(p => p.isActive && p.price > 0).map(product => (
               <div key={product.id} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col">
                 <div className="bg-[#0a192f] py-2 px-3 text-center">
-                  <h3 className="text-white text-xs md:text-sm font-bold tracking-wide truncate">
+                  <h3 className="text-white text-xs md:text-sm font-bold tracking-wide">
                     {product.name[language]}
                   </h3>
                 </div>
