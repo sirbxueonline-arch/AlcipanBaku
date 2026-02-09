@@ -115,7 +115,7 @@ export const initialProducts: Product[] = [
         name: { AZ: 'Celik dupel 0.20 qepik 1 eded', RU: 'Стальной Дюбель 0.20', EN: 'Steel Anchor 0.20' },
         price: 0.20,
         currency: 'AZN',
-        image: '/accessory_anchor_wedge.png',
+        image: '/accessory_anchors_wedge.png',
         description: {
             AZ: 'Tavan montajı üçün metal anker paz (eded).',
             RU: 'Металлический анкер-клин для потолочного монтажа (шт).',
@@ -145,7 +145,7 @@ export const initialProducts: Product[] = [
         name: { AZ: 'Srup knauf goy packa, 1000 ededli', RU: 'Шуруп Knauf Синий, 1000 шт', EN: 'Screw Knauf Blue, 1000 pcs' },
         price: 16,
         currency: 'AZN',
-        image: '/accessory_screws_knauf.jpg',
+        image: '/accessory_screws_knauf_box.png',
         description: {
             AZ: 'Knauf 25mm göy/boz vidaları (qutu - 1000 əd).',
             RU: 'Шурупы Knauf 25мм синие (коробка - 1000 шт).',
@@ -175,7 +175,7 @@ export const initialProducts: Product[] = [
         name: { AZ: 'Klips knauf 1 eded 0.25 manat', RU: 'Клипс Knauf 1 шт 0.25', EN: 'Clips Knauf 1 pc 0.25' },
         price: 0.25,
         currency: 'AZN',
-        image: '/accessory_bracket_direct.jpg',
+        image: '/accessory_bracket_t.png',
         description: {
             AZ: 'Knauf tavan klisləri (eded).',
             RU: 'Клипсы для потолка Knauf (шт).',
