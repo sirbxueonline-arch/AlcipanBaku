@@ -95,6 +95,21 @@ export const initialPackages: Package[] = [
 // ==========================================
 export const initialProducts: Product[] = [
     {
+        id: '13',
+        type: 'product',
+        name: { AZ: 'Alcipan yasil gilan knauf, 12.5mm', RU: 'Гипсокартон Гилан Зеленый, 12.5mm', EN: 'Gypsum Board Green Gilan, 12.5mm' },
+        price: 12.00,
+        currency: 'AZN',
+        image: '/material_gypsum_moisture.jpg',
+        description: {
+            AZ: 'Nəmə davamlı yaşıl gipskarton lövhələr.',
+            RU: 'Влагостойкие зеленые гипсокартонные листы.',
+            EN: 'Moisture resistant green gypsum boards.'
+        },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
         id: '24',
         type: 'product',
         name: { AZ: 'Tavan u profilili gilan knauf , 1.20', RU: 'Потолочный Профиль U Gilan Knauf, 1.20', EN: 'Ceiling Profile U Gilan Knauf, 1.20' },
