@@ -94,38 +94,6 @@ export const initialPackages: Package[] = [
 // YOUR PRODUCTS (Materials)
 // ==========================================
 export const initialProducts: Product[] = [
-
-    {
-        id: '13',
-        type: 'product',
-        name: { AZ: 'Alcipan yasil gilan knauf, 12.5mm', RU: 'Гипсокартон Гилан Зеленый, 12.5mm', EN: 'Gypsum Board Green Gilan, 12.5mm' },
-        price: 12.50,
-        currency: 'AZN',
-        image: '/material_gypsum_moisture.jpg',
-        description: {
-            AZ: 'Nəmə davamlı yaşıl gipskarton lövhələr.',
-            RU: 'Влагостойкие зеленые гипсокартонные листы.',
-            EN: 'Moisture resistant green gypsum boards.'
-        },
-        isActive: true,
-        isPriceVisible: true
-    },
-
-    {
-        id: '15',
-        type: 'product',
-        name: { AZ: 'Tavan profili C knauf, 0.50mm', RU: 'Потолочный Профиль C Knauf, 0.50mm', EN: 'Ceiling Profile C Knauf, 0.50mm' },
-        price: 1.90,
-        currency: 'AZN',
-        image: '/material_profile_ceiling.jpg',
-        description: {
-            AZ: 'Tavan üçün möhkəm metal profillər (CD). Qalınlıq: 0.50mm',
-            RU: 'Прочные металлические профили для потолка (CD). Толщина: 0.50мм',
-            EN: 'Strong metal profiles for ceilings (CD). Thickness: 0.50mm'
-        },
-        isActive: true,
-        isPriceVisible: true
-    },
     {
         id: '24',
         type: 'product',
@@ -158,9 +126,9 @@ export const initialProducts: Product[] = [
     },
     {
         id: '19',
-        type: 'product', // Mapping "Qozb mıraq? (12)" -> Likely "Eqreb" (hanger) box or similar. User said 25 manat. I will assume it is a pack or specific heavy duty item.
-        name: { AZ: 'Eqreb knauf (12) 0.30 manat', RU: 'Подвес Knauf 12 (0.30)', EN: 'Hanger Knauf 12 (0.30)' }, 
-        price: 0.30, 
+        type: 'product',
+        name: { AZ: 'Eqreb knauf (12) 0.30 manat', RU: 'Подвес Knauf 12 (0.30)', EN: 'Hanger Knauf 12 (0.30)' },
+        price: 0.30,
         currency: 'AZN',
         image: '/accessory_bracket_direct.jpg',
         description: {
@@ -171,14 +139,13 @@ export const initialProducts: Product[] = [
         isActive: true,
         isPriceVisible: true
     },
-
     {
-        id: '26', // New Item
+        id: '26',
         type: 'product',
         name: { AZ: 'Srup knauf goy packa, 1000 ededli', RU: 'Шуруп Knauf Синий, 1000 шт', EN: 'Screw Knauf Blue, 1000 pcs' },
         price: 16,
         currency: 'AZN',
-        image: '/accessory_screws_knauf.jpg', // Reusing screw image
+        image: '/accessory_screws_knauf.jpg',
         description: {
             AZ: 'Knauf 25mm göy/boz vidaları (qutu - 1000 əd).',
             RU: 'Шурупы Knauf 25мм синие (коробка - 1000 шт).',
@@ -187,8 +154,6 @@ export const initialProducts: Product[] = [
         isActive: true,
         isPriceVisible: true
     },
-
-
     {
         id: '17',
         type: 'product',
@@ -205,12 +170,12 @@ export const initialProducts: Product[] = [
         isPriceVisible: true
     },
     {
-        id: '27', // New Item - Klips
+        id: '27',
         type: 'product',
         name: { AZ: 'Klips knauf 1 eded 0.25 manat', RU: 'Клипс Knauf 1 шт 0.25', EN: 'Clips Knauf 1 pc 0.25' },
         price: 0.25,
         currency: 'AZN',
-        image: '/accessory_bracket_direct.jpg', // Placeholder
+        image: '/accessory_bracket_direct.jpg',
         description: {
             AZ: 'Knauf tavan klisləri (eded).',
             RU: 'Клипсы для потолка Knauf (шт).',
