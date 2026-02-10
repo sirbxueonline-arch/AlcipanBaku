@@ -6,24 +6,36 @@ import { motion } from 'framer-motion';
 export const PricingTables = () => {
     const { language } = useAdmin();
 
+    // Helper to get the 20m2 price for display
+    const getBasePrice = (pkg: any) => {
+        const base = pkg.prices.find((p: any) => p.area === 20);
+        return base ? base.price : 0;
+    };
+
     return (
-        <section className="py-20 bg-white" id="pricing">
+        <section className="py-12 bg-[#f8fafc]" id="pricing">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a192f] mb-4">
-                        {language === 'AZ' ? 'Paketlərimiz' : language === 'RU' ? 'Наши Пакеты' : 'Our Packages'}
-                    </h2>
-                    <div className="w-24 h-1 bg-[#fbbf24] mx-auto rounded-full"></div>
-                    <p className="mt-4 text-gray-500 max-w-2xl mx-auto">
+                
+                {/* Section Header */}
+                <div className="text-center mb-8">
+                    <div className="flex items-center justify-center gap-4 mb-2">
+                        <div className="h-px bg-gray-300 w-12 md:w-24"></div>
+                        <h2 className="text-2xl md:text-3xl font-bold text-[#0a192f] uppercase tracking-wide">
+                            {language === 'AZ' ? 'Paket Təkliflərimiz' : language === 'RU' ? 'Пакетные Предложения' : 'Package Offers'}
+                        </h2>
+                        <div className="h-px bg-gray-300 w-12 md:w-24"></div>
+                    </div>
+                    <p className="text-xs md:text-sm text-gray-500 font-medium tracking-widest uppercase">
                         {language === 'AZ' 
-                            ? 'Büdcənizə uyğun ən yaxşı paketi seçin. Material, ustalıq və dizayn bir arada.' 
+                            ? 'Tam Xidmət | Material | Montaj Daxil' 
                             : language === 'RU' 
-                            ? 'Выберите лучший пакет под ваш бюджет. Материал, мастера и дизайн в одном.' 
-                            : 'Choose the best package for your budget. Material, craftsmanship, and design all in one.'}
+                            ? 'Полный Сервис | Материал | Монтаж' 
+                            : 'Full Service | Material | Installation Included'}
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                {/* Compact Grid - 2 Columns on Mobile/Desktop */}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6 max-w-5xl mx-auto">
                     {pricingPackages.map((pkg, index) => (
                         <motion.div 
                             key={pkg.id}
@@ -31,98 +43,55 @@ export const PricingTables = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1, duration: 0.5 }}
                             viewport={{ once: true }}
-                            className={`relative rounded-3xl overflow-hidden transition-all duration-300 flex flex-col ${
-                                pkg.isPopular 
-                                    ? 'shadow-[0_20px_60px_-15px_rgba(251,191,36,0.3)] border-2 border-[#fbbf24] scale-105 z-10' 
-                                    : 'shadow-lg border border-gray-100 hover:shadow-xl'
-                            }`}
+                            className="bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-lg border border-gray-100 flex flex-col items-center pb-4 relative"
                         >
-                            {pkg.isPopular && (
-                                <div className="absolute top-0 right-0 bg-[#fbbf24] text-[#0a192f] text-xs font-bold px-4 py-1 rounded-bl-xl z-20">
-                                    {language === 'AZ' ? 'TÖVSİYƏ OLUNAN' : language === 'RU' ? 'РЕКОМЕНДУЕМЫЙ' : 'RECOMMENDED'}
-                                </div>
-                            )}
-
-                            {/* Header */}
-                            <div className={`p-8 text-center ${
-                                pkg.id === 'material-only' ? 'bg-blue-50' : 
-                                pkg.id === 'standard-ceiling' ? 'bg-[#0a192f] text-white' : 
-                                'bg-purple-50'
-                            }`}>
-                                <h3 className={`text-xl font-bold mb-2 ${pkg.id === 'standard-ceiling' ? 'text-white' : 'text-[#0a192f]'}`}>
+                            {/* Dark Blue Header Bar */}
+                            <div className="bg-[#0a192f] w-[90%] mt-3 py-2 rounded-lg text-center shadow-md relative z-10">
+                                <h3 className="text-white text-sm md:text-xl font-bold tracking-wide">
                                     {pkg.title[language]}
                                 </h3>
-                                <p className={`text-sm opacity-80 ${pkg.id === 'standard-ceiling' ? 'text-gray-300' : 'text-gray-500'}`}>
-                                    {pkg.description[language]}
-                                </p>
                             </div>
 
-                            {/* Price Table */}
-                            <div className="bg-white p-6 md:p-8 flex-grow">
-                                <table className="w-full text-sm md:text-base mb-8">
-                                    <thead>
-                                        <tr className="border-b border-gray-100">
-                                            <th className="text-left py-2 font-medium text-gray-500">{language === 'AZ' ? 'Sahə' : language === 'RU' ? 'Площадь' : 'Area'}</th>
-                                            <th className="text-right py-2 font-bold text-[#0a192f]">{language === 'AZ' ? 'Qiymət' : language === 'RU' ? 'Цена' : 'Price'}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {pkg.prices.map((priceTier, i) => (
-                                            <tr key={i} className="border-b border-gray-50 last:border-0 hover:bg-gray-50 transition-colors">
-                                                <td className="py-3 text-gray-600">{priceTier.area} m²</td>
-                                                <td className="py-3 text-right font-bold text-[#0a192f]">{priceTier.price} {pkg.currency}</td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
+                            <div className="px-2 md:px-6 w-full flex flex-col items-center pt-4">
+                                {/* Price Display */}
+                                <div className="text-center mb-3">
+                                    <div className="flex items-baseline justify-center gap-1 text-[#0a192f]">
+                                        <span className="text-2xl md:text-4xl font-extrabold tracking-tight">
+                                            {getBasePrice(pkg)}
+                                        </span>
+                                        <span className="text-sm md:text-lg font-bold">{pkg.currency}</span>
+                                    </div>
+                                    <p className="text-[10px] md:text-xs text-gray-400 font-medium">
+                                        {language === 'AZ' ? '20 m² üçün' : 'for 20 m²'}
+                                    </p>
+                                </div>
 
-                                {/* Features */}
-                                <ul className="space-y-3 mb-8">
-                                    {pkg.features[language] && Array.isArray(pkg.features[language]) && pkg.features[language].map((feature, i) => (
-                                        <li key={i} className="flex items-start gap-3 text-sm text-gray-600">
-                                            <svg className="w-5 h-5 text-[#fbbf24] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                {/* Compact Features List */}
+                                <ul className="space-y-1.5 md:space-y-3 w-full mb-4 px-1">
+                                    {pkg.features[language].slice(0, 4).map((feature: string, i: number) => (
+                                        <li key={i} className="flex items-center gap-2 text-[10px] md:text-sm text-gray-600 font-medium">
+                                            <svg className="w-3 h-3 md:w-4 md:h-4 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                                             </svg>
-                                            <span>{feature}</span>
+                                            <span className="line-clamp-1">{feature}</span>
                                         </li>
                                     ))}
                                 </ul>
-                            </div>
 
-                            {/* Footer / Button */}
-                            <div className="p-6 md:p-8 pt-0 bg-white mt-auto">
+                                {/* Gold Button */}
                                 <a 
                                     href={`https://wa.me/994506368731?text=${encodeURIComponent(
-                                        `Salam, mən ${pkg.title[language]} paketi ilə maraqlanıram.`
+                                        `Salam, mən ${pkg.title[language]} paketi (20m2) ilə maraqlanıram.`
                                     )}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className={`w-full block text-center py-3 rounded-xl font-bold transition-all transform hover:scale-[1.02] active:scale-[0.98] ${
-                                        pkg.isPopular 
-                                            ? 'bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] text-[#0a192f] shadow-lg' 
-                                            : 'bg-white border-2 border-gray-100 text-gray-600 hover:border-[#fbbf24] hover:text-[#fbbf24]'
-                                    }`}
+                                    className="w-full py-2.5 md:py-3 bg-gradient-to-b from-[#fbbf24] to-[#d97706] text-[#0a192f] text-[11px] md:text-sm font-bold rounded-lg shadow-md hover:shadow-lg transition-transform active:scale-95 text-center uppercase tracking-wide"
                                 >
-                                    {language === 'AZ' ? 'SİFARİŞ ET' : language === 'RU' ? 'ЗАКАЗАТЬ' : 'ORDER NOW'}
+                                    {language === 'AZ' ? 'SİFARİŞ ET' : language === 'RU' ? 'ЗАКАЗАТЬ' : 'ORDER'}
                                 </a>
-                                {pkg.id !== 'material-only' && (
-                                     <p className="text-[10px] text-center text-gray-400 mt-3">
-                                        {language === 'AZ' ? '* Qiymətlər təxminidir' : language === 'RU' ? '* Цены приблизительные' : '* Prices are approximate'}
-                                     </p>
-                                )}
                             </div>
                         </motion.div>
                     ))}
-                </div>
-                
-                 <div className="text-center mt-12">
-                    <p className="text-gray-500 italic text-sm">
-                        {language === 'AZ' 
-                            ? '⚠️ Qiymətlər obyektin vəziyyətinə və dizayn seçiminə görə dəyişə bilər.' 
-                            : language === 'RU' 
-                            ? '⚠️ Цены могут меняться в зависимости от состояния объекта и выбора дизайна.' 
-                            : '⚠️ Prices may vary depending on the condition of the object and design choice.'}
-                    </p>
                 </div>
             </div>
         </section>

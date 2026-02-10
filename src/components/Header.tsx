@@ -79,31 +79,33 @@ export function Header() {
 
     return (
         <header 
-            className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
-                scrolled ? 'bg-[#0a192f]/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent shadow-none py-4'
-            }`}
+            className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 bg-[#0a192f] shadow-md py-3 md:py-4`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16 sm:h-20">
+                <div className="flex justify-between items-center h-14 md:h-20">
                     
-                    {/* Mobile: Left Hamburger */}
-                    <div className="md:hidden flex items-center mr-2">
-                        <button
-                            className="text-white p-1"
-                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                            aria-label="Toggle menu"
-                        >
-                            <Menu size={24} />
-                        </button>
-                    </div>
+                    {/* Left: Hamburger + Logo Group */}
+                    <div className="flex items-center gap-3 md:gap-8">
+                        {/* Mobile: Hamburger */}
+                        <div className="md:hidden flex items-center">
+                            <button
+                                className="text-white p-1 -ml-2"
+                                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                                aria-label="Toggle menu"
+                            >
+                                <Menu size={28} strokeWidth={1.5} />
+                            </button>
+                        </div>
 
-                    {/* Logo */}
-                    <Link href="/" className="flex items-center gap-1 relative z-50 mr-auto md:mr-0">
-                         <span className="text-white text-lg sm:text-2xl font-light opacity-70">//</span>
-                         <h1 className="text-lg sm:text-2xl font-bold text-white tracking-wide">
-                            ALÇİPAN <span className="font-normal text-white/90">BAKU</span>
-                        </h1>
-                    </Link>
+                        {/* Logo */}
+                        <Link href="/" className="flex items-center gap-2">
+                             <div className="w-1 md:w-1.5 h-6 md:h-8 bg-[#fbbf24] rotate-12"></div>
+                             <div className="w-1 md:w-1.5 h-6 md:h-8 bg-white/20 rotate-12 -ml-1"></div>
+                             <h1 className="text-lg md:text-2xl font-bold text-white tracking-wide leading-none">
+                                ALÇİPAN <span className="font-light text-white/80">BAKU</span>
+                            </h1>
+                        </Link>
+                    </div>
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:flex items-center space-x-8">
@@ -111,26 +113,23 @@ export function Header() {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className={`text-sm font-medium uppercase tracking-wider transition-colors hover:text-[#fbbf24] ${pathname === link.href ? 'text-[#fbbf24]' : 'text-white'}`}
+                                className={`text-sm font-medium uppercase tracking-wider transition-colors hover:text-[#fbbf24] ${pathname === link.href ? 'text-[#fbbf24]' : 'text-white/90'}`}
                             >
                                 {link.label[language]}
                             </Link>
                         ))}
                     </nav>
 
-                    {/* Right Side: Phone (Mobile) / Actions (Desktop) */}
+                    {/* Right Side: Phone number */}
                     <div className="flex items-center gap-4">
-                        {/* Mobile Phone Number - Text Style as per screenshot */}
-                        <a href="tel:+994506368731" className="md:hidden text-white/90 text-[10px] sm:text-xs font-medium whitespace-nowrap">
+                        {/* Mobile & Desktop Phone Number */}
+                        <a href="tel:+994506368731" className="text-white/80 text-[11px] md:text-lg font-medium tracking-wide hover:text-white transition-colors">
                             +994 50 636 87 31
                         </a>
 
                         {/* Desktop Actions */}
-                        <div className="hidden md:flex items-center gap-6">
-                             <a href="tel:+994506368731" className="flex flex-col items-end text-right">
-                                <span className="text-[10px] text-white/60 uppercase tracking-widest">Əlaqə Nömrəsi</span>
-                                <span className="text-white font-bold text-lg leading-none hover:text-[#fbbf24] transition-colors">+994 50 636 87 31</span>
-                            </a>
+                        <div className="hidden md:flex items-center gap-4">
+                            <div className="w-px h-6 bg-white/20"></div>
                             <LanguageSwitcher />
                         </div>
                     </div>
@@ -146,28 +145,28 @@ export function Header() {
                             animate="open"
                             exit="closed"
                             variants={menuVariants}
-                            className="fixed inset-0 z-[9999] md:hidden pt-28 px-8 flex flex-col bg-white"
-                            style={{ backgroundColor: '#ffffff' }} // Force solid white
+                            className="fixed inset-0 z-[9999] md:hidden pt-24 px-6 flex flex-col bg-[#0a192f]"
+                            style={{ backgroundColor: '#0a192f' }}
                         >
                             {/* Close Button specific for Portal */}
                             <button
-                                className="absolute top-6 right-4 p-2 rounded-full hover:bg-gray-100 text-gray-600 hover:text-blue-600 transition-colors"
+                                className="absolute top-5 left-4 p-2 text-white/80 hover:text-white transition-colors"
                                 onClick={() => setMobileMenuOpen(false)}
                                 aria-label="Close menu"
                             >
-                                <X size={28} />
+                                <X size={28} strokeWidth={1.5} />
                             </button>
 
-                            {/* Decorative background element */}
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -z-10 transform translate-x-1/2 -translate-y-1/2" />
-                            <div className="absolute bottom-0 left-0 w-64 h-64 bg-red-500/5 rounded-full blur-3xl -z-10 transform -translate-x-1/2 translate-y-1/2" />
+                             <div className="absolute top-5 right-6">
+                                <LanguageSwitcher />
+                            </div>
 
-                            <nav className="flex flex-col space-y-8">
+                            <nav className="flex flex-col space-y-6 mt-8">
                                 {navLinks.map((link) => (
                                     <motion.div key={link.href} variants={itemVariants}>
                                         <Link
                                             href={link.href}
-                                            className={`block text-4xl font-bold tracking-tight transition-colors ${pathname === link.href ? 'text-blue-600' : 'text-gray-900 hover:text-gray-600'}`}
+                                            className={`block text-3xl font-bold tracking-tight transition-colors ${pathname === link.href ? 'text-[#fbbf24]' : 'text-white hover:text-white/80'}`}
                                             onClick={() => setMobileMenuOpen(false)}
                                         >
                                             {link.label[language]}
@@ -175,31 +174,11 @@ export function Header() {
                                     </motion.div>
                                 ))}
 
-                                <motion.div variants={itemVariants} className="pt-12 border-t border-gray-100 mt-4 space-y-6">
-                                    <div>
-                                        <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
-                                            {language === 'AZ' ? 'Əlaqə' : language === 'RU' ? 'Контакты' : 'Contact'}
-                                        </p>
-                                        <a href="tel:+994506368731" className="flex items-center gap-4 text-xl font-medium text-gray-900 mb-4 hover:text-blue-600 transition-colors">
-                                            <span className="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-lg">📞</span>
-                                            +994 50 636 87 31
-                                        </a>
-                                        <a href="mailto:alcipanbaki@gmail.com" className="flex items-center gap-4 text-xl font-medium text-gray-900 hover:text-blue-600 transition-colors">
-                                            <span className="w-10 h-10 bg-orange-50 text-orange-600 rounded-full flex items-center justify-center text-lg">✉️</span>
-                                            alcipanbaki@gmail.com
-                                        </a>
-                                    </div>
-
-                                    <div>
-                                        <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
-                                            Social
-                                        </p>
-                                        <div className="flex gap-4">
-                                            <a href="https://instagram.com/alcipanbaku" target="_blank" className="w-12 h-12 bg-gradient-to-tr from-purple-500 to-orange-500 text-white rounded-2xl flex items-center justify-center shadow-lg transform active:scale-95 transition-all">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                                            </a>
-                                        </div>
-                                    </div>
+                                <motion.div variants={itemVariants} className="pt-8 border-t border-white/10 mt-4 space-y-6">
+                                    <a href="tel:+994506368731" className="flex items-center gap-4 text-xl font-medium text-white mb-4">
+                                        <span className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-lg">📞</span>
+                                        +994 50 636 87 31
+                                    </a>
                                 </motion.div>
                             </nav>
                         </motion.div>

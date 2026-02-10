@@ -37,7 +37,7 @@ export default function Home() {
 
 
       {/* HERO SECTION */}
-      <section className="relative py-0 min-h-[60vh] md:min-h-screen flex flex-col justify-center overflow-hidden">
+      <section className="relative py-0 min-h-[550px] md:min-h-screen flex flex-col justify-end pb-20 md:justify-center overflow-hidden">
         {/* Background Image Effect */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -47,16 +47,16 @@ export default function Home() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/60 z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a192f]/90 via-[#0a192f]/40 to-[#0a192f]/90 z-10"></div>
         </div>
 
-        <div className="relative z-20 container mx-auto px-4 flex flex-col items-center text-center max-w-7xl h-full justify-center pt-28 pb-12">
+        <div className="relative z-20 container mx-auto px-6 md:px-4 flex flex-col items-start md:items-center text-left md:text-center max-w-7xl h-full">
           
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-3 mobile-heading text-white leading-[1.1] tracking-normal drop-shadow-xl"
+            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-2 text-white leading-[1.1] tracking-tight drop-shadow-xl"
           >
             {language === 'AZ' ? 'Premium Alçipan' :
               language === 'RU' ? 'Премиум Алчипан' :
@@ -70,7 +70,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.8 }}
-            className="text-base md:text-2xl font-normal text-white/90 mb-5 tracking-wide"
+            className="text-lg md:text-3xl font-medium text-white/90 mb-4 tracking-wide"
           >
             {language === 'AZ' ? 'Material + Usta + Zəmanət' : 'Material + Master + Warranty'}
           </motion.h2>
@@ -79,7 +79,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-xs md:text-xl text-white/70 mb-8 font-light max-w-xs md:max-w-2xl mx-auto tracking-wide"
+            className="text-xs md:text-xl text-white/70 mb-8 font-light tracking-wider"
           >
             {language === 'AZ' ? 'Pulsuz Ölçü • Dizayn • Sürətli Montaj' :
               language === 'RU' ? 'Бесплатный замер • Дизайн • Быстрый монтаж' :
@@ -90,11 +90,11 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="w-full px-10 md:w-auto md:px-0"
+            className="w-full md:w-auto"
           >
             <a
               href="#contact"
-              className="flex items-center justify-center w-full md:w-auto px-8 py-3.5 bg-gradient-to-r from-[#fbbf24] to-[#d97706] text-[#0a192f] text-sm md:text-lg font-bold rounded-lg shadow-[0_0_20px_rgba(251,191,36,0.3)] hover:shadow-[0_0_30px_rgba(251,191,36,0.5)] transition-all uppercase tracking-widest"
+              className="flex items-center justify-center w-full md:w-auto px-8 py-4 bg-gradient-to-r from-[#fbbf24] to-[#b45309] text-white text-sm md:text-lg font-bold rounded-xl shadow-[0_10px_30px_-10px_rgba(251,191,36,0.6)] hover:shadow-[0_20px_40px_-10px_rgba(251,191,36,0.8)] transition-all uppercase tracking-widest"
             >
               {language === 'AZ' ? 'PULSUZ QİYMƏT AL' : language === 'RU' ? 'ПОЛУЧИТЬ ЦЕНУ' : 'GET FREE QUOTE'}
             </a>
@@ -106,29 +106,44 @@ export default function Home() {
       <PricingTables />
 
       {/* SERVICES SECTION */}
-      <section className="bg-white pb-20 md:py-20" id="services">
+      <section className="bg-[#f8fafc] pb-20 md:py-20" id="services">
         <div className="container mx-auto px-4">
-           <div className="text-center mb-8 md:mb-12">
-                <h2 className="text-xl md:text-4xl font-bold text-[#0a192f] relative inline-block pb-4">
-                  {language === 'AZ' ? 'Xidmətlərimiz' : language === 'RU' ? 'Услуги' : 'Services'}
-                   <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-16 md:w-24 h-[2px] bg-gray-200">
-                      <div className="w-8 md:w-12 h-full bg-[#fbbf24] mx-auto"></div>
-                   </div>
-                </h2>
+           {/* Section Header */}
+           <div className="text-center mb-8">
+                <div className="flex items-center justify-center gap-4 mb-2">
+                    <div className="h-px bg-gray-300 w-12 md:w-24"></div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-[#0a192f] uppercase tracking-wide">
+                        {language === 'AZ' ? 'Xidmətlərimiz' : language === 'RU' ? 'Услуги' : 'Services'}
+                    </h2>
+                    <div className="h-px bg-gray-300 w-12 md:w-24"></div>
+                </div>
             </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-3 md:gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto">
             {services.slice(0, 2).map(service => (
-              <div key={service.id} className="relative group overflow-hidden rounded-xl md:rounded-3xl shadow-lg bg-white">
-                 <div className="aspect-[4/3] md:aspect-[16/9] relative">
-                    <Image src={service.image} alt={service.name[language]} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <div key={service.id} className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
+                 <div className="aspect-[4/3] relative">
+                    <Image 
+                        src={service.image} 
+                        alt={service.name[language]} 
+                        fill 
+                        className="object-cover" 
+                    />
                  </div>
-                 <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6 text-center">
-                    <h3 className="text-white font-bold text-sm md:text-2xl mb-2 md:mb-4 drop-shadow-md">{service.name[language]}</h3>
-                    <a href="#contact" className="inline-block bg-[#fbbf24] hover:bg-[#d97706] text-[#0a192f] text-[10px] md:text-base font-bold py-1.5 px-4 md:py-3 md:px-8 rounded-full shadow-lg transition-all uppercase tracking-wide">
-                        {language === 'AZ' ? 'əlaqə saxla' : language === 'RU' ? 'связаться' : 'contact us'}
-                    </a>
+                 <div className="p-4 text-center flex flex-col items-center flex-grow">
+                    <h3 className="text-[#0a192f] font-bold text-sm md:text-xl mb-3">{service.name[language]}</h3>
+                    <div className="mt-auto w-full">
+                        <a 
+                            href={`https://wa.me/994506368731?text=${encodeURIComponent(
+                                `Salam, mən ${service.name[language]} xidməti ilə maraqlanıram.`
+                            )}`}
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="block w-full bg-[#fbbf24] hover:bg-[#d97706] text-[#0a192f] text-[11px] md:text-sm font-bold py-2.5 rounded-lg shadow-sm transition-all uppercase tracking-wide"
+                        >
+                            {language === 'AZ' ? 'əlaqə saxla' : language === 'RU' ? 'связаться' : 'contact us'}
+                        </a>
+                    </div>
                  </div>
               </div>
             ))}
@@ -241,7 +256,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sticky Mobile Whatsapp Button REMOVED */}
+      {/* Sticky Mobile Whatsapp Button */}
+      <div className="fixed bottom-6 left-4 right-4 z-50 md:hidden">
+        <a
+          href="https://wa.me/994506368731"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 w-full bg-[#25D366] text-white py-3.5 rounded-xl shadow-lg font-bold text-lg hover:bg-[#128C7E] transition-colors"
+        >
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.698c.969.585 1.834.89 2.79.89 3.18 0 5.767-2.587 5.767-5.766.001-3.182-2.585-5.777-5.766-5.777zm13.129 11.824c-1.882 1.882-4.467 2.918-7.13 2.918-2.661 0-5.245-1.036-7.128-2.918-1.883-1.882-2.919-4.467-2.92-7.129C7.982 7.735 9.019 5.093 11.026 3.13 13.064 1.14 15.688 0 18.526 0c2.839 0 5.463 1.139 7.501 3.13 2.008 1.963 3.044 4.605 2.978 7.237-.066 2.633-1.127 5.218-3.043 7.099zm-4.324-9.358c-2.486 0-4.508 2.023-4.508 4.545 0 2.522 2.022 4.545 4.508 4.545 2.486 0 4.508-2.023 4.508-4.545 0-2.522-2.022-4.545-4.508-4.545zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12z"/>
+             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          </svg>
+          {language === 'AZ' ? 'WhatsApp ilə Yaz' : language === 'RU' ? 'Написать в WhatsApp' : 'Chat on WhatsApp'}
+        </a>
+      </div>
     </div>
   );
 }
