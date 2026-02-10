@@ -83,7 +83,7 @@ export function Footer() {
                             </li>
                             <li className="flex items-center gap-2">
                                 <span className="w-4 h-4 rounded-full bg-blue-500/20 text-blue-500 flex items-center justify-center text-[10px]">📍</span>
-                                Baku, Azerbaijan
+                                {language === 'AZ' ? 'Bakı və ətraf qəsəbələr' : language === 'RU' ? 'Баку и окрестности' : 'Baku and surroundings'}
                             </li>
                             <li className="flex items-center gap-2">
                                 <span className="w-4 h-4 rounded-full bg-orange-500/20 text-orange-500 flex items-center justify-center text-[10px]">✉️</span>

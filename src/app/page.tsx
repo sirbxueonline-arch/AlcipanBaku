@@ -6,6 +6,7 @@ import { useCart } from '@/context/CartContext';
 
 import { ServiceCard } from '@/components/ServiceCard';
 import { WorkGallery } from '@/components/WorkGallery';
+import { PricingTables } from '@/components/PricingTables';
 import FeaturesSection from '@/components/FeaturesSection';
 import { FAQSection } from '@/components/FAQSection';
 import { motion } from 'framer-motion';
@@ -101,66 +102,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PRODUCTS / PACKAGES */}
-      <section className="relative container mx-auto px-4 -mt-8 z-30 mb-12" id="products">
-        <div className="bg-white rounded-[30px] shadow-2xl p-6 md:p-12">
-        
-        <div className="mb-8 md:mb-16 text-center">
-            <h2 className="text-xl md:text-4xl font-bold text-[#0a192f] relative inline-block pb-4">
-               {language === 'AZ' ? 'Paket Təkliflərimiz' : language === 'RU' ? 'Наши Пакетные Предложения' : 'Our Package Offers'}
-               <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-16 md:w-24 h-[2px] bg-gray-200">
-                  <div className="w-8 md:w-12 h-full bg-[#fbbf24] mx-auto"></div>
-               </div>
-            </h2>
-             <p className="text-gray-500 font-medium text-[11px] md:text-base mt-2 tracking-wide">
-                {language === 'AZ' ? 'Tam Xidmət | Material | Montaj Daxil' : 'Full Service | Material | Installation Included'}
-            </p>
-        </div>
-
-          {/* Custom Package Cards Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8 max-w-5xl mx-auto">
-            {packages.filter(p => p.isActive).slice(0, 2).map(pkg => (
-              <div key={pkg.id} className="bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)] transition-all duration-300 border border-gray-100 flex flex-col items-center pt-2 pb-4 md:pb-8">
-                
-                {/* Visual Separator/Header - Dark Blue Rounded Tag */}
-                 <div className="bg-[#0a192f] w-[90%] py-2 md:py-3 rounded-lg md:rounded-xl text-center shadow-lg -mt-0 mb-4">
-                    <h3 className="text-white text-[13px] md:text-2xl font-bold tracking-wide">
-                        {pkg.name[language]}
-                    </h3>
-                 </div>
-
-                <div className="px-3 md:px-8 w-full flex flex-col items-center flex-grow">
-                  {/* Price */}
-                   <div className="text-center mb-4 md:mb-8">
-                      <div className="flex flex-col items-center text-[#0a192f]">
-                        <span className="text-2xl md:text-5xl font-extrabold tracking-tight leading-none">
-                          {(pkg.price * (pkg.step || 20)).toLocaleString()} {pkg.currency}
-                        </span>
-                      </div>
-                   </div>
-
-                  {/* Features List */}
-                  <ul className="space-y-2 md:space-y-4 w-full mb-6 md:mb-8 text-left max-w-[200px] md:max-w-xs mx-auto">
-                    {pkg.description[language].split('\n').map((line, idx) => (
-                      <li key={idx} className="flex items-center gap-2 md:gap-3 text-gray-700 font-medium text-[10px] md:text-base">
-                        <div className="flex-shrink-0 text-[#fbbf24] text-xs md:text-lg">✔</div>
-                        <span className="flex-1">{line}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Button */}
-                  <div className="mt-auto w-full max-w-[180px] md:max-w-xs">
-                    <button onClick={() => addToCart(pkg)} className="w-full py-2.5 md:py-4 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] font-bold rounded-lg md:rounded-xl shadow-md transition-all text-[11px] md:text-lg uppercase tracking-wider">
-                      {language === 'AZ' ? 'SİFARİŞ ET' : language === 'RU' ? 'ЗАКАЗАТЬ' : 'ORDER NOW'}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* PRICING TABLES */}
+      <PricingTables />
 
       {/* SERVICES SECTION */}
       <section className="bg-white pb-20 md:py-20" id="services">
