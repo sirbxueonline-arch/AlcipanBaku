@@ -145,7 +145,7 @@ export const initialProducts: Product[] = [
         name: { AZ: 'Eqreb knauf (12) 0.30 manat', RU: 'Подвес Knauf 12 (0.30)', EN: 'Hanger Knauf 12 (0.30)' },
         price: 0.30,
         currency: 'AZN',
-        image: '/accessory_bracket_direct.jpg',
+        image: '/accessory_bracket_strip.png',
         description: {
             AZ: 'Knauf Eqreb 12 asqı detalı (Eded).',
             RU: 'Подвес Knauf 12 (Штука).',
