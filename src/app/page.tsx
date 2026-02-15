@@ -37,7 +37,7 @@ export default function Home() {
 
 
       {/* HERO SECTION */}
-      <section className="relative h-[600px] md:h-screen flex flex-col justify-center items-center text-center overflow-hidden">
+      <section className="relative h-[85vh] min-h-[600px] flex flex-col justify-center items-center text-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -47,58 +47,101 @@ export default function Home() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a192f]/90 via-[#0a192f]/60 to-[#0a192f] z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a192f]/90 via-[#0a192f]/70 to-[#0a192f] z-10 transition-opacity duration-700"></div>
         </div>
 
-        <div className="relative z-20 container mx-auto px-4 flex flex-col items-center max-w-4xl">
+        <div className="relative z-20 container mx-auto px-4 flex flex-col items-center max-w-4xl pt-16">
           
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-2 text-white leading-tight tracking-tight drop-shadow-xl"
+            className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 text-white leading-tight tracking-tight drop-shadow-2xl"
           >
-            {language === 'AZ' ? 'Premium Alçipan' : language === 'RU' ? 'Премиум Алчипан' : 'Premium Drywall'}
+            {language === 'AZ' ? 'Evinizi' : language === 'RU' ? 'Ваш Дом' : 'Your Home'} <span className="text-white/90">{language === 'AZ' ? 'Premium Alçipan' : language === 'RU' ? 'Премиум Алчипан' : 'Premium Drywall'}</span>
             <br />
             <span className="text-[#fbbf24]">
-                {language === 'AZ' ? 'Xidmətləri' : language === 'RU' ? 'Услуги' : 'Services'}
+                {language === 'AZ' ? 'ilə Gözəlləşdirin' : language === 'RU' ? 'Украсьте с Нами' : 'Beautify with Us'}
             </span>
           </motion.h1>
 
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.8 }}
-            className="text-lg md:text-2xl font-medium text-white/80 mb-6 tracking-wide"
+            className="flex flex-col gap-2 items-center mb-8"
           >
-            {language === 'AZ' ? 'Material + Usta + Zəmanət' : 'Material + Master + Warranty'}
-          </motion.h2>
+             <div className="flex items-center gap-2 text-white/90 text-sm md:text-xl font-medium bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-sm border border-white/5">
+                <span className="text-[#fbbf24] text-lg">✔</span>
+                <span>{language === 'AZ' ? 'Yüksək Keyfiyyətli Material' : language === 'RU' ? 'Качественный Материал' : 'High Quality Material'}</span>
+             </div>
+             <div className="flex items-center gap-2 text-white/80 text-xs md:text-lg font-medium">
+                <span>+ {language === 'AZ' ? 'Təcrübəli Usta' : language === 'RU' ? 'Опытный Мастер' : 'Experienced Master'}</span>
+                <span>+ {language === 'AZ' ? 'Tam Zəmanət' : language === 'RU' ? 'Полная Гарантия' : 'Full Warranty'}</span>
+             </div>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="flex items-center gap-2 text-xs md:text-base text-white/80 mb-8 font-light tracking-wider uppercase"
-          >
-             <span>{language === 'AZ' ? 'Pulsuz Ölçü' : 'Free Measurement'}</span>
-             <span className="text-[#fbbf24]">•</span>
-             <span>{language === 'AZ' ? 'Dizayn' : 'Design'}</span>
-             <span className="text-[#fbbf24]">•</span>
-             <span>{language === 'AZ' ? 'Sürətli Montaj' : 'Fast Installation'}</span>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
+            className="mb-12 w-full max-w-xs md:max-w-md"
           >
             <a
               href="#contact"
-              className="px-8 py-4 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-sm md:text-lg font-bold rounded-xl shadow-lg hover:shadow-xl transition-all uppercase tracking-widest transform hover:-translate-y-1 block"
+              className="group flex items-center justify-center gap-2 w-full py-3.5 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-base md:text-xl font-bold rounded-2xl shadow-[0_0_20px_rgba(251,191,36,0.4)] hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] transition-all transform hover:-translate-y-1 active:scale-95"
             >
-              {language === 'AZ' ? 'PULSUZ QİYMƏT AL' : language === 'RU' ? 'ПОЛУЧИТЬ ЦЕНУ' : 'GET FREE QUOTE'}
+              <span>{language === 'AZ' ? 'Pulsuz Qiymət Təklifi Al' : language === 'RU' ? 'Получить Предложение' : 'Get Free Quote'}</span>
+              <span className="bg-[#0a192f]/10 rounded-full w-6 h-6 flex items-center justify-center group-hover:bg-[#0a192f]/20 transition-colors">
+                 Let&apos;s go &gt;
+              </span>
             </a>
           </motion.div>
+
+          {/* Feature Icons */}
+          <motion.div 
+             initial={{ opacity: 0, y: 30 }}
+             animate={{ opacity: 1, y: 0 }}
+             transition={{ delay: 0.4, duration: 0.8 }}
+             className="grid grid-cols-3 gap-2 md:gap-8 w-full max-w-2xl px-2"
+          >
+              {/* Icon 1: Measurement */}
+              <div className="flex flex-col items-center gap-2 text-center group">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-b from-white/10 to-transparent border border-white/20 flex items-center justify-center shadow-lg backdrop-blur-sm group-hover:border-[#fbbf24]/50 transition-colors relative">
+                      <div className="absolute inset-0 bg-[#fbbf24]/5 rounded-full filter blur-md"></div>
+                      <span className="text-3xl md:text-4xl filter drop-shadow-md">📏</span>
+                  </div>
+                  <p className="text-[10px] md:text-sm font-bold text-white leading-tight">
+                      {language === 'AZ' ? 'Ölçü Pulsuz' : language === 'RU' ? 'Бесплатный Замер' : 'Free Measure'}<br/>
+                      <span className="text-white/70">{language === 'AZ' ? 'və Peşəkar' : language === 'RU' ? 'и Профессионально' : 'and Professional'}</span>
+                  </p>
+              </div>
+
+              {/* Icon 2: Design */}
+              <div className="flex flex-col items-center gap-2 text-center group">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-b from-white/10 to-transparent border border-white/20 flex items-center justify-center shadow-lg backdrop-blur-sm group-hover:border-[#fbbf24]/50 transition-colors relative">
+                      <div className="absolute inset-0 bg-[#fbbf24]/5 rounded-full filter blur-md"></div>
+                      <span className="text-3xl md:text-4xl filter drop-shadow-md">✏️</span>
+                  </div>
+                  <p className="text-[10px] md:text-sm font-bold text-white leading-tight">
+                      {language === 'AZ' ? 'Fərdi Dizayn' : language === 'RU' ? 'Индив. Дизайн' : 'Custom Design'}<br/>
+                      <span className="text-white/70">{language === 'AZ' ? 'Xidməti' : language === 'RU' ? 'Услуги' : 'Service'}</span>
+                  </p>
+              </div>
+
+               {/* Icon 3: Installation */}
+               <div className="flex flex-col items-center gap-2 text-center group">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-b from-white/10 to-transparent border border-white/20 flex items-center justify-center shadow-lg backdrop-blur-sm group-hover:border-[#fbbf24]/50 transition-colors relative">
+                      <div className="absolute inset-0 bg-[#fbbf24]/5 rounded-full filter blur-md"></div>
+                      <span className="text-3xl md:text-4xl filter drop-shadow-md">🔩</span>
+                  </div>
+                  <p className="text-[10px] md:text-sm font-bold text-white leading-tight">
+                      {language === 'AZ' ? 'Sürətli və' : language === 'RU' ? 'Быстрый и' : 'Fast and'}<br/>
+                      <span className="text-white/70">{language === 'AZ' ? 'Təhlükəsiz Montaj' : language === 'RU' ? 'Безопасный Монтаж' : 'Safe Install'}</span>
+                  </p>
+              </div>
+          </motion.div>
+
         </div>
       </section>
 
