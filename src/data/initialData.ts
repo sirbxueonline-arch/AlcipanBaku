@@ -198,6 +198,21 @@ export const initialProducts: Product[] = [
         },
         isActive: true,
         isPriceVisible: true
+    },
+    {
+        id: '28',
+        type: 'product',
+        name: { AZ: 'Izolyasiya daş yunu knauf', RU: 'Изоляция каменная вата Knauf', EN: 'Stone wool insulation Knauf' },
+        price: 40,
+        currency: 'AZN',
+        image: '/insulation_knauf_wool.png',
+        description: {
+            AZ: 'Yüksək keyfiyyətli istilik və səs izolyasiyası.',
+            RU: 'Высококачественная тепло- и звукоизоляция.',
+            EN: 'High quality heat and sound insulation.'
+        },
+        isActive: true,
+        isPriceVisible: true
     }
 ];
 
