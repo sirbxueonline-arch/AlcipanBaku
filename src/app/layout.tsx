@@ -5,7 +5,7 @@ import './globals.css';
 import { AdminProvider } from '@/context/AdminContext';
 import { CartProvider } from '@/context/CartContext';
 import ClientLayout from './ClientLayout';
-import WhatsAppWidget from '@/components/WhatsAppWidget';
+import { FloatingWhatsApp } from '@/components/FloatingWhatsApp';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -58,7 +58,7 @@ export default function RootLayout({
           <CartProvider>
             <ClientLayout>
               {children}
-
+              <FloatingWhatsApp />
             </ClientLayout>
           </CartProvider>
         </AdminProvider>

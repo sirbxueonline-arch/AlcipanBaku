@@ -37,8 +37,8 @@ export default function Home() {
 
 
       {/* HERO SECTION */}
-      <section className="relative py-0 min-h-[550px] md:min-h-screen flex flex-col justify-end pb-20 md:justify-center overflow-hidden">
-        {/* Background Image Effect */}
+      <section className="relative h-[600px] md:h-screen flex flex-col justify-center items-center text-center overflow-hidden">
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/new-hero.jpg"
@@ -47,54 +47,54 @@ export default function Home() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a192f]/90 via-[#0a192f]/40 to-[#0a192f]/90 z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a192f]/90 via-[#0a192f]/60 to-[#0a192f] z-10"></div>
         </div>
 
-        <div className="relative z-20 container mx-auto px-6 md:px-4 flex flex-col items-start md:items-center text-left md:text-center max-w-7xl h-full">
+        <div className="relative z-20 container mx-auto px-4 flex flex-col items-center max-w-4xl">
           
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-2 text-white leading-[1.1] tracking-tight drop-shadow-xl"
+            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-2 text-white leading-tight tracking-tight drop-shadow-xl"
           >
-            {language === 'AZ' ? 'Premium Alçipan' :
-              language === 'RU' ? 'Премиум Алчипан' :
-                'Premium Drywall'} <br/>
-             <span className="text-[#fbbf24]">{language === 'AZ' ? 'Xidmətləri' :
-              language === 'RU' ? 'Услуги' :
-                'Services'}</span>
+            {language === 'AZ' ? 'Premium Alçipan' : language === 'RU' ? 'Премиум Алчипан' : 'Premium Drywall'}
+            <br />
+            <span className="text-[#fbbf24]">
+                {language === 'AZ' ? 'Xidmətləri' : language === 'RU' ? 'Услуги' : 'Services'}
+            </span>
           </motion.h1>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.8 }}
-            className="text-lg md:text-3xl font-medium text-white/90 mb-4 tracking-wide"
+            className="text-lg md:text-2xl font-medium text-white/80 mb-6 tracking-wide"
           >
             {language === 'AZ' ? 'Material + Usta + Zəmanət' : 'Material + Master + Warranty'}
           </motion.h2>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-xs md:text-xl text-white/70 mb-8 font-light tracking-wider"
+            className="flex items-center gap-2 text-xs md:text-base text-white/80 mb-8 font-light tracking-wider uppercase"
           >
-            {language === 'AZ' ? 'Pulsuz Ölçü • Dizayn • Sürətli Montaj' :
-              language === 'RU' ? 'Бесплатный замер • Дизайн • Быстрый монтаж' :
-                'Free Measurement • Design • Fast Installation'}
-          </motion.p>
+             <span>{language === 'AZ' ? 'Pulsuz Ölçü' : 'Free Measurement'}</span>
+             <span className="text-[#fbbf24]">•</span>
+             <span>{language === 'AZ' ? 'Dizayn' : 'Design'}</span>
+             <span className="text-[#fbbf24]">•</span>
+             <span>{language === 'AZ' ? 'Sürətli Montaj' : 'Fast Installation'}</span>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="w-full md:w-auto"
           >
             <a
               href="#contact"
-              className="flex items-center justify-center w-full md:w-auto px-8 py-4 bg-gradient-to-r from-[#fbbf24] to-[#b45309] text-white text-sm md:text-lg font-bold rounded-xl shadow-[0_10px_30px_-10px_rgba(251,191,36,0.6)] hover:shadow-[0_20px_40px_-10px_rgba(251,191,36,0.8)] transition-all uppercase tracking-widest"
+              className="px-8 py-4 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-sm md:text-lg font-bold rounded-xl shadow-lg hover:shadow-xl transition-all uppercase tracking-widest transform hover:-translate-y-1 block"
             >
               {language === 'AZ' ? 'PULSUZ QİYMƏT AL' : language === 'RU' ? 'ПОЛУЧИТЬ ЦЕНУ' : 'GET FREE QUOTE'}
             </a>
@@ -139,7 +139,7 @@ export default function Home() {
                             )}`}
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="block w-full bg-[#fbbf24] hover:bg-[#d97706] text-[#0a192f] text-[11px] md:text-sm font-bold py-2.5 rounded-lg shadow-sm transition-all uppercase tracking-wide"
+                            className="block w-full bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-[11px] md:text-sm font-bold py-2.5 rounded-lg shadow-sm transition-all uppercase tracking-wide"
                         >
                             {language === 'AZ' ? 'əlaqə saxla' : language === 'RU' ? 'связаться' : 'contact us'}
                         </a>
