@@ -98,12 +98,23 @@ export function Header() {
                         </div>
 
                         {/* Logo */}
-                        <Link href="/" className="flex items-center gap-2">
-                             <div className="w-1 md:w-1.5 h-6 md:h-8 bg-[#fbbf24] rotate-12"></div>
-                             <div className="w-1 md:w-1.5 h-6 md:h-8 bg-white/20 rotate-12 -ml-1"></div>
-                             <h1 className="text-lg md:text-2xl font-bold text-white tracking-wide leading-none">
-                                ALÇİPAN <span className="font-light text-white/80">BAKU</span>
-                            </h1>
+                        <Link href="/" className="flex items-center gap-3">
+                            <div className="relative w-8 h-8 md:w-10 md:h-10 overflow-hidden rounded-full shadow-md bg-white">
+                                <Image
+                                    src="/brand-logo.jpg"
+                                    alt="Alcipan Baku"
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
+                            <div className="flex flex-col">
+                                <span className="text-xl md:text-2xl font-bold text-white tracking-tight leading-none">
+                                    ALCİPAN<span className="text-red-500">BAKU</span>
+                                </span>
+                                <span className="text-[9px] md:text-[10px] text-gray-400 font-bold tracking-widest uppercase">
+                                    {language === 'AZ' ? '20 İL TƏCRÜBƏ' : language === 'RU' ? '20 ЛЕТ ОПЫТА' : '20 YEARS EXPERIENCE'}
+                                </span>
+                            </div>
                         </Link>
                     </div>
 
