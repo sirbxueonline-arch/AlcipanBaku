@@ -1,97 +1,92 @@
 import React from 'react';
 import { useAdmin } from '@/context/AdminContext';
-import { pricingPackages } from '@/data/pricingData';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+
+const PACKAGES = [
+    { area: 20, price: 460 },
+    { area: 50, price: 1100 },
+    { area: 100, price: 2100 },
+    { area: 150, price: 3150 },
+    { area: 200, price: 4200 },
+];
 
 export const PricingTables = () => {
     const { language } = useAdmin();
-
-    // Helper to get the 20m2 price for display
-    const getBasePrice = (pkg: any) => {
-        const base = pkg.prices.find((p: any) => p.area === 20);
-        return base ? base.price : 0;
-    };
 
     return (
         <section className="py-12 bg-[#f8fafc]" id="pricing">
             <div className="container mx-auto px-4">
                 
                 {/* Section Header */}
-                <div className="text-center mb-8">
+                <div className="text-center mb-10">
                     <div className="flex items-center justify-center gap-4 mb-2">
-                        <div className="h-px bg-gray-300 w-12 md:w-24"></div>
+                         <div className="h-px bg-gray-300 w-12 md:w-24"></div>
                         <h2 className="text-2xl md:text-3xl font-bold text-[#0a192f] uppercase tracking-wide">
-                            {language === 'AZ' ? 'Paket Təkliflərimiz' : language === 'RU' ? 'Пакетные Предложения' : 'Package Offers'}
+                            {language === 'AZ' ? 'PAKET HƏLLƏR' : language === 'RU' ? 'ПАКЕТНЫЕ РЕШЕНИЯ' : 'PACKAGE SOLUTIONS'}
                         </h2>
-                        <div className="h-px bg-gray-300 w-12 md:w-24"></div>
+                         <div className="h-px bg-gray-300 w-12 md:w-24"></div>
                     </div>
-                    <p className="text-xs md:text-sm text-gray-500 font-medium tracking-widest uppercase">
+                    <p className="text-sm text-gray-500 font-medium max-w-2xl mx-auto">
                         {language === 'AZ' 
-                            ? 'Tam Xidmət | Material | Montaj Daxil' 
+                            ? 'Hazır kvadratura paketləri seçin və birbaşa sifariş edin. Fərqli ölçülər üçün kalkulyatordan istifadə edə bilərsiniz.' 
                             : language === 'RU' 
-                            ? 'Полный Сервис | Материал | Монтаж' 
-                            : 'Full Service | Material | Installation Included'}
+                            ? 'Выберите готовые пакеты по квадратуре и закажите прямо сейчас. Для других размеров используйте калькулятор.' 
+                            : 'Choose ready-made square meter packages and order directly. You can use the calculator for other sizes.'}
                     </p>
                 </div>
 
-                {/* Compact Grid - 2 Columns on Mobile/Desktop */}
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6 max-w-5xl mx-auto">
-                    {pricingPackages.map((pkg, index) => (
+                {/* Packages Grid */}
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
+                    {PACKAGES.map((pkg, index) => (
                         <motion.div 
-                            key={pkg.id}
+                            key={pkg.area}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1, duration: 0.5 }}
+                            transition={{ delay: index * 0.1, duration: 0.4 }}
                             viewport={{ once: true }}
-                            className="bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-lg border border-gray-100 flex flex-col items-center pb-4 relative"
+                            className="bg-[#0a192f] rounded-xl overflow-hidden shadow-lg border border-[#1e2a4a] flex flex-col group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
                         >
-                            {/* Dark Blue Header Bar */}
-                            <div className="bg-[#0a192f] w-[90%] mt-3 py-2 rounded-lg text-center shadow-md relative z-10">
-                                <h3 className="text-white text-sm md:text-xl font-bold tracking-wide">
-                                    {pkg.title[language]}
-                                </h3>
-                            </div>
-
-                            <div className="px-2 md:px-6 w-full flex flex-col items-center pt-4">
-                                {/* Price Display */}
-                                <div className="text-center mb-3">
-                                    <div className="flex items-baseline justify-center gap-1 text-[#0a192f]">
-                                        <span className="text-2xl md:text-4xl font-extrabold tracking-tight">
-                                            {getBasePrice(pkg)}
-                                        </span>
-                                        <span className="text-sm md:text-lg font-bold">{pkg.currency}</span>
-                                    </div>
-                                    <p className="text-[10px] md:text-xs text-gray-400 font-medium">
-                                        {language === 'AZ' ? '20 m² üçün' : 'for 20 m²'}
-                                    </p>
+                            {/* Card Content */}
+                            <div className="p-5 flex flex-col items-center flex-1">
+                                <span className="text-gray-400 text-xs font-bold tracking-widest uppercase mb-2">
+                                    {language === 'AZ' ? 'STANDART TAVAN' : language === 'RU' ? 'СТАНДАРТ ПОТОЛОК' : 'STANDARD CEILING'}
+                                </span>
+                                
+                                <div className="text-center mb-4">
+                                    <span className="text-4xl font-extrabold text-white tracking-tight">{pkg.area}</span>
+                                    <span className="text-lg font-medium text-gray-400 ml-1">m²</span>
                                 </div>
-
-                                {/* Compact Features List */}
-                                <ul className="space-y-1.5 md:space-y-3 w-full mb-4 px-1">
-                                    {pkg.features[language].slice(0, 4).map((feature: string, i: number) => (
-                                        <li key={i} className="flex items-center gap-2 text-[10px] md:text-sm text-gray-600 font-medium">
-                                            <svg className="w-3 h-3 md:w-4 md:h-4 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                                            </svg>
-                                            <span className="line-clamp-1">{feature}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-
-                                {/* Gold Button */}
-                                <a 
-                                    href={`https://wa.me/994506368731?text=${encodeURIComponent(
-                                        `Salam, mən ${pkg.title[language]} paketi (20m2) ilə maraqlanıram.`
-                                    )}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-full py-2.5 md:py-3 bg-gradient-to-b from-[#fbbf24] to-[#d97706] text-[#0a192f] text-[11px] md:text-sm font-bold rounded-lg shadow-md hover:shadow-lg transition-transform active:scale-95 text-center uppercase tracking-wide"
-                                >
-                                    {language === 'AZ' ? 'SİFARİŞ ET' : language === 'RU' ? 'ЗАКАЗАТЬ' : 'ORDER'}
-                                </a>
+                                
+                                <div className="w-full h-px bg-gray-700/50 mb-4"></div>
+                                
+                                <div className="text-center">
+                                     <span className="text-3xl font-bold text-[#fbbf24]">{pkg.price} ₼</span>
+                                     <div className="text-[10px] text-gray-500 mt-1">
+                                        {language === 'AZ' ? 'Tam paket' : language === 'RU' ? 'Полный пакет' : 'Full package'}
+                                     </div>
+                                </div>
                             </div>
+
+                            {/* Action Button */}
+                            <Link 
+                                href={`/calculator?package=simple&area=${pkg.area}`}
+                                className="bg-[#fbbf24] hover:bg-[#f59e0b] text-[#0a192f] py-3 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors relative z-10"
+                            >
+                                <span>{language === 'AZ' ? 'SİFARİŞ ET' : language === 'RU' ? 'ЗАКАЗАТЬ' : 'ORDER'}</span>
+                                <ArrowRight size={14} strokeWidth={3} />
+                            </Link>
                         </motion.div>
                     ))}
+                </div>
+
+                {/* Custom Calculation Link */}
+                <div className="text-center mt-12">
+                     <Link href="/calculator" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-semibold underline decoration-2 underline-offset-4 transition-colors">
+                        {language === 'AZ' ? 'Başqa ölçü hesablamaq istəyirsiniz? Kalkulyatora keçin' : language === 'RU' ? 'Хотите рассчитать другой размер? Перейдите в калькулятор' : 'Want to calculate another size? Go to Calculator'}
+                        <ArrowRight size={16} />
+                     </Link>
                 </div>
             </div>
         </section>

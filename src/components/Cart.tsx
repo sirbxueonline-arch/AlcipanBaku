@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
+
 export function Cart() {
     const { cartItems, isCartOpen, toggleCart, removeFromCart, updateQuantity, cartTotal, clearCart } = useCart();
     const { language } = useAdmin();
@@ -164,6 +165,8 @@ export function Cart() {
                                     </div>
                                 ))
                             )}
+                            
+                            
                         </div>
 
                         {/* Footer */}
