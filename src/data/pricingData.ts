@@ -118,7 +118,7 @@ export const pricingPackages = [
 export const advantagesData = [
     {
         id: 1,
-        title: { AZ: '15+ il təcrübə', RU: '15+ лет опыта', EN: '15+ years experience' },
+        title: { AZ: '20+ il təcrübə', RU: '20+ лет опыта', EN: '20+ years experience' },
         desc: { AZ: 'Peşəkar komanda və illərin təcrübəsi.', RU: 'Профессиональная команда и многолетний опыт.', EN: 'Professional team and years of experience.' },
         iconName: 'experience'
     },
