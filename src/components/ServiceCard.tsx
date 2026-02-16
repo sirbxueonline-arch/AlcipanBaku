@@ -38,9 +38,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
             {/* Content */}
             <div className="flex flex-col flex-grow p-3 md:p-5 text-center bg-white z-10">
                 {/* Title */}
-                <h3 className="text-[#0a192f] text-sm md:text-xl font-bold leading-tight mb-3 md:mb-4">
-                    {service.name[language]}
-                </h3>
+                {/* Title Removed */}
 
                 {/* Price and Action */}
                 <div className="mt-auto pt-1 w-full">

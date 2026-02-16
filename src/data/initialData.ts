@@ -295,6 +295,21 @@ export const initialServices: Service[] = [
         currency: 'AZN',
         isPriceVisible: true
     },
+    {
+        id: 'new-service-img',
+        type: 'service',
+        name: { AZ: 'Yeni Xidmət', RU: 'Новая Услуга', EN: 'New Service' },
+        description: {
+            AZ: 'Yeni xidmət təsviri.',
+            RU: 'Описание новой услуги.',
+            EN: 'New service description.'
+        },
+        image: '/image.png',
+        isActive: true,
+        price: 0,
+        currency: 'AZN',
+        isPriceVisible: true
+    },
 ];
 
 // ==========================================
@@ -397,6 +412,16 @@ export const initialWorkItems: WorkItem[] = [
         title: { AZ: 'Alcipanbaku müasir tavanlar', RU: 'Современные потолки Alcipanbaku', EN: 'Alcipanbaku modern ceilings' },
         description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
         imageUrl: '/picture10.jpeg',
+        videoUrl: '',
+        tikTokUrl: '',
+        isActive: true
+    },
+    {
+        id: 'img11',
+        type: 'work',
+        title: { AZ: 'Yeni Layihə', RU: 'Новый Проект', EN: 'New Project' },
+        description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
+        imageUrl: '/image.png',
         videoUrl: '',
         tikTokUrl: '',
         isActive: true

@@ -160,7 +160,7 @@ export default function Home() {
             </div>
 
           <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto">
-            {services.slice(0, 2).map(service => (
+            {services.map(service => (
               <div key={service.id} className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
                  <div className="aspect-[4/3] relative">
                     <Image 
@@ -171,7 +171,6 @@ export default function Home() {
                     />
                  </div>
                  <div className="p-4 text-center flex flex-col items-center flex-grow">
-                    <h3 className="text-[#0a192f] font-bold text-sm md:text-xl mb-3">{service.name[language]}</h3>
                     <div className="mt-auto w-full">
                         <a 
                             href={`https://wa.me/994506368731?text=${encodeURIComponent(
