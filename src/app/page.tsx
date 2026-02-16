@@ -37,7 +37,7 @@ export default function Home() {
 
 
       {/* HERO SECTION */}
-      <section className="relative h-[85vh] min-h-[600px] flex flex-col justify-center items-center text-center overflow-hidden">
+      <section className="relative h-[85vh] min-h-[500px] flex flex-col justify-center items-center text-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -69,7 +69,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.8 }}
-            className="flex flex-col gap-2 items-center mb-8"
+            className="flex flex-col gap-1.5 items-center mb-6"
           >
              <div className="flex items-center gap-2 text-white/90 text-sm md:text-xl font-medium bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-sm border border-white/5">
                 <span className="text-[#fbbf24] text-lg">✔</span>
@@ -85,16 +85,13 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="mb-12 w-full max-w-xs md:max-w-md"
+            className="mb-8 w-full max-w-xs md:max-w-md"
           >
             <a
               href="#contact"
               className="group flex items-center justify-center gap-2 w-full py-3.5 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-base md:text-xl font-bold rounded-2xl shadow-[0_0_20px_rgba(251,191,36,0.4)] hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] transition-all transform hover:-translate-y-1 active:scale-95"
             >
               <span>{language === 'AZ' ? 'Pulsuz Qiymət Təklifi Al' : language === 'RU' ? 'Получить Предложение' : 'Get Free Quote'}</span>
-              <span className="bg-[#0a192f]/10 rounded-full w-6 h-6 flex items-center justify-center group-hover:bg-[#0a192f]/20 transition-colors">
-                 Let&apos;s go &gt;
-              </span>
             </a>
           </motion.div>
 

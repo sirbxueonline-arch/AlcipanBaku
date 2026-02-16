@@ -141,7 +141,7 @@ export function Header() {
                             <span className="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center">
                                 <span className="text-xs">📞</span>
                             </span>
-                            <span className="text-[12px] md:text-sm font-bold tracking-wide">
+                            <span className="text-[12px] md:text-sm font-bold tracking-wide whitespace-nowrap">
                                 +994 50 636 87 31
                             </span>
                         </a>
