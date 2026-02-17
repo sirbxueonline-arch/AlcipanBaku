@@ -15,7 +15,7 @@ export function CartButton() {
 
     if (!mounted) {
         return (
-            <button className="p-2 rounded-full hover:bg-gray-100 text-gray-600 transition-all relative">
+            <button className="p-2 rounded-full hover:bg-white/10 text-white/80 transition-colors relative">
                 <ShoppingBag size={24} />
             </button>
         );
@@ -24,12 +24,12 @@ export function CartButton() {
     return (
         <button
             onClick={toggleCart}
-            className="p-1 sm:p-2 rounded-full hover:bg-gray-100 text-gray-600 hover:text-blue-600 transition-all relative"
+            className="p-1 sm:p-2 rounded-full hover:bg-white/10 text-white/80 hover:text-[#fbbf24] transition-colors relative"
             aria-label="Open cart"
         >
             <ShoppingBag size={24} />
             {cartCount > 0 && (
-                <span className="absolute top-0 right-0 h-5 w-5 bg-blue-600 text-white text-xs font-bold flex items-center justify-center rounded-full border-2 border-white transform translate-x-1/4 -translate-y-1/4">
+                <span className="absolute top-0 right-0 h-5 w-5 bg-blue-600 text-white text-xs font-bold flex items-center justify-center rounded-full border-2 border-[#0a192f] transform translate-x-1/4 -translate-y-1/4">
                     {cartCount}
                 </span>
             )}

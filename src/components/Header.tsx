@@ -132,8 +132,10 @@ export function Header() {
                     </nav>
 
                     {/* Right Side: Phone number */}
-                    <div className="flex items-center gap-4">
-                        {/* Mobile & Desktop Phone Number Button */}
+                    <div className="flex items-center gap-3 md:gap-4">
+                         <CartButton />
+                         
+                         {/* Mobile & Desktop Phone Number Button */}
                          <a 
                             href="tel:+994506368731" 
                             className="flex items-center gap-2 bg-[#3f6248] hover:bg-[#34523c] text-white px-3 py-1.5 md:px-5 md:py-2.5 rounded-full transition-all border border-white/10 shadow-lg"
