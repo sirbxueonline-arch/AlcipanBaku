@@ -485,5 +485,65 @@ export const initialWorkItems: WorkItem[] = [
         videoUrl: '/video6.mp4',
         tikTokUrl: '',
         isActive: true
+    },
+    {
+        id: 'img12',
+        type: 'work',
+        title: { AZ: 'Alçipan İşləri', RU: 'Гипсокартонные Работы', EN: 'Drywall Works' },
+        description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
+        imageUrl: '/works/work_12.png',
+        videoUrl: '',
+        tikTokUrl: '',
+        isActive: true
+    },
+    {
+        id: 'img13',
+        type: 'work',
+        title: { AZ: 'Alçipan İşləri', RU: 'Гипсокартонные Работы', EN: 'Drywall Works' },
+        description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
+        imageUrl: '/works/work_13.png',
+        videoUrl: '',
+        tikTokUrl: '',
+        isActive: true
+    },
+    {
+        id: 'img14',
+        type: 'work',
+        title: { AZ: 'Alçipan İşləri', RU: 'Гипсокартонные Работы', EN: 'Drywall Works' },
+        description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
+        imageUrl: '/works/work_14.png',
+        videoUrl: '',
+        tikTokUrl: '',
+        isActive: true
+    },
+    {
+        id: 'img15',
+        type: 'work',
+        title: { AZ: 'Qonaq Otağı', RU: 'Гостиная', EN: 'Living Room' },
+        description: { AZ: 'Müasir qonaq otağı dizaynı.', RU: 'Современный дизайн гостиной.', EN: 'Modern living room design.' },
+        imageUrl: '/works/living_room.png',
+        videoUrl: '',
+        tikTokUrl: '',
+        isActive: true
+    },
+    {
+        id: 'img16',
+        type: 'work',
+        title: { AZ: 'Alçipan İşləri', RU: 'Гипсокартонные Работы', EN: 'Drywall Works' },
+        description: { AZ: 'Bizim işlərimizdən nümunə.', RU: 'Пример нашей работы.', EN: 'Example of our work.' },
+        imageUrl: '/works/work_15.jpg',
+        videoUrl: '',
+        tikTokUrl: '',
+        isActive: true
+    },
+    {
+        id: 'img17',
+        type: 'work',
+        title: { AZ: 'Divar Dekoru', RU: 'Декор Стены', EN: 'Wall Decor' },
+        description: { AZ: 'Xüsusi divar dekoru.', RU: 'Особый декор стены.', EN: 'Special wall decor.' },
+        imageUrl: '/works/divar_dekoru.png',
+        videoUrl: '',
+        tikTokUrl: '',
+        isActive: true
     }
 ];
