@@ -10,7 +10,7 @@ import Link from 'next/link';
 export default function ProductsPage() {
     const { packages, products, language } = useAdmin();
     const activePackages = packages.filter(p => p.isActive);
-    const activeProducts = products.filter(p => p.isActive);
+    const activeProducts = products.filter(p => p.isActive && !p.id.startsWith('gp'));
 
     const containerVariants: Variants = {
         hidden: { opacity: 0 },

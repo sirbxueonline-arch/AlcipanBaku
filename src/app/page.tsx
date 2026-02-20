@@ -15,6 +15,7 @@ import Image from 'next/image';
 export default function Home() {
   const { packages, products, services, language } = useAdmin();
   const { addToCart } = useCart();
+  const [expandedPlan, setExpandedPlan] = React.useState<any>(null);
 
   const sendWhatsApp = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -173,7 +174,10 @@ export default function Home() {
                 className="group relative bg-[#f8fafc] rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
               >
                 {/* Image Container with fixed aspect ratio */}
-                <div className="relative aspect-[4/5] w-full overflow-hidden bg-white">
+                <div 
+                  className="relative aspect-[4/5] w-full overflow-hidden bg-white cursor-zoom-in"
+                  onClick={() => setExpandedPlan(plan)}
+                >
                   <Image
                     src={plan.image}
                     alt={plan.name[language]}
@@ -182,6 +186,15 @@ export default function Home() {
                   />
                   <div className="absolute top-2 left-2 bg-[#0a192f]/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-md">
                     {plan.id.toUpperCase()}
+                  </div>
+                  
+                  {/* Overlay on hover */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <div className="bg-white/90 p-2 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#0a192f]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
 
@@ -212,6 +225,44 @@ export default function Home() {
             ))}
           </div>
         </div>
+
+        {/* Lightbox Modal */}
+        {expandedPlan && (
+          <div 
+            className="fixed inset-0 z-[9999] bg-[#0a192f]/95 backdrop-blur-md flex items-center justify-center p-4 md:p-10 cursor-zoom-out"
+            onClick={() => setExpandedPlan(null)}
+          >
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="relative max-w-5xl w-full h-full max-h-[90vh] flex flex-col items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button 
+                className="absolute -top-12 right-0 md:-right-12 text-white hover:text-[#fbbf24] transition-colors p-2"
+                onClick={() => setExpandedPlan(null)}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              
+              <div className="relative w-full h-full bg-white rounded-3xl overflow-hidden shadow-2xl">
+                <Image
+                  src={expandedPlan.image}
+                  alt={expandedPlan.name[language]}
+                  fill
+                  className="object-contain p-4 md:p-8"
+                />
+              </div>
+
+              <div className="mt-6 text-center text-white">
+                <h3 className="text-xl md:text-2xl font-bold mb-2">{expandedPlan.name[language]}</h3>
+                <p className="text-[#fbbf24] text-2xl font-black">{expandedPlan.price.toFixed(2)} AZN / m</p>
+              </div>
+            </motion.div>
+          </div>
+        )}
       </section>
 
       {/* SERVICES SECTION */}
