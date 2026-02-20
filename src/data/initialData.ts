@@ -302,17 +302,7 @@ export const initialProducts: Product[] = [
         isActive: true,
         isPriceVisible: true
     },
-    {
-        id: 'gp28',
-        type: 'product',
-        name: { AZ: 'GP-28 Gizli işıqlı kölgə profili', RU: 'Теневой профиль GP-28', EN: 'Shadow profile GP-28' },
-        price: 16.50,
-        currency: 'AZN',
-        image: '/GP-28.png',
-        description: { AZ: '16.50 AZN / metr', RU: '16.50 AZN / метр', EN: '16.50 AZN / meter' },
-        isActive: true,
-        isPriceVisible: true
-    },
+
     {
         id: 'gp31',
         type: 'product',
