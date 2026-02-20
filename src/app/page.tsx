@@ -145,6 +145,75 @@ export default function Home() {
       {/* PRICING TABLES */}
       <PricingTables />
 
+      {/* MODERN PROFILE PLANS */}
+      <section className="bg-white py-12 md:py-20" id="plans">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a192f] uppercase tracking-wide">
+              {language === 'AZ' ? 'Müasir Profil Planları' : language === 'RU' ? 'Планы Современных Профилей' : 'Modern Profile Plans'}
+            </h2>
+            <div className="h-1 w-20 bg-[#fbbf24] mx-auto rounded-full mt-3"></div>
+            <p className="mt-4 text-gray-500 max-w-2xl mx-auto text-sm md:text-base">
+              {language === 'AZ' 
+                ? 'Eviniz üçün ən son texnologiya ilə hazırlanmış kölgəli və işıqlı profillər.' 
+                : language === 'RU' 
+                ? 'Теневые и световые профили, изготовленные по последним технологиям для вашего дома.' 
+                : 'Shadow and light profiles prepared with the latest technology for your home.'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 max-w-7xl mx-auto">
+            {products.filter(p => p.id.startsWith('gp')).map((plan, idx) => (
+              <motion.div
+                key={plan.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.05, duration: 0.5 }}
+                viewport={{ once: true }}
+                className="group relative bg-[#f8fafc] rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
+              >
+                {/* Image Container with fixed aspect ratio */}
+                <div className="relative aspect-[4/5] w-full overflow-hidden bg-white">
+                  <Image
+                    src={plan.image}
+                    alt={plan.name[language]}
+                    fill
+                    className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-2 left-2 bg-[#0a192f]/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-md">
+                    {plan.id.toUpperCase()}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-4 flex flex-col flex-grow text-center">
+                  <h3 className="text-sm md:text-base font-bold text-[#0a192f] mb-2 leading-tight min-h-[40px] flex items-center justify-center">
+                    {plan.name[language]}
+                  </h3>
+                  
+                  <div className="mt-auto pt-4 border-t border-gray-100 flex flex-col items-center">
+                    <div className="text-lg font-extrabold text-[#fbbf24]">
+                      {plan.price.toFixed(2)} <span className="text-xs uppercase">AZN / m</span>
+                    </div>
+                    
+                    <a
+                      href={`https://wa.me/994506368731?text=${encodeURIComponent(
+                        `Salam, ${plan.name[language]} planı ilə maraqlanıram.`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 w-full py-2.5 bg-[#0a192f] hover:bg-[#112240] text-white text-[10px] md:text-xs font-bold rounded-xl transition-all uppercase tracking-wider shadow-md active:scale-95"
+                    >
+                      {language === 'AZ' ? 'Sifariş et' : language === 'RU' ? 'Заказать' : 'Order Now'}
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SERVICES SECTION */}
       <section className="bg-[#f8fafc] pb-20 md:py-20" id="services">
         <div className="container mx-auto px-4">

@@ -213,6 +213,171 @@ export const initialProducts: Product[] = [
         },
         isActive: true,
         isPriceVisible: true
+    },
+    {
+        id: 'gp14',
+        type: 'product',
+        name: { AZ: 'GP-14 Kölgə profili', RU: 'Теневой профиль GP-14', EN: 'Shadow profile GP-14' },
+        price: 6,
+        currency: 'AZN',
+        image: '/GP-14.png',
+        description: { AZ: '6.00 AZN / metr', RU: '6.00 AZN / метр', EN: '6.00 AZN / meter' },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: 'gp15',
+        type: 'product',
+        name: { AZ: 'GP-15 Gizli işıqlı kölgə profili', RU: 'Теневой профиль с подсветкой GP-15', EN: 'Hidden light shadow profile GP-15' },
+        price: 10,
+        currency: 'AZN',
+        image: '/GP-15.png',
+        description: { AZ: '10.00 AZN / metr', RU: '10.00 AZN / метр', EN: '10.00 AZN / meter' },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: 'gp17',
+        type: 'product',
+        name: { AZ: 'GP-17 Dekor işıqlandırma profili', RU: 'Декоративный профиль GP-17', EN: 'Decorative light profile GP-17' },
+        price: 9,
+        currency: 'AZN',
+        image: '/GP-17.png',
+        description: { AZ: '9.00 AZN / metr', RU: '9.00 AZN / метр', EN: '9.00 AZN / meter' },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: 'gp19',
+        type: 'product',
+        name: { AZ: 'GP-19 Gizli işıqlı kölgə profili', RU: 'Теневой профиль с подсветкой GP-19', EN: 'Hidden light shadow profile GP-19' },
+        price: 11.30,
+        currency: 'AZN',
+        image: '/GP-19.png',
+        description: { AZ: '11.30 AZN / metr', RU: '11.30 AZN / метр', EN: '11.30 AZN / meter' },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: 'gp21',
+        type: 'product',
+        name: { AZ: 'GP-21 Led profili (alçipan altı)', RU: 'Лед профиль GP-21', EN: 'LED profile GP-21' },
+        price: 9,
+        currency: 'AZN',
+        image: '/GP-21.png',
+        description: { AZ: '9.00 AZN / metr', RU: '9.00 AZN / метр', EN: '9.00 AZN / meter' },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: 'gp24',
+        type: 'product',
+        name: { AZ: 'GP-24 Gizli işıqlı Kölgəli plintus', RU: 'Скрытый плинтус GP-24', EN: 'Hidden skirting GP-24' },
+        price: 8.50,
+        currency: 'AZN',
+        image: '/GP-24.png',
+        description: { AZ: '8.50 AZN / metr', RU: '8.50 AZN / метр', EN: '8.50 AZN / meter' },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: 'gp25',
+        type: 'product',
+        name: { AZ: 'GP-25 Gizli işıqlı kölgə profili', RU: 'Теневой профиль GP-25', EN: 'Shadow profile GP-25' },
+        price: 13.20,
+        currency: 'AZN',
+        image: '/GP-25.png',
+        description: { AZ: '13.20 AZN / metr', RU: '13.20 AZN / метр', EN: '13.20 AZN / meter' },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: 'gp27',
+        type: 'product',
+        name: { AZ: 'GP-27 Gizli işıqlı kölgəli plintus', RU: 'Скрытый плинтус GP-27', EN: 'Hidden skirting GP-27' },
+        price: 10,
+        currency: 'AZN',
+        image: '/GP-27.png',
+        description: { AZ: '10.00 AZN / metr', RU: '10.00 AZN / метр', EN: '10.00 AZN / meter' },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: 'gp28',
+        type: 'product',
+        name: { AZ: 'GP-28 Gizli işıqlı kölgə profili', RU: 'Теневой профиль GP-28', EN: 'Shadow profile GP-28' },
+        price: 12.50,
+        currency: 'AZN',
+        image: '/GP-28.png',
+        description: { AZ: '12.50 AZN / metr', RU: '12.50 AZN / метр', EN: '12.50 AZN / meter' },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: 'gp31',
+        type: 'product',
+        name: { AZ: 'GP-31 Led profili (alçipan içi)', RU: 'Лед профиль GP-31', EN: 'LED profile GP-31' },
+        price: 10,
+        currency: 'AZN',
+        image: '/GP-31.png',
+        description: { AZ: '10.00 AZN / metr', RU: '10.00 AZN / метр', EN: '10.00 AZN / meter' },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: 'gp35',
+        type: 'product',
+        name: { AZ: 'GP-35 Kölgəli kontur işıqlandırma profili', RU: 'Контурный профиль GP-35', EN: 'Contour profile GP-35' },
+        price: 13.50,
+        currency: 'AZN',
+        image: '/GP-35.png',
+        description: { AZ: '13.50 AZN / metr', RU: '13.50 AZN / метр', EN: '13.50 AZN / meter' },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: 'gp41',
+        type: 'product',
+        name: { AZ: 'GP-41 Led profili (alçipan altı)', RU: 'Лед профиль GP-41', EN: 'LED profile GP-41' },
+        price: 11,
+        currency: 'AZN',
+        image: '/GP-41.png',
+        description: { AZ: '11.00 AZN / metr', RU: '11.00 AZN / метр', EN: '11.00 AZN / meter' },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: 'gp50',
+        type: 'product',
+        name: { AZ: 'GP-50 Gizli işıqlı kölgə profili', RU: 'Теневой профиль GP-50', EN: 'Shadow profile GP-50' },
+        price: 18,
+        currency: 'AZN',
+        image: '/GP-50.png',
+        description: { AZ: '18.00 AZN / metr', RU: '18.00 AZN / метр', EN: '18.00 AZN / meter' },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: 'gp51',
+        type: 'product',
+        name: { AZ: 'GP-51 Led profili (alçipan içi)', RU: 'Лед профиль GP-51', EN: 'LED profile GP-51' },
+        price: 12,
+        currency: 'AZN',
+        image: '/GP-51.png',
+        description: { AZ: '12.00 AZN / metr', RU: '12.00 AZN / метр', EN: '12.00 AZN / meter' },
+        isActive: true,
+        isPriceVisible: true
+    },
+    {
+        id: 'gp80',
+        type: 'product',
+        name: { AZ: 'GP-80 Gizli plintus (işıqlı)', RU: 'Скрытый плинтус GP-80', EN: 'Hidden skirting GP-80' },
+        price: 11,
+        currency: 'AZN',
+        image: '/GP-80.png',
+        description: { AZ: '11.00 AZN / metr', RU: '11.00 AZN / метр', EN: '11.00 AZN / meter' },
+        isActive: true,
+        isPriceVisible: true
     }
 ];
 
