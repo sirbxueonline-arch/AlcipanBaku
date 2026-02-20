@@ -143,10 +143,15 @@ export function PriceCalculator() {
                     </label>
                     <div className="flex items-center">
                         <input
-                            type="number"
-                            min={20}
+                            type="text"
+                            inputMode="numeric"
                             value={area}
-                            onChange={(e) => setArea(e.target.value === '' ? '' : Number(e.target.value))}
+                            onChange={(e) => {
+                                const val = e.target.value;
+                                if (val === '' || /^\d*$/.test(val)) {
+                                    setArea(val);
+                                }
+                            }}
                             className="w-full text-3xl font-bold text-slate-900 bg-transparent outline-none border-b-2 border-slate-200 focus:border-blue-500 transition-colors pb-1"
                         />
                         <span className="text-xl font-medium text-slate-400 ml-2">m²</span>
