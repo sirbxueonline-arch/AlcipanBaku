@@ -51,7 +51,7 @@ export function PriceCalculator() {
     const initialType = (searchParams.get('package') as PackageType) || 'simple';
     const initialArea = Number(searchParams.get('area')) || 25;
     
-    const [area, setArea] = useState<number>(initialArea);
+    const [area, setArea] = useState<number | string>(initialArea);
     const [selectedType, setSelectedType] = useState<PackageType>(
         ['material', 'simple', 'figured'].includes(initialType) ? initialType : 'simple'
     );
@@ -74,8 +74,9 @@ export function PriceCalculator() {
     /* Calculation Logic */
     useEffect(() => {
         const config = PRICING[selectedType];
+        const numArea = typeof area === 'string' ? (area === '' ? 0 : Number(area)) : area;
         // Ensure minimum 20m2 for calculation base
-        const calcArea = Math.max(20, area);
+        const calcArea = Math.max(20, numArea);
         
         let rate = config.pricePerSqm;
         
@@ -145,7 +146,7 @@ export function PriceCalculator() {
                             type="number"
                             min={20}
                             value={area}
-                            onChange={(e) => setArea(Number(e.target.value))}
+                            onChange={(e) => setArea(e.target.value === '' ? '' : Number(e.target.value))}
                             className="w-full text-3xl font-bold text-slate-900 bg-transparent outline-none border-b-2 border-slate-200 focus:border-blue-500 transition-colors pb-1"
                         />
                         <span className="text-xl font-medium text-slate-400 ml-2">m²</span>
@@ -167,7 +168,7 @@ export function PriceCalculator() {
                     <div className="flex-1">
                         <h4 className="text-sm font-bold text-slate-900 leading-tight">{PRICING.material.name[language]}</h4>
                         <p className="text-lg font-bold text-blue-600 mt-0.5">
-                           {Math.max(20, area) * PRICING.material.pricePerSqm} ₼
+                           {Math.max(20, typeof area === 'string' ? (area === '' ? 0 : Number(area)) : area) * PRICING.material.pricePerSqm} ₼
                         </p>
                     </div>
                     {selectedType === 'material' && (
@@ -192,10 +193,11 @@ export function PriceCalculator() {
                          // Calculate display price for this card based on current area
                         let rate = config.pricePerSqm;
                         if (config.tiers) {
-                             const tier = config.tiers.find(t => Math.max(20, area) >= t.min);
+                             const tier = config.tiers.find(t => Math.max(20, typeof area === 'string' ? (area === '' ? 0 : Number(area)) : area) >= t.min);
                              if (tier) rate = tier.rate;
                         }
-                        const currentPrice = Math.max(20, area) * rate;
+                        const numAreaForCard = typeof area === 'string' ? (area === '' ? 0 : Number(area)) : area;
+                        const currentPrice = Math.max(20, numAreaForCard) * rate;
 
                         return (
                             <motion.div
