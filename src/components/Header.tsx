@@ -85,7 +85,7 @@ export function Header() {
                 <div className="flex justify-between items-center h-16 md:h-20">
                     
                     {/* Left: Hamburger + Logo Group */}
-                    <div className="flex items-center gap-3 md:gap-8">
+                    <div className="flex items-center gap-2 md:gap-8">
                         {/* Mobile: Hamburger */}
                         <div className="md:hidden flex items-center">
                             <button
@@ -111,7 +111,7 @@ export function Header() {
                                 <span className="text-lg md:text-2xl font-bold text-white tracking-tight leading-none">
                                     ALCIPAN<span className="text-red-500">BAKU</span>
                                 </span>
-                                <span className="text-[10px] md:text-[10px] text-gray-400 font-bold tracking-widest uppercase truncate max-w-[100px] md:max-w-none">
+                                <span className="text-[9px] md:text-[10px] text-gray-400 font-bold tracking-widest uppercase truncate max-w-[80px] md:max-w-none hidden xs:block">
                                     {language === 'AZ' ? '20 İL TƏCRÜBƏ' : language === 'RU' ? '20 ЛЕТ ОПЫТА' : '20 YEARS EXPERIENCE'}
                                 </span>
                             </div>
@@ -132,18 +132,18 @@ export function Header() {
                     </nav>
 
                     {/* Right Side: Phone number */}
-                    <div className="flex items-center gap-3 md:gap-4">
+                    <div className="flex items-center gap-1.5 md:gap-4">
                          <CartButton />
                          
                          {/* Mobile & Desktop Phone Number Button */}
                          <a 
                             href="tel:+994506368731" 
-                            className="flex items-center gap-2 bg-[#3f6248] hover:bg-[#34523c] text-white px-3 py-1.5 md:px-5 md:py-2.5 rounded-full transition-all border border-white/10 shadow-lg"
+                            className="flex items-center gap-1.5 bg-[#3f6248] hover:bg-[#34523c] text-white px-2 py-1.5 md:px-5 md:py-2.5 rounded-full transition-all border border-white/10 shadow-lg"
                         >
-                            <span className="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center">
-                                <span className="text-xs">📞</span>
+                            <span className="w-4 h-4 md:w-5 md:h-5 bg-white/20 rounded-full flex items-center justify-center">
+                                <span className="text-[10px] md:text-xs">📞</span>
                             </span>
-                            <span className="text-[12px] md:text-sm font-bold tracking-wide whitespace-nowrap">
+                            <span className="text-[11px] md:text-sm font-bold tracking-tight whitespace-nowrap">
                                 +994 50 636 87 31
                             </span>
                         </a>
