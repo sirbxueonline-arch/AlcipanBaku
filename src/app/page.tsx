@@ -188,8 +188,7 @@ export default function Home() {
                     {plan.id.toUpperCase()}
                   </div>
                   
-                  {/* Patch to hide old price baked in image at the top-right */}
-                  <div className="absolute top-0 left-[30%] right-0 h-24 bg-white z-10" />
+
                   
                   {/* Overlay on hover */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
@@ -258,8 +257,7 @@ export default function Home() {
                   className="object-contain p-4 md:p-8"
                 />
                 
-                {/* Patch to hide old price in modal at the top-right */}
-                <div className="absolute top-0 left-[30%] right-0 h-40 bg-white z-10 rounded-tr-3xl" />
+
               </div>
 
               <div className="mt-6 text-center text-white">
