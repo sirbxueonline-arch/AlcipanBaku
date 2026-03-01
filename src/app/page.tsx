@@ -90,7 +90,7 @@ export default function Home() {
           >
             <a
               href="#contact"
-              className="group flex items-center justify-center gap-2 w-full py-3.5 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-base md:text-xl font-bold rounded-2xl shadow-[0_0_20px_rgba(251,191,36,0.4)] hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] transition-all transform hover:-translate-y-1 active:scale-95"
+              className="group flex items-center justify-center gap-2 w-full min-h-[50px] md:min-h-[56px] py-3.5 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-base md:text-xl font-bold rounded-2xl shadow-[0_0_20px_rgba(251,191,36,0.4)] hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] transition-all transform hover:-translate-y-1 active:scale-95"
             >
               <span>{language === 'AZ' ? 'Pulsuz Qiymət Təklifi Al' : language === 'RU' ? 'Получить Предложение' : 'Get Free Quote'}</span>
             </a>
@@ -147,7 +147,7 @@ export default function Home() {
       <PricingTables />
 
       {/* MODERN PROFILE PLANS */}
-      <section className="bg-white py-12 md:py-20" id="plans">
+      <section className="bg-white py-10 md:py-20" id="plans">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10 md:mb-16">
             <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a192f] uppercase tracking-wide">
@@ -217,7 +217,7 @@ export default function Home() {
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-3 w-full py-2.5 bg-[#0a192f] hover:bg-[#112240] text-white text-[10px] md:text-xs font-bold rounded-xl transition-all uppercase tracking-wider shadow-md active:scale-95"
+                      className="mt-3 w-full min-h-[44px] flex items-center justify-center bg-[#0a192f] hover:bg-[#112240] text-white text-[10px] md:text-xs font-bold rounded-xl transition-all uppercase tracking-wider shadow-md active:scale-95"
                     >
                       {language === 'AZ' ? 'Sifariş et' : language === 'RU' ? 'Заказать' : 'Order Now'}
                     </a>
@@ -270,7 +270,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES SECTION */}
-      <section className="bg-[#f8fafc] pb-20 md:py-20" id="services">
+      <section className="bg-[#f8fafc] py-10 md:py-20" id="services">
         <div className="container mx-auto px-4">
           {/* Section Header */}
           <div className="text-center mb-8">
@@ -302,7 +302,7 @@ export default function Home() {
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block w-full bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-[11px] md:text-sm font-bold py-2.5 rounded-lg shadow-sm transition-all uppercase tracking-wide"
+                      className="block w-full min-h-[44px] flex items-center justify-center bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-[11px] md:text-sm font-bold rounded-lg shadow-sm transition-all uppercase tracking-wide"
                     >
                       {language === 'AZ' ? 'əlaqə saxla' : language === 'RU' ? 'связаться' : 'contact us'}
                     </a>
@@ -315,7 +315,7 @@ export default function Home() {
       </section>
 
       {/* PRODUCTS (MATERIALS) SECTION */}
-      <section className="bg-[#f8fafc] py-12 md:py-20" id="materials">
+      <section className="bg-[#f8fafc] py-10 md:py-20" id="materials">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10 md:mb-16">
             <h2 className="text-2xl md:text-4xl font-extrabold mb-3 text-[#0a192f]">
@@ -349,7 +349,7 @@ export default function Home() {
                     </div>
                     <button
                       onClick={() => addToCart(product)}
-                      className="w-full py-2 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-[10px] md:text-xs font-bold rounded border-none shadow-sm hover:shadow-md transition-all uppercase tracking-wider"
+                      className="w-full min-h-[44px] flex items-center justify-center bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-[10px] md:text-xs font-bold rounded border-none shadow-sm hover:shadow-md transition-all uppercase tracking-wider"
                     >
                       {language === 'AZ' ? 'SİFARİŞ ET' : language === 'RU' ? 'ЗАКАЗАТЬ' : 'ORDER'}
                     </button>
@@ -362,8 +362,8 @@ export default function Home() {
       </section>
 
       {/* WHY US / STATS */}
-      <section className="bg-white py-16">
-        <div className="container mx-auto px-4 text-center mb-12">
+      <section className="bg-white py-10 md:py-16">
+        <div className="container mx-auto px-4 text-center mb-8 md:mb-12">
           <h2 className="text-3xl font-bold mb-4 text-[#0a192f]">
             {language === 'AZ' ? 'Niyə AlcipanBaku?' : language === 'RU' ? 'Почему AlcipanBaku?' : 'Why AlcipanBaku?'}
           </h2>
@@ -382,7 +382,7 @@ export default function Home() {
       <WorkGallery />
 
       {/* CONTACT FORM */}
-      <section className="bg-[#0a192f] text-white py-20 text-center" id="contact">
+      <section className="bg-[#0a192f] text-white py-12 md:py-20 text-center" id="contact">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-4">
             {language === 'AZ' ? 'Ölçü üçün müraciət' : language === 'RU' ? 'Заявка на замер' : 'Request Measurement'}
