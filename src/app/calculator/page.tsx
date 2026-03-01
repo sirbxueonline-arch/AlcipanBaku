@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import { PriceCalculator } from '@/components/PriceCalculator';
 import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
 
 export default function CalculatorPage() {
     return (
@@ -14,7 +13,6 @@ export default function CalculatorPage() {
                     </Suspense>
                 </div>
             </main>
-            <Footer />
         </div>
     );
 }

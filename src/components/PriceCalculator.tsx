@@ -11,7 +11,7 @@ import { useSearchParams } from 'next/navigation';
 type PackageType = 'material' | 'simple' | 'figured';
 
 interface PricingConfig {
-    pricePerSqm: number; 
+    pricePerSqm: number;
     tiers?: { min: number; rate: number }[]; // Optional tiered pricing
     name: { [key: string]: string };
     image: string;
@@ -19,7 +19,7 @@ interface PricingConfig {
 
 const PRICING: Record<PackageType, PricingConfig> = {
     material: {
-        pricePerSqm: 13, 
+        pricePerSqm: 13,
         name: { AZ: 'Yalnız Material', RU: 'Только Материал', EN: 'Material Only' },
         image: '/material_gypsum_moisture.jpg'
     },
@@ -28,15 +28,15 @@ const PRICING: Record<PackageType, PricingConfig> = {
         // Tiered pricing derived from user request: 
         // <50m²: 23/m² | 50-99m²: 22/m² | >100m²: 21/m²
         tiers: [
-             { min: 100, rate: 21 },
-             { min: 50, rate: 22 },
-             { min: 0, rate: 23 } 
+            { min: 100, rate: 21 },
+            { min: 50, rate: 22 },
+            { min: 0, rate: 23 }
         ],
         name: { AZ: 'Material + Ustalıq (Sadə)', RU: 'Материал + Работа (Простой)', EN: 'Material + Labor (Simple)' },
         image: '/service_simple_ceiling_new.png'
     },
     figured: {
-        pricePerSqm: 33, 
+        pricePerSqm: 33,
         name: { AZ: 'Material + Ustalıq (Fiqurlu)', RU: 'Материал + Работа (Фигурный)', EN: 'Material + Labor (Figured)' },
         image: '/picture2.jpeg'
     }
@@ -46,11 +46,11 @@ export function PriceCalculator() {
     const { language } = useAdmin();
     const { addToCart } = useCart();
     const searchParams = useSearchParams();
-    
+
     // Get initial type and area from URL
     const initialType = (searchParams.get('package') as PackageType) || 'simple';
     const initialArea = Number(searchParams.get('area')) || 25;
-    
+
     const [area, setArea] = useState<number | string>(initialArea);
     const [selectedType, setSelectedType] = useState<PackageType>(
         ['material', 'simple', 'figured'].includes(initialType) ? initialType : 'simple'
@@ -62,7 +62,7 @@ export function PriceCalculator() {
     useEffect(() => {
         const typeFromUrl = searchParams.get('package') as PackageType;
         const areaFromUrl = Number(searchParams.get('area'));
-        
+
         if (typeFromUrl && ['material', 'simple', 'figured'].includes(typeFromUrl)) {
             setSelectedType(typeFromUrl);
         }
@@ -77,9 +77,9 @@ export function PriceCalculator() {
         const numArea = typeof area === 'string' ? (area === '' ? 0 : Number(area)) : area;
         // Ensure minimum 20m2 for calculation base
         const calcArea = Math.max(20, numArea);
-        
+
         let rate = config.pricePerSqm;
-        
+
         // Apply tiered pricing if available
         if (config.tiers) {
             // Find the highest applicable tier (tiers are sorted desc in definition or we find first match)
@@ -88,7 +88,7 @@ export function PriceCalculator() {
                 rate = tier.rate;
             }
         }
-        
+
         setCurrentRate(rate);
         const calculatedPrice = calcArea * rate;
         setPrice(calculatedPrice);
@@ -96,7 +96,7 @@ export function PriceCalculator() {
 
     const handleAddToCart = () => {
         const config = PRICING[selectedType];
-        
+
         // Create a custom item for the cart
         const cartItem = {
             id: `calc-${selectedType}-${Date.now()}`,
@@ -112,7 +112,7 @@ export function PriceCalculator() {
             quantity: 1, // 1 unit of this calculated package
             step: 1
         };
-        
+
         addToCart(cartItem as any);
         alert(language === 'AZ' ? 'Səbətə əlavə olundu!' : language === 'RU' ? 'Добавлено в корзину!' : 'Added to cart!');
     };
@@ -137,33 +137,38 @@ export function PriceCalculator() {
             {/* Input Section */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 {/* Area Input */}
-                <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                <div className="bg-gray-50 rounded-xl p-4 border border-gray-100 flex flex-col justify-center">
+                    <label className="block text-sm font-semibold text-slate-700 mb-4">
                         {language === 'AZ' ? 'Otağın Sahəsi:' : language === 'RU' ? 'Площадь комнаты:' : 'Room Area:'}
                     </label>
-                    <div className="flex items-center">
-                        <input
-                            type="text"
-                            inputMode="numeric"
-                            value={area}
-                            onChange={(e) => {
-                                const val = e.target.value;
-                                if (val === '' || /^\d*$/.test(val)) {
-                                    setArea(val);
-                                }
-                            }}
-                            className="w-full text-3xl font-bold text-slate-900 bg-transparent outline-none border-b-2 border-slate-200 focus:border-blue-500 transition-colors pb-1"
-                        />
-                        <span className="text-xl font-medium text-slate-400 ml-2">m²</span>
+                    <div className="flex items-center justify-between mb-2">
+                        <span className="text-3xl font-bold text-slate-900">{area === '' ? 0 : area}</span>
+                        <span className="text-xl font-medium text-slate-400">m²</span>
+                    </div>
+                    <input
+                        type="range"
+                        min="1"
+                        max="250"
+                        value={area === '' ? 20 : area}
+                        onChange={(e) => setArea(Number(e.target.value))}
+                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        style={{
+                            background: `linear-gradient(to right, #2563eb ${(Number(area === '' ? 20 : area) / 250) * 100}%, #e5e7eb ${(Number(area === '' ? 20 : area) / 250) * 100}%)`,
+                            WebkitAppearance: 'none'
+                        }}
+                    />
+                    <div className="flex justify-between mt-2 text-xs text-slate-400 font-medium pb-1">
+                        <span>1 m²</span>
+                        <span>250+ m²</span>
                     </div>
                     {/* Rate Display */}
-                     <p className="text-[10px] text-blue-600 font-bold mt-2 text-right">
+                    <p className="text-[10px] text-blue-600 font-bold mt-2 text-right">
                         {language === 'AZ' ? `Cari Tarif: ${currentRate} ₼/m²` : `Current Rate: ${currentRate} ₼/m²`}
                     </p>
                 </div>
 
                 {/* Package Selection - Material Only (Mini Card) */}
-                <div 
+                <div
                     onClick={() => setSelectedType('material')}
                     className={`relative cursor-pointer rounded-xl p-3 border-2 transition-all flex items-center gap-3 ${selectedType === 'material' ? 'border-blue-500 bg-blue-50/50' : 'border-gray-100 hover:border-blue-200 bg-white'}`}
                 >
@@ -173,7 +178,7 @@ export function PriceCalculator() {
                     <div className="flex-1">
                         <h4 className="text-sm font-bold text-slate-900 leading-tight">{PRICING.material.name[language]}</h4>
                         <p className="text-lg font-bold text-blue-600 mt-0.5">
-                           {Math.max(20, typeof area === 'string' ? (area === '' ? 0 : Number(area)) : area) * PRICING.material.pricePerSqm} ₼
+                            {Math.max(20, typeof area === 'string' ? (area === '' ? 0 : Number(area)) : area) * PRICING.material.pricePerSqm} ₼
                         </p>
                     </div>
                     {selectedType === 'material' && (
@@ -194,12 +199,12 @@ export function PriceCalculator() {
                         const t = type as PackageType;
                         const config = PRICING[t];
                         const isSelected = selectedType === t;
-                        
-                         // Calculate display price for this card based on current area
+
+                        // Calculate display price for this card based on current area
                         let rate = config.pricePerSqm;
                         if (config.tiers) {
-                             const tier = config.tiers.find(t => Math.max(20, typeof area === 'string' ? (area === '' ? 0 : Number(area)) : area) >= t.min);
-                             if (tier) rate = tier.rate;
+                            const tier = config.tiers.find(t => Math.max(20, typeof area === 'string' ? (area === '' ? 0 : Number(area)) : area) >= t.min);
+                            if (tier) rate = tier.rate;
                         }
                         const numAreaForCard = typeof area === 'string' ? (area === '' ? 0 : Number(area)) : area;
                         const currentPrice = Math.max(20, numAreaForCard) * rate;
@@ -242,20 +247,20 @@ export function PriceCalculator() {
                             {language === 'AZ' ? 'Nəticə:' : language === 'RU' ? 'Результат:' : 'Result:'}
                         </p>
                         <div className="flex items-baseline gap-2">
-                             <span className="text-3xl font-black text-slate-900">{price} ₼</span>
+                            <span className="text-3xl font-black text-slate-900">{price} ₼</span>
                         </div>
                     </div>
 
                     <div className="bg-green-50/80 border border-green-100 rounded-lg px-4 py-2 text-right">
-                         <div className="flex items-center gap-2 justify-end mb-1">
+                        <div className="flex items-center gap-2 justify-end mb-1">
                             <h4 className="text-lg font-bold text-green-800">
                                 {language === 'AZ' ? 'Qiymət:' : language === 'RU' ? 'Цена:' : 'Price:'} {price} ₼
                             </h4>
-                         </div>
-                         <p className="text-xs text-green-700 font-medium flex items-center gap-1">
+                        </div>
+                        <p className="text-xs text-green-700 font-medium flex items-center gap-1">
                             <Info size={12} />
                             {language === 'AZ' ? `Hər 1 m² üçün ${currentRate} ₼` : `Per 1 m²: ${currentRate} ₼`}
-                         </p>
+                        </p>
                     </div>
                 </div>
 
@@ -274,10 +279,10 @@ export function PriceCalculator() {
                         WhatsApp
                     </button>
                 </div>
-                
-                 <div className="text-center mt-4 pt-4 border-t border-gray-200/60">
+
+                <div className="text-center mt-4 pt-4 border-t border-gray-200/60">
                     <p className="text-[10px] text-gray-400">
-                        {language === 'AZ' 
+                        {language === 'AZ'
                             ? `Qeyd: Minimum sifariş 20 m². Bir m² qiyməti: ${currentRate}₼.`
                             : `Note: Minimum order 20 m². Price per m²: ${currentRate}₼.`}
                     </p>
