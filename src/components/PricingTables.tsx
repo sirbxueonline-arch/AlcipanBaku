@@ -48,8 +48,9 @@ export const PricingTables = () => {
                             viewport={{ once: true }}
                             whileHover={{ scale: 1.03 }}
                             whileTap={{ scale: 0.98 }}
-                            className="bg-white rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_20px_50px_rgba(251,191,36,0.2)] hover:border-[#fbbf24]/50 transition-all duration-300 border border-gray-100 flex flex-col relative group"
+                            className="bg-white rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_20px_50px_rgba(251,191,36,0.2)] hover:border-[#fbbf24]/50 transition-all duration-300 border border-gray-100 flex flex-col relative group cursor-pointer"
                         >
+                            <Link href={`/calculator?package=simple&area=${pkg.area}`} className="absolute inset-0 z-10" aria-label="Calculate Package"></Link>
                             {/* Glowing border effect helper */}
                             <div className="absolute inset-0 bg-gradient-to-tr from-[#fbbf24]/0 via-[#fbbf24]/0 to-[#fbbf24]/0 group-hover:from-[#fbbf24]/10 group-hover:to-transparent pointer-events-none transition-all duration-500"></div>
 
@@ -95,7 +96,7 @@ export const PricingTables = () => {
                                 <div className="mt-auto w-full">
                                     <Link
                                         href={`/calculator?package=simple&area=${pkg.area}`}
-                                        className="w-full block bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] py-2 md:py-3 text-center text-[10px] md:text-sm font-bold uppercase tracking-wider rounded-lg md:rounded-xl shadow-md hover:shadow-lg transition-all transform active:scale-95"
+                                        className="w-full block bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] py-2 md:py-3 text-center text-[10px] md:text-sm font-bold uppercase tracking-wider rounded-lg md:rounded-xl shadow-md hover:shadow-lg transition-all transform active:scale-95 relative z-20"
                                     >
                                         {language === 'AZ' ? 'SİFARİŞ ET' : language === 'RU' ? 'ЗАКАЗАТЬ' : 'ORDER'}
                                     </Link>

@@ -11,6 +11,7 @@ import FeaturesSection from '@/components/FeaturesSection';
 import { Testimonials } from '@/components/Testimonials';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
   const { packages, products, services, language } = useAdmin();
@@ -171,12 +172,12 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.05, duration: 0.5 }}
                 viewport={{ once: true }}
-                className="group relative bg-[#f8fafc] rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
+                className="group relative bg-[#f8fafc] rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col cursor-zoom-in"
+                onClick={() => setExpandedPlan(plan)}
               >
                 {/* Image Container with fixed aspect ratio */}
                 <div
-                  className="relative aspect-[4/5] w-full overflow-hidden bg-white cursor-zoom-in"
-                  onClick={() => setExpandedPlan(plan)}
+                  className="relative aspect-[4/5] w-full overflow-hidden bg-white"
                 >
                   <Image
                     src={plan.image}
@@ -217,7 +218,8 @@ export default function Home() {
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-3 w-full min-h-[44px] flex items-center justify-center bg-[#0a192f] hover:bg-[#112240] text-white text-[10px] md:text-xs font-bold rounded-xl transition-all uppercase tracking-wider shadow-md active:scale-95"
+                      className="mt-3 w-full min-h-[44px] flex items-center justify-center bg-[#0a192f] hover:bg-[#112240] text-white text-[10px] md:text-xs font-bold rounded-xl transition-all uppercase tracking-wider shadow-md active:scale-95 relative z-20"
+                      onClick={(e) => e.stopPropagation()}
                     >
                       {language === 'AZ' ? 'Sifariş et' : language === 'RU' ? 'Заказать' : 'Order Now'}
                     </a>
@@ -285,13 +287,14 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto">
             {services.map(service => (
-              <div key={service.id} className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
-                <div className="aspect-[4/3] relative">
+              <div key={service.id} className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-gray-100 flex flex-col cursor-pointer">
+                <Link href={`/service/${service.id}`} className="absolute inset-0 z-10" aria-label={`View details for ${service.name[language]}`}></Link>
+                <div className="aspect-[4/3] relative overflow-hidden">
                   <Image
                     src={service.image}
                     alt={service.name[language]}
                     fill
-                    className="object-cover"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="p-4 text-center flex flex-col items-center flex-grow">
@@ -302,7 +305,7 @@ export default function Home() {
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block w-full min-h-[44px] flex items-center justify-center bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-[11px] md:text-sm font-bold rounded-lg shadow-sm transition-all uppercase tracking-wide"
+                      className="block w-full min-h-[44px] flex items-center justify-center bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-[11px] md:text-sm font-bold rounded-lg shadow-sm transition-all uppercase tracking-wide relative z-20"
                     >
                       {language === 'AZ' ? 'əlaqə saxla' : language === 'RU' ? 'связаться' : 'contact us'}
                     </a>
@@ -326,7 +329,8 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 max-w-7xl mx-auto">
             {products.filter(p => p.isActive && p.price > 0 && !p.id.startsWith('gp')).map(product => (
-              <div key={product.id} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col">
+              <div key={product.id} className="relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col cursor-pointer">
+                <Link href={`/product/${product.id}`} className="absolute inset-0 z-10" aria-label={`View details for ${product.name[language]}`}></Link>
                 <div className="bg-[#0a192f] py-2 px-3 text-center">
                   <h3 className="text-white text-xs md:text-sm font-bold tracking-wide">
                     {product.name[language]}
@@ -349,7 +353,7 @@ export default function Home() {
                     </div>
                     <button
                       onClick={() => addToCart(product)}
-                      className="w-full min-h-[44px] flex items-center justify-center bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-[10px] md:text-xs font-bold rounded border-none shadow-sm hover:shadow-md transition-all uppercase tracking-wider"
+                      className="w-full min-h-[44px] flex items-center justify-center bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-[10px] md:text-xs font-bold rounded border-none shadow-sm hover:shadow-md transition-all uppercase tracking-wider relative z-20"
                     >
                       {language === 'AZ' ? 'SİFARİŞ ET' : language === 'RU' ? 'ЗАКАЗАТЬ' : 'ORDER'}
                     </button>
