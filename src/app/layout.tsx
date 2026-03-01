@@ -59,8 +59,6 @@ export default function RootLayout({
           <CartProvider>
             <ClientLayout>
               {children}
-              <FloatingWhatsApp />
-              <BottomNav />
             </ClientLayout>
           </CartProvider>
         </AdminProvider>

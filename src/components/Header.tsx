@@ -78,12 +78,12 @@ export function Header() {
     };
 
     return (
-        <header 
-            className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 bg-[#0a192f] shadow-md py-3 md:py-4`}
+        <header
+            className={`sticky top-0 left-0 right-0 z-[100] transition-all duration-300 bg-[#0a192f] shadow-md py-3 md:py-4`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16 md:h-20">
-                    
+
                     {/* Left: Hamburger + Logo Group */}
                     <div className="flex items-center gap-2 md:gap-8">
                         {/* Mobile: Hamburger */}
@@ -133,11 +133,11 @@ export function Header() {
 
                     {/* Right Side: Phone number */}
                     <div className="flex items-center gap-1.5 md:gap-4">
-                         <CartButton />
-                         
-                         {/* Mobile & Desktop Phone Number Button */}
-                         <a 
-                            href="tel:+994506368731" 
+                        <CartButton />
+
+                        {/* Mobile & Desktop Phone Number Button */}
+                        <a
+                            href="tel:+994506368731"
                             className="flex items-center gap-1.5 bg-[#3f6248] hover:bg-[#34523c] text-white px-2 py-1.5 md:px-5 md:py-2.5 rounded-full transition-all border border-white/10 shadow-lg"
                         >
                             <span className="w-4 h-4 md:w-5 md:h-5 bg-white/20 rounded-full flex items-center justify-center">
@@ -166,7 +166,7 @@ export function Header() {
                             animate="open"
                             exit="closed"
                             variants={menuVariants}
-                            className="fixed inset-0 z-[9999] md:hidden pt-24 px-6 flex flex-col bg-[#0a192f]"
+                            className="fixed inset-0 z-[9999] md:hidden pt-24 px-6 flex flex-col bg-[#0a192f] pb-24 overflow-y-auto"
                             style={{ backgroundColor: '#0a192f' }}
                         >
                             {/* Close Button specific for Portal */}
@@ -178,7 +178,7 @@ export function Header() {
                                 <X size={28} strokeWidth={1.5} />
                             </button>
 
-                             <div className="absolute top-5 right-6">
+                            <div className="absolute top-5 right-6">
                                 <LanguageSwitcher />
                             </div>
 
