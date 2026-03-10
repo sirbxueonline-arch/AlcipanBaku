@@ -3,359 +3,267 @@
 import React from 'react';
 import { useAdmin } from '@/context/AdminContext';
 import { useCart } from '@/context/CartContext';
-
 import { ServiceCard } from '@/components/ServiceCard';
 import { WorkGallery } from '@/components/WorkGallery';
 import { HeroWorkSlideshow } from '@/components/HeroWorkSlideshow';
-import { PricingTables } from '@/components/PricingTables';
+import { ProductCard } from '@/components/ProductCard';
 import FeaturesSection from '@/components/FeaturesSection';
 import { Testimonials } from '@/components/Testimonials';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { catalogCategories } from '@/data/catalogCategories';
+import { Tag, Truck, Shield, Award, ChevronRight, Sparkles } from 'lucide-react';
 
 export default function Home() {
   const { packages, products, services, language } = useAdmin();
   const { addToCart } = useCart();
-  const [expandedPlan, setExpandedPlan] = React.useState<any>(null);
+  const activePackages = packages.filter((p) => p.isActive);
+  const activeProducts = products.filter((p) => p.isActive && !p.id.startsWith('gp'));
+
+  const t = {
+    heroCta: { AZ: 'Pulsuz Qiymət Təklifi Al', RU: 'Получить Предложение', EN: 'Get Free Quote' },
+    heroBadge1: { AZ: '20+ il təcrübə', RU: '20+ лет опыта', EN: '20+ years experience' },
+    heroBadge2: { AZ: 'Pulsuz ölçü', RU: 'Бесплатный замер', EN: 'Free measurement' },
+    offers: { AZ: 'Təkliflər', RU: 'Акции', EN: 'Offers' },
+    offersSub: { AZ: 'Ən sərfəli qiymətlər – material və montaj paketləri', RU: 'Лучшие цены – материалы и монтаж', EN: 'Best prices – materials and installation' },
+    campaignProducts: { AZ: 'Kampaniyalı Məhsullar', RU: 'Акционные товары', EN: 'Campaign Products' },
+    categories: { AZ: 'Kateqoriyalar', RU: 'Категории', EN: 'Categories' },
+    categoriesSub: { AZ: 'Ehtiyacınıza uyğun kateqoriyanı seçin', RU: 'Выберите нужную категорию', EN: 'Choose the category you need' },
+    viewAll: { AZ: 'Hamısına bax', RU: 'Смотреть все', EN: 'View all' },
+    packages: { AZ: 'Paket Həllər', RU: 'Пакетные решения', EN: 'Package solutions' },
+    materials: { AZ: 'Tikinti Materialları', RU: 'Строительные материалы', EN: 'Construction Materials' },
+    services: { AZ: 'Xidmətlər', RU: 'Услуги', EN: 'Services' },
+    whyUs: { AZ: 'Niyə AlcipanBaku?', RU: 'Почему AlcipanBaku?', EN: 'Why AlcipanBaku?' },
+    trust1: { AZ: '20+ il təcrübə', RU: '20+ лет опыта', EN: '20+ years experience' },
+    trust2: { AZ: 'Pulsuz ölçü', RU: 'Бесплатный замер', EN: 'Free measurement' },
+    trust3: { AZ: 'Rəsmi təchizatçı', RU: 'Официальный поставщик', EN: 'Official supplier' },
+    trust4: { AZ: 'Zəmanətli iş', RU: 'Гарантия на работы', EN: 'Guaranteed work' },
+  };
 
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] font-sans">
-
-
-      {/* HERO SECTION – works slideshow + overlay */}
+      {/* HERO */}
       <section className="relative h-[85vh] min-h-[500px] flex flex-col justify-center items-center text-center overflow-hidden">
         <HeroWorkSlideshow />
-
         <div className="relative z-20 container mx-auto px-4 flex flex-col items-center max-w-4xl pt-16">
-          {/* Hero text sits above the slideshow; slideshow visible below */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-wrap justify-center gap-2 mb-6"
+          >
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-medium backdrop-blur-sm">
+              <Award className="w-3.5 h-3.5 text-[#fbbf24]" />
+              {t.heroBadge1[language]}
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-medium backdrop-blur-sm">
+              <Tag className="w-3.5 h-3.5 text-[#fbbf24]" />
+              {t.heroBadge2[language]}
+            </span>
+          </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 text-white leading-tight tracking-tight drop-shadow-2xl"
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 text-white leading-tight tracking-tight drop-shadow-2xl"
           >
-            {language === 'AZ' ? 'Evinizi' : language === 'RU' ? 'Ваш Дом' : 'Your Home'} <span className="text-white/90">{language === 'AZ' ? 'Premium Alçipan' : language === 'RU' ? 'Премиум Алчипан' : 'Premium Drywall'}</span>
+            {language === 'AZ' ? 'Evinizi' : language === 'RU' ? 'Ваш Дом' : 'Your Home'}{' '}
+            <span className="text-white/90">{language === 'AZ' ? 'Premium Alçipan' : language === 'RU' ? 'Премиум Алчипан' : 'Premium Drywall'}</span>
             <br />
-            <span className="text-[#fbbf24]">
-              {language === 'AZ' ? 'ilə Gözəlləşdirin' : language === 'RU' ? 'Украсьте с Нами' : 'Beautify with Us'}
-            </span>
+            <span className="text-[#fbbf24]">{language === 'AZ' ? 'ilə Gözəlləşdirin' : language === 'RU' ? 'Украсьте с Нами' : 'Beautify with Us'}</span>
           </motion.h1>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.8 }}
-            className="flex flex-col gap-1.5 items-center mb-6"
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="w-full max-w-xs md:max-w-sm"
           >
-            <div className="flex items-center gap-2 text-white/90 text-sm md:text-xl font-medium bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-sm border border-white/5">
-              <span className="text-[#fbbf24] text-lg">✔</span>
-              <span>{language === 'AZ' ? 'Yüksək Keyfiyyətli Material' : language === 'RU' ? 'Качественный Материал' : 'High Quality Material'}</span>
-            </div>
-            <div className="flex items-center gap-2 text-white/80 text-xs md:text-lg font-medium">
-              <span>+ {language === 'AZ' ? 'Təcrübəli Usta' : language === 'RU' ? 'Опытный Мастер' : 'Experienced Master'}</span>
-              <span>+ {language === 'AZ' ? 'Tam Zəmanət' : language === 'RU' ? 'Полная Гарантия' : 'Full Warranty'}</span>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="mb-8 w-full max-w-xs md:max-w-md"
-          >
-            <a
+            <Link
               href="/contact"
-              className="group flex items-center justify-center gap-2 w-full min-h-[50px] md:min-h-[56px] py-3.5 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-base md:text-xl font-bold rounded-2xl shadow-[0_0_20px_rgba(251,191,36,0.4)] hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] transition-all transform hover:-translate-y-1 active:scale-95"
+              className="group flex items-center justify-center gap-2 w-full min-h-[52px] md:min-h-[56px] py-3.5 px-6 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-base md:text-lg font-bold rounded-2xl shadow-[0_0_24px_rgba(251,191,36,0.35)] hover:shadow-[0_0_32px_rgba(251,191,36,0.5)] transition-all duration-300 transform hover:-translate-y-0.5 active:scale-[0.98]"
             >
-              <span>{language === 'AZ' ? 'Pulsuz Qiymət Təklifi Al' : language === 'RU' ? 'Получить Предложение' : 'Get Free Quote'}</span>
-            </a>
+              {t.heroCta[language]}
+            </Link>
           </motion.div>
-
-          {/* Feature Icons */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="grid grid-cols-3 gap-2 md:gap-8 w-full max-w-2xl px-2"
-          >
-            {/* Icon 1: Measurement */}
-            <div className="flex flex-col items-center gap-2 text-center group">
-              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-b from-white/10 to-transparent border border-white/20 flex items-center justify-center shadow-lg backdrop-blur-sm group-hover:border-[#fbbf24]/50 transition-colors relative">
-                <div className="absolute inset-0 bg-[#fbbf24]/5 rounded-full filter blur-md"></div>
-                <span className="text-3xl md:text-4xl filter drop-shadow-md">📏</span>
-              </div>
-              <p className="text-[10px] md:text-sm font-bold text-white leading-tight">
-                {language === 'AZ' ? 'Ölçü Pulsuz' : language === 'RU' ? 'Бесплатный Замер' : 'Free Measure'}<br />
-                <span className="text-white/70">{language === 'AZ' ? 'və Peşəkar' : language === 'RU' ? 'и Профессионально' : 'and Professional'}</span>
-              </p>
-            </div>
-
-            {/* Icon 2: Design */}
-            <div className="flex flex-col items-center gap-2 text-center group">
-              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-b from-white/10 to-transparent border border-white/20 flex items-center justify-center shadow-lg backdrop-blur-sm group-hover:border-[#fbbf24]/50 transition-colors relative">
-                <div className="absolute inset-0 bg-[#fbbf24]/5 rounded-full filter blur-md"></div>
-                <span className="text-3xl md:text-4xl filter drop-shadow-md">✏️</span>
-              </div>
-              <p className="text-[10px] md:text-sm font-bold text-white leading-tight">
-                {language === 'AZ' ? 'Fərdi Dizayn' : language === 'RU' ? 'Индив. Дизайн' : 'Custom Design'}<br />
-                <span className="text-white/70">{language === 'AZ' ? 'Xidməti' : language === 'RU' ? 'Услуги' : 'Service'}</span>
-              </p>
-            </div>
-
-            {/* Icon 3: Installation */}
-            <div className="flex flex-col items-center gap-2 text-center group">
-              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-b from-white/10 to-transparent border border-white/20 flex items-center justify-center shadow-lg backdrop-blur-sm group-hover:border-[#fbbf24]/50 transition-colors relative">
-                <div className="absolute inset-0 bg-[#fbbf24]/5 rounded-full filter blur-md"></div>
-                <span className="text-3xl md:text-4xl filter drop-shadow-md">🔩</span>
-              </div>
-              <p className="text-[10px] md:text-sm font-bold text-white leading-tight">
-                {language === 'AZ' ? 'Sürətli və' : language === 'RU' ? 'Быстрый и' : 'Fast and'}<br />
-                <span className="text-white/70">{language === 'AZ' ? 'Təhlükəsiz Montaj' : language === 'RU' ? 'Безопасный Монтаж' : 'Safe Install'}</span>
-              </p>
-            </div>
-          </motion.div>
-
         </div>
       </section>
 
-      {/* PRICING TABLES */}
-      <PricingTables />
-
-      {/* MODERN PROFILE PLANS */}
-      <section className="bg-white py-10 md:py-20" id="plans">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a192f] uppercase tracking-wide">
-              {language === 'AZ' ? 'Müasir Profil Planları' : language === 'RU' ? 'Планы Современных Профилей' : 'Modern Profile Plans'}
-            </h2>
-            <div className="h-1 w-20 bg-[#fbbf24] mx-auto rounded-full mt-3"></div>
-            <p className="mt-4 text-gray-500 max-w-2xl mx-auto text-sm md:text-base">
-              {language === 'AZ'
-                ? 'Eviniz üçün ən son texnologiya ilə hazırlanmış kölgəli və işıqlı profillər.'
-                : language === 'RU'
-                  ? 'Теневые и световые профили, изготовленные по последним технологиям для вашего дома.'
-                  : 'Shadow and light profiles prepared with the latest technology for your home.'}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 max-w-7xl mx-auto">
-            {products.filter(p => p.id.startsWith('gp')).map((plan, idx) => (
-              <motion.div
-                key={plan.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.05, duration: 0.5 }}
-                viewport={{ once: true }}
-                className="group relative bg-[#f8fafc] rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col cursor-zoom-in"
-                onClick={() => setExpandedPlan(plan)}
-              >
-                {/* Image Container with fixed aspect ratio */}
-                <div
-                  className="relative aspect-[4/5] w-full overflow-hidden bg-white"
-                >
-                  <Image
-                    src={plan.image}
-                    alt={plan.name[language]}
-                    fill
-                    className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-2 left-2 bg-[#0a192f]/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-md">
-                    {plan.id.toUpperCase()}
-                  </div>
-
-
-
-                  {/* Overlay on hover */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                    <div className="bg-white/90 p-2 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#0a192f]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                      </svg>
-                    </div>
-                  </div>
+      {/* TRUST STRIP */}
+      <section className="bg-[#112240] border-y border-white/10 py-5 md:py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {[
+              { icon: Award, text: t.trust1 },
+              { icon: Tag, text: t.trust2 },
+              { icon: Shield, text: t.trust3 },
+              { icon: Truck, text: t.trust4 },
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3">
+                <div className="shrink-0 w-10 h-10 rounded-xl bg-[#fbbf24]/20 flex items-center justify-center">
+                  <item.icon className="w-5 h-5 text-[#fbbf24]" />
                 </div>
-
-                {/* Content */}
-                <div className="p-4 flex flex-col flex-grow text-center">
-                  <h3 className="text-sm md:text-base font-bold text-[#0a192f] mb-2 leading-tight min-h-[40px] flex items-center justify-center">
-                    {plan.name[language]}
-                  </h3>
-
-                  <div className="mt-auto pt-4 border-t border-gray-100 flex flex-col items-center">
-                    <div className="text-lg font-extrabold text-[#fbbf24]">
-                      {plan.price.toFixed(2)} <span className="text-xs uppercase">AZN / m</span>
-                    </div>
-
-                    <a
-                      href={`https://wa.me/994506368731?text=${encodeURIComponent(
-                        `Salam, ${plan.name[language]} planı ilə maraqlanıram.`
-                      )}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-3 w-full min-h-[44px] flex items-center justify-center bg-[#0a192f] hover:bg-[#112240] text-white text-[10px] md:text-xs font-bold rounded-xl transition-all uppercase tracking-wider shadow-md active:scale-95 relative z-20"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {language === 'AZ' ? 'Səbətə at' : language === 'RU' ? 'В корзину' : 'Add to cart'}
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Lightbox Modal */}
-        {expandedPlan && (
-          <div
-            className="fixed inset-0 z-[9999] bg-[#0a192f]/95 backdrop-blur-md flex items-center justify-center p-4 md:p-10 cursor-zoom-out"
-            onClick={() => setExpandedPlan(null)}
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="relative max-w-5xl w-full h-full max-h-[90vh] flex flex-col items-center justify-center"
-              onClick={(e: React.MouseEvent) => e.stopPropagation()}
-            >
-              <button
-                className="absolute -top-12 right-0 md:-right-12 text-white hover:text-[#fbbf24] transition-colors p-2"
-                onClick={() => setExpandedPlan(null)}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-
-              <div className="relative w-full h-full bg-white rounded-3xl overflow-hidden shadow-2xl">
-                <Image
-                  src={expandedPlan.image}
-                  alt={expandedPlan.name[language]}
-                  fill
-                  className="object-contain p-4 md:p-8"
-                />
-
-
-              </div>
-
-              <div className="mt-6 text-center text-white">
-                <h3 className="text-xl md:text-2xl font-bold mb-2">{expandedPlan.name[language]}</h3>
-                <p className="text-[#fbbf24] text-2xl font-black">{expandedPlan.price.toFixed(2)} AZN / m</p>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </section>
-
-      {/* SERVICES SECTION */}
-      <section className="bg-[#f8fafc] py-10 md:py-20" id="services">
-        <div className="container mx-auto px-4">
-          {/* Section Header */}
-          <div className="text-center mb-8">
-            <div className="flex items-center justify-center gap-4 mb-2">
-              <div className="h-px bg-gray-300 w-12 md:w-24"></div>
-              <h2 className="text-2xl md:text-3xl font-bold text-[#0a192f] uppercase tracking-wide">
-                {language === 'AZ' ? 'Xidmətlərimiz' : language === 'RU' ? 'Услуги' : 'Services'}
-              </h2>
-              <div className="h-px bg-gray-300 w-12 md:w-24"></div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto">
-            {services.map(service => (
-              <div key={service.id} className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
-                 <div className="aspect-[4/3] relative">
-                    <Image 
-                        src={service.image} 
-                        alt={service.name[language]} 
-                        fill 
-                        className="object-cover" 
-                    />
-                 </div>
-                 <div className="p-4 text-center flex flex-col items-center flex-grow">
-                    <div className="mt-auto w-full">
-                        <button
-                            type="button"
-                            onClick={() => addToCart(service)}
-                            className="block w-full bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-[11px] md:text-sm font-bold py-2.5 rounded-lg shadow-sm transition-all uppercase tracking-wide"
-                        >
-                            {language === 'AZ' ? 'Səbətə at' : language === 'RU' ? 'В корзину' : 'Add to cart'}
-                        </button>
-                    </div>
-                 </div>
+                <span className="text-white font-medium text-sm md:text-base">{item.text[language]}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* PRODUCTS (MATERIALS) SECTION */}
-      <section className="bg-[#f8fafc] py-10 md:py-20" id="materials">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-2xl md:text-4xl font-extrabold mb-3 text-[#0a192f]">
-              {language === 'AZ' ? 'Tikinti Materialları' : language === 'RU' ? 'Строительные Материалы' : 'Construction Materials'}
-            </h2>
-            <div className="h-1 w-20 bg-[#fbbf24] mx-auto rounded-full mb-3"></div>
+      {/* OFFERS BAR */}
+      <section className="bg-gradient-to-r from-[#0a192f] via-[#112240] to-[#0a192f] border-b border-white/10 py-6 md:py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-[#fbbf24]/20 flex items-center justify-center">
+                <Sparkles className="w-6 h-6 text-[#fbbf24]" />
+              </div>
+              <div>
+                <h2 className="text-xl md:text-2xl font-bold text-white">{t.offers[language]}</h2>
+                <p className="text-white/60 text-sm mt-0.5">{t.offersSub[language]}</p>
+              </div>
+            </div>
+            <Link
+              href="/products"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#fbbf24] hover:bg-[#f59e0b] text-[#0a192f] font-bold rounded-xl transition-colors shrink-0"
+            >
+              {t.viewAll[language]}
+              <ChevronRight className="w-5 h-5" />
+            </Link>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 max-w-7xl mx-auto">
-            {products.filter(p => p.isActive && p.price > 0 && !p.id.startsWith('gp')).map(product => (
-              <div key={product.id} className="relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col cursor-pointer">
-                <Link href={`/product/${product.id}`} className="absolute inset-0 z-10" aria-label={`View details for ${product.name[language]}`}></Link>
-                <div className="bg-[#0a192f] py-2 px-3 text-center">
-                  <h3 className="text-white text-xs md:text-sm font-bold tracking-wide">
-                    {product.name[language]}
-                  </h3>
-                </div>
-                <div className="relative h-32 md:h-48 w-full bg-gray-100">
+      {/* CATEGORIES */}
+      <section className="py-14 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 md:mb-14">
+            <span className="inline-block w-14 h-1 bg-[#fbbf24] rounded-full mb-4" aria-hidden />
+            <h2 className="text-2xl md:text-4xl font-bold text-white mb-2">{t.categories[language]}</h2>
+            <p className="text-white/60 text-sm md:text-base">{t.categoriesSub[language]}</p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+            {catalogCategories.map((cat) => (
+              <Link
+                key={cat.id}
+                href={`/products?category=${cat.slug}`}
+                className="group flex flex-col rounded-2xl overflow-hidden border border-white/10 bg-[#112240] hover:border-[#fbbf24]/50 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] hover:-translate-y-1 transition-all duration-300"
+              >
+                <div className="relative aspect-square bg-[#0a192f] overflow-hidden">
                   <Image
-                    src={product.image || 'https://placehold.co/400x300?text=No+Image'}
-                    alt={product.name[language]}
+                    src={cat.image}
+                    alt={cat.name[language]}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    sizes="200px"
                   />
                 </div>
-                <div className="p-3 md:p-4 flex flex-col flex-grow">
-                  <div className="mt-auto">
-                    <div className="mb-3">
-                      <span className="text-lg font-bold text-[#0a192f]">
-                        {product.price.toFixed(2)} {product.currency}
-                      </span>
-                    </div>
-                    <button
-                      onClick={() => addToCart(product)}
-                      className="w-full min-h-[44px] flex items-center justify-center bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-[10px] md:text-xs font-bold rounded border-none shadow-sm hover:shadow-md transition-all uppercase tracking-wider relative z-20"
-                    >
-                      {language === 'AZ' ? 'Səbətə at' : language === 'RU' ? 'В корзину' : 'Add to cart'}
-                    </button>
-                  </div>
+                <div className="p-4 text-center flex items-center justify-center min-h-[56px]">
+                  <span className="text-white font-semibold text-sm md:text-base group-hover:text-[#fbbf24] transition-colors line-clamp-2">
+                    {cat.name[language]}
+                  </span>
                 </div>
-              </div>
+                <div className="flex justify-center pb-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ChevronRight className="w-5 h-5 text-[#fbbf24]" />
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* WHY US / STATS */}
-      <section className="bg-white py-10 md:py-16">
-        <div className="container mx-auto px-4 text-center mb-8 md:mb-12">
-          <h2 className="text-3xl font-bold mb-4 text-[#0a192f]">
-            {language === 'AZ' ? 'Niyə AlcipanBaku?' : language === 'RU' ? 'Почему AlcipanBaku?' : 'Why AlcipanBaku?'}
-          </h2>
-          <div className="h-1 w-16 bg-[#fbbf24] mx-auto rounded-full mb-6"></div>
+      {/* CAMPAIGN PRODUCTS */}
+      <section className="py-14 md:py-20 bg-[#112240]/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+            <div>
+              <span className="inline-block w-12 h-1 bg-[#fbbf24] rounded-full mb-3" aria-hidden />
+              <h2 className="text-2xl md:text-4xl font-bold text-white">{t.campaignProducts[language]}</h2>
+              <p className="text-white/60 text-sm mt-1">
+                {language === 'AZ' ? 'Ən sərfəli təkliflər' : language === 'RU' ? 'Лучшие предложения' : 'Best value offers'}
+              </p>
+            </div>
+            <Link
+              href="/products"
+              className="inline-flex items-center gap-2 text-[#fbbf24] hover:text-[#f59e0b] font-semibold text-sm md:text-base"
+            >
+              {t.viewAll[language]}
+              <ChevronRight className="w-4 h-4" />
+            </Link>
+          </div>
 
-          <div className="mt-12 text-[#0a192f]">
-            <FeaturesSection />
+          {activePackages.length > 0 && (
+            <div className="mb-12">
+              <h3 className="text-lg font-semibold text-[#fbbf24] mb-4 flex items-center gap-2">
+                <span className="w-1 h-5 bg-[#fbbf24] rounded-full" />
+                {t.packages[language]}
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {activePackages.slice(0, 4).map((pkg) => (
+                  <ProductCard key={pkg.id} product={pkg} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div>
+            <h3 className="text-lg font-semibold text-[#fbbf24] mb-4 flex items-center gap-2">
+              <span className="w-1 h-5 bg-[#fbbf24] rounded-full" />
+              {t.materials[language]}
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+              {activeProducts.slice(0, 10).map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+            <div className="mt-10 text-center">
+              <Link
+                href="/products"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#fbbf24] hover:bg-[#f59e0b] text-[#0a192f] font-bold rounded-xl transition-colors shadow-lg"
+              >
+                {t.viewAll[language]}
+                <ChevronRight className="w-5 h-5" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* SERVICES */}
+      <section className="py-14 md:py-20" id="services">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 md:mb-16">
+            <span className="inline-block w-14 h-1 bg-[#fbbf24] rounded-full mb-4" aria-hidden />
+            <h2 className="text-2xl md:text-4xl font-bold text-white mb-3">{t.services[language]}</h2>
+            <p className="text-white/70 text-sm md:text-base max-w-2xl mx-auto">
+              {language === 'AZ'
+                ? 'Peşəkar alçipan və tavan işləri – ölçüdən quraşdırmaya qədər tam xidmət.'
+                : language === 'RU'
+                  ? 'Профессиональные работы по гипсокартону и потолкам – полный цикл от замера до монтажа.'
+                  : 'Professional drywall and ceiling work – full service from measurement to installation.'}
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {services.filter((s) => s.isActive).map((service) => (
+              <ServiceCard key={service.id} service={service} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY US */}
+      <section className="py-14 md:py-20 bg-[#112240]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="inline-block w-14 h-1 bg-[#fbbf24] rounded-full mb-4" aria-hidden />
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-12">{t.whyUs[language]}</h2>
+          <div className="text-white/90">
+            <FeaturesSection variant="dark" />
+          </div>
+        </div>
+      </section>
+
       <Testimonials />
-
-      {/* WORK GALLERY */}
       <WorkGallery />
-
     </div>
   );
 }

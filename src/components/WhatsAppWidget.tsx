@@ -12,7 +12,7 @@ const WhatsAppWidget = () => {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-6 right-6 z-50 group flex items-center justify-center p-0 border-0 bg-transparent"
+            className="fixed bottom-24 right-4 md:bottom-6 md:right-6 z-50 group flex items-center justify-center p-0 border-0 bg-transparent"
             aria-label="Contact via WhatsApp"
         >
             <div className="relative flex items-center justify-center">

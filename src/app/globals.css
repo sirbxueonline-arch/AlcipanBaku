@@ -48,15 +48,24 @@ body {
     scrollbar-width: none;  /* Firefox */
 }
 
-/* Hero work slideshow: continuous scroll left */
+/* Hero work slideshow: row 1 scrolls left, row 2 scrolls right */
 @keyframes hero-slide-left {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+@keyframes hero-slide-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 }
 .hero-slideshow-track {
   animation: hero-slide-left 50s linear infinite;
   width: max-content;
 }
-.hero-slideshow-track:hover {
+.hero-slideshow-track-right {
+  animation: hero-slide-right 50s linear infinite;
+  width: max-content;
+}
+.hero-slideshow-track:hover,
+.hero-slideshow-track-right:hover {
   animation-play-state: paused;
 }

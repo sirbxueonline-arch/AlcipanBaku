@@ -1,192 +1,173 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo, useState, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useAdmin } from '@/context/AdminContext';
 import { ProductCard } from '@/components/ProductCard';
-import { motion, Variants } from 'framer-motion';
-import { ArrowRight, Star } from 'lucide-react';
+import { catalogCategories } from '@/data/catalogCategories';
+import { filterByCategory, sortItems, type SortOption } from '@/lib/catalog';
 import Link from 'next/link';
+import { ChevronRight, LayoutGrid, List } from 'lucide-react';
+
+function ProductsContent() {
+  const searchParams = useSearchParams();
+  const categorySlug = searchParams.get('category') || '';
+  const { packages, products, language } = useAdmin();
+  const [sort, setSort] = useState<SortOption>('default');
+  const [view, setView] = useState<'grid' | 'list'>('grid');
+
+  const allItems = useMemo(() => {
+    const activePackages = packages.filter((p) => p.isActive);
+    const activeProducts = products.filter((p) => p.isActive);
+    return [...activePackages, ...activeProducts];
+  }, [packages, products]);
+
+  const filtered = useMemo(() => {
+    const list = categorySlug ? filterByCategory(allItems, categorySlug) : allItems;
+    return sortItems(list, sort);
+  }, [allItems, categorySlug, sort]);
+
+  const currentCategory = categorySlug ? catalogCategories.find((c) => c.slug === categorySlug) : null;
+
+  const t = {
+    title: { AZ: 'Məhsullar', RU: 'Продукты', EN: 'Products' },
+    sub: { AZ: 'Bütün məhsul və paket təklifləri', RU: 'Все товары и пакеты', EN: 'All products and package offers' },
+    categories: { AZ: 'Kateqoriyalar', RU: 'Категории', EN: 'Categories' },
+    all: { AZ: 'Hamısı', RU: 'Все', EN: 'All' },
+    sort: { AZ: 'Sırala', RU: 'Сортировка', EN: 'Sort' },
+    default: { AZ: 'Ümumi', RU: 'По умолчанию', EN: 'Default' },
+    priceAsc: { AZ: 'Qiymət: aşağıdan', RU: 'Цена: по возрастанию', EN: 'Price: low to high' },
+    priceDesc: { AZ: 'Qiymət: yuxarıdan', RU: 'Цена: по убыванию', EN: 'Price: high to low' },
+    name: { AZ: 'Ad', RU: 'Название', EN: 'Name' },
+    count: { AZ: 'məhsul', RU: 'товар', EN: 'products' },
+    noResults: { AZ: 'Bu kateqoriyada məhsul tapılmadı.', RU: 'В этой категории товаров не найдено.', EN: 'No products in this category.' },
+    note: { AZ: 'Qiymətlər təqdimat üçündür. Dəqiq qiymət üçün bizimlə əlaqə saxlayın.', RU: 'Цены ориентировочные. Для точной цены свяжитесь с нами.', EN: 'Prices are indicative. Contact us for exact quote.' },
+  };
+
+  return (
+    <div className="min-h-screen bg-[var(--bg)]">
+      {/* Hero – same style as header */}
+      <div className="bg-[#0a192f] border-b border-white/10 py-8 md:py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-3xl md:text-4xl font-bold text-white">
+            {currentCategory ? currentCategory.name[language] : t.title[language]}
+          </h1>
+          <p className="mt-2 text-white/70 text-sm md:text-base">
+            {currentCategory && currentCategory.description ? currentCategory.description[language] : t.sub[language]}
+          </p>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Sidebar – categories (hesap style) */}
+          <aside className="lg:w-56 shrink-0">
+            <div className="bg-[#112240] rounded-xl border border-white/10 overflow-hidden sticky top-24">
+              <div className="p-4 border-b border-white/10">
+                <h2 className="font-bold text-white text-sm uppercase tracking-wider">{t.categories[language]}</h2>
+              </div>
+              <nav className="p-2">
+                <Link
+                  href="/products"
+                  className={`flex items-center justify-between gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                    !categorySlug ? 'bg-[#fbbf24] text-[#0a192f]' : 'text-white/90 hover:bg-white/10'
+                  }`}
+                >
+                  {t.all[language]}
+                  <ChevronRight className="w-4 h-4 shrink-0" />
+                </Link>
+                {catalogCategories.map((cat) => (
+                  <Link
+                    key={cat.id}
+                    href={`/products?category=${cat.slug}`}
+                    className={`flex items-center justify-between gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                      categorySlug === cat.slug ? 'bg-[#fbbf24] text-[#0a192f]' : 'text-white/90 hover:bg-white/10'
+                    }`}
+                  >
+                    {cat.name[language]}
+                    <ChevronRight className="w-4 h-4 shrink-0" />
+                  </Link>
+                ))}
+              </nav>
+            </div>
+          </aside>
+
+          {/* Main – toolbar + grid */}
+          <div className="flex-1 min-w-0">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+              <p className="text-white/70 text-sm">
+                <span className="font-semibold text-white">{filtered.length}</span> {t.count[language]}
+              </p>
+              <div className="flex items-center gap-3">
+                <select
+                  value={sort}
+                  onChange={(e) => setSort(e.target.value as SortOption)}
+                  className="rounded-lg border border-white/20 bg-[#112240] px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#fbbf24]"
+                >
+                  <option value="default">{t.default[language]}</option>
+                  <option value="price-asc">{t.priceAsc[language]}</option>
+                  <option value="price-desc">{t.priceDesc[language]}</option>
+                  <option value="name">{t.name[language]}</option>
+                </select>
+                <div className="flex rounded-lg border border-white/20 overflow-hidden">
+                  <button
+                    type="button"
+                    onClick={() => setView('grid')}
+                    className={`p-2 ${view === 'grid' ? 'bg-[#fbbf24] text-[#0a192f]' : 'bg-[#112240] text-white/80 hover:bg-white/10'}`}
+                    aria-label="Grid"
+                  >
+                    <LayoutGrid className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setView('list')}
+                    className={`p-2 ${view === 'list' ? 'bg-[#fbbf24] text-[#0a192f]' : 'bg-[#112240] text-white/80 hover:bg-white/10'}`}
+                    aria-label="List"
+                  >
+                    <List className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {filtered.length === 0 ? (
+              <div className="bg-[#112240] rounded-xl border border-white/10 p-12 text-center text-white/70">
+                {t.noResults[language]}
+              </div>
+            ) : (
+              <div
+                className={
+                  view === 'grid'
+                    ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6'
+                    : 'flex flex-col gap-4'
+                }
+              >
+                {filtered.map((item) => (
+                  <ProductCard key={item.id} product={item} />
+                ))}
+              </div>
+            )}
+
+            <div className="mt-10 p-4 bg-[#112240]/80 rounded-xl border border-white/10">
+              <p className="text-white/70 text-sm">{t.note[language]}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function ProductsPage() {
-    const { packages, products, language } = useAdmin();
-    const activePackages = packages.filter(p => p.isActive);
-    const activeProducts = products.filter(p => p.isActive && !p.id.startsWith('gp'));
-    const activePlans = products.filter(p => p.isActive && p.id.startsWith('gp'));
-
-    const containerVariants: Variants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1
-            }
-        }
-    };
-
-    const itemVariants: Variants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.5,
-                ease: "easeOut"
-            }
-        }
-    };
-
-    return (
-        <div className="min-h-screen bg-slate-50">
-            {/* Hero Section */}
-            <div className="relative bg-slate-900 text-white py-20 overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://placehold.co/1920x600/1e293b/1e293b')] opacity-50 mix-blend-multiply"></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
-
-                <div className="relative container mx-auto px-4 max-w-7xl">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="max-w-3xl"
-                    >
-                        <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-                            {language === 'AZ' ? 'Yüksək Keyfiyyətli Məhsullar' :
-                                language === 'RU' ? 'Продукция Высокого Качества' :
-                                    'Premium Quality Products'}
-                        </h1>
-                        <p className="text-xl text-slate-300 max-w-2xl leading-relaxed">
-                            {language === 'AZ' ? 'Layihələriniz üçün ən yaxşı gipskarton və aksesuarları aşkar edin. Peşəkarlar üçün hazırlanmış dayanıqlı həllər.' :
-                                language === 'RU' ? 'Откройте для себя лучший гипсокартон и аксессуары для ваших проектов. Надежные решения, созданные для профессионалов.' :
-                                    'Discover the best plasterboard and accessories for your projects. Durable solutions crafted for professionals.'}
-                        </p>
-                    </motion.div>
-                </div>
-            </div>
-
-            {/* Products Grid */}
-            <div className="container mx-auto px-4 py-16 max-w-7xl">
-
-                {/* PACKAGES SECTION */}
-                <h2 className="text-3xl font-bold text-slate-900 mb-8 border-l-4 border-[var(--primary)] pl-4">
-                    {language === 'AZ' ? 'Paket Həllər' : language === 'RU' ? 'Пакетные Решения' : 'Package Solutions'}
-                </h2>
-
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16"
-                >
-                    {activePackages.map(pkg => (
-                        <motion.div key={pkg.id} variants={itemVariants} className="h-full">
-                            <ProductCard product={pkg} />
-                        </motion.div>
-                    ))}
-                </motion.div>
-
-                {activePackages.length === 0 && (
-                    <div className="text-center py-10 bg-white rounded-lg border border-dashed border-gray-200 mb-16">
-                        <p className="text-gray-500">No active packages.</p>
-                    </div>
-                )}
-
-                {/* PLANS SECTION */}
-                <h2 className="text-3xl font-bold text-slate-900 mb-8 border-l-4 border-[var(--primary)] pl-4">
-                    {language === 'AZ' ? 'Müasir Profil Planları' : language === 'RU' ? 'Планы Современных Профилей' : 'Modern Profile Plans'}
-                </h2>
-
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16"
-                >
-                    {activePlans.map(plan => (
-                        <motion.div key={plan.id} variants={itemVariants} className="h-full">
-                            <ProductCard product={plan} />
-                        </motion.div>
-                    ))}
-                </motion.div>
-
-                {activePlans.length === 0 && (
-                    <div className="text-center py-10 bg-white rounded-lg border border-dashed border-gray-200 mb-16">
-                        <p className="text-gray-500">No active plans.</p>
-                    </div>
-                )}
-
-                {/* PRODUCTS SECTION */}
-                <h2 className="text-3xl font-bold text-slate-900 mb-8 border-l-4 border-[var(--primary)] pl-4">
-                    {language === 'AZ' ? 'Tikinti Materialları' : language === 'RU' ? 'Строительные Материалы' : 'Construction Materials'}
-                </h2>
-
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16"
-                >
-                    {activeProducts.map(product => (
-                        <motion.div key={product.id} variants={itemVariants} className="h-full">
-                            <ProductCard product={product} />
-                        </motion.div>
-                    ))}
-                </motion.div>
-
-                {activeProducts.length === 0 && (
-                    <div className="text-center py-10 bg-white rounded-lg border border-dashed border-gray-200 mb-16">
-                        <p className="text-gray-500">No active products.</p>
-                    </div>
-                )}
-
-                {/* Pricing Note */}
-                <div className="mt-16 bg-yellow-500/5 border border-yellow-500/20 rounded-lg p-6 max-w-3xl mx-auto">
-                    <div className="flex items-start gap-4">
-                        <div className="text-yellow-600 mt-1 flex-shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" /></svg>
-                        </div>
-                        <div>
-                            <h4 className="text-lg font-bold text-yellow-700 dark:text-yellow-500 mb-2">
-                                {language === 'AZ' ? 'Vacib Qeyd' : language === 'RU' ? 'Важное Примечание' : 'Important Note'}
-                            </h4>
-                            <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
-                                {language === 'AZ' ? 'Qiymətlər obyektin ölçüsünə, dizayna və material seçiminə görə dəyişə bilər. Dəqiq qiymət üçün obyektə baxış keçirilir.' :
-                                    language === 'RU' ? 'Цены могут меняться в зависимости от размера объекта, дизайна и выбора материала. Точная цена определяется после осмотра объекта.' :
-                                        'Prices may vary depending on object size, design, and material choice. Exact price is determined after on-site inspection.'}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* CTA Section */}
-            <div className="bg-white border-t border-gray-100 py-16">
-                <div className="container mx-auto px-4 max-w-7xl">
-                    <div className="bg-slate-900 rounded-2xl p-8 md:p-12 text-center relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-slate-800 rounded-full mix-blend-screen opacity-20 filter blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
-                        <div className="relative z-10 max-w-2xl mx-auto">
-                            <h2 className="text-3xl font-bold text-white mb-6">
-                                {language === 'AZ' ? 'Layihənizdə Kömək Lazımdır?' :
-                                    language === 'RU' ? 'Нужна помощь с проектом?' :
-                                        'Need Help With Your Project?'}
-                            </h2>
-                            <p className="text-slate-300 mb-8">
-                                {language === 'AZ' ? 'Bizim peşəkar komandamız sizə düzgün seçim etməkdə və təmir işlərində kömək etməyə hazırdır.' :
-                                    language === 'RU' ? 'Наша профессиональная команда готова помочь вам сделать правильный выбор и помочь с ремонтом.' :
-                                        'Our professional team is here to help you make the right choice and assist with renovation works.'}
-                            </p>
-                            <Link
-                                href="/services"
-                                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-slate-900 font-bold rounded-full hover:bg-slate-100 transition-colors"
-                            >
-                                {language === 'AZ' ? 'Xidmətlərimizə Baxın' :
-                                    language === 'RU' ? 'Посмотреть Услуги' :
-                                        'View Our Services'}
-                                <ArrowRight className="w-5 h-5" />
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-[var(--bg)] flex items-center justify-center">
+          <div className="text-white/70">Yüklənir...</div>
         </div>
-    );
+      }
+    >
+      <ProductsContent />
+    </Suspense>
+  );
 }
