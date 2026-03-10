@@ -58,12 +58,8 @@ export default function RootLayout({
           <CartProvider>
             <ClientLayoutWrapper>
               {children}
-<<<<<<< HEAD
             </ClientLayoutWrapper>
             <OptionalFloatingUI />
-=======
-            </ClientLayout>
->>>>>>> 6f79f2f5540a99718afabe1bd4ec24948e44449f
           </CartProvider>
         </AdminProvider>
         <Analytics />

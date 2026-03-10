@@ -65,13 +65,8 @@ export default function Home() {
             className="mb-8 w-full max-w-xs md:max-w-md"
           >
             <a
-<<<<<<< HEAD
               href="/contact"
-              className="group flex items-center justify-center gap-2 w-full py-3.5 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-base md:text-xl font-bold rounded-2xl shadow-[0_0_20px_rgba(251,191,36,0.4)] hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] transition-all transform hover:-translate-y-1 active:scale-95"
-=======
-              href="#contact"
               className="group flex items-center justify-center gap-2 w-full min-h-[50px] md:min-h-[56px] py-3.5 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-base md:text-xl font-bold rounded-2xl shadow-[0_0_20px_rgba(251,191,36,0.4)] hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] transition-all transform hover:-translate-y-1 active:scale-95"
->>>>>>> 6f79f2f5540a99718afabe1bd4ec24948e44449f
             >
               <span>{language === 'AZ' ? 'Pulsuz Qiymət Təklifi Al' : language === 'RU' ? 'Получить Предложение' : 'Get Free Quote'}</span>
             </a>
@@ -267,7 +262,6 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto">
             {services.map(service => (
-<<<<<<< HEAD
               <div key={service.id} className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
                  <div className="aspect-[4/3] relative">
                     <Image 
@@ -288,32 +282,6 @@ export default function Home() {
                         </button>
                     </div>
                  </div>
-=======
-              <div key={service.id} className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-gray-100 flex flex-col cursor-pointer">
-                <Link href={`/service/${service.id}`} className="absolute inset-0 z-10" aria-label={`View details for ${service.name[language]}`}></Link>
-                <div className="aspect-[4/3] relative overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.name[language]}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-4 text-center flex flex-col items-center flex-grow">
-                  <div className="mt-auto w-full">
-                    <a
-                      href={`https://wa.me/994506368731?text=${encodeURIComponent(
-                        `Salam, mən ${service.name[language]} xidməti ilə maraqlanıram.`
-                      )}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full min-h-[44px] flex items-center justify-center bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-[11px] md:text-sm font-bold rounded-lg shadow-sm transition-all uppercase tracking-wide relative z-20"
-                    >
-                      {language === 'AZ' ? 'əlaqə saxla' : language === 'RU' ? 'связаться' : 'contact us'}
-                    </a>
-                  </div>
-                </div>
->>>>>>> 6f79f2f5540a99718afabe1bd4ec24948e44449f
               </div>
             ))}
           </div>
@@ -388,46 +356,6 @@ export default function Home() {
       {/* WORK GALLERY */}
       <WorkGallery />
 
-<<<<<<< HEAD
-=======
-      {/* CONTACT FORM */}
-      <section className="bg-[#0a192f] text-white py-12 md:py-20 text-center" id="contact">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">
-            {language === 'AZ' ? 'Ölçü üçün müraciət' : language === 'RU' ? 'Заявка на замер' : 'Request Measurement'}
-          </h2>
-          <p className="text-white/60 max-w-xl mx-auto mb-10">
-            {language === 'AZ' ? 'Qiymət obyektə baxıldıqdan sonra dəqiqləşdirilir.' : language === 'RU' ? 'Цена уточняется после осмотра объекта.' : 'Price is finalized after site inspection.'}
-          </p>
-
-          <form onSubmit={sendWhatsApp} className="max-w-xl mx-auto space-y-4">
-            <input
-              name="name"
-              placeholder={language === 'AZ' ? 'Adınız' : language === 'RU' ? 'Ваше Имя' : 'Your Name'}
-              required
-              className="w-full p-4 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-[var(--gold)] transition-colors placeholder:text-white/40"
-            />
-            <input
-              name="phone"
-              placeholder={language === 'AZ' ? 'Telefon' : language === 'RU' ? 'Телефон' : 'Phone'}
-              required
-              className="w-full p-4 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-[var(--gold)] transition-colors placeholder:text-white/40"
-            />
-            <textarea
-              name="msg"
-              placeholder={language === 'AZ' ? 'Qısa məlumat (mənzil / obyekt)' : language === 'RU' ? 'Краткая информация (квартира / объект)' : 'Short info (apartment / object)'}
-              rows={4}
-              className="w-full p-4 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-[var(--gold)] transition-colors resize-none mb-4 placeholder:text-white/40"
-            />
-            <button className="w-full py-4 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] text-[#0a192f] font-bold rounded-lg hover:shadow-lg transition-all text-lg uppercase tracking-wide">
-              {language === 'AZ' ? 'GÖNDƏR' : language === 'RU' ? 'ОТПРАВИТЬ' : 'SEND'}
-            </button>
-          </form>
-        </div>
-      </section>
-
-
->>>>>>> 6f79f2f5540a99718afabe1bd4ec24948e44449f
     </div>
   );
 }
