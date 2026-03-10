@@ -11,6 +11,7 @@ export default function ProductsPage() {
     const { packages, products, language } = useAdmin();
     const activePackages = packages.filter(p => p.isActive);
     const activeProducts = products.filter(p => p.isActive && !p.id.startsWith('gp'));
+    const activePlans = products.filter(p => p.isActive && p.id.startsWith('gp'));
 
     const containerVariants: Variants = {
         hidden: { opacity: 0 },
@@ -86,6 +87,30 @@ export default function ProductsPage() {
                 {activePackages.length === 0 && (
                     <div className="text-center py-10 bg-white rounded-lg border border-dashed border-gray-200 mb-16">
                         <p className="text-gray-500">No active packages.</p>
+                    </div>
+                )}
+
+                {/* PLANS SECTION */}
+                <h2 className="text-3xl font-bold text-slate-900 mb-8 border-l-4 border-[var(--primary)] pl-4">
+                    {language === 'AZ' ? 'Müasir Profil Planları' : language === 'RU' ? 'Планы Современных Профилей' : 'Modern Profile Plans'}
+                </h2>
+
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16"
+                >
+                    {activePlans.map(plan => (
+                        <motion.div key={plan.id} variants={itemVariants} className="h-full">
+                            <ProductCard product={plan} />
+                        </motion.div>
+                    ))}
+                </motion.div>
+
+                {activePlans.length === 0 && (
+                    <div className="text-center py-10 bg-white rounded-lg border border-dashed border-gray-200 mb-16">
+                        <p className="text-gray-500">No active plans.</p>
                     </div>
                 )}
 

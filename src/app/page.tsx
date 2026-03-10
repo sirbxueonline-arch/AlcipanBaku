@@ -9,9 +9,10 @@ import { WorkGallery } from '@/components/WorkGallery';
 import { HeroWorkSlideshow } from '@/components/HeroWorkSlideshow';
 import { PricingTables } from '@/components/PricingTables';
 import FeaturesSection from '@/components/FeaturesSection';
-import { FAQSection } from '@/components/FAQSection';
+import { Testimonials } from '@/components/Testimonials';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
   const { packages, products, services, language } = useAdmin();
@@ -27,7 +28,7 @@ export default function Home() {
         <HeroWorkSlideshow />
 
         <div className="relative z-20 container mx-auto px-4 flex flex-col items-center max-w-4xl pt-16">
-          
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -37,7 +38,7 @@ export default function Home() {
             {language === 'AZ' ? 'Evinizi' : language === 'RU' ? 'Ваш Дом' : 'Your Home'} <span className="text-white/90">{language === 'AZ' ? 'Premium Alçipan' : language === 'RU' ? 'Премиум Алчипан' : 'Premium Drywall'}</span>
             <br />
             <span className="text-[#fbbf24]">
-                {language === 'AZ' ? 'ilə Gözəlləşdirin' : language === 'RU' ? 'Украсьте с Нами' : 'Beautify with Us'}
+              {language === 'AZ' ? 'ilə Gözəlləşdirin' : language === 'RU' ? 'Украсьте с Нами' : 'Beautify with Us'}
             </span>
           </motion.h1>
 
@@ -47,14 +48,14 @@ export default function Home() {
             transition={{ delay: 0.1, duration: 0.8 }}
             className="flex flex-col gap-1.5 items-center mb-6"
           >
-             <div className="flex items-center gap-2 text-white/90 text-sm md:text-xl font-medium bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-sm border border-white/5">
-                <span className="text-[#fbbf24] text-lg">✔</span>
-                <span>{language === 'AZ' ? 'Yüksək Keyfiyyətli Material' : language === 'RU' ? 'Качественный Материал' : 'High Quality Material'}</span>
-             </div>
-             <div className="flex items-center gap-2 text-white/80 text-xs md:text-lg font-medium">
-                <span>+ {language === 'AZ' ? 'Təcrübəli Usta' : language === 'RU' ? 'Опытный Мастер' : 'Experienced Master'}</span>
-                <span>+ {language === 'AZ' ? 'Tam Zəmanət' : language === 'RU' ? 'Полная Гарантия' : 'Full Warranty'}</span>
-             </div>
+            <div className="flex items-center gap-2 text-white/90 text-sm md:text-xl font-medium bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-sm border border-white/5">
+              <span className="text-[#fbbf24] text-lg">✔</span>
+              <span>{language === 'AZ' ? 'Yüksək Keyfiyyətli Material' : language === 'RU' ? 'Качественный Материал' : 'High Quality Material'}</span>
+            </div>
+            <div className="flex items-center gap-2 text-white/80 text-xs md:text-lg font-medium">
+              <span>+ {language === 'AZ' ? 'Təcrübəli Usta' : language === 'RU' ? 'Опытный Мастер' : 'Experienced Master'}</span>
+              <span>+ {language === 'AZ' ? 'Tam Zəmanət' : language === 'RU' ? 'Полная Гарантия' : 'Full Warranty'}</span>
+            </div>
           </motion.div>
 
           <motion.div
@@ -64,55 +65,60 @@ export default function Home() {
             className="mb-8 w-full max-w-xs md:max-w-md"
           >
             <a
+<<<<<<< HEAD
               href="/contact"
               className="group flex items-center justify-center gap-2 w-full py-3.5 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-base md:text-xl font-bold rounded-2xl shadow-[0_0_20px_rgba(251,191,36,0.4)] hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] transition-all transform hover:-translate-y-1 active:scale-95"
+=======
+              href="#contact"
+              className="group flex items-center justify-center gap-2 w-full min-h-[50px] md:min-h-[56px] py-3.5 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-base md:text-xl font-bold rounded-2xl shadow-[0_0_20px_rgba(251,191,36,0.4)] hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] transition-all transform hover:-translate-y-1 active:scale-95"
+>>>>>>> 6f79f2f5540a99718afabe1bd4ec24948e44449f
             >
               <span>{language === 'AZ' ? 'Pulsuz Qiymət Təklifi Al' : language === 'RU' ? 'Получить Предложение' : 'Get Free Quote'}</span>
             </a>
           </motion.div>
 
           {/* Feature Icons */}
-          <motion.div 
-             initial={{ opacity: 0, y: 30 }}
-             animate={{ opacity: 1, y: 0 }}
-             transition={{ delay: 0.4, duration: 0.8 }}
-             className="grid grid-cols-3 gap-2 md:gap-8 w-full max-w-2xl px-2"
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="grid grid-cols-3 gap-2 md:gap-8 w-full max-w-2xl px-2"
           >
-              {/* Icon 1: Measurement */}
-              <div className="flex flex-col items-center gap-2 text-center group">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-b from-white/10 to-transparent border border-white/20 flex items-center justify-center shadow-lg backdrop-blur-sm group-hover:border-[#fbbf24]/50 transition-colors relative">
-                      <div className="absolute inset-0 bg-[#fbbf24]/5 rounded-full filter blur-md"></div>
-                      <span className="text-3xl md:text-4xl filter drop-shadow-md">📏</span>
-                  </div>
-                  <p className="text-[10px] md:text-sm font-bold text-white leading-tight">
-                      {language === 'AZ' ? 'Ölçü Pulsuz' : language === 'RU' ? 'Бесплатный Замер' : 'Free Measure'}<br/>
-                      <span className="text-white/70">{language === 'AZ' ? 'və Peşəkar' : language === 'RU' ? 'и Профессионально' : 'and Professional'}</span>
-                  </p>
+            {/* Icon 1: Measurement */}
+            <div className="flex flex-col items-center gap-2 text-center group">
+              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-b from-white/10 to-transparent border border-white/20 flex items-center justify-center shadow-lg backdrop-blur-sm group-hover:border-[#fbbf24]/50 transition-colors relative">
+                <div className="absolute inset-0 bg-[#fbbf24]/5 rounded-full filter blur-md"></div>
+                <span className="text-3xl md:text-4xl filter drop-shadow-md">📏</span>
               </div>
+              <p className="text-[10px] md:text-sm font-bold text-white leading-tight">
+                {language === 'AZ' ? 'Ölçü Pulsuz' : language === 'RU' ? 'Бесплатный Замер' : 'Free Measure'}<br />
+                <span className="text-white/70">{language === 'AZ' ? 'və Peşəkar' : language === 'RU' ? 'и Профессионально' : 'and Professional'}</span>
+              </p>
+            </div>
 
-              {/* Icon 2: Design */}
-              <div className="flex flex-col items-center gap-2 text-center group">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-b from-white/10 to-transparent border border-white/20 flex items-center justify-center shadow-lg backdrop-blur-sm group-hover:border-[#fbbf24]/50 transition-colors relative">
-                      <div className="absolute inset-0 bg-[#fbbf24]/5 rounded-full filter blur-md"></div>
-                      <span className="text-3xl md:text-4xl filter drop-shadow-md">✏️</span>
-                  </div>
-                  <p className="text-[10px] md:text-sm font-bold text-white leading-tight">
-                      {language === 'AZ' ? 'Fərdi Dizayn' : language === 'RU' ? 'Индив. Дизайн' : 'Custom Design'}<br/>
-                      <span className="text-white/70">{language === 'AZ' ? 'Xidməti' : language === 'RU' ? 'Услуги' : 'Service'}</span>
-                  </p>
+            {/* Icon 2: Design */}
+            <div className="flex flex-col items-center gap-2 text-center group">
+              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-b from-white/10 to-transparent border border-white/20 flex items-center justify-center shadow-lg backdrop-blur-sm group-hover:border-[#fbbf24]/50 transition-colors relative">
+                <div className="absolute inset-0 bg-[#fbbf24]/5 rounded-full filter blur-md"></div>
+                <span className="text-3xl md:text-4xl filter drop-shadow-md">✏️</span>
               </div>
+              <p className="text-[10px] md:text-sm font-bold text-white leading-tight">
+                {language === 'AZ' ? 'Fərdi Dizayn' : language === 'RU' ? 'Индив. Дизайн' : 'Custom Design'}<br />
+                <span className="text-white/70">{language === 'AZ' ? 'Xidməti' : language === 'RU' ? 'Услуги' : 'Service'}</span>
+              </p>
+            </div>
 
-               {/* Icon 3: Installation */}
-               <div className="flex flex-col items-center gap-2 text-center group">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-b from-white/10 to-transparent border border-white/20 flex items-center justify-center shadow-lg backdrop-blur-sm group-hover:border-[#fbbf24]/50 transition-colors relative">
-                      <div className="absolute inset-0 bg-[#fbbf24]/5 rounded-full filter blur-md"></div>
-                      <span className="text-3xl md:text-4xl filter drop-shadow-md">🔩</span>
-                  </div>
-                  <p className="text-[10px] md:text-sm font-bold text-white leading-tight">
-                      {language === 'AZ' ? 'Sürətli və' : language === 'RU' ? 'Быстрый и' : 'Fast and'}<br/>
-                      <span className="text-white/70">{language === 'AZ' ? 'Təhlükəsiz Montaj' : language === 'RU' ? 'Безопасный Монтаж' : 'Safe Install'}</span>
-                  </p>
+            {/* Icon 3: Installation */}
+            <div className="flex flex-col items-center gap-2 text-center group">
+              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-b from-white/10 to-transparent border border-white/20 flex items-center justify-center shadow-lg backdrop-blur-sm group-hover:border-[#fbbf24]/50 transition-colors relative">
+                <div className="absolute inset-0 bg-[#fbbf24]/5 rounded-full filter blur-md"></div>
+                <span className="text-3xl md:text-4xl filter drop-shadow-md">🔩</span>
               </div>
+              <p className="text-[10px] md:text-sm font-bold text-white leading-tight">
+                {language === 'AZ' ? 'Sürətli və' : language === 'RU' ? 'Быстрый и' : 'Fast and'}<br />
+                <span className="text-white/70">{language === 'AZ' ? 'Təhlükəsiz Montaj' : language === 'RU' ? 'Безопасный Монтаж' : 'Safe Install'}</span>
+              </p>
+            </div>
           </motion.div>
 
         </div>
@@ -122,7 +128,7 @@ export default function Home() {
       <PricingTables />
 
       {/* MODERN PROFILE PLANS */}
-      <section className="bg-white py-12 md:py-20" id="plans">
+      <section className="bg-white py-10 md:py-20" id="plans">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10 md:mb-16">
             <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a192f] uppercase tracking-wide">
@@ -130,11 +136,11 @@ export default function Home() {
             </h2>
             <div className="h-1 w-20 bg-[#fbbf24] mx-auto rounded-full mt-3"></div>
             <p className="mt-4 text-gray-500 max-w-2xl mx-auto text-sm md:text-base">
-              {language === 'AZ' 
-                ? 'Eviniz üçün ən son texnologiya ilə hazırlanmış kölgəli və işıqlı profillər.' 
-                : language === 'RU' 
-                ? 'Теневые и световые профили, изготовленные по последним технологиям для вашего дома.' 
-                : 'Shadow and light profiles prepared with the latest technology for your home.'}
+              {language === 'AZ'
+                ? 'Eviniz üçün ən son texnologiya ilə hazırlanmış kölgəli və işıqlı profillər.'
+                : language === 'RU'
+                  ? 'Теневые и световые профили, изготовленные по последним технологиям для вашего дома.'
+                  : 'Shadow and light profiles prepared with the latest technology for your home.'}
             </p>
           </div>
 
@@ -146,12 +152,12 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.05, duration: 0.5 }}
                 viewport={{ once: true }}
-                className="group relative bg-[#f8fafc] rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
+                className="group relative bg-[#f8fafc] rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col cursor-zoom-in"
+                onClick={() => setExpandedPlan(plan)}
               >
                 {/* Image Container with fixed aspect ratio */}
-                <div 
-                  className="relative aspect-[4/5] w-full overflow-hidden bg-white cursor-zoom-in"
-                  onClick={() => setExpandedPlan(plan)}
+                <div
+                  className="relative aspect-[4/5] w-full overflow-hidden bg-white"
                 >
                   <Image
                     src={plan.image}
@@ -162,9 +168,9 @@ export default function Home() {
                   <div className="absolute top-2 left-2 bg-[#0a192f]/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-md">
                     {plan.id.toUpperCase()}
                   </div>
-                  
 
-                  
+
+
                   {/* Overlay on hover */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
                     <div className="bg-white/90 p-2 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
@@ -180,19 +186,20 @@ export default function Home() {
                   <h3 className="text-sm md:text-base font-bold text-[#0a192f] mb-2 leading-tight min-h-[40px] flex items-center justify-center">
                     {plan.name[language]}
                   </h3>
-                  
+
                   <div className="mt-auto pt-4 border-t border-gray-100 flex flex-col items-center">
                     <div className="text-lg font-extrabold text-[#fbbf24]">
                       {plan.price.toFixed(2)} <span className="text-xs uppercase">AZN / m</span>
                     </div>
-                    
+
                     <a
                       href={`https://wa.me/994506368731?text=${encodeURIComponent(
                         `Salam, ${plan.name[language]} planı ilə maraqlanıram.`
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-3 w-full py-2.5 bg-[#0a192f] hover:bg-[#112240] text-white text-[10px] md:text-xs font-bold rounded-xl transition-all uppercase tracking-wider shadow-md active:scale-95"
+                      className="mt-3 w-full min-h-[44px] flex items-center justify-center bg-[#0a192f] hover:bg-[#112240] text-white text-[10px] md:text-xs font-bold rounded-xl transition-all uppercase tracking-wider shadow-md active:scale-95 relative z-20"
+                      onClick={(e) => e.stopPropagation()}
                     >
                       {language === 'AZ' ? 'Səbətə at' : language === 'RU' ? 'В корзину' : 'Add to cart'}
                     </a>
@@ -205,17 +212,17 @@ export default function Home() {
 
         {/* Lightbox Modal */}
         {expandedPlan && (
-          <div 
+          <div
             className="fixed inset-0 z-[9999] bg-[#0a192f]/95 backdrop-blur-md flex items-center justify-center p-4 md:p-10 cursor-zoom-out"
             onClick={() => setExpandedPlan(null)}
           >
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               className="relative max-w-5xl w-full h-full max-h-[90vh] flex flex-col items-center justify-center"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
             >
-              <button 
+              <button
                 className="absolute -top-12 right-0 md:-right-12 text-white hover:text-[#fbbf24] transition-colors p-2"
                 onClick={() => setExpandedPlan(null)}
               >
@@ -223,7 +230,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
-              
+
               <div className="relative w-full h-full bg-white rounded-3xl overflow-hidden shadow-2xl">
                 <Image
                   src={expandedPlan.image}
@@ -231,7 +238,7 @@ export default function Home() {
                   fill
                   className="object-contain p-4 md:p-8"
                 />
-                
+
 
               </div>
 
@@ -245,21 +252,22 @@ export default function Home() {
       </section>
 
       {/* SERVICES SECTION */}
-      <section className="bg-[#f8fafc] pb-20 md:py-20" id="services">
+      <section className="bg-[#f8fafc] py-10 md:py-20" id="services">
         <div className="container mx-auto px-4">
-           {/* Section Header */}
-           <div className="text-center mb-8">
-                <div className="flex items-center justify-center gap-4 mb-2">
-                    <div className="h-px bg-gray-300 w-12 md:w-24"></div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-[#0a192f] uppercase tracking-wide">
-                        {language === 'AZ' ? 'Xidmətlərimiz' : language === 'RU' ? 'Услуги' : 'Services'}
-                    </h2>
-                    <div className="h-px bg-gray-300 w-12 md:w-24"></div>
-                </div>
+          {/* Section Header */}
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center gap-4 mb-2">
+              <div className="h-px bg-gray-300 w-12 md:w-24"></div>
+              <h2 className="text-2xl md:text-3xl font-bold text-[#0a192f] uppercase tracking-wide">
+                {language === 'AZ' ? 'Xidmətlərimiz' : language === 'RU' ? 'Услуги' : 'Services'}
+              </h2>
+              <div className="h-px bg-gray-300 w-12 md:w-24"></div>
             </div>
+          </div>
 
           <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto">
             {services.map(service => (
+<<<<<<< HEAD
               <div key={service.id} className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
                  <div className="aspect-[4/3] relative">
                     <Image 
@@ -280,6 +288,32 @@ export default function Home() {
                         </button>
                     </div>
                  </div>
+=======
+              <div key={service.id} className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-gray-100 flex flex-col cursor-pointer">
+                <Link href={`/service/${service.id}`} className="absolute inset-0 z-10" aria-label={`View details for ${service.name[language]}`}></Link>
+                <div className="aspect-[4/3] relative overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.name[language]}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-4 text-center flex flex-col items-center flex-grow">
+                  <div className="mt-auto w-full">
+                    <a
+                      href={`https://wa.me/994506368731?text=${encodeURIComponent(
+                        `Salam, mən ${service.name[language]} xidməti ilə maraqlanıram.`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full min-h-[44px] flex items-center justify-center bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-[11px] md:text-sm font-bold rounded-lg shadow-sm transition-all uppercase tracking-wide relative z-20"
+                    >
+                      {language === 'AZ' ? 'əlaqə saxla' : language === 'RU' ? 'связаться' : 'contact us'}
+                    </a>
+                  </div>
+                </div>
+>>>>>>> 6f79f2f5540a99718afabe1bd4ec24948e44449f
               </div>
             ))}
           </div>
@@ -287,7 +321,7 @@ export default function Home() {
       </section>
 
       {/* PRODUCTS (MATERIALS) SECTION */}
-      <section className="bg-[#f8fafc] py-12 md:py-20" id="materials">
+      <section className="bg-[#f8fafc] py-10 md:py-20" id="materials">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10 md:mb-16">
             <h2 className="text-2xl md:text-4xl font-extrabold mb-3 text-[#0a192f]">
@@ -298,7 +332,8 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 max-w-7xl mx-auto">
             {products.filter(p => p.isActive && p.price > 0 && !p.id.startsWith('gp')).map(product => (
-              <div key={product.id} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col">
+              <div key={product.id} className="relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col cursor-pointer">
+                <Link href={`/product/${product.id}`} className="absolute inset-0 z-10" aria-label={`View details for ${product.name[language]}`}></Link>
                 <div className="bg-[#0a192f] py-2 px-3 text-center">
                   <h3 className="text-white text-xs md:text-sm font-bold tracking-wide">
                     {product.name[language]}
@@ -315,13 +350,13 @@ export default function Home() {
                 <div className="p-3 md:p-4 flex flex-col flex-grow">
                   <div className="mt-auto">
                     <div className="mb-3">
-                        <span className="text-lg font-bold text-[#0a192f]">
-                          {product.price.toFixed(2)} {product.currency}
-                        </span>
+                      <span className="text-lg font-bold text-[#0a192f]">
+                        {product.price.toFixed(2)} {product.currency}
+                      </span>
                     </div>
                     <button
                       onClick={() => addToCart(product)}
-                      className="w-full py-2 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-[10px] md:text-xs font-bold rounded border-none shadow-sm hover:shadow-md transition-all uppercase tracking-wider"
+                      className="w-full min-h-[44px] flex items-center justify-center bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-[10px] md:text-xs font-bold rounded border-none shadow-sm hover:shadow-md transition-all uppercase tracking-wider relative z-20"
                     >
                       {language === 'AZ' ? 'Səbətə at' : language === 'RU' ? 'В корзину' : 'Add to cart'}
                     </button>
@@ -334,27 +369,65 @@ export default function Home() {
       </section>
 
       {/* WHY US / STATS */}
-      <section className="bg-white py-16">
-        <div className="container mx-auto px-4 text-center mb-12">
+      <section className="bg-white py-10 md:py-16">
+        <div className="container mx-auto px-4 text-center mb-8 md:mb-12">
           <h2 className="text-3xl font-bold mb-4 text-[#0a192f]">
             {language === 'AZ' ? 'Niyə AlcipanBaku?' : language === 'RU' ? 'Почему AlcipanBaku?' : 'Why AlcipanBaku?'}
           </h2>
           <div className="h-1 w-16 bg-[#fbbf24] mx-auto rounded-full mb-6"></div>
-          
+
           <div className="mt-12 text-[#0a192f]">
             <FeaturesSection />
           </div>
         </div>
       </section>
 
-      {/* FAQ SECTION */}
-      <div className="bg-[#f8fafc]">
-        <FAQSection />
-      </div>
+      {/* TESTIMONIALS */}
+      <Testimonials />
 
       {/* WORK GALLERY */}
       <WorkGallery />
 
+<<<<<<< HEAD
+=======
+      {/* CONTACT FORM */}
+      <section className="bg-[#0a192f] text-white py-12 md:py-20 text-center" id="contact">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-4">
+            {language === 'AZ' ? 'Ölçü üçün müraciət' : language === 'RU' ? 'Заявка на замер' : 'Request Measurement'}
+          </h2>
+          <p className="text-white/60 max-w-xl mx-auto mb-10">
+            {language === 'AZ' ? 'Qiymət obyektə baxıldıqdan sonra dəqiqləşdirilir.' : language === 'RU' ? 'Цена уточняется после осмотра объекта.' : 'Price is finalized after site inspection.'}
+          </p>
+
+          <form onSubmit={sendWhatsApp} className="max-w-xl mx-auto space-y-4">
+            <input
+              name="name"
+              placeholder={language === 'AZ' ? 'Adınız' : language === 'RU' ? 'Ваше Имя' : 'Your Name'}
+              required
+              className="w-full p-4 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-[var(--gold)] transition-colors placeholder:text-white/40"
+            />
+            <input
+              name="phone"
+              placeholder={language === 'AZ' ? 'Telefon' : language === 'RU' ? 'Телефон' : 'Phone'}
+              required
+              className="w-full p-4 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-[var(--gold)] transition-colors placeholder:text-white/40"
+            />
+            <textarea
+              name="msg"
+              placeholder={language === 'AZ' ? 'Qısa məlumat (mənzil / obyekt)' : language === 'RU' ? 'Краткая информация (квартира / объект)' : 'Short info (apartment / object)'}
+              rows={4}
+              className="w-full p-4 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-[var(--gold)] transition-colors resize-none mb-4 placeholder:text-white/40"
+            />
+            <button className="w-full py-4 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] text-[#0a192f] font-bold rounded-lg hover:shadow-lg transition-all text-lg uppercase tracking-wide">
+              {language === 'AZ' ? 'GÖNDƏR' : language === 'RU' ? 'ОТПРАВИТЬ' : 'SEND'}
+            </button>
+          </form>
+        </div>
+      </section>
+
+
+>>>>>>> 6f79f2f5540a99718afabe1bd4ec24948e44449f
     </div>
   );
 }

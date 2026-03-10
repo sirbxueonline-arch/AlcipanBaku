@@ -5,6 +5,7 @@ import { Product, Package } from '@/types';
 import { useAdmin } from '@/context/AdminContext';
 import { useCart } from '@/context/CartContext';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ShoppingCart } from 'lucide-react';
 
 interface ProductCardProps {
@@ -64,7 +65,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
                     <button
                         onClick={handleAddToCart}
-                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors z-10 relative shadow-md shadow-blue-100"
+                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors z-20 relative shadow-md shadow-blue-100"
                     >
                         <ShoppingCart size={16} />
                         {language === 'AZ' ? 'Səbətə at' : language === 'RU' ? 'В корзину' : 'Add to Cart'}
@@ -73,7 +74,7 @@ export function ProductCard({ product }: ProductCardProps) {
             </div>
 
             {/* Whole card clickable overlay (except button which has z-index) */}
-            <a href={`/product/${product.id}`} className="absolute inset-0 z-0" aria-label={`View details for ${product.name[language]}`}></a>
+            <Link href={`/product/${product.id}`} className="absolute inset-0 z-10" aria-label={`View details for ${product.name[language]}`}></Link>
         </div>
     );
 }

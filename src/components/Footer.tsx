@@ -96,10 +96,11 @@ export function Footer() {
                 <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                     <div className="flex flex-col gap-2">
                         <p className="text-xs text-gray-500">
-                            © {new Date().getFullYear()} Alcipan Baku. All rights reserved.
+                            © {new Date().getFullYear()} Alcipan Baku.{' '}
+                            {language === 'AZ' ? 'Bütün hüquqlar qorunur.' : language === 'RU' ? 'Все права защищены.' : 'All rights reserved.'}
                         </p>
                         <div className="flex items-center gap-2 text-[10px] text-gray-600">
-                            <span>Payments secured by</span>
+                            <span>{language === 'AZ' ? 'Ödənişlər təmin edilib' : language === 'RU' ? 'Платежи защищены' : 'Payments secured by'}</span>
                             <span className="font-bold text-gray-400">EPoint</span>
                         </div>
                     </div>
