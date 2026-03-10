@@ -116,7 +116,7 @@ export default function ServiceDetailPage() {
                                 </div>
 
                                 <button type="submit" className="w-full py-4 bg-[var(--primary)] text-white font-bold rounded-lg hover:bg-blue-600 transition shadow-lg shadow-blue-900/20">
-                                    {language === 'AZ' ? 'Sifariş Et' : language === 'RU' ? 'Заказать' : 'Book Now'}
+                                    {language === 'AZ' ? 'Səbətə at' : language === 'RU' ? 'В корзину' : 'Add to cart'}
                                 </button>
                             </form>
                         </div>

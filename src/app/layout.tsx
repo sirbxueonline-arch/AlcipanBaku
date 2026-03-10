@@ -4,9 +4,8 @@ import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import { AdminProvider } from '@/context/AdminContext';
 import { CartProvider } from '@/context/CartContext';
-import ClientLayout from './ClientLayout';
-import { FloatingWhatsApp } from '@/components/FloatingWhatsApp';
-import { BottomNav } from '@/components/BottomNav';
+import ClientLayoutWrapper from './ClientLayoutWrapper';
+import { OptionalFloatingUI } from './OptionalFloatingUI';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -57,11 +56,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <AdminProvider>
           <CartProvider>
-            <ClientLayout>
+            <ClientLayoutWrapper>
               {children}
-              <FloatingWhatsApp />
-              <BottomNav />
-            </ClientLayout>
+            </ClientLayoutWrapper>
+            <OptionalFloatingUI />
           </CartProvider>
         </AdminProvider>
         <Analytics />

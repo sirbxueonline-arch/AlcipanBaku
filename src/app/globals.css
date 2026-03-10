@@ -47,3 +47,16 @@ body {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+
+/* Hero work slideshow: continuous scroll left */
+@keyframes hero-slide-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.hero-slideshow-track {
+  animation: hero-slide-left 50s linear infinite;
+  width: max-content;
+}
+.hero-slideshow-track:hover {
+  animation-play-state: paused;
+}

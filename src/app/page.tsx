@@ -6,6 +6,7 @@ import { useCart } from '@/context/CartContext';
 
 import { ServiceCard } from '@/components/ServiceCard';
 import { WorkGallery } from '@/components/WorkGallery';
+import { HeroWorkSlideshow } from '@/components/HeroWorkSlideshow';
 import { PricingTables } from '@/components/PricingTables';
 import FeaturesSection from '@/components/FeaturesSection';
 import { FAQSection } from '@/components/FAQSection';
@@ -17,39 +18,13 @@ export default function Home() {
   const { addToCart } = useCart();
   const [expandedPlan, setExpandedPlan] = React.useState<any>(null);
 
-  const sendWhatsApp = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const name = (form.elements.namedItem('name') as HTMLInputElement).value;
-    const phone = (form.elements.namedItem('phone') as HTMLInputElement).value;
-    const msg = (form.elements.namedItem('msg') as HTMLTextAreaElement).value;
-
-    // Updated phone number
-    const phoneNumber = '994506368731';
-
-    // Formatted message
-    const text = `Salam, ölçü üçün müraciət edirəm!%0A%0A👤 *Ad:* ${name}%0A📞 *Telefon:* ${phone}%0A📝 *Məlumat:* ${msg}`;
-
-    window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
-  };
-
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] font-sans">
 
 
-      {/* HERO SECTION */}
+      {/* HERO SECTION – works slideshow + overlay */}
       <section className="relative h-[85vh] min-h-[500px] flex flex-col justify-center items-center text-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/new-hero.jpg"
-            alt="Alcipan Baku Hero"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a192f]/90 via-[#0a192f]/70 to-[#0a192f] z-10 transition-opacity duration-700"></div>
-        </div>
+        <HeroWorkSlideshow />
 
         <div className="relative z-20 container mx-auto px-4 flex flex-col items-center max-w-4xl pt-16">
           
@@ -89,7 +64,7 @@ export default function Home() {
             className="mb-8 w-full max-w-xs md:max-w-md"
           >
             <a
-              href="#contact"
+              href="/contact"
               className="group flex items-center justify-center gap-2 w-full py-3.5 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-base md:text-xl font-bold rounded-2xl shadow-[0_0_20px_rgba(251,191,36,0.4)] hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] transition-all transform hover:-translate-y-1 active:scale-95"
             >
               <span>{language === 'AZ' ? 'Pulsuz Qiymət Təklifi Al' : language === 'RU' ? 'Получить Предложение' : 'Get Free Quote'}</span>
@@ -219,7 +194,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="mt-3 w-full py-2.5 bg-[#0a192f] hover:bg-[#112240] text-white text-[10px] md:text-xs font-bold rounded-xl transition-all uppercase tracking-wider shadow-md active:scale-95"
                     >
-                      {language === 'AZ' ? 'Sifariş et' : language === 'RU' ? 'Заказать' : 'Order Now'}
+                      {language === 'AZ' ? 'Səbətə at' : language === 'RU' ? 'В корзину' : 'Add to cart'}
                     </a>
                   </div>
                 </div>
@@ -296,16 +271,13 @@ export default function Home() {
                  </div>
                  <div className="p-4 text-center flex flex-col items-center flex-grow">
                     <div className="mt-auto w-full">
-                        <a 
-                            href={`https://wa.me/994506368731?text=${encodeURIComponent(
-                                `Salam, mən ${service.name[language]} xidməti ilə maraqlanıram.`
-                            )}`}
-                            target="_blank" 
-                            rel="noopener noreferrer"
+                        <button
+                            type="button"
+                            onClick={() => addToCart(service)}
                             className="block w-full bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-[11px] md:text-sm font-bold py-2.5 rounded-lg shadow-sm transition-all uppercase tracking-wide"
                         >
-                            {language === 'AZ' ? 'əlaqə saxla' : language === 'RU' ? 'связаться' : 'contact us'}
-                        </a>
+                            {language === 'AZ' ? 'Səbətə at' : language === 'RU' ? 'В корзину' : 'Add to cart'}
+                        </button>
                     </div>
                  </div>
               </div>
@@ -351,7 +323,7 @@ export default function Home() {
                       onClick={() => addToCart(product)}
                       className="w-full py-2 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#0a192f] text-[10px] md:text-xs font-bold rounded border-none shadow-sm hover:shadow-md transition-all uppercase tracking-wider"
                     >
-                      {language === 'AZ' ? 'SİFARİŞ ET' : language === 'RU' ? 'ЗАКАЗАТЬ' : 'ORDER'}
+                      {language === 'AZ' ? 'Səbətə at' : language === 'RU' ? 'В корзину' : 'Add to cart'}
                     </button>
                   </div>
                 </div>
@@ -382,43 +354,6 @@ export default function Home() {
 
       {/* WORK GALLERY */}
       <WorkGallery />
-
-      {/* CONTACT FORM */}
-      <section className="bg-[#0a192f] text-white py-20 text-center" id="contact">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">
-            {language === 'AZ' ? 'Ölçü üçün müraciət' : language === 'RU' ? 'Заявка на замер' : 'Request Measurement'}
-          </h2>
-          <p className="text-white/60 max-w-xl mx-auto mb-10">
-            {language === 'AZ' ? 'Qiymət obyektə baxıldıqdan sonra dəqiqləşdirilir.' : language === 'RU' ? 'Цена уточняется после осмотра объекта.' : 'Price is finalized after site inspection.'}
-          </p>
-
-          <form onSubmit={sendWhatsApp} className="max-w-xl mx-auto space-y-4">
-            <input
-              name="name"
-              placeholder={language === 'AZ' ? 'Adınız' : language === 'RU' ? 'Ваше Имя' : 'Your Name'}
-              required
-              className="w-full p-4 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-[var(--gold)] transition-colors placeholder:text-white/40"
-            />
-            <input
-              name="phone"
-              placeholder={language === 'AZ' ? 'Telefon' : language === 'RU' ? 'Телефон' : 'Phone'}
-              required
-              className="w-full p-4 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-[var(--gold)] transition-colors placeholder:text-white/40"
-            />
-            <textarea
-              name="msg"
-              placeholder={language === 'AZ' ? 'Qısa məlumat (mənzil / obyekt)' : language === 'RU' ? 'Краткая информация (квартира / объект)' : 'Short info (apartment / object)'}
-              rows={4}
-              className="w-full p-4 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-[var(--gold)] transition-colors resize-none mb-4 placeholder:text-white/40"
-            />
-            <button className="w-full py-4 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] text-[#0a192f] font-bold rounded-lg hover:shadow-lg transition-all text-lg uppercase tracking-wide">
-              {language === 'AZ' ? 'GÖNDƏR' : language === 'RU' ? 'ОТПРАВИТЬ' : 'SEND'}
-            </button>
-          </form>
-        </div>
-      </section>
-
 
     </div>
   );

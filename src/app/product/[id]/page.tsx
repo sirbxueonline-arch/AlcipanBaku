@@ -93,7 +93,7 @@ export default function ProductDetailPage() {
                                     onClick={() => addToCart(product)}
                                     className="flex-1 px-8 py-4 bg-gray-900 text-white font-bold rounded-lg hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:scale-95"
                                 >
-                                    {language === 'AZ' ? 'İndi Sifariş Edin' : language === 'RU' ? 'Заказать сейчас' : 'Order Now'}
+                                    {language === 'AZ' ? 'Səbətə at' : language === 'RU' ? 'В корзину' : 'Add to cart'}
                                 </button>
                                 <a
                                     href={`https://wa.me/994506368731?text=Salam, ${product.name[language]} haqqında məlumat almaq istəyirəm.`}

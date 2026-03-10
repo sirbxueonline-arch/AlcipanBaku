@@ -1,0 +1,116 @@
+/**
+ * Alcipan Baku – New Ecommerce Design System
+ * Construction materials marketplace
+ */
+
+:root {
+  /* ========== COLOR SYSTEM ========== */
+  /* Primary – industrial blue (trust, construction) */
+  --nw-primary: #0d47a1;
+  --nw-primary-hover: #1565c0;
+  --nw-primary-light: #e3f2fd;
+  --nw-primary-dark: #0a3d91;
+
+  /* Secondary accent – warm orange (CTAs, highlights) */
+  --nw-accent: #e65100;
+  --nw-accent-hover: #f57c00;
+  --nw-accent-light: #fff3e0;
+  --nw-accent-dark: #bf360c;
+
+  /* Neutrals */
+  --nw-neutral-50: #fafafa;
+  --nw-neutral-100: #f5f5f5;
+  --nw-neutral-200: #eeeeee;
+  --nw-neutral-300: #e0e0e0;
+  --nw-neutral-400: #bdbdbd;
+  --nw-neutral-500: #9e9e9e;
+  --nw-neutral-600: #757575;
+  --nw-neutral-700: #616161;
+  --nw-neutral-800: #424242;
+  --nw-neutral-900: #212121;
+  --nw-neutral-950: #0d0d0d;
+
+  /* Backgrounds */
+  --nw-bg: #ffffff;
+  --nw-bg-subtle: #f8f9fa;
+  --nw-bg-muted: #f1f3f5;
+  --nw-bg-elevated: #ffffff;
+  --nw-bg-overlay: rgba(13, 13, 13, 0.5);
+
+  /* Text */
+  --nw-text: #1a1a1a;
+  --nw-text-secondary: #525252;
+  --nw-text-muted: #737373;
+  --nw-text-inverse: #ffffff;
+
+  /* Semantic */
+  --nw-success: #2e7d32;
+  --nw-success-bg: #e8f5e9;
+  --nw-warning: #ed6c02;
+  --nw-warning-bg: #fff3e0;
+  --nw-error: #c62828;
+  --nw-error-bg: #ffebee;
+  --nw-info: #0277bd;
+  --nw-info-bg: #e1f5fe;
+
+  /* Borders */
+  --nw-border: #e5e7eb;
+  --nw-border-strong: #d1d5db;
+  --nw-radius-sm: 6px;
+  --nw-radius: 8px;
+  --nw-radius-lg: 12px;
+  --nw-radius-xl: 16px;
+  --nw-radius-full: 9999px;
+
+  /* ========== SPACING SCALE (px) ========== */
+  --nw-space-0: 0;
+  --nw-space-1: 4px;
+  --nw-space-2: 8px;
+  --nw-space-3: 12px;
+  --nw-space-4: 16px;
+  --nw-space-5: 20px;
+  --nw-space-6: 24px;
+  --nw-space-8: 32px;
+  --nw-space-10: 40px;
+  --nw-space-12: 48px;
+  --nw-space-16: 64px;
+
+  /* ========== TYPOGRAPHY ========== */
+  --nw-font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
+  --nw-font-mono: ui-monospace, monospace;
+
+  /* Size scale */
+  --nw-text-xs: 0.75rem;    /* 12px */
+  --nw-text-sm: 0.875rem;   /* 14px */
+  --nw-text-base: 1rem;     /* 16px */
+  --nw-text-lg: 1.125rem;   /* 18px */
+  --nw-text-xl: 1.25rem;    /* 20px */
+  --nw-text-2xl: 1.5rem;   /* 24px */
+  --nw-text-3xl: 1.875rem;  /* 30px */
+  --nw-text-4xl: 2.25rem;   /* 36px */
+  --nw-text-5xl: 3rem;      /* 48px */
+
+  /* Weights */
+  --nw-font-normal: 400;
+  --nw-font-medium: 500;
+  --nw-font-semibold: 600;
+  --nw-font-bold: 700;
+
+  /* Line heights */
+  --nw-leading-tight: 1.25;
+  --nw-leading-snug: 1.375;
+  --nw-leading-normal: 1.5;
+  --nw-leading-relaxed: 1.625;
+
+  /* Shadows */
+  --nw-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --nw-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --nw-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+  --nw-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --nw-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+/* Scoped to newebsite route – apply when parent has data-newebsite */
+[data-newebsite] {
+  --nw-applied: 1;
+}
