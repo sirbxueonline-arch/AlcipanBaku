@@ -378,7 +378,7 @@ export const initialServices: Service[] = [
     {
         id: 'sade-tavan',
         type: 'service',
-        name: { AZ: 'Sadə Tavan', RU: 'Простой Потолок', EN: 'Simple Ceiling' },
+        name: { AZ: 'Sadə tavan', RU: 'Простой потолок', EN: 'Simple ceiling' },
         description: {
             AZ: '💰 10 AZN / m²\nSadə düz gipskarton tavan.\nKlassik və minimalist dizayn.',
             RU: '💰 10 AZN / м²\nПростой ровный гипсокартонный потолок.\nКлассический и минималистичный дизайн.',
@@ -393,7 +393,7 @@ export const initialServices: Service[] = [
     {
         id: 'fiqurlu-tavan',
         type: 'service',
-        name: { AZ: 'Fiqurlu Tavan', RU: 'Фигурный Потолок', EN: 'Figured Ceiling' },
+        name: { AZ: 'Fiqurlu tavan', RU: 'Фигурный потолок', EN: 'Figured ceiling' },
         description: {
             AZ: '💰 20 AZN / m²\nŞəxsi dizayn əsasında fiqurlu tavanlar.\nPremium və özəl görünüş.',
             RU: '💰 20 AZN / м²\nФигурные потолки по индивидуальному дизайну.\nПремиальный вид.',
@@ -408,11 +408,11 @@ export const initialServices: Service[] = [
     {
         id: 'arakesme',
         type: 'service',
-        name: { AZ: 'Arakəsmə', RU: 'Перегородка', EN: 'Partition' },
+        name: { AZ: 'Gizli işıqlı tavan', RU: 'Потолок со скрытой подсветкой', EN: 'Ceiling with hidden lighting' },
         description: {
-            AZ: '💰 15 AZN / m²\nOtaqları bölmək üçün keyfiyyətli arakəsmələr.\nSəs izolyasiyası və möhkəmlik.',
-            RU: '💰 15 AZN / м²\nКачественные перегородки для зонирования.\nЗвукоизоляция и прочность.',
-            EN: '💰 15 AZN / m²\nQuality partitions for room dividing.\nSound insulation and durability.'
+            AZ: '💰 15 AZN / m²\nGeometrik panellər, gizli LED işıq kanalları.\nMüasir çoxsəviyyəli tavan.',
+            RU: '💰 15 AZN / м²\nГеометрические панели, каналы скрытой LED подсветки.\nСовременный многоуровневый потолок.',
+            EN: '💰 15 AZN / m²\nGeometric panels, hidden LED lighting channels.\nModern multi-level ceiling.'
         },
         image: '/picture3.jpeg',
         isActive: true,
@@ -423,26 +423,26 @@ export const initialServices: Service[] = [
     {
         id: 'gizli-isiq',
         type: 'service',
-        name: { AZ: 'Gizli İşıq', RU: 'Скрытый Свет', EN: 'Hidden Lighting' },
+        name: { AZ: 'TV stend dizaynı', RU: 'Дизайн ТВ стенда', EN: 'TV stand design' },
         description: {
-            AZ: '💰 12 AZN / m²\nMüasir LED işıqlandırma sistemləri.\nİnteryerə xüsusi aura qatır.',
-            RU: '💰 12 AZN / м²\nСовременные системы LED освещения.\nСоздает особую ауру в интерьере.',
-            EN: '💰 12 AZN / m²\nModern LED lighting systems.\nAdds a special aura to the interior.'
+            AZ: '💰 250 AZN\nAy və ulduz dekorativ divar, televizor üçün fon.\nFunksional və estetik görünüş.',
+            RU: '💰 250 AZN\nДекор стены (полумесяц и звезда), фон для телевизора.\nФункциональный и эстетичный вид.',
+            EN: '💰 250 AZN\nCrescent and star decorative wall, backdrop for TV.\nFunctional and aesthetic look.'
         },
         image: '/picture8.jpeg',
+        price: 250,
         isActive: true,
-        price: 12,
         currency: 'AZN',
         isPriceVisible: true
     },
     {
         id: 'tv-stand',
         type: 'service',
-        name: { AZ: 'TV Dizayn', RU: 'ТВ Дизайн', EN: 'TV Design' },
+        name: { AZ: 'Yataq otağı dizaynı', RU: 'Дизайн спальни', EN: 'Bedroom design' },
         description: {
-            AZ: '💰 250 AZN\nTelevizor üçün xüsusi yığılmış stendlər.\nFunksional və estetik görünüş.',
-            RU: '💰 250 AZN\nСпециальные стенды для телевизоров.\nФункциональный и эстетичный вид.',
-            EN: '💰 250 AZN\nCustom built stands for TVs.\nFunctional and aesthetic look.'
+            AZ: 'Dalğalı tavan və divar, müasir interyer.\nYataq otağı üçün xüsusi həll.',
+            RU: 'Волнообразный потолок и стена, современный интерьер.\nСпециальное решение для спальни.',
+            EN: 'Wave ceiling and wall, modern interior.\nCustom solution for bedroom.'
         },
         image: '/picture9.jpeg',
         isActive: true,
@@ -453,11 +453,11 @@ export const initialServices: Service[] = [
     {
         id: 'new-service-img',
         type: 'service',
-        name: { AZ: 'Yeni Xidmət', RU: 'Новая Услуга', EN: 'New Service' },
+        name: { AZ: 'Divar dekoru', RU: 'Декор стен', EN: 'Wall decor' },
         description: {
-            AZ: 'Yeni xidmət təsviri.',
-            RU: 'Описание новой услуги.',
-            EN: 'New service description.'
+            AZ: 'Müasir divar panelləri və üzlüklər.\nDüz və relyefli teksturalar.',
+            RU: 'Современные стеновые панели и облицовка.\nГладкие и рельефные текстуры.',
+            EN: 'Modern wall panels and cladding.\nSmooth and textured finishes.'
         },
         image: '/image.png',
         isActive: true,

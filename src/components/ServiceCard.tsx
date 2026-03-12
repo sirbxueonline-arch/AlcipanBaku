@@ -32,20 +32,22 @@ export function ServiceCard({ service }: ServiceCardProps) {
       className="group relative flex flex-col bg-[#112240] rounded-xl md:rounded-2xl overflow-hidden border border-white/10 hover:border-[#fbbf24]/40 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-all duration-300 h-full"
     >
       {/* Image */}
-      <div className="relative w-full aspect-[4/3] overflow-hidden">
+      <div className="relative w-full h-44 sm:h-52 shrink-0 overflow-hidden">
         <Image
           src={service.image}
-          alt={service.name[language]}
+          alt={service.name[language]?.trim() || 'Service'}
           fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a192f] via-transparent to-transparent opacity-80 pointer-events-none" />
-        <div className="absolute bottom-3 left-3 right-3">
-          <h3 className="text-lg md:text-xl font-bold text-white drop-shadow-lg line-clamp-2">
-            {service.name[language]}
-          </h3>
-        </div>
+        {service.name[language]?.trim() ? (
+          <div className="absolute bottom-3 left-3 right-3">
+            <h3 className="text-lg md:text-xl font-bold text-white drop-shadow-lg line-clamp-2">
+              {service.name[language]}
+            </h3>
+          </div>
+        ) : null}
       </div>
 
       {/* Content – name only, no price/description */}

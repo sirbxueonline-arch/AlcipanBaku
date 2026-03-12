@@ -32,10 +32,12 @@ export function getCategoryIdForProduct(productId: string, nameAZ: string): stri
   const name = nameAZ.toLowerCase();
   if (id.startsWith('pkg')) return CATEGORY_IDS.PACKAGES;
   if (id.startsWith('gp')) return CATEGORY_IDS.LIGHT_PROFILES;
-  if (name.includes('gipskarton') || name.includes('alçipan') || name.includes('gypsum') || name.includes('гипсокартон')) return CATEGORY_IDS.GYPSUM_BOARDS;
-  if (name.includes('profil') || name.includes('profile') || name.includes('профиль') || name.includes('ud') || name.includes('cd')) return CATEGORY_IDS.METAL_PROFILES;
-  if (name.includes('srup') || name.includes('vida') || name.includes('screw') || name.includes('шуруп') || name.includes('eqreb') || name.includes('dupel') || name.includes('anker') || name.includes('klips')) return CATEGORY_IDS.SCREWS_FASTENERS;
-  if (name.includes('izolyasiya') || name.includes('yün') || name.includes('insulation') || name.includes('изоляция') || name.includes('вата')) return CATEGORY_IDS.INSULATION;
+  if (name.includes('gipskarton') || name.includes('alçipan') || name.includes('alcipan') || name.includes('gipsarton') || name.includes('gypsum') || name.includes('гипсокартон') || name.includes('lövhə')) return CATEGORY_IDS.GYPSUM_BOARDS;
+  if (name.includes('tavan u ') || name.includes('ceiling profile') || name.includes('потолочный') || name.includes('profilili')) return CATEGORY_IDS.METAL_PROFILES;
+  if (name.includes('profil') || name.includes('profile') || name.includes('профиль')) return CATEGORY_IDS.METAL_PROFILES;
+  if (name.includes('srup') || name.includes('vida') || name.includes('screw') || name.includes('шуруп') || name.includes('eqreb') || name.includes('dupel') || name.includes('anker') || name.includes('klips') || name.includes('celik dupel') || name.includes('qepik')) return CATEGORY_IDS.SCREWS_FASTENERS;
+  if (name.includes('izolyasiya') || name.includes('yün') || name.includes('insulation') || name.includes('изоляция') || name.includes('вата') || name.includes('daş yunu')) return CATEGORY_IDS.INSULATION;
+  if (name.includes('işıq') || name.includes('led') || name.includes('kölgə') || name.includes('plintus') || name.includes('gp-')) return CATEGORY_IDS.LIGHT_PROFILES;
   return CATEGORY_IDS.ACCESSORIES;
 }
 
