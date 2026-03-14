@@ -1,12 +1,12 @@
 'use client';
 
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import { ShoppingCart } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { useAdmin } from '@/context/AdminContext';
 import { Button } from '@/components/ui/Button';
 import type { Product, Package } from '@/types';
-import { cn } from '@/lib/utils';
 
 interface AddToCartButtonProps {
   product: Product | Package;
@@ -25,6 +25,7 @@ export function AddToCartButton({
   showIcon = true,
   fullWidth,
 }: AddToCartButtonProps) {
+  const router = useRouter();
   const { addToCart } = useCart();
   const { language } = useAdmin();
 
@@ -34,6 +35,10 @@ export function AddToCartButton({
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    if (product.type === 'package') {
+      router.push('/calculator');
+      return;
+    }
     addToCart(product);
   };
 

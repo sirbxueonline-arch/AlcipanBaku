@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { useAdmin } from '@/context/AdminContext';
 import { packageTiers } from '@/data/packageSystem';
 import { Check } from 'lucide-react';
@@ -9,7 +10,7 @@ export function PackageSystemSection() {
   const { language } = useAdmin();
 
   return (
-    <section className="py-8 sm:py-14 md:py-20 bg-[var(--bg)]">
+    <section id="packages" className="py-8 sm:py-14 md:py-20 bg-[var(--bg)]">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="text-center mb-6 sm:mb-10 md:mb-14">
           <span className="inline-block w-10 sm:w-14 h-1 bg-[#fbbf24] rounded-full mb-2 sm:mb-4" aria-hidden />
@@ -27,9 +28,10 @@ export function PackageSystemSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {packageTiers.map((tier, index) => (
-            <div
+            <Link
               key={tier.id}
-              className={`relative flex flex-col rounded-xl sm:rounded-2xl border overflow-hidden transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.25)] hover:-translate-y-1 ${
+              href={`/package/${tier.id}`}
+              className={`relative flex flex-col rounded-xl sm:rounded-2xl border overflow-hidden transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.25)] hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fbbf24] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg)] ${
                 index === 1
                   ? 'bg-[#112240] border-[#fbbf24]/50 shadow-[0_0_30px_rgba(251,191,36,0.15)]'
                   : 'bg-[#112240] border-white/10 hover:border-[#fbbf24]/40'
@@ -59,7 +61,7 @@ export function PackageSystemSection() {
                   ))}
                 </ul>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -6,6 +6,7 @@ import { useAdmin } from '@/context/AdminContext';
 import { useCart } from '@/context/CartContext';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ShoppingCart, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -16,12 +17,17 @@ interface ProductCardProps {
 export function ProductCard({ product }: ProductCardProps) {
   const { language } = useAdmin();
   const { addToCart } = useCart();
+  const router = useRouter();
 
   if (!product.isActive) return null;
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    if (product.type === 'package') {
+      router.push('/calculator');
+      return;
+    }
     addToCart(product);
   };
 
