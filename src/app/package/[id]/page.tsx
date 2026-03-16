@@ -29,7 +29,7 @@ export default function PackageDetailPage() {
     );
   }
 
-  const isPopular = tier.id === 'komfort';
+  const isPopular = tier.id === 'premium';
 
   return (
     <div className="min-h-screen bg-[var(--bg)] pt-24 pb-16">

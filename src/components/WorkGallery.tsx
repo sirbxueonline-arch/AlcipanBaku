@@ -5,7 +5,12 @@ import Image from 'next/image';
 import { useAdmin } from '@/context/AdminContext';
 import { TikTokEmbed } from 'react-social-media-embed';
 
-export function WorkGallery() {
+interface WorkGalleryProps {
+    /** Override section title (e.g. "Görülən işlər") */
+    title?: { AZ: string; RU: string; EN: string };
+}
+
+export function WorkGallery({ title }: WorkGalleryProps = {}) {
     const { workItems, language } = useAdmin();
     const activeWorks = workItems.filter(w => w.isActive);
     const [viewingItem, setViewingItem] = useState<{ url: string, type: 'video' | 'tiktok' | 'image' } | null>(null);
@@ -30,11 +35,18 @@ export function WorkGallery() {
         if (item.imageUrl) setViewingItem({ url: item.imageUrl, type: 'image' });
     };
 
+    const sectionTitle = title
+        ? title[language]
+        : language === 'AZ' ? 'Bizim İşlər' : language === 'RU' ? 'Наши Работы' : 'Our Work';
+
     return (
-        <section className="container mx-auto px-4 py-16 bg-[var(--bg)]" id="portfolio">
-            <h2 className="text-center text-3xl font-bold mb-12 text-white">
-                {language === 'AZ' ? 'Bizim İşlər' : language === 'RU' ? 'Наши Работы' : 'Our Work'}
-            </h2>
+        <section className="container mx-auto px-4 py-8 md:py-12 bg-[var(--bg)]" id="portfolio">
+            <div className="text-center mb-8 md:mb-12">
+                <span className="inline-block w-10 sm:w-14 h-1 bg-[#fbbf24] rounded-full mb-2 sm:mb-4" aria-hidden />
+                <h2 className="text-2xl md:text-3xl font-bold text-white">
+                    {sectionTitle}
+                </h2>
+            </div>
 
             {/* PHOTOS SECTION */}
             {hasPhotos && (

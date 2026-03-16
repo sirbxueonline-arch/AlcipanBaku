@@ -15,7 +15,7 @@ export function PackageSystemSection() {
         <div className="text-center mb-6 sm:mb-10 md:mb-14">
           <span className="inline-block w-10 sm:w-14 h-1 bg-[#fbbf24] rounded-full mb-2 sm:mb-4" aria-hidden />
           <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-1.5 sm:mb-2">
-            {language === 'AZ' ? 'Paket sistemi' : language === 'RU' ? 'Система пакетов' : 'Package system'}
+            {language === 'AZ' ? 'Hazır tavan paketləri' : language === 'RU' ? 'Готовые пакеты потолков' : 'Ready ceiling packages'}
           </h2>
           <p className="text-white/60 text-xs sm:text-sm md:text-base max-w-2xl mx-auto px-1">
             {language === 'AZ'
@@ -32,20 +32,20 @@ export function PackageSystemSection() {
               key={tier.id}
               href={`/package/${tier.id}`}
               className={`relative flex flex-col rounded-xl sm:rounded-2xl border overflow-hidden transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.25)] hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fbbf24] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg)] ${
-                index === 1
+                tier.id === 'premium'
                   ? 'bg-[#112240] border-[#fbbf24]/50 shadow-[0_0_30px_rgba(251,191,36,0.15)]'
                   : 'bg-[#112240] border-white/10 hover:border-[#fbbf24]/40'
               }`}
             >
-              {index === 1 && (
+              {tier.id === 'premium' && (
                 <div className="absolute top-0 left-0 right-0 py-1 sm:py-1.5 bg-[#fbbf24] text-[#0a192f] text-center text-[10px] sm:text-xs font-bold uppercase">
                   {language === 'AZ' ? 'Ən populyar' : language === 'RU' ? 'Популярный' : 'Most popular'}
                 </div>
               )}
-              <div className={`p-4 sm:p-6 md:p-8 ${index === 1 ? 'pt-8 sm:pt-10' : ''}`}>
+              <div className={`p-4 sm:p-6 md:p-8 ${tier.id === 'premium' ? 'pt-8 sm:pt-10' : ''}`}>
                 <h3
                   className={`text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-6 ${
-                    index === 1 ? 'text-[#fbbf24]' : 'text-white'
+                    tier.id === 'premium' ? 'text-[#fbbf24]' : 'text-white'
                   }`}
                 >
                   {tier.name[language]}

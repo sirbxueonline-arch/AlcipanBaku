@@ -17,21 +17,21 @@ export const packageTiers: PackageTier[] = [
     ],
   },
   {
-    id: 'komfort',
-    name: { AZ: 'Komfort', RU: 'Комфорт', EN: 'Comfort' },
-    features: [
-      { AZ: '2 səviyyəli tavan', RU: 'Двухуровневый потолок', EN: '2-level ceiling' },
-      { AZ: 'LED işıq', RU: 'LED освещение', EN: 'LED lighting' },
-      { AZ: 'Dizayn', RU: 'Дизайн', EN: 'Design' },
-    ],
-  },
-  {
     id: 'premium',
     name: { AZ: 'Premium', RU: 'Премиум', EN: 'Premium' },
     features: [
       { AZ: 'Müasir dizayn', RU: 'Современный дизайн', EN: 'Modern design' },
       { AZ: 'Gizli işıq sistemi', RU: 'Система скрытой подсветки', EN: 'Hidden lighting system' },
       { AZ: 'Tam dekor', RU: 'Полная отделка', EN: 'Full decor' },
+    ],
+  },
+  {
+    id: 'dizayn',
+    name: { AZ: 'Dizayn', RU: 'Дизайн', EN: 'Design' },
+    features: [
+      { AZ: '2 səviyyəli tavan', RU: 'Двухуровневый потолок', EN: '2-level ceiling' },
+      { AZ: 'LED işıq', RU: 'LED освещение', EN: 'LED lighting' },
+      { AZ: 'Fərdi dizayn', RU: 'Индивидуальный дизайн', EN: 'Custom design' },
     ],
   },
 ];
