@@ -174,12 +174,23 @@ export default function ServicesPage() {
                         </p>
                     </div>
                     <Link
-                        href="/#contact"
+                        href="/calculator"
                         className="px-8 py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-colors shadow-lg"
                     >
-                        {language === 'AZ' ? 'Əlaqə Saxlayın' : language === 'RU' ? 'Связаться' : 'Contact Us'}
+                        {language === 'AZ' ? 'Qiymət Hesabla' : language === 'RU' ? 'Рассчитать цену' : 'Calculate Price'}
                     </Link>
                 </div>
+            </div>
+
+            {/* Sticky mobile CTA */}
+            <div className="fixed bottom-3 left-3 right-3 md:hidden z-40">
+                <Link
+                    href="/calculator"
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-[#fbbf24] text-[#0a192f] font-bold shadow-[0_12px_28px_rgba(2,6,23,0.4)]"
+                >
+                    <ArrowRight className="w-4 h-4" />
+                    {language === 'AZ' ? 'Qiymət Hesabla' : language === 'RU' ? 'Рассчитать цену' : 'Calculate Price'}
+                </Link>
             </div>
         </div>
     );

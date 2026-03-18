@@ -6,6 +6,7 @@ import { useAdmin } from '@/context/AdminContext';
 import { useCart } from '@/context/CartContext';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Clock3, MessageCircle } from 'lucide-react';
 
 export default function ProductDetailPage() {
     const { id } = useParams();
@@ -48,6 +49,7 @@ export default function ProductDetailPage() {
                                     alt={product.name[language]}
                                     fill
                                     className="object-cover"
+                                    quality={95}
                                     priority
                                 />
                             </div>
@@ -58,6 +60,10 @@ export default function ProductDetailPage() {
                             <span className="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider rounded-full mb-6 w-fit">
                                 {language === 'AZ' ? 'Stokda var' : language === 'RU' ? 'В наличии' : 'In Stock'}
                             </span>
+                            <div className="mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold w-fit">
+                                <Clock3 className="w-3.5 h-3.5" />
+                                {language === 'AZ' ? 'Çatdırılma: 24-48 saat' : language === 'RU' ? 'Доставка: 24-48 часов' : 'Delivery: 24-48 hours'}
+                            </div>
 
                             <h1 className="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
                                 {product.name[language]}
@@ -101,7 +107,8 @@ export default function ProductDetailPage() {
                                     rel="noopener noreferrer"
                                     className="flex-1 px-8 py-4 bg-white text-gray-700 font-bold border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors shadow-sm hover:border-gray-300 flex items-center justify-center"
                                 >
-                                    {language === 'AZ' ? 'Whatsapp ilə Əlaqə' : language === 'RU' ? 'Связаться по Whatsapp' : 'Contact via Whatsapp'}
+                                    <MessageCircle className="w-4 h-4 mr-2" />
+                                    {language === 'AZ' ? 'WhatsApp sifariş' : language === 'RU' ? 'Заказать через WhatsApp' : 'Order via WhatsApp'}
                                 </a>
                             </div>
                         </div>
@@ -124,6 +131,27 @@ export default function ProductDetailPage() {
                             </Link>
                         ))}
                     </div>
+                </div>
+            </div>
+
+            {/* Sticky mobile add-to-cart CTA */}
+            <div className="fixed bottom-3 left-3 right-3 md:hidden z-40">
+                <div className="grid grid-cols-2 gap-2 rounded-xl bg-white/95 backdrop-blur p-2 shadow-[0_14px_34px_rgba(2,6,23,0.35)] border border-gray-200">
+                    <button
+                        onClick={() => addToCart(product)}
+                        className="py-3 rounded-lg bg-gray-900 text-white font-bold text-sm"
+                    >
+                        {language === 'AZ' ? 'Səbətə at' : language === 'RU' ? 'В корзину' : 'Add to cart'}
+                    </button>
+                    <a
+                        href={`https://wa.me/994506368731?text=Salam, ${product.name[language]} haqqında məlumat almaq istəyirəm.`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="py-3 rounded-lg bg-[#fbbf24] text-[#0a192f] font-bold text-sm flex items-center justify-center gap-1.5"
+                    >
+                        <MessageCircle className="w-4 h-4" />
+                        WhatsApp
+                    </a>
                 </div>
             </div>
         </div>

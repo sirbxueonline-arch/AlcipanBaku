@@ -148,9 +148,9 @@ export function Header() {
                             </span>
                         </a>
 
-                        {/* Desktop Actions */}
-                        <div className="hidden md:flex items-center gap-4">
-                            <div className="w-px h-6 bg-white/20"></div>
+                        {/* Language + cart always visible */}
+                        <div className="flex items-center gap-2 sm:gap-3">
+                            <div className="w-px h-6 bg-white/20 hidden sm:block"></div>
                             <LanguageSwitcher />
                         </div>
                     </div>

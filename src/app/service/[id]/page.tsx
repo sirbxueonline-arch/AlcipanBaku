@@ -116,11 +116,28 @@ export default function ServiceDetailPage() {
                                 </div>
 
                                 <button type="submit" className="w-full py-4 bg-[var(--primary)] text-white font-bold rounded-lg hover:bg-blue-600 transition shadow-lg shadow-blue-900/20">
-                                    {language === 'AZ' ? 'Səbətə at' : language === 'RU' ? 'В корзину' : 'Add to cart'}
+                                    {language === 'AZ' ? 'Qiymət təklifi al' : language === 'RU' ? 'Получить предложение' : 'Get a quote'}
                                 </button>
                             </form>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            {/* Sticky mobile CTA */}
+            <div className="fixed bottom-3 left-3 right-3 md:hidden z-40">
+                <div className="grid grid-cols-2 gap-2 rounded-xl bg-white/95 backdrop-blur p-2 shadow-[0_14px_34px_rgba(2,6,23,0.35)] border border-gray-200">
+                    <Link href="/calculator" className="py-3 rounded-lg bg-[#fbbf24] text-[#0a192f] font-bold text-sm text-center">
+                        {language === 'AZ' ? 'Qiymət Hesabla' : language === 'RU' ? 'Рассчитать цену' : 'Calculate Price'}
+                    </Link>
+                    <a
+                        href={`https://wa.me/994506368731?text=Salam, ${service.name[language]} xidməti üzrə təklif almaq istəyirəm.`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="py-3 rounded-lg bg-[#0a192f] text-white font-bold text-sm text-center"
+                    >
+                        WhatsApp
+                    </a>
                 </div>
             </div>
         </div>

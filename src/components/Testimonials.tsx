@@ -3,11 +3,13 @@
 import React, { useEffect, useState } from 'react';
 import { useAdmin } from '@/context/AdminContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 const testimonials = [
     {
         id: 1,
         name: 'Elvin C.',
+        photo: '/picture1.jpeg',
         rating: 5,
         text: {
             AZ: 'Evimin bütün alçipan işlərini AlcipanBaku komandasına həvalə etdim. Nəticə möhtəşəmdir! Çox səliqəli və vaxtında təhvil verdilər.',
@@ -18,6 +20,7 @@ const testimonials = [
     {
         id: 2,
         name: 'Aydan M.',
+        photo: '/picture2.jpeg',
         rating: 5,
         text: {
             AZ: 'Tavan dizaynı üçün müraciət etdik, fərqli ideyalar təklif etdilər. İş prosesində dəqiqlik və peşəkarlıq hiss olunurdu.',
@@ -28,6 +31,7 @@ const testimonials = [
     {
         id: 3,
         name: 'Samir R.',
+        photo: '/picture3.jpeg',
         rating: 5,
         text: {
             AZ: 'Materialların keyfiyyəti dedikləri kimi superdir. Ustalar da çox nəzakətli və işini bilən idilər. Təşəkkürlər!',
@@ -79,8 +83,13 @@ export function Testimonials() {
                                 "{testimonials[currentIndex].text[language]}"
                             </p>
                             <div className="flex items-center justify-center gap-3">
-                                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#fbbf24] to-[#f59e0b] shadow-md text-white flex items-center justify-center font-bold text-lg">
-                                    {testimonials[currentIndex].name.charAt(0)}
+                                <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-[#fbbf24]/30 shadow-md">
+                                    <Image
+                                        src={testimonials[currentIndex].photo}
+                                        alt={testimonials[currentIndex].name}
+                                        fill
+                                        className="object-cover"
+                                    />
                                 </div>
                                 <h4 className="font-bold text-[#0a192f]">{testimonials[currentIndex].name}</h4>
                             </div>

@@ -10,7 +10,6 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import {
   LayoutGrid,
-  Palette,
   Lightbulb,
   Building2,
   ImageIcon,
@@ -64,10 +63,23 @@ export default function Home() {
 
   const services = [
     { icon: LayoutGrid, text: t.s1, href: '/services' },
-    { icon: Palette, text: t.s2, href: '/#gallery' },
     { icon: Lightbulb, text: t.s3, href: '/products' },
     { icon: Building2, text: t.s4, href: '/products?category=light-profiles' },
   ];
+
+  const whyChoose = [
+    { AZ: '20 il təcrübə', RU: '20 лет опыта', EN: '20 years experience' },
+    { AZ: 'Zəmanət', RU: 'Гарантия', EN: 'Warranty included' },
+    { AZ: 'Sürətli montaj', RU: 'Быстрый монтаж', EN: 'Fast installation' },
+  ];
+
+  const trustMetrics = [
+    { value: '500+', AZ: 'Layihə', RU: 'Проектов', EN: 'Projects' },
+    { value: '4.9', AZ: 'Reytinq', RU: 'Рейтинг', EN: 'Rating' },
+    { value: '24h', AZ: 'Cavab', RU: 'Ответ', EN: 'Response' },
+  ];
+
+  const partners = ['Knauf', 'Gilan', 'Rigips', 'Meridian'];
 
   const steps = [
     { icon: ImageIcon, text: t.step1 },
@@ -120,6 +132,31 @@ export default function Home() {
               {t.ctaPrice[language]}
             </Link>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Conversion strip */}
+      <section className="pb-3 sm:pb-5 md:pb-8">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="rounded-2xl border border-white/10 bg-[linear-gradient(160deg,rgba(17,34,64,0.95),rgba(13,27,52,0.95))] p-4 sm:p-6 shadow-[0_16px_40px_rgba(2,6,23,0.35)]">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {whyChoose.map((item, idx) => (
+                  <div key={idx} className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-white/90 text-sm font-semibold">
+                    {item[language]}
+                  </div>
+                ))}
+              </div>
+              <div className="grid grid-cols-3 gap-3">
+                {trustMetrics.map((metric, idx) => (
+                  <div key={idx} className="rounded-xl border border-white/10 bg-[#0a192f]/60 px-3 py-3 text-center">
+                    <p className="text-[#fbbf24] text-xl sm:text-2xl font-bold">{metric.value}</p>
+                    <p className="text-white/70 text-xs sm:text-sm">{metric[language]}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -205,6 +242,22 @@ export default function Home() {
 
       {/* 6. MÜŞTƏRİ RƏYLƏRİ */}
       <Testimonials />
+
+      {/* Partners */}
+      <section className="py-8 sm:py-10 bg-[#0a192f]/70 border-y border-white/10">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+            {partners.map((partner) => (
+              <div
+                key={partner}
+                className="px-4 py-2 rounded-full border border-white/15 bg-white/[0.04] text-white/80 text-xs sm:text-sm font-semibold tracking-wide"
+              >
+                {partner}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* 7. ƏLAQƏ */}
       <section id="contact" className="py-12 sm:py-16 md:py-24 bg-[linear-gradient(180deg,#112240,#0a192f)] border-t border-white/5">

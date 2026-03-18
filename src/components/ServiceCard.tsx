@@ -3,11 +3,10 @@
 import React from 'react';
 import { Service } from '@/types';
 import { useAdmin } from '@/context/AdminContext';
-import { useCart } from '@/context/CartContext';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, ShoppingCart } from 'lucide-react';
+import { ArrowRight, Calculator } from 'lucide-react';
 
 interface ServiceCardProps {
   service: Service;
@@ -15,15 +14,8 @@ interface ServiceCardProps {
 
 export function ServiceCard({ service }: ServiceCardProps) {
   const { language } = useAdmin();
-  const { addToCart } = useCart();
 
   if (!service.isActive) return null;
-
-  const handleAddToCart = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    addToCart(service);
-  };
 
   return (
     <motion.div
@@ -60,13 +52,13 @@ export function ServiceCard({ service }: ServiceCardProps) {
               {language === 'AZ' ? 'Ətraflı' : language === 'RU' ? 'Подробнее' : 'Details'}
               <ArrowRight className="w-4 h-4" />
             </Link>
-            <button
-              onClick={handleAddToCart}
+            <Link
+              href="/calculator"
               className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#fbbf24] hover:bg-[#f59e0b] text-[#0a192f] font-bold rounded-lg text-sm transition-colors shadow-lg hover:shadow-[#fbbf24]/30"
             >
-              <ShoppingCart className="w-4 h-4" />
-              {language === 'AZ' ? 'Səbətə at' : language === 'RU' ? 'В корзину' : 'Add to cart'}
-            </button>
+              <Calculator className="w-4 h-4" />
+              {language === 'AZ' ? 'Qiymət Hesabla' : language === 'RU' ? 'Рассчитать цену' : 'Calculate price'}
+            </Link>
         </div>
       </div>
     </motion.div>
