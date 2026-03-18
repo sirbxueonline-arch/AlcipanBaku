@@ -8,10 +8,13 @@ import { PackageSystemSection } from '@/components/PackageSystemSection';
 import { Testimonials } from '@/components/Testimonials';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   LayoutGrid,
   Lightbulb,
   Building2,
+  ChevronLeft,
+  ChevronRight,
   ImageIcon,
   Calculator,
   PenTool,
@@ -22,7 +25,7 @@ import {
 } from 'lucide-react';
 
 export default function Home() {
-  const { language } = useAdmin();
+  const { language, workItems, services: adminServices } = useAdmin();
 
   const t = {
     heroTitle: {
@@ -61,7 +64,7 @@ export default function Home() {
     instagram: { AZ: 'Instagram', RU: 'Instagram', EN: 'Instagram' },
   };
 
-  const services = [
+  const serviceLinks = [
     { icon: LayoutGrid, text: t.s1, href: '/services' },
     { icon: Lightbulb, text: t.s3, href: '/products' },
     { icon: Building2, text: t.s4, href: '/products?category=light-profiles' },
@@ -87,6 +90,117 @@ export default function Home() {
     { icon: PenTool, text: t.step3 },
     { icon: Wrench, text: t.step4 },
   ];
+
+  const normalize = (value: string) =>
+    value
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[ə]/g, 'e')
+      .replace(/\s+/g, '');
+
+  const getSearchBlob = (value: string) =>
+    normalize(
+      value,
+    );
+
+  const yataqStatic = Array.from({ length: 8 }, (_, idx) => ({
+    id: `yataq-static-${idx + 1}`,
+    imageUrl: `/yataqotaqi-${idx + 1}.jpeg`,
+    title: language === 'AZ' ? `Yataq otağı ${idx + 1}` : language === 'RU' ? `Спальня ${idx + 1}` : `Bedroom ${idx + 1}`,
+  }));
+
+  const qonaqStatic = Array.from({ length: 12 }, (_, idx) => {
+    const number = idx + 1;
+    return {
+      id: `qonaq-static-${number}`,
+      // Uploaded file #4 is named "gonagotaqi-4.jpeg" (without "q")
+      imageUrl: number === 4 ? '/gonagotaqi-4.jpeg' : `/qonaqotaqi-${number}.jpeg`,
+      title: language === 'AZ' ? `Qonaq otağı ${number}` : language === 'RU' ? `Гостиная ${number}` : `Living room ${number}`,
+    };
+  });
+
+  const yataqFromWorks = workItems
+    .filter((item) => {
+      const blob = getSearchBlob(
+        `${item.id} ${item.title.AZ} ${item.title.RU} ${item.title.EN} ${item.description.AZ} ${item.description.RU} ${item.description.EN} ${item.imageUrl}`,
+      );
+      return (
+        blob.includes('yataq') ||
+        blob.includes('yataqotagi') ||
+        blob.includes('yataqotaqi') ||
+        blob.includes('bedroom') ||
+        blob.includes('спальн')
+      );
+    })
+    .map((item) => ({
+      id: `work-${item.id}`,
+      imageUrl: item.imageUrl,
+      title: item.title[language],
+    }));
+  const qonaqFromWorks = workItems
+    .filter((item) => {
+      const blob = getSearchBlob(
+        `${item.id} ${item.title.AZ} ${item.title.RU} ${item.title.EN} ${item.description.AZ} ${item.description.RU} ${item.description.EN} ${item.imageUrl}`,
+      );
+      return (
+        blob.includes('qonaq') ||
+        blob.includes('qonaqotagi') ||
+        blob.includes('qonaqotaqi') ||
+        blob.includes('living') ||
+        blob.includes('гостин')
+      );
+    })
+    .map((item) => ({
+      id: `work-${item.id}`,
+      imageUrl: item.imageUrl,
+      title: item.title[language],
+    }));
+
+  const yataqFromServices = adminServices
+    .filter((item) => {
+      const blob = getSearchBlob(
+        `${item.id} ${item.name.AZ} ${item.name.RU} ${item.name.EN} ${item.description.AZ} ${item.description.RU} ${item.description.EN} ${item.image}`,
+      );
+      return (
+        blob.includes('yataq') ||
+        blob.includes('yataqotagi') ||
+        blob.includes('yataqotaqi') ||
+        blob.includes('bedroom') ||
+        blob.includes('спальн')
+      );
+    })
+    .map((item) => ({
+      id: `service-${item.id}`,
+      imageUrl: item.image,
+      title: item.name[language],
+    }));
+
+  const qonaqFromServices = adminServices
+    .filter((item) => {
+      const blob = getSearchBlob(
+        `${item.id} ${item.name.AZ} ${item.name.RU} ${item.name.EN} ${item.description.AZ} ${item.description.RU} ${item.description.EN} ${item.image}`,
+      );
+      return (
+        blob.includes('qonaq') ||
+        blob.includes('qonaqotagi') ||
+        blob.includes('qonaqotaqi') ||
+        blob.includes('living') ||
+        blob.includes('гостин')
+      );
+    })
+    .map((item) => ({
+      id: `service-${item.id}`,
+      imageUrl: item.image,
+      title: item.name[language],
+    }));
+
+  const yataqDesigns = [...yataqStatic, ...yataqFromWorks, ...yataqFromServices]
+    .filter((item, index, all) => all.findIndex((x) => x.imageUrl === item.imageUrl) === index)
+    .slice(0, 20);
+  const qonaqDesigns = [...qonaqStatic, ...qonaqFromWorks, ...qonaqFromServices]
+    .filter((item, index, all) => all.findIndex((x) => x.imageUrl === item.imageUrl) === index)
+    .slice(0, 30);
 
   return (
     <div className="min-h-screen bg-[radial-gradient(1200px_500px_at_15%_-10%,rgba(37,99,235,0.25),transparent),radial-gradient(900px_420px_at_100%_0%,rgba(251,191,36,0.14),transparent),var(--bg)] text-[var(--text)] font-sans">
@@ -169,14 +283,15 @@ export default function Home() {
               {t.servicesTitle[language]}
             </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {services.map((item, i) => (
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+            {serviceLinks.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
+                className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[320px]"
               >
                 <Link
                   href={item.href}
@@ -195,6 +310,38 @@ export default function Home() {
 
       {/* 3. HAZIR TAVAN PAKETLƏRİ */}
       <PackageSystemSection />
+
+      {/* 3.1 OTAQ DIZAYNLARI */}
+      {(yataqDesigns.length > 0 || qonaqDesigns.length > 0) && (
+        <section className="py-12 sm:py-16 md:py-20 bg-[#0a192f]/55 border-y border-white/10">
+          <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div className="text-center mb-8 sm:mb-10">
+              <span className="inline-block w-10 sm:w-14 h-1 bg-[#fbbf24] rounded-full mb-2 sm:mb-4" aria-hidden />
+              <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-white tracking-tight">
+                {language === 'AZ' ? 'Otaq dizaynları' : language === 'RU' ? 'Дизайны комнат' : 'Room designs'}
+              </h2>
+            </div>
+
+            {yataqDesigns.length > 0 && (
+              <div className="mb-10">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-4">
+                  {language === 'AZ' ? 'Yataq otağı dizaynları' : language === 'RU' ? 'Дизайны спальни' : 'Bedroom designs'}
+                </h3>
+                <DesignCarousel items={yataqDesigns} />
+              </div>
+            )}
+
+            {qonaqDesigns.length > 0 && (
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-4">
+                  {language === 'AZ' ? 'Qonaq otağı dizaynları' : language === 'RU' ? 'Дизайны гостиной' : 'Living room designs'}
+                </h3>
+                <DesignCarousel items={qonaqDesigns} />
+              </div>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* 4. NECƏ İŞLƏYİR */}
       <section className="py-12 sm:py-16 md:py-24 bg-[linear-gradient(180deg,rgba(17,34,64,0.35),rgba(17,34,64,0.7))] border-y border-white/5">
@@ -306,6 +453,59 @@ export default function Home() {
           </div>
         </div>
       </section>
+    </div>
+  );
+}
+
+function DesignCarousel({ items }: { items: Array<{ id: string; imageUrl: string; title: string }> }) {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  const scrollByAmount = (direction: 'left' | 'right') => {
+    if (!containerRef.current) return;
+    const amount = direction === 'left' ? -320 : 320;
+    containerRef.current.scrollBy({ left: amount, behavior: 'smooth' });
+  };
+
+  return (
+    <div className="relative group/carousel">
+      <button
+        type="button"
+        onClick={() => scrollByAmount('left')}
+        className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-black/45 text-white items-center justify-center border border-white/20 backdrop-blur hover:bg-black/60 transition-opacity opacity-0 group-hover/carousel:opacity-100"
+        aria-label="Scroll left"
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+      <button
+        type="button"
+        onClick={() => scrollByAmount('right')}
+        className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-black/45 text-white items-center justify-center border border-white/20 backdrop-blur hover:bg-black/60 transition-opacity opacity-0 group-hover/carousel:opacity-100"
+        aria-label="Scroll right"
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
+
+      <div
+        ref={containerRef}
+        className="flex gap-3 sm:gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2 pr-1"
+      >
+        {items.map((item) => (
+          <div
+            key={item.id}
+            className="group flex-none w-[220px] sm:w-[280px] rounded-xl overflow-hidden border border-white/10 bg-[#112240] snap-start"
+          >
+            <div className="relative aspect-[4/3]">
+              <Image
+                src={item.imageUrl}
+                alt="Room design"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                unoptimized
+              />
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
