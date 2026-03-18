@@ -148,8 +148,8 @@ export function Header() {
                             </span>
                         </a>
 
-                        {/* Language + cart always visible */}
-                        <div className="flex items-center gap-2 sm:gap-3">
+                        {/* Language selector only visible in header on desktop */}
+                        <div className="hidden md:flex items-center gap-2 sm:gap-3">
                             <div className="w-px h-6 bg-white/20 hidden sm:block"></div>
                             <LanguageSwitcher />
                         </div>
